@@ -15,9 +15,13 @@ code {
 .App-dark{
   background-color: rgb(40, 40, 40);
   height: 100dvh;
+  background-size: cover;
+  overflow: auto;
 }
 
 .App-light{
   background-color: white;
   height: 100dvh;
+  background-size: cover;
+  overflow: auto;
 }

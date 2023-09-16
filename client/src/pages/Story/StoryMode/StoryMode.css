@@ -16,6 +16,7 @@
     font-size: 1.25em;
     border-radius: 1rem;
     box-shadow: 0, 0.125rem, 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    margin-bottom: -20vh;
 }
 
 .speech-bubble p::before{
@@ -29,4 +30,10 @@
     border-color: #fff transparent;
     border-width: 30px 30px 0 0;
     filter: drop-shadow(0, -0.0625rem, 0.0625rem rgba(0, 0, 0, .1));
+}
+
+.conversation{
+    display: flex;
+    flex-direction: row;
+    flex: 1 1;
 }

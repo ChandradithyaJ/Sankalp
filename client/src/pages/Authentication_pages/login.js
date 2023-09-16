@@ -1,35 +1,37 @@
-//import '.Authentication_style.css';
-import React from 'react';
+import React, { useState } from 'react';
+import './Authentication_style.css';
 
-function Login({ mode }	) {
+function Login() {
+  const [mode, setMode] = useState('light'); // Initialize with 'light' mode
+
+  const toggleMode = () => {
+    setMode(mode === 'light' ? 'dark' : 'light'); // Toggle between light and dark mode
+  };
+
   return (
-    <div className={`Login-${mode}`}>
-      <div className="login">
-        <div className="login__container">
+    <div className={`Login Login--${mode}`}>
+      <div className="Login__container">
+        <div className="Login__card">
           <h1>Login</h1>
           <form>
-            <div className="login__input">
+            <div className="Login__input">
               <h5>E-mail</h5>
               <input type="text" />
             </div>
-            <div className="login__input">
+            <div className="Login__input">
               <h5>Password</h5>
               <input type="password" />
             </div>
-            <button type="submit" className="login__signInButton">
+            <button type="submit" className="Login__signInButton">
               Sign In
             </button>
           </form>
-          <p>
-            By signing in, you agree to the Terms and Conditions of Use & Sale.
-            Please see our Privacy Notice, our Cookies Notice, and our
-            Interest-Based Ads Notice.
-          </p>
-          <button className="login__registerButton">Create your Account</button>
+          <button className="Login__registerButton">Create your Account</button>
         </div>
       </div>
+      <button onClick={toggleMode}>Toggle Mode</button>
     </div>
   );
 }
 
-export default  Login;
+export default Login;

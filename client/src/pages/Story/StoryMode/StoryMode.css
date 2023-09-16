@@ -1,4 +1,32 @@
 .story-mode-dark{
-    background-color: rgb(40, 40, 40);
-    height: 100dvh;
+    
+}
+
+.speech-bubble{
+    padding-top: 4vh;
+    padding-left: 4vw;
+}
+
+.speech-bubble p{
+    position: relative;
+    max-width: 30vw;
+    word-wrap: break-word;
+    background-color: #fff;
+    padding: 1.125em 1.5em;
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow: 0, 0.125rem, 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.speech-bubble p::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 100%;
+    right: 1.5em;
+    border-style: solid;
+    border-color: #fff transparent;
+    border-width: 30px 30px 0 0;
+    filter: drop-shadow(0, -0.0625rem, 0.0625rem rgba(0, 0, 0, .1));
 }

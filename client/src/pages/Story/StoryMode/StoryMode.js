@@ -1,11 +1,12 @@
 /*** Story Mode UI ***/
 
 import './StoryMode.css'
+import SpeechBubble from './SpeechBubble'
 
 const StoryMode = ({ mode }) => {
     return(
         <div className={`story-mode-${mode}`}>
-            <p style={{'color': 'whitesmoke'}}> Story Mode</p>
+            <SpeechBubble text={"Welcome to Story Mode!"} />
         </div>
     )
 }

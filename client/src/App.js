@@ -14,11 +14,7 @@ function App() {
         <Route exact path="therapy-chatbot" element={<div></div>} />
         <Route exact path="story" element={<div></div>} />
         <Route exact path="story/modules" element={<div></div>} />
-        <Route
-          exact
-          path="story/play"
-          element={<StoryMode mode={mode} />}
-        />
+        <Route exact path="story/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<div></div>} />
         <Route exact path="profile" element={<div></div>} />
       </Routes>

@@ -1,9 +1,11 @@
 .mainBar {
   display: block;
   height: 10dvh;
-  width: 100%;
+  width: 100dvw;
   /* background-color: #fff; */
   background-image: radial-gradient(#7ed56f, #28b485);
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .navigation__checkbox {

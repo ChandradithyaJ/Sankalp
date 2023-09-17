@@ -19,7 +19,7 @@ const Navbar = () => {
     <div className="mainBar">
       {/* add heading for the navbar */}
       <div className="navigation">
-        Arpit ki maa ki chu
+        Navbar
         <input
           type="checkbox"
           className="navigation__checkbox"

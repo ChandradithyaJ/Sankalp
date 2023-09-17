@@ -14,9 +14,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="home" element={<div></div>} />
-        <Route exact path="login" element={<Login />} />
-        <Route exact path="signup" element={<Signup />} />
-        <Route exact path="reset-password" element={<ResetPassword />} />
+        <Route exact path="login" element={<Login mode={mode} setMode={setMode}/>} />
+        <Route exact path="signup" element={<Signup mode={mode} setMode={setMode}/>} />
+        <Route exact path="reset-password" element={<ResetPassword mode={mode} setMode={setMode}/>} />
         <Route exact path="therapy-chatbot" element={<div></div>} />
         <Route exact path="story" element={<div></div>} />
         <Route exact path="story/modules" element={<div></div>} />

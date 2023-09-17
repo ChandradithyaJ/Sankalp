@@ -4,7 +4,7 @@
     --background-dark: #404040;
     --text-light: black;
     --text-dark: white;
-    --highlight-color: grey; /* Highlight color */
+    --highlight-color: grey;
   }
   
   .Login, .Signup, .ResetPassword {

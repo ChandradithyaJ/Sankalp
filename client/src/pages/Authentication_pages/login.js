@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './Authentication_style.css';
 
-function Login() {
-  const [mode, setMode] = useState('light'); // Initialize with 'light' mode
-
+function Login({mode,setMode}) {
   const toggleMode = () => {
     setMode(mode === 'light' ? 'dark' : 'light'); // Toggle between light and dark mode
   };

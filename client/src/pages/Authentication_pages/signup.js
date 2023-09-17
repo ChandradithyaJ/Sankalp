@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './Authentication_style.css';
 
-function Signup({ mode }) {
-  const [isDarkMode] = useState(mode === 'dark'); // Determine if it's dark mode
+function Signup({ mode, setMode }) {
+  const toggleMode = () => {
+    setMode(mode === 'light' ? 'dark' : 'light'); // Toggle between light and dark mode
+  };
 
   return (
-    <div className={`Signup ${isDarkMode ? 'Signup--dark' : 'Signup--light'}`}>
+    <div className={`Signup Signup--${mode}`}>
       <div className="Signup__container">
         <div className="Signup__card">
           <h1>Sign Up</h1>
@@ -28,6 +30,7 @@ function Signup({ mode }) {
           </form>
         </div>
       </div>
+      <button onClick={toggleMode}>Toggle Mode</button>
     </div>
   );
 }

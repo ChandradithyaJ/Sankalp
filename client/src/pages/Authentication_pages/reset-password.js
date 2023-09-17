@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './Authentication_style.css';
 
-function ResetPassword({ mode }) {
-  const [isDarkMode] = useState(mode === 'dark'); // Determine if it's dark mode
+function ResetPassword({ mode, setMode }) {
+  const toggleMode = () => {
+    setMode(mode === 'light' ? 'dark' : 'light'); // Toggle between light and dark mode
+  };
 
   return (
     <div className={`ResetPassword ResetPassword--${mode}`}>
@@ -20,6 +22,7 @@ function ResetPassword({ mode }) {
           </form>
         </div>
       </div>
+      <button onClick={toggleMode}>Toggle Mode</button>
     </div>
   );
 }

@@ -13,12 +13,15 @@ import SpeechBubble from './SpeechBubble'
 // lottie animations
 import girlTalking from '../../../lotties/girlTalking.json'
 import doctor2 from '../../../lotties/doctor2.json'
+import doctor from '../../../lotties/doctor.json'
 
 const StoryMode = ({ mode }) => {
     // variable dimensions for the lottie animation
     const [lottieDim, setLottieDim] = useState(600)
     // state to keep track of the selected response option
     const [selectedOption, setSelectedOption] = useState('')
+    // toggle between the story and Dr Sankalp
+    const [evaluate, setEvaluate] = useState(false)
 
     // test response options
     const options = ['a', 'b', 'c', 'd']
@@ -32,8 +35,16 @@ const StoryMode = ({ mode }) => {
         }
     }
 
+    // go to Dr Sankalp to evaluate the response
     const evaluateResponse = () => {
+        if(selectedOption !== ''){
+            setEvaluate(true)
+        }
+    }
 
+    const backToStory = () => {
+        setEvaluate(false)
+        setSelectedOption('')
     }
 
     return(
@@ -41,50 +52,78 @@ const StoryMode = ({ mode }) => {
             <div className={`story-title-${mode}`}>
                 <h3>Chance Encounter with Lisa</h3>
             </div>
-            <div className='conversation'>
-                <div className='player-character'>
-                    <div className='player-character-ui'>
-                        <SpeechBubble text={selectedOption} mode={mode} />
-                        <div className='player-lottie'>
-                            <Lottie
-                                animationData={girlTalking}
-                                loop={true}
-                                autoPlay={true}
-                                style={{ height: { lottieDim }, width: { lottieDim } }}
-                            />
+            {
+                !evaluate &&
+                <div className='conversation-container'>
+                    <div className='conversation'>
+                        <div className='player-character'>
+                            <div className='player-character-ui'>
+                                <SpeechBubble text={selectedOption} mode={mode} />
+                                <div className='player-lottie'>
+                                    <Lottie
+                                        animationData={girlTalking}
+                                        loop={true}
+                                        autoPlay={true}
+                                        style={{ height: { lottieDim }, width: { lottieDim } }}
+                                    />
+                                </div>
+                            </div>
+                            <div className='player-character-options'>
+                                {options.map((option) => (
+                                    <div
+                                        className={selectedOption === option ?
+                                            `selectedOption-${mode}` :
+                                            `option-${mode}`}
+                                        onClick={() => clickOnOption(option)}
+                                    >
+                                        {option}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className='NPC'>
+                            <SpeechBubble text={"Welcome to Story Mode!"} mode={mode} />
+                            <div className='npc-lottie'>
+                                <Lottie
+                                    animationData={girlTalking}
+                                    loop={true}
+                                    autoPlay={true}
+                                    style={{ height: { lottieDim }, width: { lottieDim } }}
+                                />
+                            </div>
                         </div>
                     </div>
-                    <div className='player-character-options'>
-                        {options.map((option) => (
-                            <div
-                                className={selectedOption === option ? 
-                                    `selectedOption-${mode}` : 
-                                    `option-${mode}`}
-                                onClick={() => clickOnOption(option)}
-                            >
-                                {option}
-                            </div>
-                        ))}
+                    <div
+                        className={`evaluate-response-${mode}`}
+                        onClick={evaluateResponse}
+                    >
+                        Evaluate Response
                     </div>
-                </div>  
-                <div className='NPC'>
-                    <SpeechBubble text={"Welcome to Story Mode!"} mode={mode} />
-                    <div className='npc-lottie'>
+                </div>
+            }
+            {
+                evaluate &&
+                <div className='evaluation-container'>
+                    <SpeechBubble 
+                        text={"I'm Dr Sankalp!"} 
+                        mode={mode}     
+                    />
+                    <div className='sankalp-lottie'>
                         <Lottie
-                            animationData={girlTalking}
+                            animationData={doctor}
                             loop={true}
                             autoPlay={true}
                             style={{ height: { lottieDim }, width: { lottieDim } }}
                         />
                     </div>
+                    <div
+                        className={`back-to-story-${mode}`}
+                        onClick={backToStory}
+                    >
+                        Go Back to the Story
+                    </div>
                 </div>
-            </div>
-            <div 
-                className={`evaluate-response-${mode}`}
-                onClick={evaluateResponse}
-            >
-                Evaluate Response
-            </div>
+            }
         </div>
     )
 }

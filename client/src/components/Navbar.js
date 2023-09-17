@@ -42,6 +42,21 @@ const Navbar = () => {
               </a>
             </li>
             <li className="navigation__item">
+              <a href="/ChatBox" className="navigation__link">
+                ChatBot
+              </a>
+            </li>
+            <li className="navigation__item">
+              <a href="/LandingPage" className="navigation__link">
+                land
+              </a>
+            </li>
+            <li className="navigation__item">
+              <a href="/BlogPage" className="navigation__link">
+                BlogPage
+              </a>
+            </li>
+            <li className="navigation__item">
               <a href="/therapy-chatbot" className="navigation__link">
                 Therapist
               </a>

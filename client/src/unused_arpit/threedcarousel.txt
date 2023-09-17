@@ -1,0 +1,44 @@
+import { Carousel } from "react-carousel3";
+
+
+  // const boxStyle = {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   alignItems: "center",
+  //   marginTop: "20px", // Adjust the margin as needed
+  //   border: "2px solid #e0e0e0", // Border style
+  //   borderRadius: "10px", // Rounded corners
+  //   padding: "20px", // Padding inside the box
+  //   boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)", // Box shadow
+  //   backgroundColor: "white", // Background color
+  // };
+
+{/* <div className="homepageContainer">
+        <Carousel
+          height={460}
+          width={980}
+          yOrigin={44}
+          yRadius={48}
+          autoPlay={true}
+          dots={false} // Hide the default navigation dots
+        >
+          <div key={1} styl e={style}>
+            <img alt="arpit lodu" src="./homepagepics/image1.jpg" />
+          </div>
+          <div key={2} style={style}>
+            <img alt="arpit lodu2" src="./homepagepics/image1.jpg" />
+          </div>
+          <div key={3} style={style}>
+            <img alt="image lodu 3" src="./homepagepics/image1.jpg" />
+          </div>
+          <div key={4} style={style}>
+            <img alt="image chutiya" src="/image/4.png" />
+          </div>
+          <div key={5} style={style}>
+            <img alt="" src="./homepagepics/image1.jpg" />
+          </div>
+          <div key={6} style={style}>
+            <img alt="" src="./homepagepics/image1.jpg" />
+          </div>
+        </Carousel>
+      </div> */}

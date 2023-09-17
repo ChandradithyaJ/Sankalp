@@ -1,0 +1,120 @@
+.blog-post {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #b94c4c;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+  
+  .author {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .author span {
+    margin-right: 10px;
+  }
+  
+  .share-icon {
+    cursor: pointer;
+    font-size: 20px;
+    color: #0074cc;
+  }
+  
+  .intro-paragraph {
+    font-size: 18px;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  
+  .blog-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  .text-paragraph {
+    font-size: 20px;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  
+  .related-stories-container {
+    margin-top: 30px;
+  }
+  
+  .related-stories-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  /* Add these styles to your existing CSS or BlogPost.css file */
+
+/* Swiper container styles */
+.swiper-container {
+  margin-top: 30px;
+}
+
+/* Swiper slide styles */
+.swiper-slide_image {
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  height: 300px;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.swiper-slide:hover {
+  transform: scale(1.05);
+}
+
+/* Swiper slide content styles */
+.swiper-slide h3 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.swiper-slide p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Swiper navigation styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #0074cc;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Swiper pagination styles */
+.swiper-pagination-bullet {
+  background-color: #0074cc;
+  width: 8px;
+  height: 8px;
+  opacity: 0.7;
+  margin: 0 4px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ff66b2;
+}

@@ -5,6 +5,10 @@ import StoryMode from "./pages/Story/StoryMode/StoryMode";
 import Login from './pages/Authentication/login';
 import Signup from './pages/Authentication/signup';
 import ResetPassword from './pages/Authentication/reset-password';
+import Home from "./pages/Home/Home";
+import ChatBox from "./pages/ChatBox/ChatBox";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import BlogPage from "./pages/Blog/Blog";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -13,7 +17,9 @@ function App() {
     <div className={`App-${mode}`}>
       <Navbar />
       <Routes>
-        <Route exact path="home" element={<div></div>} />
+        <Route exact path="home" element={<Home />} />
+        <Route exact path="/ChatBox" element={<ChatBox/>} />
+        <Route exact path="BlogPage" element={<BlogPage/>} />
         <Route exact path="login" element={<Login mode={mode} setMode={setMode}/>} />
         <Route exact path="signup" element={<Signup mode={mode} setMode={setMode}/>} />
         <Route exact path="reset-password" element={<ResetPassword mode={mode} setMode={setMode}/>} />

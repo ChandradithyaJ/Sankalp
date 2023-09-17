@@ -1,0 +1,32 @@
+/* Swiper.css */
+.swiper {
+  width: 600px;
+  height: 300px;
+  padding-bottom: 2rem;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  height: 300px;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.swiper-slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.swiper-scrollbar {
+  margin-top: 3rem;
+}
+
+

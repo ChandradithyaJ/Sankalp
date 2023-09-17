@@ -12,6 +12,7 @@ import SpeechBubble from './SpeechBubble'
 
 // lottie animations
 import girlTalking from '../../../lotties/girlTalking.json'
+import doctor2 from '../../../lotties/doctor2.json'
 
 const StoryMode = ({ mode }) => {
     // variable dimensions for the lottie animation
@@ -31,12 +32,19 @@ const StoryMode = ({ mode }) => {
         }
     }
 
+    const evaluateResponse = () => {
+
+    }
+
     return(
         <div className={`story-mode-${mode}`}>
+            <div className={`story-title-${mode}`}>
+                <h3>Chance Encounter with Lisa</h3>
+            </div>
             <div className='conversation'>
                 <div className='player-character'>
                     <div className='player-character-ui'>
-                        <SpeechBubble text={selectedOption} />
+                        <SpeechBubble text={selectedOption} mode={mode} />
                         <div className='player-lottie'>
                             <Lottie
                                 animationData={girlTalking}
@@ -49,7 +57,9 @@ const StoryMode = ({ mode }) => {
                     <div className='player-character-options'>
                         {options.map((option) => (
                             <div
-                                className={selectedOption === option ? 'selectedOption' : 'option'}
+                                className={selectedOption === option ? 
+                                    `selectedOption-${mode}` : 
+                                    `option-${mode}`}
                                 onClick={() => clickOnOption(option)}
                             >
                                 {option}
@@ -58,7 +68,7 @@ const StoryMode = ({ mode }) => {
                     </div>
                 </div>  
                 <div className='NPC'>
-                    <SpeechBubble text={"Welcome to Story Mode!"} />
+                    <SpeechBubble text={"Welcome to Story Mode!"} mode={mode} />
                     <div className='npc-lottie'>
                         <Lottie
                             animationData={girlTalking}
@@ -68,6 +78,12 @@ const StoryMode = ({ mode }) => {
                         />
                     </div>
                 </div>
+            </div>
+            <div 
+                className={`evaluate-response-${mode}`}
+                onClick={evaluateResponse}
+            >
+                Evaluate Response
             </div>
         </div>
     )

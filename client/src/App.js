@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
-import Login from './pages/Authentication_pages/login';
-import Signup from './pages/Authentication_pages/signup';
-import ResetPassword from './pages/Authentication_pages/reset-password';
+import Login from './pages/Authentication/login';
+import Signup from './pages/Authentication/signup';
+import ResetPassword from './pages/Authentication/reset-password';
 
 function App() {
   const [mode, setMode] = useState("dark");

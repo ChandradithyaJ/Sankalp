@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "username": "EnigmaticEmperor",
+        "email": "enigmatic@enigma.com",
+        "password": "enigma69",
+        "profilepic": null,
+        "badges": {
+            "firstStory": true,
+            "firstThree": false
+        }
+    },
+    {
+        "id": 2,
+        "username": "WickedFiend",
+        "email": "wickedfiend@outlook.com",
+        "password": "756kazuha",
+        "profilepic": null,
+        "badges": {
+            "firstStory": true,
+            "firstThree": true
+        }
+    }
+]

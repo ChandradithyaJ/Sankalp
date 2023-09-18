@@ -11,11 +11,14 @@ const PORT = process.env.PORT || 3500 // running on PORT
 // Cross Origin Resource Sharing
 app.use(cors(corsOptions))
 
-// built-in middleware for form data
+// built-in middleware for form data (urlencoded data)
 app.use(express.urlencoded({ extended: false }))
 
 // built-in middleware for json
 app.use(express.json())
+
+// users route
+app.use('/users', require('./routes/api/users'))
 
 // run the app on PORT
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`))

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ mode, setMode }) => {
   // const [mql, setMql] = useState(window.innerWidth <= 600);
   // useEffect(() => {
   //   // let mql = window.matchMedia("(max-width: 600px)");
@@ -24,6 +24,10 @@ const Navbar = () => {
   //     smallScreen.classList.add("invisible");
   //   }
   // }, [mql]);
+
+  let changeMode = () => {
+    setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
+  };
 
   return (
     <>
@@ -65,8 +69,14 @@ const Navbar = () => {
                   Profile
                 </a>
               </li>
+              <li className="navigation__item">
+                <a href="/login" className="navigation__link">
+                  Login
+                </a>
+              </li>
             </ul>
           </nav>
+          <button onClick={changeMode}>click me</button>
         </div>
       </div>
       {/* <div className="large-screen">

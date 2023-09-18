@@ -12,7 +12,6 @@ import SpeechBubble from './SpeechBubble'
 
 // lottie animations
 import girlTalking from '../../../lotties/girlTalking.json'
-import doctor2 from '../../../lotties/doctor2.json'
 import doctor from '../../../lotties/doctor.json'
 
 const StoryMode = ({ mode }) => {

@@ -1,0 +1,26 @@
+{
+  "name": "sankalp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm run start",
+    "server": "cd server && node server.js",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChandradithyaJ/Sankalp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChandradithyaJ/Sankalp/issues"
+  },
+  "homepage": "https://github.com/ChandradithyaJ/Sankalp#readme",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

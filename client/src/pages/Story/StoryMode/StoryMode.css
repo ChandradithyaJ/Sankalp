@@ -147,6 +147,7 @@
     position: relative;
     max-width: 30vw;
     word-wrap: break-word;
+    color: black;
     background-color: #fff;
     padding: 1.125em 1.5em;
     font-size: 1.25em;
@@ -268,6 +269,7 @@
 .option-dark {
     border: 1px solid;
     background-color: #fff;
+    color: black;
     width: 20vw;
     margin-left: 3vh;
     text-align: center;

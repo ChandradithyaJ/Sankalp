@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
@@ -12,6 +12,25 @@ import BlogPage from "./pages/Blog/Blog";
 
 function App() {
   const [mode, setMode] = useState("dark");
+
+  // Using the API created with Node and Express to fetch all users
+  const USERS_API_URL = 'http://localhost:3500/users'
+  const [users, setUsers] = useState([])
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try{
+        const response = await fetch(USERS_API_URL)
+        const allUsers = await response.json()
+
+        console.log('Users fetched: ', allUsers)
+        setUsers(allUsers)
+      } catch (err) {
+        console.log('Error: err.message')
+      }
+    }
+
+    fetchUsers()
+  }, [])
 
   return (
     <div className={`App-${mode}`}>

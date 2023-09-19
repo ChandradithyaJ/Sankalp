@@ -56,7 +56,6 @@ function App() {
           element={<ResetPassword mode={mode} setMode={setMode} />}
         />
         <Route exact path="therapy-chatbot" element={<div></div>} />
-        <Route exact path="story" element={<div></div>} />
         <Route exact path="story/modules" element={<div></div>} />
         <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />

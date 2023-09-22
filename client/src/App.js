@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+
+// axios call
 import usersAPI from "./api/usersAPI";
 
 import Navbar from "./components/Navbar";
@@ -13,12 +15,6 @@ import ResetPassword from "./pages/Authentication/reset-password";
 import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -32,7 +28,7 @@ function App() {
         const response = await usersAPI.get('/users')
         if(response && response.data){
           console.log('Users fetched: ', response.data)
-        setUsers(response.data)
+          setUsers(response.data)
         }
       } catch (err) {
         console.log('Error: err.message')
@@ -75,7 +71,13 @@ function App() {
         <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<div></div>} />
-        <Route exact path="profile" element={<div></div>} />
+        <Route 
+          exact path="profile" 
+          element={<UserProfile 
+            mode={mode}
+            setMode={setMode}
+          />} 
+        />
       </Routes>
     </div>
   );

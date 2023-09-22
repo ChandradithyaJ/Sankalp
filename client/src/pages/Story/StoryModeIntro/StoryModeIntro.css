@@ -63,15 +63,15 @@
     color: #00df9a;
 }
 
-@keyframes fadeIn {  
-    from {  
-        opacity:0;  
-    }  
- 
-    to {  
-        opacity:1;  
-    }  
- }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 .backgrd4-dark {
     text-align: center;
@@ -82,8 +82,7 @@
     padding-bottom: 10vh;
     padding-top: 5vh;
     color: #00df9a;
-    animation: fadeIn 4
-    s ease-in;
+    animation: fadeIn 4s ease-in;
 }
 
 
@@ -97,6 +96,7 @@
     padding-bottom: 10vh;
     padding-top: 5vh;
     color: rgb(205, 142, 7);
+    animation: fadeIn 4s ease-in;
 }
 
 

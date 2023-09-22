@@ -1,9 +1,72 @@
 .profile-page-dark{
     height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    color: whitesmoke;
 }
 
-.profile-page-light {
+.profile-page-light{
     height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    color: black;
+}
+
+.user-details{
+    border: solid 1px white;
+    height: 40vh;
+    width: 80vw;
+    background: rgba(53, 52, 52, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    display: flex;
+    flex-direction: column;
+    flex: 1 2
+}
+
+.user-background-image{
+    height: 30%;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background-color: pink;
+}
+
+.profile-pic-container{
+    padding: 2vh 2vh 2vh 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10vh;
+}
+
+.profile-pic-container div{
+    width: 100%;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    hyphens: auto;
+    text-align: center;
+}
+
+.profile-pic-dark, .profile-pic-light{
+    max-width: 20vh;
+    max-height: 20vh;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.username{
+    font-size: 3vh;
+    font-weight: 700;
 }

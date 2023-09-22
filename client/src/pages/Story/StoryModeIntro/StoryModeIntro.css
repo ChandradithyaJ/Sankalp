@@ -1,26 +1,43 @@
-.story-mode-intro-light{
-    height: 100vh;
+.story-mode-intro-light {
+    height: 90vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 2vh;
-    padding-bottom: 4vh;
 }
 
-.story-mode-intro-dark{
-    height: 100vh;
+.story-mode-intro-dark {
+    height: 90vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 2vh;
-    padding-bottom: 4vh;
 }
 
-.backgrd2{
+.storybackground-dark {
+    background-image: url("/public/images/darkmode.jpg");
+    background-size: cover;
+}
+
+.storybackground-light {
+    background-image: url("/public/images/lightmode.jpg");
+    background-size: cover;
+}
+
+
+.backgrd2-dark {
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #00df9a;
+}
+
+.backgrd2-light {
     height: 100%;
     width: 100%;
     display: flex;
@@ -30,43 +47,153 @@
     color: #00df9a;
 }
 
-.backgrd3-light{
+
+
+.backgrd3-light {
     text-align: center;
     font-style: bold;
-    font-size: xx-large;
-    color: rgb(156, 20, 20);
+    font-size: xxx-large;
+    color: rgb(205, 142, 7)
 }
 
-.backgrd3-dark{
+.backgrd3-dark {
     text-align: center;
     font-style: bold;
-    font-size: xx-large;
+    font-size: xxx-large;
     color: #00df9a;
 }
 
+@keyframes fadeIn {  
+    from {  
+        opacity:0;  
+    }  
+ 
+    to {  
+        opacity:1;  
+    }  
+ }
 
-.backgrd4{
-    .text-6xl { font-size: 3rem; }
+.backgrd4-dark {
+    text-align: center;
     font-style: bold;
+    font-size: x-large;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding-bottom: 10vh;
+    padding-top: 5vh;
     color: #00df9a;
+    animation: fadeIn 4
+    s ease-in;
 }
 
-.backgrd5{
-    .text-6xl { font-size: 3rem; }
+
+.backgrd4-light {
+    text-align: center;
+    text-align: center;
     font-style: bold;
+    font-size: x-large;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding-bottom: 10vh;
+    padding-top: 5vh;
+    color: rgb(205, 142, 7);
 }
 
-.buttons{
-    background-color: #128460;
-    width: 200px;
-    height:50px;
-    border-radius: 13px;
+
+
+/* .buttons-dark { 
+    background-color: #00df9a;
+    width: 20vh;
+    height: 7vh;
+    border-radius: 1.3vh;
     max-width: auto;
     text-align: center;
     font-size: medium;
     color: black;
     font-style: italic;
-    
 
+}
+.buttons-dark:hover {
     
+}
+
+.buttons-light:hover{
+
+}
+
+
+.buttons-light {
+    background-color: rgb(205, 142, 7);
+    width: 20vh;
+    height: 7vh;
+    border-radius: 1.3vh;
+    max-width: auto;
+    text-align: center;
+    font-size: medium;
+    color: black;
+    font-style: italic;
+}
+
+
+ @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap'); */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #050801;
+    font-family: 'Raleway', sans-serif;
+}
+
+.get-started-button-dark {
+    padding: 25px 30px;
+    background-color: #050801;
+    color: #00df9a;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.get-started-button-dark:hover {
+    background: #00df9a;
+    color: #050801;
+    box-shadow: 0 0 5px #00df9a,
+        0 0 25px #00df9a,
+        0 0 50px #00df9a,
+        0 0 200px #00df9a;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.get-started-button-light {
+    padding: 25px 30px;
+    background-color: #05084f;
+    color: rgb(205, 142, 7);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.get-started-button-light:hover {
+    background: rgb(205, 142, 7);
+    color: #0a19c5;
+    box-shadow: 0 0 5px rgb(205, 142, 7),
+        0 0 25px rgb(205, 142, 7),
+        0 0 50px rgb(205, 142, 7),
+        0 0 200px rgb(205, 142, 7);
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }

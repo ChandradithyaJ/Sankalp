@@ -2,19 +2,31 @@ import React from "react"
 
 import './StoryModeIntro.css'
 
+/*<img src ={}*/
+
 const StoryModeIntro = ({ mode }) => {
   return (
-    <div className={`story-mode-intro-${mode}`}>
-      <div className='backgrd2'>
-        <p className={`backgrd3-${mode}`}>Welcome to StoryMode!!</p>
-        <h1 className='backgrd4'>Grow with data</h1>
-        <div className='backgrd5'>
-          <p >Fast , flexible and financial for </p>
+    <div className={`storybackground-${mode}`}>
+
+      <div className={`story-mode-intro-${mode}`}>
+        <div className={`backgrd2-${mode}`}>
+
+          <h1 className={`backgrd3-${mode}`}>Welcome to Story Mode!!</h1>
+          <div className={`backgrd4-${mode}`}>
+            A random paragraph generator is an online tool that generates a random paragraph of text about any subject or topic, of varying
+            length and complexity. It can be used for educational purposes, as a writing prompt, or just for fun
+          </div>
+          <div className="backgrd5">
+            <button className={`get-started-button-${mode}`}>Get Started</button>
+          </div>
+
+
         </div>
-        <button className="buttons">Get Started</button>
       </div>
     </div>
   )
 }
 
 export default StoryModeIntro
+
+//<img src="./images/darkmode.jpg" alt="OK" />

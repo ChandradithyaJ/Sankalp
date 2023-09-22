@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 
 // axios call
 import usersAPI from "./api/usersAPI";
 
 import Navbar from "./components/Navbar";
+import NavbarMob from "./components/NavbarMob";
+
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
-import StoryModeIntro from './pages/Story/StoryModeIntro/StoryModeIntro'
+import StoryModeIntro from "./pages/Story/StoryModeIntro/StoryModeIntro";
 import Login from "./pages/Authentication/login";
 import Signup from "./pages/Authentication/signup";
 import ResetPassword from "./pages/Authentication/reset-password";
@@ -39,7 +47,13 @@ function App() {
 
   return (
     <div className={`App-${mode}`}>
-      <Navbar mode={mode} setMode={setMode} />
+      <BrowserView>
+        <Navbar mode={mode} setMode={setMode} />
+      </BrowserView>
+      <MobileView>
+        <NavbarMob mode={mode} setMode={setMode} />
+      </MobileView>
+
       <Routes>
         <Route exact path="home" element={<Home />} />
         <Route exact path="/ChatBox" element={<ChatBox />} />
@@ -64,12 +78,10 @@ function App() {
         <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<div></div>} />
-        <Route 
-          exact path="profile" 
-          element={<UserProfile 
-            mode={mode}
-            setMode={setMode}
-          />} 
+        <Route
+          exact
+          path="profile"
+          element={<UserProfile mode={mode} setMode={setMode} />}
         />
       </Routes>
     </div>

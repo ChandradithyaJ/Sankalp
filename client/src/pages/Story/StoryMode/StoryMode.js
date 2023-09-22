@@ -23,7 +23,7 @@ const StoryMode = ({ mode }) => {
     const [evaluate, setEvaluate] = useState(false)
 
     // test response options
-    const options = ['a', 'b', 'c', 'd']
+    const options = ['Lorem 483881 xxx wdfenjlrbefdi', 'ipsum 82nf aafhhwelqndc evrjwiednxs jcne', 'c;dmknvjrrfejdqowjfbkew     slcjknowecsml;lfde', 'dsc co2eh32uy4893ujdxkajDLEWDELKNKPNKJkjp   LKNJ']
 
     // select a response option
     const clickOnOption = (option) => {

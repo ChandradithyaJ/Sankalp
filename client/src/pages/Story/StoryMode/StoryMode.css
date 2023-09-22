@@ -277,6 +277,7 @@
     margin-top: 2vh;
     cursor: pointer;
     transition: 0.5s;
+    word-wrap: break-word;
 }
 
 .option-dark:hover {
@@ -294,6 +295,7 @@
     margin-top: 2vh;
     cursor: pointer;
     transition: 0.5s;
+    word-wrap: break-word;
 }
 
 .option-light:hover {
@@ -311,6 +313,7 @@
     margin-top: 2vh;
     cursor: pointer;
     transition: 0.5s;
+    word-wrap: break-word;
 }
 
 .selectedOption-dark:hover{
@@ -328,6 +331,7 @@
     margin-top: 2vh;
     cursor: pointer;
     transition: 0.5s;
+    word-wrap: break-word;
 }
 
 .selectedOption-light:hover {
@@ -344,6 +348,7 @@
     border-radius: 13px;
     cursor: pointer;
     transition: 0.5s;
+    word-wrap: break-word;
 }
 
 .evaluate-response-dark:hover, .back-to-story-dark:hover {
@@ -360,6 +365,7 @@
     border-radius: 13px;
     cursor: pointer;
     transition: 0.5s;
+    word-wrap: break-word;
 }
 
 .evaluate-response-light:hover, .back-to-story-light:hover {

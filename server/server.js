@@ -2,7 +2,9 @@
 
 const express = require('express') // ExpressJS
 const cors = require('cors')
+
 const { corsOptions } = require('./config/corsOptions')
+const verifyJWT = require('./middleware/verifyJWT')
 
 const app = express() // main server component
 
@@ -17,6 +19,11 @@ app.use(express.urlencoded({ extended: false }))
 // built-in middleware for json
 app.use(express.json())
 
+// register route
+app.use('/register', require('./routes/register'))
+
+// custom middleware for verifying JWTs
+app.use(verifyJWT)
 // users route
 app.use('/users', require('./routes/api/users'))
 

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ChandradithyaJ/Sankalp#readme",
   "dependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "gsap": "^3.12.2"
   }
 }

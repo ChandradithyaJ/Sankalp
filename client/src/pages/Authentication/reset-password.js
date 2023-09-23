@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
-import './Authentication_style.css';
+import React from "react";
+import "./reset-password.css";
 
-function ResetPassword({ mode, setMode }) {
-  const toggleMode = () => {
-    setMode(mode === 'light' ? 'dark' : 'light'); // Toggle between light and dark mode
-  };
-
+function ResetPassword({ mode }) {
   return (
-    <div className={`ResetPassword ResetPassword--${mode}`}>
-      <div className="ResetPassword__container">
-        <div className="ResetPassword__card">
-          <h1>Reset Password</h1>
+    <div className={`card login-form-${mode}`}>
+      <div className="card-body">
+        <h3 className={`card-title-${mode} text-center`}>Reset password</h3>
+        <div className="card-text">
           <form>
-            <div className="ResetPassword__input">
-              <h5>E-mail</h5>
-              <input type="text" />
+            <div className={`form-group-${mode}`}>
+              <label htmlFor="exampleInputEmail1">
+                Enter your email address
+              </label>
+              <input
+                type="email"
+                className="form-control form-control-sm"
+                placeholder="Enter your email address"
+                required
+              />
             </div>
-            <button type="submit" className="ResetPassword__signInButton">
-              Reset Password
+
+            <button
+              type="submit"
+              className=" submitButton btn btn-primary btn-block"
+            >
+              Send password reset email
             </button>
           </form>
         </div>
       </div>
-      <button onClick={toggleMode}>Toggle Mode</button>
     </div>
   );
 }

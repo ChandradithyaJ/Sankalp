@@ -1,57 +1,8 @@
-import React, { useState } from "react";
-// import "./Authentication_style.css";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "./login.css";
-
-// function Login({ mode, setMode }) {
-// const toggleMode = () => {
-//   setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
-// };
-
-// return (
-//   <div className={`Login Login--${mode}`}>
-//     <div className="Login__container">
-//       <div className="Login__card">
-//         <h1>Login</h1>
-//         <form>
-//           <div className="Login__input">
-//             <h5>E-mail</h5>
-//             <input type="text" />
-//           </div>
-//           <div className="Login__input">
-//             <h5>Password</h5>
-//             <input type="password" />
-//           </div>
-//           <button type="submit" className="Login__signInButton">
-//             Sign In
-//           </button>
-//         </form>
-//         <button className="Login__registerButton">Create your Account</button>
-//       </div>
-//     </div>
-//     <button onClick={toggleMode}>Toggle Mode</button>
-//   </div>
-// );
-// }
-function Login({ mode }) {
-  // // const toggleMode = () => {
-  // //   setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
-  // // };
-  // const navigate = useNavigate();
-  // const [showSignup, setShowSignup] = useState(false);
-
-  // const toggleView = () => {
-  //   setShowSignup(!showSignup);
-  //   const newPath = showSignup ? "/login" : "/signup";
-  //   navigate(`${newPath}`);
-  // };
-
-  // const handleCheckboxClick = () => {
-  //   // You can perform some actions here when the checkbox is clicked
-  //   console.log("Checkbox clicked!");
-  // };
-
+function Login() {
   return (
     <div className="bgrnd">
       <div className="section">
@@ -76,43 +27,48 @@ function Login({ mode }) {
                       <div className="center-wrap">
                         <div className="section text-center">
                           <h4 className="mb-4 pb-3">Log In</h4>
-                          <div className="form-group">
-                            <input
-                              type="email"
-                              name="logemail"
-                              className="form-style"
-                              placeholder="Your Email"
-                              id="logemail"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-at"></i> */}
-                            <Icon
-                              icon="uil:at"
-                              className="input-icon uil uil-at"
-                            />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="password"
-                              name="logpass"
-                              className="form-style"
-                              placeholder="Your Password"
-                              id="logpass"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-lock-alt"></i> */}
-                            <Icon
-                              icon="uil:lock-alt"
-                              className="input-icon uil uil-lock-alt"
-                            />
-                          </div>
-                          <a href="#" className="btn mt-4">
-                            submit
-                          </a>
+                          <form action="" method="get">
+                            <div className="form-group">
+                              <input
+                                type="email"
+                                name="logemail"
+                                className="form-style"
+                                placeholder="Your Email"
+                                id="logemail"
+                                autoComplete="off"
+                                required
+                              />
+                              <Icon
+                                icon="uil:at"
+                                className="input-icon uil uil-at"
+                              />
+                            </div>
+                            <div className="form-group mt-2">
+                              <input
+                                type="password"
+                                name="logpass"
+                                className="form-style"
+                                placeholder="Your Password"
+                                id="logpass"
+                                autoComplete="off"
+                                required
+                              />
+                              <Icon
+                                icon="uil:lock-alt"
+                                className="input-icon uil uil-lock-alt"
+                              />
+                            </div>
+                          </form>
+                          <input
+                            type="submit"
+                            value="Submit"
+                            className="btn mt-4"
+                            required
+                          />
                           <p className="mb-0 mt-4 text-center">
-                            <a href="#0" className="link">
+                            <Link to="/reset-password" className="reset-pass">
                               Forgot your password?
-                            </a>
+                            </Link>
                           </p>
                         </div>
                       </div>
@@ -121,69 +77,73 @@ function Login({ mode }) {
                       <div className="center-wrap">
                         <div className="section text-center">
                           <h4 className="mb-4 pb-3">Sign Up</h4>
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              name="logname"
-                              className="form-style"
-                              placeholder="Username"
-                              id="logname"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-user"></i> */}
-                            <Icon
-                              icon="uil:user"
-                              className="input-icon uil uil-user"
-                            />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="email"
-                              name="logemail"
-                              className="form-style"
-                              placeholder="Your Email"
-                              id="logemail"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-at"></i> */}
-                            <Icon
-                              icon="uil:at"
-                              className="input-icon uil uil-at"
-                            />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="password"
-                              name="logpass"
-                              className="form-style"
-                              placeholder="Your Password"
-                              id="logpass"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-lock-alt"></i> */}
-                            <Icon
-                              icon="uil:lock-alt"
-                              className="input-icon uil uil-lock-alt"
-                            />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="password"
-                              name="logpass"
-                              className="form-style"
-                              placeholder="Confirm Password"
-                              id="logpass"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-lock-alt"></i> */}
-                            <Icon
-                              icon="line-md:confirm-circle"
-                              className="input-icon uil uil-lock-alt"
-                            />
-                          </div>
-                          <a href="#" className="btn mt-4">
-                            submit
-                          </a>
+                          <form action="" method="get">
+                            <div className="form-group">
+                              <input
+                                type="text"
+                                name="logname"
+                                className="form-style"
+                                placeholder="Username"
+                                id="logname"
+                                autoComplete="off"
+                                required
+                              />
+                              <Icon
+                                icon="uil:user"
+                                className="input-icon uil uil-user"
+                              />
+                            </div>
+                            <div className="form-group mt-2">
+                              <input
+                                type="email"
+                                // name="sigemail"
+                                className="form-style"
+                                placeholder="Your Email"
+                                id="sigemail"
+                                autoComplete="off"
+                                required
+                              />
+                              <Icon
+                                icon="uil:at"
+                                className="input-icon uil uil-at"
+                              />
+                            </div>
+                            <div className="form-group mt-2">
+                              <input
+                                type="password"
+                                name="sigpass"
+                                className="form-style"
+                                placeholder="Your Password"
+                                id="sigpass"
+                                autoComplete="off"
+                                required
+                              />
+                              <Icon
+                                icon="uil:lock-alt"
+                                className="input-icon uil uil-lock-alt"
+                              />
+                            </div>
+                            <div className="form-group mt-2">
+                              <input
+                                type="password"
+                                name="sigconpass"
+                                className="form-style"
+                                placeholder="Confirm Password"
+                                id="sigconpass"
+                                autoComplete="off"
+                                required
+                              />
+                              <Icon
+                                icon="line-md:confirm-circle"
+                                className="input-icon uil uil-lock-alt"
+                              />
+                            </div>
+                          </form>
+                          <input
+                            type="submit"
+                            value="Submit"
+                            className="btn mt-4"
+                          />
                         </div>
                       </div>
                     </div>

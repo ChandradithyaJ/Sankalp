@@ -36,14 +36,14 @@ a:hover {
   padding: 0 20px;
   text-transform: uppercase;
   font-weight: 700;
-  color: purple
+  color: purple;
 }
 
 .bgrnd {
   background-image: url("/public/loginPage/loginBackground1.jpg");
   /* background-repeat: no-repeat; */
   background-size: cover;
-  backdrop-filter: invert(80%);;
+  backdrop-filter: invert(80%);
 }
 .section {
   position: relative;
@@ -199,6 +199,7 @@ a:hover {
 
 .form-group input:-ms-input-placeholder {
   color: #c4c3ca;
+
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
@@ -282,16 +283,10 @@ a:hover {
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 
-.logo {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  display: block;
-  z-index: 100;
-  transition: all 250ms linear;
+.reset-pass {
+  color: aliceblue;
+  text-decoration: none;
 }
-.logo img {
-  height: 26px;
-  width: auto;
-  display: block;
+.reset-pass:hover {
+  color: rgb(9, 90, 161);
 }

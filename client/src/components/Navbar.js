@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import ModeChanger from "./ModeChanger";
 
 const Navbar = ({ mode, setMode }) => {
   let changeMode = () => {
     setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
   };
-
   return (
     <>
       <div className="large-screen">
@@ -18,19 +18,29 @@ const Navbar = ({ mode, setMode }) => {
           </div>
           <ul className="nav-links">
             <li>
-              <a href="/home">Home</a>
+              <Link to="/home" className="mainLinks">
+                Home
+              </Link>
             </li>
             <li>
-              <a href="/therapy-chatbot">Therapy Chatbot</a>
+              <Link to="/therapy-chatbot" className="mainLinks">
+                Therapy Chatbot
+              </Link>
             </li>
             <li>
-              <a href="/story/play">Stories</a>
+              <Link to="/story/play" className="mainLinks">
+                Stories
+              </Link>
             </li>
             <li>
-              <a href="/contact">Contact Us</a>
+              <Link to="/contact" className="mainLinks">
+                Contact Us
+              </Link>
             </li>
             <li>
-              <a href="/profile">Profile</a>
+              <Link to="/profile" className="mainLinks">
+                Profile
+              </Link>
             </li>
             <li>
               <Link to="/login">
@@ -39,12 +49,8 @@ const Navbar = ({ mode, setMode }) => {
                 </button>
               </Link>
             </li>
-            <li>
-              <button className="join-button" href="/">
-                Sign Up
-              </button>
-            </li>
           </ul>
+          <button onClick={changeMode}>Mode</button>
         </nav>
       </div>
     </>

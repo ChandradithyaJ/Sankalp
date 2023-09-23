@@ -1,4 +1,3 @@
-
 /* Experimental Navbar(Alternate)*/
 nav {
   height: 6rem;
@@ -9,8 +8,10 @@ nav {
   z-index: 10;
 }
 
+
 .nav-links {
   display: flex;
+  margin: 0;
   list-style: none;
   width: 88vw;
   padding: 0 0.7vw;
@@ -21,15 +22,16 @@ nav {
 .nav-links li a {
   text-decoration: none;
   margin: 0 0.7vw;
+  font-size: larger;
   color: mediumseagreen;
 }
-.nav-links li a:hover {
+.nav-links li .mainLinks:hover {
   color: #61dafb;
 }
 .nav-links li {
   position: relative;
 }
-.nav-links li a::before {
+.nav-links li .mainLinks::before {
   content: "";
   display: block;
   height: 3px;
@@ -47,7 +49,7 @@ nav {
   background-color: transparent;
   border: 1.5px solid #f2f5f7;
   border-radius: 2em;
-  padding: 0.6rem 0.8rem;
+  padding: 0.6rem 1.3rem;
   margin-left: 2vw;
   font-size: 1rem;
   cursor: pointer;

@@ -22,6 +22,7 @@ import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import Contact from "./pages/ContactUs/Contact";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -58,26 +59,18 @@ function App() {
         <Route exact path="home" element={<Home />} />
         <Route exact path="/ChatBox" element={<ChatBox />} />
         <Route exact path="BlogPage" element={<BlogPage />} />
-        <Route
-          exact
-          path="login"
-          element={<Login mode={mode} setMode={setMode} />}
-        />
-        <Route
-          exact
-          path="signup"
-          element={<Login mode={mode} setMode={setMode} />}
-        />
+        <Route exact path="login" element={<Login />} />
+        <Route exact path="signup" element={<Login />} />
         <Route
           exact
           path="reset-password"
-          element={<ResetPassword mode={mode} setMode={setMode} />}
+          element={<ResetPassword mode={mode} />}
         />
         <Route exact path="therapy-chatbot" element={<div></div>} />
         <Route exact path="story/modules" element={<div></div>} />
         <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />
-        <Route exact path="contact" element={<div></div>} />
+        <Route exact path="contact" element={<Contact mode={mode} />} />
         <Route
           exact
           path="profile"

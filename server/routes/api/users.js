@@ -10,7 +10,5 @@ router.put('/', usersController.updateUser);
 router.delete('/', usersController.deleteUser);
 router.put('/updateToken', usersController.updateToken);
 
-//TODO to check integration testing
-
 module.exports = router;
 

@@ -79,8 +79,7 @@ function App() {
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<div></div>} />
         <Route
-          exact
-          path="profile"
+          exact path="profile"
           element={<UserProfile mode={mode} setMode={setMode} />}
         />
       </Routes>

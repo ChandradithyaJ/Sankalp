@@ -140,7 +140,7 @@ function Login({ mode, setUser }) {
                             />
                           </div>
                           <a href="#" className="btn mt-4">
-                            submit
+                            Submit
                           </a>
                         </div>
                       </div>

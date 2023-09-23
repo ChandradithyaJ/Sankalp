@@ -15,6 +15,7 @@ import NavbarMob from "./components/NavbarMob";
 
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
 import StoryModeIntro from "./pages/Story/StoryModeIntro/StoryModeIntro";
+import StorySelect from "./pages/Story/StorySelect/StorySelect";
 import Login from "./pages/Authentication/login";
 import Signup from "./pages/Authentication/signup";
 import ResetPassword from "./pages/Authentication/reset-password";
@@ -62,7 +63,7 @@ function App() {
         <Route
           exact
           path="login"
-          element={<Login mode={mode} setUser={setUser}/>}
+          element={<Login mode={mode} setUser={setUser} />}
         />
         <Route
           exact
@@ -75,8 +76,8 @@ function App() {
           element={<ResetPassword mode={mode} setMode={setMode} />}
         />
         <Route exact path="therapy-chatbot" element={<div></div>} />
-        <Route exact path="story/modules" element={<div></div>} />
         <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
+        <Route exact path="story/modules" element={<StorySelect mode={mode} />} />
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<div></div>} />
         <Route

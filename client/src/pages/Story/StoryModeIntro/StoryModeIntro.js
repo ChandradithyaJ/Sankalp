@@ -1,8 +1,14 @@
 import React from "react"
+import { useNavigate } from 'react-router-dom'
 
 import './StoryModeIntro.css'
 
 const StoryModeIntro = ({ mode }) => {
+  const navigate = useNavigate()
+  const goToModules = () => {
+    navigate('./modules')
+  }
+
   return (
     <div className={`storybackground-${mode}`}>
 
@@ -15,10 +21,8 @@ const StoryModeIntro = ({ mode }) => {
             length and complexity. It can be used for educational purposes, as a writing prompt, or just for fun
           </div>
           <div className="backgrd5">
-            <button className={`get-started-button-${mode}`}>Get Started</button>
+            <button className={`get-started-button-${mode}`} onClick={goToModules}>Get Started</button>
           </div>
-
-
         </div>
       </div>
     </div>

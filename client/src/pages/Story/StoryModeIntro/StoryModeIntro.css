@@ -1,5 +1,5 @@
 .story-mode-intro-light {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
 }
 
 .story-mode-intro-dark {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;

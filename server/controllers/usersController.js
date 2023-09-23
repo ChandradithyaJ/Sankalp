@@ -16,10 +16,6 @@ const getAllUsers = (req, res) => {
     res.status(200).json(usersData.users)
 }
 
-const createNewUser = async (req, res) => {
-    
-}
-
 const updateUser = (req, res) => {
     // validity check includes jwt verification username & password not required
     // jwt and id required
@@ -98,8 +94,7 @@ const updateToken = (req, res) => {
     })
 }
 module.exports = { 
-    getAllUsers, 
-    createNewUser, 
+    getAllUsers,  
     updateUser, 
     deleteUser,
     updateToken

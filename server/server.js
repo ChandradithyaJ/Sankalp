@@ -21,6 +21,8 @@ app.use(express.json())
 
 // register route
 app.use('/register', require('./routes/register'))
+// login route
+app.use('/auth', require('./routes/auth'))
 
 // custom middleware for verifying JWTs
 app.use(verifyJWT)

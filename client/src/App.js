@@ -24,7 +24,7 @@ import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 
 function App() {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState('dark');
   const [user, setUser] = useState(null)
 
   /*

@@ -24,7 +24,7 @@ const Navbar = ({ mode, setMode }) => {
               <a href="/therapy-chatbot">Therapy Chatbot</a>
             </li>
             <li>
-              <a href="/story/play">Stories</a>
+              <a href="/story">Stories</a>
             </li>
             <li>
               <a href="/contact">Contact Us</a>

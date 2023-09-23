@@ -2,8 +2,6 @@ import React from "react"
 
 import './StoryModeIntro.css'
 
-/*<img src ={}*/
-
 const StoryModeIntro = ({ mode }) => {
   return (
     <div className={`storybackground-${mode}`}>

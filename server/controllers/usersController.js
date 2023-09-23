@@ -61,29 +61,24 @@ const updateToken = (req, res) => {
     // jwt and id required
     if (!req?.body?.id) {return res.status(400).json({ 'message': 'User ID required' })}
 
-    if (!req?.body?.token) {return res.status(400).json({ 'message': 'Token required' })}
-
     // check if user exists
-    const reqUser = usersData.checkid(parseInt(req?.body?.id))
+    const reqUser = usersData.users.find((user) => user.id === req?.body?.id)
 
-    if(!reqUser) {res.status(400).json({ 'message': 'User not found' })}
+    if(!reqUser) res.status(400).json({ 'message': 'User not found' })
 
-    // verify jwt
-    jwt.verify(req?.body?.token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        try{
-            if (reqUser.username !== user.username) {
-                return res.status(400).json({ 'message': 'User not found' })
-            }
-            // update token
-            const accessToken = jwt.sign(reqUser, process.env.ACCESS_TOKEN_SECRET, { expiresIn: jwt_expire_time })
-            // return updated token
-            res.status(201).json({ accessToken }, reqUser) // returning updated userdata and token for frontend
-        } catch (err){
-            return res.status(400).json({ 'message': 'Error in verifying token' })
-        }
+    try{
+        const accessToken = jwt.sign(
+            reqUser, 
+            process.env.ACCESS_TOKEN_SECRET, 
+            { expiresIn: jwt_expire_time }
+        )
 
-        // check if user is same
-    })
+        // return updated token
+        res.status(201).json({ accessToken }) // returning updated userdata and token for frontend
+    } catch (err) {
+        console.log(err.message)
+        res.status(400).json({ 'message': 'Failed to update the token' })
+    }
 }
 module.exports = { 
     getAllUsers,  

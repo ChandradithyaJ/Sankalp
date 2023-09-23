@@ -1,11 +1,6 @@
 const { jwt_expire_time, salt, db } = require('../config/databaseConfig.js');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
-
-// Testing with JSON files
-const fsPromises = require('fs').promises
-const path = require('path')
 
 const usersData = {
     users: db,
@@ -21,8 +16,6 @@ const updateUser = (req, res) => {
     // jwt and id required
     if (!req?.body?.id) {
         return res.status(400).json({ 'message': 'User ID required' })
-    }else if(!req?.body?.token){
-        return res.status(400).json({ 'message': 'Token required' })
     }
     // check if user exists
     const reqUser = usersData.users.find((user) => user.id === req?.body?.id)
@@ -46,8 +39,7 @@ const updateUser = (req, res) => {
 }
 
 const deleteUser = (req, res) => {
-    // validity check includes jwt verification
-    // jwt and id required
+    // check for id to delete
     if (!req?.body?.id) {return res.status(400).json({ 'message': 'User ID required' })}
 
     // check if user exists
@@ -57,7 +49,7 @@ const deleteUser = (req, res) => {
     }
 
     const filteredUsers = usersData.users.filter((user) => user.id !== req?.body?.id)
-    usersDB.setUsers([...filteredUsers])
+    usersData.setUsers([...filteredUsers])
     res.status(201).json({ 'message': `Deleted ${reqUser}` })
 }
 

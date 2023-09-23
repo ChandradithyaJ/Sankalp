@@ -2,11 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import serverAPI from '../../api/serverAPI'
 import "./login.css";
 
 // axios call
-import serverAPI from '../../api/serverAPI'
+import serverAPI from "../../api/serverAPI";
 
 function Login({ mode, setUser }) {
   const navigate = useNavigate();

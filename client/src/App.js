@@ -17,7 +17,6 @@ import StoryMode from "./pages/Story/StoryMode/StoryMode";
 import StoryModeIntro from "./pages/Story/StoryModeIntro/StoryModeIntro";
 import StorySelect from "./pages/Story/StorySelect/StorySelect";
 import Login from "./pages/Authentication/login";
-import Signup from "./pages/Authentication/signup";
 import ResetPassword from "./pages/Authentication/reset-password";
 import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
@@ -26,8 +25,8 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import Contact from "./pages/ContactUs/Contact";
 
 function App() {
-  const [mode, setMode] = useState('dark');
-  const [user, setUser] = useState(null)
+  const [mode, setMode] = useState("dark");
+  const [user, setUser] = useState(null);
 
   /*
   // Using the API created with Node and Express to fetch all users
@@ -78,11 +77,16 @@ function App() {
         />
         <Route exact path="therapy-chatbot" element={<div></div>} />
         <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
-        <Route exact path="story/modules" element={<StorySelect mode={mode} />} />
+        <Route
+          exact
+          path="story/modules"
+          element={<StorySelect mode={mode} />}
+        />
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<Contact mode={mode} />} />
         <Route
-          exact path="profile"
+          exact
+          path="profile"
           element={<UserProfile mode={mode} setMode={setMode} />}
         />
       </Routes>

@@ -4,53 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "./login.css";
 
-// function Login({ mode, setMode }) {
-// const toggleMode = () => {
-//   setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
-// };
+// axios call
+import serverAPI from '../../api/serverAPI'
 
-// return (
-//   <div className={`Login Login--${mode}`}>
-//     <div className="Login__container">
-//       <div className="Login__card">
-//         <h1>Login</h1>
-//         <form>
-//           <div className="Login__input">
-//             <h5>E-mail</h5>
-//             <input type="text" />
-//           </div>
-//           <div className="Login__input">
-//             <h5>Password</h5>
-//             <input type="password" />
-//           </div>
-//           <button type="submit" className="Login__signInButton">
-//             Sign In
-//           </button>
-//         </form>
-//         <button className="Login__registerButton">Create your Account</button>
-//       </div>
-//     </div>
-//     <button onClick={toggleMode}>Toggle Mode</button>
-//   </div>
-// );
-// }
-function Login({ mode }) {
-  // // const toggleMode = () => {
-  // //   setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
-  // // };
-  // const navigate = useNavigate();
-  // const [showSignup, setShowSignup] = useState(false);
-
-  // const toggleView = () => {
-  //   setShowSignup(!showSignup);
-  //   const newPath = showSignup ? "/login" : "/signup";
-  //   navigate(`${newPath}`);
-  // };
-
-  // const handleCheckboxClick = () => {
-  //   // You can perform some actions here when the checkbox is clicked
-  //   console.log("Checkbox clicked!");
-  // };
+function Login({ mode, setUser }) {
+  const navigate = useNavigate();
 
   return (
     <div className="bgrnd">

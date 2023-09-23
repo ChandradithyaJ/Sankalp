@@ -8,7 +8,7 @@ import {
 } from "react-device-detect";
 
 // axios call
-import usersAPI from "./api/usersAPI";
+import serverAPI from "./api/serverAPI";
 
 import Navbar from "./components/Navbar";
 import NavbarMob from "./components/NavbarMob";
@@ -24,7 +24,8 @@ import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 
 function App() {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState('light');
+  const [user, setUser] = useState(null)
 
   /*
   // Using the API created with Node and Express to fetch all users
@@ -32,7 +33,7 @@ function App() {
   useEffect(() => {
     const fetchUsers = async () => {
       try{
-        const response = await usersAPI.get('/users')
+        const response = await serverAPI.get('/users')
         if(response && response.data){
           console.log('Users fetched: ', response.data)
           setUsers(response.data)
@@ -61,12 +62,12 @@ function App() {
         <Route
           exact
           path="login"
-          element={<Login mode={mode} setMode={setMode} />}
+          element={<Login mode={mode} setUser={setUser}/>}
         />
         <Route
           exact
           path="signup"
-          element={<Login mode={mode} setMode={setMode} />}
+          element={<Login mode={mode} setUser={setUser} />}
         />
         <Route
           exact

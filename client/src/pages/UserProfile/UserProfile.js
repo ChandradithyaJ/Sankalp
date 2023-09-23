@@ -7,6 +7,10 @@ const UserProfile = ({mode, setMode}) => {
 
     }
 
+    const deleteProfile = () => {
+
+    }
+
     return(
         <div className={`profile-page-${mode}`}>
             <div className='user-details'>
@@ -41,6 +45,14 @@ const UserProfile = ({mode, setMode}) => {
                             <p>Finish 8 stories!</p>
                         </div>
                     ))}
+                </div>
+                <div className='delete-profile-button-container'>
+                    <div
+                        className={`delete-profile-button-${mode}`}
+                        onClick={deleteProfile}
+                    >
+                        Delete Profile
+                    </div>
                 </div>
             </div>
         </div>

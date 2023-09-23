@@ -148,3 +148,35 @@
     padding-top: 2vh;
     padding-right: 2vw;
 }
+
+.delete-profile-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 2vh;
+    padding-bottom: 4vh;
+}
+
+.delete-profile-button-light, .delete-profile-button-dark{
+    border: 1px solid;
+    background-color: rgb(247, 15, 15);
+    color: black;
+    font-weight: bold;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: 0.5s;
+    word-wrap: break-word;
+}
+
+.delete-profile-button-dark:hover{
+    box-shadow: 0 5px 15px white;
+}
+
+.delete-profile-button-light:hover {
+    box-shadow: 0 5px 15px rgb(135, 131, 131);
+}

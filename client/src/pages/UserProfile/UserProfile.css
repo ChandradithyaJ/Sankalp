@@ -21,8 +21,6 @@
 }
 
 .user-details{
-    border: solid 1px white;
-    height: 40vh;
     width: 80vw;
     background: rgba(53, 52, 52, 0.21);
     border-radius: 16px;
@@ -36,7 +34,7 @@
 }
 
 .user-background-image{
-    height: 30%;
+    height: 20vh;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     background-color: pink;
@@ -49,9 +47,10 @@
     align-items: center;
     justify-content: center;
     margin-top: -10vh;
+    border-bottom: solid 1px whitesmoke;
 }
 
-.profile-pic-container div{
+.bio{
     width: 100%;
     word-wrap: break-word;
     text-overflow: ellipsis;
@@ -69,4 +68,115 @@
 .username{
     font-size: 3vh;
     font-weight: 700;
+}
+
+.edit-button-profile-light, .edit-button-profile-dark{
+    border: 1px solid;
+    background-color: pink;
+    color: black;
+    font-weight: bold;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: 0.5s;
+    word-wrap: break-word;
+}
+
+.edit-button-profile-dark:hover{
+    box-shadow: 0 5px 15px white;
+}
+
+.edit-button-profile-light:hover{
+    box-shadow: 0 5px 15px rgb(135, 131, 131);
+}
+
+@media (max-width: 890px) and (min-width: 751px){
+    .edit-button-profile-light, .edit-button-profile-dark{
+        font-size: small;
+    }
+}
+
+@media (max-width: 750px) and (min-width: 381px) {
+    .edit-button-profile-light, .edit-button-profile-dark{
+        width: 20vw;
+        font-size: small;
+    }
+}
+
+@media (max-width: 380px){
+    .edit-button-profile-light, .edit-button-profile-dark{
+        width: 25vw;
+        font-size: small;
+    }
+}
+
+.badges-container{
+    padding-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.one-badge-container{
+    padding-left: 2vw;
+    padding-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-image{
+    max-width: 20vh;
+    max-height: 20vh;
+    padding-left: 2vw;
+    padding-top: 2vh;
+    padding-right: 2vw;
+}
+
+.badge-image-blur {
+    opacity: 0.3;
+    max-width: 20vh;
+    max-height: 20vh;
+    padding-left: 2vw;
+    padding-top: 2vh;
+    padding-right: 2vw;
+}
+
+.delete-profile-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 2vh;
+    padding-bottom: 4vh;
+}
+
+.delete-profile-button-light, .delete-profile-button-dark{
+    border: 1px solid;
+    background-color: rgb(247, 15, 15);
+    color: black;
+    font-weight: bold;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: 0.5s;
+    word-wrap: break-word;
+}
+
+.delete-profile-button-dark:hover{
+    box-shadow: 0 5px 15px white;
+}
+
+.delete-profile-button-light:hover {
+    box-shadow: 0 5px 15px rgb(135, 131, 131);
 }

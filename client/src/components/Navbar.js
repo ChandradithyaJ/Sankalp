@@ -28,7 +28,7 @@ const Navbar = ({ mode, setMode }) => {
               </Link>
             </li>
             <li>
-              <Link to="/story/play" className="mainLinks">
+              <Link to="/story" className="mainLinks">
                 Stories
               </Link>
             </li>

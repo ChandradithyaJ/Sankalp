@@ -8,13 +8,14 @@ import {
 } from "react-device-detect";
 
 // axios call
-import usersAPI from "./api/usersAPI";
+import serverAPI from "./api/serverAPI";
 
 import Navbar from "./components/Navbar";
 import NavbarMob from "./components/NavbarMob";
 
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
 import StoryModeIntro from "./pages/Story/StoryModeIntro/StoryModeIntro";
+import StorySelect from "./pages/Story/StorySelect/StorySelect";
 import Login from "./pages/Authentication/login";
 import Signup from "./pages/Authentication/signup";
 import ResetPassword from "./pages/Authentication/reset-password";
@@ -25,7 +26,8 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import Contact from "./pages/ContactUs/Contact";
 
 function App() {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState('dark');
+  const [user, setUser] = useState(null)
 
   /*
   // Using the API created with Node and Express to fetch all users
@@ -33,7 +35,7 @@ function App() {
   useEffect(() => {
     const fetchUsers = async () => {
       try{
-        const response = await usersAPI.get('/users')
+        const response = await serverAPI.get('/users')
         if(response && response.data){
           console.log('Users fetched: ', response.data)
           setUsers(response.data)
@@ -59,21 +61,28 @@ function App() {
         <Route exact path="home" element={<Home />} />
         <Route exact path="/ChatBox" element={<ChatBox />} />
         <Route exact path="BlogPage" element={<BlogPage />} />
-        <Route exact path="login" element={<Login />} />
-        <Route exact path="signup" element={<Login />} />
+        <Route
+          exact
+          path="login"
+          element={<Login mode={mode} setUser={setUser} />}
+        />
+        <Route
+          exact
+          path="signup"
+          element={<Login mode={mode} setUser={setUser} />}
+        />
         <Route
           exact
           path="reset-password"
           element={<ResetPassword mode={mode} />}
         />
         <Route exact path="therapy-chatbot" element={<div></div>} />
-        <Route exact path="story/modules" element={<div></div>} />
         <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
+        <Route exact path="story/modules" element={<StorySelect mode={mode} />} />
         <Route exact path="story/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<Contact mode={mode} />} />
         <Route
-          exact
-          path="profile"
+          exact path="profile"
           element={<UserProfile mode={mode} setMode={setMode} />}
         />
       </Routes>

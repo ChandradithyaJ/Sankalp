@@ -22,7 +22,8 @@ const handleLogin = async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: jwt_expire_time }
         )
-        res.json({ accessToken })
+        foundUser['accessToken'] = accessToken
+        res.json({ foundUser })
     } else {
         res.sendStatus(401)
     }

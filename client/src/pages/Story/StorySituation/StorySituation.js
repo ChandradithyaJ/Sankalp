@@ -11,22 +11,22 @@ import doctor from '../../../lotties/doctor.json'
 const StorySituation = ({ mode }) => {
 
     const [lottieDim, setLottieDim] = useState(600)
-      const navigate = useNavigate()
-      const goToModules = () => {
+    const navigate = useNavigate()
+    const goToModules = () => {
         navigate('./play')
-      }
+    }
 
     return (
         <div className={`Situation-${mode}`}>
             <div className={`situation-name-${mode}`}>
-                <h3>Situation name placeholder</h3>
+                <h3>Situation content placeholder</h3>
             </div>
             <div className='lottieimg'>
                 {/* <SpeechBubble
                     text={"I'm Dr Sankalp!"}
                     mode={mode}
                 /> */}
-                <div className='sankalp-lottie'>
+                <div className='doctor-lottie'>
                     <Lottie
                         animationData={doctor}
                         loop={true}
@@ -34,12 +34,17 @@ const StorySituation = ({ mode }) => {
                         style={{ height: { lottieDim }, width: { lottieDim } }}
                     />
                 </div>
+
                 {/* <div
                     className={`back-to-story-${mode}`}
                     onClick={backToStory}
                 >
                     Go Back to the Story
                 </div> */}
+
+                <div>
+                    <button className={`goto-story-${mode}`} onClick={goToModules}>Start Conversing</button>
+                </div>
             </div>
         </div>
     )

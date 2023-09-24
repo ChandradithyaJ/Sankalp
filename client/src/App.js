@@ -16,6 +16,7 @@ import NavbarMob from "./components/NavbarMob";
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
 import StoryModeIntro from "./pages/Story/StoryModeIntro/StoryModeIntro";
 import StorySelect from "./pages/Story/StorySelect/StorySelect";
+import StorySituation from "./pages/Story/StorySituation/StorySituation";
 import Login from "./pages/Authentication/login";
 import ResetPassword from "./pages/Authentication/reset-password";
 import Home from "./pages/Home/Home";
@@ -23,6 +24,7 @@ import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Contact from "./pages/ContactUs/Contact";
+
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -82,7 +84,12 @@ function App() {
           path="story/modules"
           element={<StorySelect mode={mode} />}
         />
-        <Route exact path="story/modules/play" element={<StoryMode mode={mode} />} />
+        <Route
+          exact
+          path="story/modules/situation"
+          element={<StorySituation mode={mode} />}
+        />
+        <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<Contact mode={mode} />} />
         <Route
           exact

@@ -12,7 +12,7 @@ const StorySelect = ({ mode }) => {
 
     const navigate = useNavigate()
     const goToModules = () => {
-        navigate('./play')
+        navigate('./situation')
     }
 
 

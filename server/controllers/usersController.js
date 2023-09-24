@@ -40,7 +40,7 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
     // check for id to delete
-    if (!req?.body?.id) {return res.status(400).json({ 'message': 'User ID required' })}
+    if (!req?.body?.id) { return res.status(400).json({ 'message': 'User ID required' })}
 
     // check if user exists
     const reqUser = usersData.users.find((user) => user.id === req?.body?.id)

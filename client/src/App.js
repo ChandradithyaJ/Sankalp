@@ -63,7 +63,7 @@ function App() {
         <Route
           exact
           path="login"
-          element={<Login mode={mode} setUser={setUser} />}
+          element={<Login mode={mode} user={user} setUser={setUser} />}
         />
         <Route
           exact
@@ -87,7 +87,16 @@ function App() {
         <Route
           exact
           path="profile"
-          element={<UserProfile mode={mode} setMode={setMode} />}
+          element={<UserProfile
+            mode={mode}
+            setMode={setMode}
+            user={user}
+            setUser={setUser}
+          />}
+        />
+        <Route
+          path='*'
+          element={<Navigate to='/login' />}
         />
       </Routes>
     </div>

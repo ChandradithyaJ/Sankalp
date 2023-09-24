@@ -1,14 +1,49 @@
 import './UserProfile.css'
+import serverAPI from '../../api/serverAPI'
 
-const UserProfile = ({mode, setMode}) => {
+const UserProfile = ({mode, setMode, user, setUser}) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
 
-    const editProfile= () => {
+    const editProfile= async () => {
+        const editDetails = {
+            'id': user.id,
+            'username': 'Raja S'
+        }
 
+        const config = {
+            'headers': {
+                'authorization': `Bearer ${user.accessToken}`
+            }
+        }
+
+        try{
+            const response = await serverAPI.put('/users', editDetails, config)
+            if(response && response.data){
+                console.log('Edit Profile Response: ', response.data)
+            }
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
-    const deleteProfile = () => {
+    const deleteProfile = async () => {
+        const config = {
+            'headers': {
+                'authorization': `Bearer ${user.accessToken}`
+            },
+            'data': {
+                'id': user.id
+            }
+        }
 
+        try {
+            const response = await serverAPI.delete(`/users`, config)
+            if (response && response.data) {
+                console.log('Delete Profile Response: ', response.data)
+            }
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
     return(
@@ -22,7 +57,7 @@ const UserProfile = ({mode, setMode}) => {
                         alt='anonymousProfilePic.jpg'
                     />
                     <p className='username'>
-                        Username
+                        {user?.username ? user?.username : 'Guest'}
                     </p>
                     <div className='bio'>
                         <p>Bio</p>

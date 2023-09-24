@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
@@ -7,8 +7,72 @@ import "./login.css";
 // axios call
 import serverAPI from "../../api/serverAPI";
 
-function Login({ mode, setUser }) {
+function Login({ mode, user, setUser }) {
   const navigate = useNavigate();
+
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  const logInUser = async (e) => {
+    e.preventDefault()
+
+    // debugging
+    console.log(email)
+    console.log(password)
+
+    const userDetails = {
+      'email': email,
+      'password': password
+    }
+
+    try{
+      const response = await serverAPI.post('/auth', userDetails)
+      if (response && response.data) {
+        console.log('User details: ', response.data)
+        setUser(response.data.foundUser)
+        console.log(user)
+      }
+    } catch (err) {
+      console.log(err.message)
+      alert('Unable to login user. Please check your internet connection and try again.')
+    }
+  }
+
+  const signUpUser = async (e) => {
+    e.preventDefault()
+    
+    // debugging
+    console.log(username)
+    console.log(email)
+    console.log(password)
+    console.log(confirmPassword)
+
+    // password checking
+    if(password !== confirmPassword){
+      alert('Password and Confirm Password should be the same.')
+      return
+    }
+
+    const newUser = {
+      'username': username,
+      'email': email,
+      'password': password,
+    }
+
+    // store user in database through API call
+    try{
+      const response = await serverAPI.post('/register', newUser)
+      if(response && response.data){
+        console.log('User details: ', response.data)
+        setUser(response.data.newUser)
+      }
+    } catch (err) {
+      console.log(err.message)
+      alert('Unable to register user. Please check your internet connection and try again.')
+    }
+  }
 
   return (
     <div className="bgrnd">
@@ -34,7 +98,10 @@ function Login({ mode, setUser }) {
                       <div className="center-wrap">
                         <div className="section text-center">
                           <h4 className="mb-4 pb-3">Log In</h4>
-                          <form action="" method="get">
+                          <form
+                            onSubmit={logInUser}
+                            id="login-form"
+                          >
                             <div className="form-group">
                               <input
                                 type="email"
@@ -44,6 +111,7 @@ function Login({ mode, setUser }) {
                                 id="logemail"
                                 autoComplete="off"
                                 required
+                                onChange={(e) => setEmail(e.target.value)}
                               />
                               <Icon
                                 icon="uil:at"
@@ -59,19 +127,18 @@ function Login({ mode, setUser }) {
                                 id="logpass"
                                 autoComplete="off"
                                 required
+                                onChange={(e) => setPassword(e.target.value)}
                               />
                               <Icon
                                 icon="uil:lock-alt"
                                 className="input-icon uil uil-lock-alt"
                               />
                             </div>
+                            <button
+                              type="submit"
+                              className="btn mt-4"
+                            > Submit</button>
                           </form>
-                          <input
-                            type="submit"
-                            value="Submit"
-                            className="btn mt-4"
-                            required
-                          />
                           <p className="mb-0 mt-4 text-center">
                             <Link to="/reset-password" className="reset-pass">
                               Forgot your password?
@@ -84,69 +151,81 @@ function Login({ mode, setUser }) {
                       <div className="center-wrap">
                         <div className="section text-center">
                           <h4 className="mb-4 pb-3">Sign Up</h4>
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              name="logname"
-                              className="form-style"
-                              placeholder="Username"
-                              id="logname"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-user"></i> */}
-                            <Icon
-                              icon="uil:user"
-                              className="input-icon uil uil-user"
-                            />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="email"
-                              name="logemail"
-                              className="form-style"
-                              placeholder="Your Email"
-                              id="logemail"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-at"></i> */}
-                            <Icon
-                              icon="uil:at"
-                              className="input-icon uil uil-at"
-                            />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="password"
-                              name="logpass"
-                              className="form-style"
-                              placeholder="Your Password"
-                              id="logpass"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-lock-alt"></i> */}
-                            <Icon
-                              icon="uil:lock-alt"
-                              className="input-icon uil uil-lock-alt"
-                            />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="password"
-                              name="logpass"
-                              className="form-style"
-                              placeholder="Confirm Password"
-                              id="logpass"
-                              autoComplete="off"
-                            />
-                            {/* <i className="input-icon uil uil-lock-alt"></i> */}
-                            <Icon
-                              icon="line-md:confirm-circle"
-                              className="input-icon uil uil-lock-alt"
-                            />
-                          </div>
-                          <a href="#" className="btn mt-4">
-                            submit
-                          </a>
+                          <form
+                            onSubmit={signUpUser}
+                            id="register-form"
+                          >
+                            <div className="form-group">
+                              <input
+                                type="text"
+                                name="logname"
+                                className="form-style"
+                                placeholder="Username"
+                                id="logname"
+                                autoComplete="off"
+                                required
+                                onChange={(e) => setUsername(e.target.value)}
+                              />
+                              {/* <i className="input-icon uil uil-user"></i> */}
+                              <Icon
+                                icon="uil:user"
+                                className="input-icon uil uil-user"
+                              />
+                            </div>
+                            <div className="form-group mt-2">
+                              <input
+                                type="email"
+                                name="logemail"
+                                className="form-style"
+                                placeholder="Your Email"
+                                id="logemail"
+                                autoComplete="off"
+                                required
+                                onChange={(e) => setEmail(e.target.value)}
+                              />
+                              {/* <i className="input-icon uil uil-at"></i> */}
+                              <Icon
+                                icon="uil:at"
+                                className="input-icon uil uil-at"
+                              />
+                            </div>
+                            <div className="form-group mt-2">
+                              <input
+                                type="password"
+                                name="logpass"
+                                className="form-style"
+                                placeholder="Your Password"
+                                id="logpass"
+                                autoComplete="off"
+                                required
+                                onChange={(e) => setPassword(e.target.value)}
+                              />
+                              {/* <i className="input-icon uil uil-lock-alt"></i> */}
+                              <Icon
+                                icon="uil:lock-alt"
+                                className="input-icon uil uil-lock-alt"
+                              />
+                            </div>
+                            <div className="form-group mt-2">
+                              <input
+                                type="password"
+                                name="logpass"
+                                className="form-style"
+                                placeholder="Confirm Password"
+                                id="logpass"
+                                autoComplete="off"
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                              />
+                              {/* <i className="input-icon uil uil-lock-alt"></i> */}
+                              <Icon
+                                icon="line-md:confirm-circle"
+                                className="input-icon uil uil-lock-alt"
+                              />
+                            </div>
+                            <button href="#" className="btn mt-4">
+                              Submit
+                            </button>
+                          </form>
                         </div>
                       </div>
                     </div>

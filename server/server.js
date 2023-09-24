@@ -23,6 +23,8 @@ app.use(express.json())
 app.use('/register', require('./routes/register'))
 // login route
 app.use('/auth', require('./routes/auth'))
+// update JWT if expired route
+app.use('/updateJWT', require('./routes/updateJWT'))
 
 // custom middleware for verifying JWTs
 app.use(verifyJWT)

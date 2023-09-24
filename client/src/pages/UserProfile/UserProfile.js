@@ -1,10 +1,40 @@
 import './UserProfile.css'
 import serverAPI from '../../api/serverAPI'
+import { isExpired } from 'react-jwt'
 
 const UserProfile = ({mode, setMode, user, setUser}) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
 
-    const editProfile= async () => {
+    /* whenever the user makes a JWT-required API call, we will update
+    if expired */
+    const checkJWTvalidity = async () => {
+        const { tokenIsExpired } = isExpired(user.accessToken)
+
+        console.log(tokenIsExpired)
+        if(tokenIsExpired){
+            const userID = {
+                'id': user.id
+            }
+
+            try{
+                const response = await serverAPI.put('/updateJWT', userID)
+                if (response && response.data) {
+                    console.log('Edit Profile Response: ', response.data)
+
+                    const updatedUser = { 
+                        ...user, accessToken: response.data 
+                    }
+                    setUser(updatedUser)
+                }
+            } catch (err) {
+                console.log(err.message)
+            }
+        }
+    }
+
+    const editProfile = async () => {
+        checkJWTvalidity()
+
         const editDetails = {
             'id': user.id,
             'username': 'Raja S'
@@ -27,6 +57,8 @@ const UserProfile = ({mode, setMode, user, setUser}) => {
     }
 
     const deleteProfile = async () => {
+        checkJWTvalidity()
+        
         const config = {
             'headers': {
                 'authorization': `Bearer ${user.accessToken}`

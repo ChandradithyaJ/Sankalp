@@ -82,7 +82,7 @@ function App() {
           path="story/modules"
           element={<StorySelect mode={mode} />}
         />
-        <Route exact path="story/play" element={<StoryMode mode={mode} />} />
+        <Route exact path="story/modules/play" element={<StoryMode mode={mode} />} />
         <Route exact path="contact" element={<Contact mode={mode} />} />
         <Route
           exact

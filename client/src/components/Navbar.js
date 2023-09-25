@@ -50,7 +50,7 @@ const Navbar = ({ mode, setMode }) => {
               </Link>
             </li>
           </ul>
-          <button onClick={changeMode}>Mode</button>
+          {/* <button onClick={changeMode}>Mode</button> */}
         </nav>
       </div>
     </>

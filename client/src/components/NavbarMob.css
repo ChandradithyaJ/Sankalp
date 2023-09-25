@@ -1,7 +1,7 @@
 #mainBar {
-  height: 10dvh;
+  height: 10vh;
   /* display: flex; */
-  width: 100dvw;
+  width: 100%;
   background-image: radial-gradient(#a35382, #b91271);
   overflow-x: hidden;
   overflow-y: hidden;
@@ -20,8 +20,6 @@
   height: 4rem;
   width: 4rem;
   position: relative;
-  top: 0.5rem;
-  right: -90vw;
   border-radius: 50%;
   z-index: 1500;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
@@ -30,16 +28,16 @@
 }
 @media (max-width: 56.25em) {
   .navigation__button {
-    top: 0.5rem;
-    right: -84vw;
+    top: -1vh;
+    right: -52vw;
   }
 }
-@media (max-width: 37.5em) {
+/* @media (max-width: 37.5em) {
   .navigation__button {
-    top: 0.5rem;
-    right: -75dvw;
+    top: 1vh;
+    right: -55vw;
   }
-}
+} */
 .navigation__background {
   height: 4rem;
   width: 4rem;
@@ -61,7 +59,7 @@
 @media (max-width: 37.5em) {
   .navigation__background {
     top: -2.8rem;
-    right: -82.9dvw;
+    right: -82.9vw;
   }
 }
 .navigation__nav {
@@ -75,7 +73,7 @@
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   /* background-image: radial-gradient(#7ed56f, #28b485);
    */
-   background-image: radial-gradient(#a35382, #b91271);
+  background-image: radial-gradient(#a35382, #b91271);
 }
 .navigation__list {
   list-style: none;

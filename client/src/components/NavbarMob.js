@@ -18,7 +18,7 @@ const NavbarMob = ({ mode, setMode }) => {
           <label htmlFor="navi-toggle" className="navigation__button">
             <span className="navigation__icon">&nbsp;</span>
           </label>
-          <button onClick={changeMode}>Mode</button>
+          {/* <button onClick={changeMode}>Mode</button> */}
           <div className="navigation__background">&nbsp;</div>
           <nav className="navigation__nav">
             <ul className="navigation__list">

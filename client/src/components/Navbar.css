@@ -102,7 +102,7 @@ nav {
     font-size: 1.6vh;
     flex-wrap: wrap;
   }
-  /*
+  /*   
    nav {
     position: fixed;
     z-index: 3;
@@ -161,8 +161,7 @@ nav {
   }
   li.fade {
     opacity: 1;
-  }
-*/
+  } */
 }
 
 .toggle .line1 {

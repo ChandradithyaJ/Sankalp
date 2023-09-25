@@ -1,18 +1,37 @@
 import './StorySelect.css'
+import { useNavigate } from 'react-router-dom'
 
 const StorySelect = ({ mode }) => {
-    const placeholder = '/images/greenCheck.png'
+
+    const placeholder = ['/images/lightmode.jpg', '/images/lightmode.jpg',
+        '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg',
+        '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg',
+        '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg',
+        '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg',
+        '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg']
+
+    const navigate = useNavigate()
+    const goToModules = () => {
+        navigate('./situation')
+    }
+
 
     return (
         <div className={`story-select-${mode}`}>
-            Hi sisters! I am James Charles. I want sax.
-            <div className="module-item">
-                <img
-                    className='module-image'
-                    alt="ModuleImage"
-                    src={placeholder}
-                />
-                <p>Headline</p>
+            <div className='bacgrd1'></div>
+            <h1 className={`bacgrd2-${mode}`}>Select a story of your choice</h1>
+            <div className='bacgrd3'>
+                {placeholder.map((badgeImage) => (
+                    <div className='module-item1'>
+                        <img
+                            className={`module-image-${mode}`} onClick={goToModules}
+                            src={badgeImage}
+                            alt={badgeImage}
+                        />
+                        <p className={`bacgrd4-${mode}`}>Headlines</p>
+                    </div>
+                ))}
+
             </div>
         </div>
     )

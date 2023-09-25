@@ -51,7 +51,9 @@ const handleNewUser = async (req, res) => {
             JSON.stringify([...usersData.users, newUser])
         )
 
-        res.status(201).json({ accessToken })
+        newUser['accessToken'] = accessToken
+
+        res.status(201).json({ newUser })
     } catch (err) {
         console.error(err)
         res.status(400).json({ 'message': 'Error hashing password' })

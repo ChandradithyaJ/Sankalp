@@ -27,16 +27,16 @@ const StoryMode = ({ mode }) => {
 
     // select a response option
     const clickOnOption = (option) => {
-        if(option !== selectedOption){
+        if (option !== selectedOption) {
             setSelectedOption(option)
-        } else{
+        } else {
             setSelectedOption('')
         }
     }
 
     // go to Dr Sankalp to evaluate the response
     const evaluateResponse = () => {
-        if(selectedOption !== ''){
+        if (selectedOption !== '') {
             setEvaluate(true)
         }
     }
@@ -46,7 +46,7 @@ const StoryMode = ({ mode }) => {
         setSelectedOption('')
     }
 
-    return(
+    return (
         <div className={`story-mode-${mode}`}>
             <div className={`story-title-${mode}`}>
                 <h3>Chance Encounter with Lisa</h3>
@@ -103,9 +103,9 @@ const StoryMode = ({ mode }) => {
             {
                 evaluate &&
                 <div className='evaluation-container'>
-                    <SpeechBubble 
-                        text={"I'm Dr Sankalp!"} 
-                        mode={mode}     
+                    <SpeechBubble
+                        text={"I'm Dr Sankalp!"}
+                        mode={mode}
                     />
                     <div className='sankalp-lottie'>
                         <Lottie

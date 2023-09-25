@@ -70,6 +70,14 @@
     font-weight: 700;
 }
 
+.edit-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .edit-button-profile-light, .edit-button-profile-dark{
     border: 1px solid;
     background-color: pink;
@@ -149,7 +157,7 @@
     padding-right: 2vw;
 }
 
-.delete-profile-button-container{
+.delete-button-profile-container{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -157,7 +165,7 @@
     padding-bottom: 4vh;
 }
 
-.delete-profile-button-light, .delete-profile-button-dark{
+.delete-button-profile-light, .delete-button-profile-dark{
     border: 1px solid;
     background-color: rgb(247, 15, 15);
     color: black;
@@ -173,10 +181,39 @@
     word-wrap: break-word;
 }
 
-.delete-profile-button-dark:hover{
+.delete-button-profile-dark:hover{
     box-shadow: 0 5px 15px white;
 }
 
-.delete-profile-button-light:hover {
+.delete-button-profile-light:hover {
     box-shadow: 0 5px 15px rgb(135, 131, 131);
+}
+
+@media (max-width: 1054px) and (min-width: 871px){
+    .delete-button-profile-light, .delete-button-profile-dark{
+        font-size: small;
+    }
+}
+
+@media (max-width: 870px) and (min-width: 441px) {
+    .delete-button-profile-light, .delete-button-profile-dark{
+        width: 20vw;
+        font-size: small;
+    }
+}
+
+@media (max-width: 440px) and (min-width: 351px) {
+    .delete-button-profile-light, .delete-button-profile-dark{
+        width: 25vw;
+        font-size: small; 
+    }
+}
+
+@media (max-width: 350px) {
+
+    .delete-button-profile-light,
+    .delete-button-profile-dark {
+        width: 29vw;
+        font-size: small;
+    }
 }

@@ -1,14 +1,84 @@
 import './UserProfile.css'
+import serverAPI from '../../api/serverAPI'
+import { isExpired } from 'react-jwt'
 
-const UserProfile = ({mode, setMode}) => {
+import ModeToggle from './ModeToggle'
+import './ModeToggle.css'
+
+const UserProfile = ({ mode, setMode, user, setUser }) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
 
-    const editProfile= () => {
+    /* whenever the user makes a JWT-required API call, we will update
+    if expired */
+    const checkJWTvalidity = async () => {
+        const { tokenIsExpired } = isExpired(user.accessToken)
 
+        console.log(tokenIsExpired)
+        if(tokenIsExpired){
+            const userID = {
+                'id': user.id
+            }
+
+            try{
+                const response = await serverAPI.put('/updateJWT', userID)
+                if (response && response.data) {
+                    console.log('Edit Profile Response: ', response.data)
+
+                    const updatedUser = { 
+                        ...user, accessToken: response.data 
+                    }
+                    setUser(updatedUser)
+                }
+            } catch (err) {
+                console.log(err.message)
+            }
+        }
     }
 
-    const deleteProfile = () => {
+    const editProfile = async () => {
+        checkJWTvalidity()
 
+        const editDetails = {
+            'id': user.id,
+            'username': 'Raja S'
+        }
+
+        const config = {
+            'headers': {
+                'authorization': `Bearer ${user.accessToken}`
+            }
+        }
+
+        try{
+            const response = await serverAPI.put('/users', editDetails, config)
+            if(response && response.data){
+                console.log('Edit Profile Response: ', response.data)
+            }
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    const deleteProfile = async () => {
+        checkJWTvalidity()
+        
+        const config = {
+            'headers': {
+                'authorization': `Bearer ${user.accessToken}`
+            },
+            'data': {
+                'id': user.id
+            }
+        }
+
+        try {
+            const response = await serverAPI.delete(`/users`, config)
+            if (response && response.data) {
+                console.log('Delete Profile Response: ', response.data)
+            }
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
     return(
@@ -22,16 +92,19 @@ const UserProfile = ({mode, setMode}) => {
                         alt='anonymousProfilePic.jpg'
                     />
                     <p className='username'>
-                        Username
+                        {user?.username ? user?.username : 'Guest'}
                     </p>
                     <div className='bio'>
                         <p>Bio</p>
                     </div>
-                    <div 
-                        className={`edit-button-profile-${mode}`}
-                        onClick={editProfile}
-                    >
-                        Edit Profile
+                    <div className='edit-container'>
+                        <div
+                            className={`edit-button-profile-${mode}`}
+                            onClick={editProfile}
+                        >
+                            Edit Profile
+                        </div>
+                        <ModeToggle mode={mode} setMode={setMode} />
                     </div>
                 </div>
                 <div className='badges-container'>
@@ -46,9 +119,9 @@ const UserProfile = ({mode, setMode}) => {
                         </div>
                     ))}
                 </div>
-                <div className='delete-profile-button-container'>
+                <div className='delete-button-profile-container'>
                     <div
-                        className={`delete-profile-button-${mode}`}
+                        className={`delete-button-profile-${mode}`}
                         onClick={deleteProfile}
                     >
                         Delete Profile

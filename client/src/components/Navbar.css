@@ -8,7 +8,6 @@ nav {
   z-index: 10;
 }
 
-
 .nav-links {
   display: flex;
   margin: 0;
@@ -89,7 +88,22 @@ nav {
 }
 
 @media screen and (max-width: 800px) {
-  nav {
+  .nav-links {
+    margin: 2vw 1vw;
+  }
+
+  .nav-links li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 2vw;
+  }
+  .nav-links li a {
+    font-size: 1.6vh;
+    flex-wrap: wrap;
+  }
+  /*
+   nav {
     position: fixed;
     z-index: 3;
   }
@@ -148,6 +162,7 @@ nav {
   li.fade {
     opacity: 1;
   }
+*/
 }
 
 .toggle .line1 {

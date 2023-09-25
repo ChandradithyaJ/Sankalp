@@ -2,7 +2,10 @@ import './UserProfile.css'
 import serverAPI from '../../api/serverAPI'
 import { isExpired } from 'react-jwt'
 
-const UserProfile = ({mode, setMode, user, setUser}) => {
+import ModeToggle from './ModeToggle'
+import './ModeToggle.css'
+
+const UserProfile = ({ mode, setMode, user, setUser }) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
 
     /* whenever the user makes a JWT-required API call, we will update
@@ -94,11 +97,14 @@ const UserProfile = ({mode, setMode, user, setUser}) => {
                     <div className='bio'>
                         <p>Bio</p>
                     </div>
-                    <div 
-                        className={`edit-button-profile-${mode}`}
-                        onClick={editProfile}
-                    >
-                        Edit Profile
+                    <div className='edit-container'>
+                        <div
+                            className={`edit-button-profile-${mode}`}
+                            onClick={editProfile}
+                        >
+                            Edit Profile
+                        </div>
+                        <ModeToggle mode={mode} setMode={setMode} />
                     </div>
                 </div>
                 <div className='badges-container'>
@@ -113,9 +119,9 @@ const UserProfile = ({mode, setMode, user, setUser}) => {
                         </div>
                     ))}
                 </div>
-                <div className='delete-profile-button-container'>
+                <div className='delete-button-profile-container'>
                     <div
-                        className={`delete-profile-button-${mode}`}
+                        className={`delete-button-profile-${mode}`}
                         onClick={deleteProfile}
                     >
                         Delete Profile

@@ -1,45 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home_style.css";
-import { Carousel } from "react-carousel3";
 import MySwiper from "./CoverflowSlider/Coverflow";
-import LandingPage from "../LandingPage/LandingPage";
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 function Home({ mode }) {
-  const [isDarkMode] = useState(mode === "dark");
+  mode = "dark";
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const style = {
-    height: "40vh",
-    width: "50vw",
+    height: "40dvh",
+    width: "50dvw",
   };
 
-  // const newsContainerStyle = {
-  //   display: "flex",
-  //   flexWrap: "wrap",
-  //   justifyContent: "space-between",
-  //   margin: "20px 0px", // Adjust the margin as needed
-  // };
+  useEffect(() => {
+    document.body.className = isDarkMode ? "dark-mode" : "light-mode";
+  }, [isDarkMode]);
 
-  const newsText = [
-    "News 1: Lorem ipsum dolor sit amet",
-    "News 2: Consectetur adipiscing elit",
-    "News 3: Sed do eiusmod tempor incididunt",
-    // Add more news text as needed
-  ];
+
 
   return (
     <div className={`Home ${isDarkMode ? "Home--dark" : "Home--light"}`}>
       <div
         style={{
-          marginTop: "50px",
           marginBottom: "50px",
           marginRight: "20px",
           marginLeft: "20px",
         }}
       >
-        {/* Your content goes here */}
+        
       </div>
       <div>
-        <LandingPage />
+        <h1>
+          <div class="highlighted-neon-text">Welcome to your MindSpace</div>
+        </h1>
       </div>
       <div
         style={{
@@ -49,65 +42,88 @@ function Home({ mode }) {
           marginLeft: "20px",
         }}
       >
-        {/* Your content goes here */}
       </div>
+      <div className="highlight-text-header">Whats Happening? </div>
+      <div class="highlighted-neon-text">Latest News</div>
       <div>
         <MySwiper />
       </div>
+      <div
+        style={{
+          marginTop: "50px",
+          marginBottom: "50px",
+          marginRight: "20px",
+          marginLeft: "20px",
+        }}
+      ></div>
       <div>
-        <button className="button">
+        <div className="hero_bottom">
+          <div className="hero-content">
+            <h1>lets start the new journey to , better and more.</h1>
+            <h2>calm now.</h2>
+          </div>
+        </div>
+      </div>
+      <div>
+        {/* <button className="button">
           <span className="buttonText"> Learn More</span>{" "}
-        </button>
+        </button> */}
 
-        <div className="highlight-text">Welcome to our Website</div>
-        <span class="highlighted-neon-text">Highlighted Neon Text</span>
-        <div className="highlight-text">Discover Exciting Features</div>
+        <div className="highlight-text-header">Lets Explore, How it works</div>
+        <div class="highlighted-neon-text">Sankalp</div>
 
-        <div className="news-container">
-          <div className="news-item">
-            <img alt="Big News" src="./homepagepics/image1.jpg" />
-            <h3>Headline</h3>
-            <p>{newsText[0]}</p>
-            <a href="#" className="read-more">
-              Read More
-            </a>
+        <div className="flowCharts">
+          <div className="flowChart">
+            <h2>Try learning by Experiiinsing</h2>
+            <img
+              src="https://dy7glz37jgl0b.cloudfront.net/betterhelp_two/photos/image-how-it-works-2-phone.png?v=0177f73d2461"
+              alt="Feature 1"
+            />
+            <div>
+            <h2>Story Mode </h2>
+            <p>lorem ipsum</p>
+            </div>
           </div>
-          <div className="news-item">
-            <img alt="Small News" src="./homepagepics/image1.jpg" />
-            <h3>Headline</h3>
-            <p>{newsText[1]}</p>
-            <a href="#" className="read-more">
-              Read More
-            </a>
+          <div className="icon">
+          <BsFillCaretDownFill size={100}/>
           </div>
-          <div className="news-item-small">
-            <img alt="Small News" src="./homepagepics/image1.jpg" />
-            <h3>Headline</h3>
-            <p>{newsText[1]}</p>
-            <a href="#" className="read-more">
-              Read More
-            </a>
+          <div className="flowChart">
+
+            <h2>Chat with BOT</h2>
+            <img
+              src="https://images.theconversation.com/files/454716/original/file-20220328-15-1rfv76b.jpg?ixlib=rb-1.1.0&rect=16%2C0%2C3578%2C1880&q=45&auto=format&w=926&fit=clip"
+              alt="Feature 1"
+            />
+            <div>
+            <h3>Communicate Your Way</h3>
+            <p>
+              {" "}
+              Try Cheering Up our Friend BOT and earn credits. Tap into the
+              world of MindSpace.
+            </p>
+            </div>
           </div>
-          {/* Add more news items as needed */}
+          
+          <div className="icon">
+          <BsFillCaretDownFill size={100}/>
+          </div>
+
+          <div className="flowChart">
+            <h2>Learn the Updates</h2>
+            <img
+              src="https://i0.wp.com/calmatters.org/wp-content/uploads/2022/02/mental-health.jpg?fit=2121%2C1414&ssl=1"
+              alt="Feature 1"
+            />
+            <div>
+            <h2>Latest News </h2>
+            <p>
+              Get aware about the latest researches and updates on mental
+              health.
+            </p>
+            </div>
+          </div>
         </div>
-
-        <div className="features">
-          <div className="feature">
-            <img src="https://via.placeholder.com/150" alt="Feature 1" />
-            <h2>Feature 1</h2>
-            <p>Watch updates.</p>
-          </div>
-          <div className="feature">
-            <img src="https://via.placeholder.com/150" alt="Feature 2" />
-            <h2>Feature 2</h2>
-            <p>chat us.</p>
-          </div>
-          <div className="feature">
-            <img src="./homepagepics/image1.jpg" alt="Feature 3" />
-            <h2>Feature 3</h2>
-            <p>lets check it</p>
-          </div>
-        </div>
+    
       </div>
     </div>
   );

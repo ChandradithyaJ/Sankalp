@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Blog.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faShare } from "@fortawesome/free-solid-svg-icons";
@@ -6,29 +6,40 @@ import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
-const BlogPage = () => {
+
+
+ 
+const BlogPage = ({ mode }) => {
+  mode = "dark";
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  
+  useEffect(() => {
+    document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+  }, [isDarkMode]);
+
   return (
-    <div className="blog-post">
-      <div className="header">
+    <div className={`blog-post-${mode}`}>
+      <div className={`header-${mode}`}>
         <h1>Blog Post Title</h1>
-        <div className="author">
+        <div className={`author-${mode}`}>
           <span>
             <FontAwesomeIcon icon={faUser} /> Author Name
           </span>
-          <span className="share-icon">
+          <span className={`share-icon-${mode}`}>
             <FontAwesomeIcon icon={faShare} />
           </span>
         </div>
       </div>
-      <p className="intro-paragraph">
+      <p className={`intro-paragraph-${mode}`}>
         This is the introductory paragraph of the blog post
       </p>
       <img
         src="./homepagepics/image1.jpg"
         alt="Blog Post"
-        className="blog-image"
+        className={`blog-image-${mode}`}
       />
-      <p className="text-paragraph">
+      <p className={`text-paragraph-${mode}`}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend commodo convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat vulputate tincidunt. In eu tincidunt tortor, in tristique nisl. Sed diam tortor, dapibus sed neque a, aliquet luctus mauris. Sed accumsan vitae lectus at accumsan. Praesent blandit rhoncus libero mollis tempor. Morbi ut leo in turpis dapibus condimentum nec a ex.
 
 Suspendisse sed ligula tempus, lobortis mauris in, placerat neque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris maximus tortor sed ullamcorper facilisis. Vivamus gravida sollicitudin dui. Sed et ipsum libero. Sed nec dui commodo, ullamcorper mi ac, blandit nisi. Fusce molestie ex a lectus fermentum ornare. Nam imperdiet lacus vel pharetra porta. Nunc laoreet, nibh sit amet lobortis euismod, magna nulla ornare orci, quis faucibus libero nibh vitae urna.
@@ -39,24 +50,22 @@ Mauris fermentum iaculis eleifend. Quisque sodales ac dui eu auctor. Suspendisse
 
 Suspendisse ut elementum purus. Pellentesque porttitor vehicula nisi, a bibendum lacus sollicitudin ut. Nulla vehicula metus ut neque bibendum vestibulum. Nullam ornare, elit a gravida dapibus, mi eros consequat eros, tincidunt semper eros mauris et erat. Quisque condimentum lacus id varius feugiat. Nulla lacinia nunc vitae pharetra hendrerit. Aliquam nisi tellus, facilisis ac mi id, convallis rhoncus velit. Vestibulum quis libero ut metus rhoncus pulvinar nec ut diam. Proin quis luctus nisl. Nunc dui leo, ultricies sit amet nulla eget, pharetra rhoncus purus.
       </p>
-      <div className="related-stories-container">
+      <div className={`related-stories-container-${mode}`}>
         <h2>Related Stories</h2>
         {/* Related blog post links go here */}
      
     </div>
-    <div className="swiper-container">
+    <div className={`swiper-container-${mode}`}>
         <Swiper
           spaceBetween={20}
           slidesPerView={3}
           navigation
           pagination={{ clickable: true }}
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          {/* Add more slides here */}
+          {/* // add dummy slides here add text  */}
+          <SwiperSlide> <img src="./homepagepics/image1.jpg" alt="Blog Post" className={`blog-image-${mode}`} /> <p> hwy </p></SwiperSlide>
+          <SwiperSlide> <img src="./homepagepics/image1.jpg" alt="Blog Post" className={`blog-image-${mode}`} /> <p>hwy 2 </p></SwiperSlide>
+          <SwiperSlide> <img src="./homepagepics/image1.jpg" alt="Blog Post" className={`blog-image-${mode}`} /></SwiperSlide>   
         </Swiper>
       </div>
      </div>

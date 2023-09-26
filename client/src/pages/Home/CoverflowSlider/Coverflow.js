@@ -1,21 +1,38 @@
-import React, { useEffect } from "react";
+
+
+
+
+import React, { useState, useEffect } from "react";
 import Swiper from "swiper/bundle"; // Import Swiper with required modules
-import "swiper/swiper-bundle.css";// Import Swiper styles
-import "./Coverflow.css";
+import "swiper/swiper-bundle.css"; // Import Swiper styles
+import axios from "axios";
 
+const Coverflow = () => {
+  const [articles, setArticles] = useState([]);
 
-// Rest of your component code...
+  useEffect(() => {
+    const getArticles = async () => {
+      const apiKey = "c5022a2e42eb484a866abb5a7dcbc756";
+      const response = await axios.get(
+        `https://newsapi.org/v2/everything?q=mentalhealth&pageSize=6&apiKey=${apiKey}`
+      );
+      setArticles(response.data.articles);
+      console.log(response);
+    };
 
+    getArticles();
+  }, []);
 
-const MySwiper = () => {
   useEffect(() => {
     const swiper = new Swiper(".swiper-container", {
+      slidesPerView: 3,
+      spaceBetween: 30,
       centeredSlides: true,
+      loop: true,
+      grabCursor: true,
+      //hide any overflow
+
       effect: "coverflow",
-      slidesPerView: 4,
-      parallelEffect: true,
-      // continue loop mode after reaching last slide
-      loopedSlides: 3,
       coverflowEffect: {
         rotate: 50,
         stretch: 0,
@@ -31,11 +48,11 @@ const MySwiper = () => {
       },
 
 
+
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-
       scrollbar: {
         el: ".swiper-scrollbar",
       },
@@ -44,21 +61,33 @@ const MySwiper = () => {
     return () => {
       swiper.destroy();
     };
-  }, []); // Empty dependency array to run useEffect only once
+  }, [articles]);
 
   return (
     <div className="swiper-container">
       <div className="swiper-wrapper">
-        <div className="swiper-slide">
-          <img src="./homepagepics/image1.jpg" alt="Slide 1" />
-        </div>
-        <div className="swiper-slide">
-          <img src="./homepagepics/image1.jpg" alt="Slide 2" />
-        </div>
-        <div className="swiper-slide">
-          <img src="./homepagepics/image1.jpg" alt="Slide 3" />
-        </div>
-        {/* Add more slides here */}
+        {articles
+        
+          .filter(
+            (image) =>
+              image.author != null &&
+              image.publishedAt != null &&
+              image.urlToImage != null &&
+              image.description != null &&
+              image.title != null &&
+              image.url != null
+          )
+          .map((article) => (
+            <div className="swiper-slide">
+              <img src={article.urlToImage} alt="" 
+       
+              style={ {width: "100%", height: "100%", objectFit: "cover"} }
+              />
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
+              <a href={article.url}>Read More</a>
+            </div>
+          ))}
       </div>
       <div className="swiper-scrollbar"></div>
       <div className="swiper-button-next"></div>
@@ -67,4 +96,5 @@ const MySwiper = () => {
   );
 };
 
-export default MySwiper;
+
+export default Coverflow;

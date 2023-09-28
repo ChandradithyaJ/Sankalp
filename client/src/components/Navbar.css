@@ -1,4 +1,9 @@
 /* Experimental Navbar(Alternate)*/
+
+.large-screen{
+  display: flex;
+}
+
 nav {
   height: 6rem;
   width: 100vw;

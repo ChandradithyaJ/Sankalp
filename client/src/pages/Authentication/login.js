@@ -33,7 +33,7 @@ function Login({ mode, user, setUser }) {
         console.log('User details: ', response.data)
         setUser(response.data.foundUser)
         console.log(user)
-        navigate('/home')
+        navigate('/profile')
       }
     } catch (err) {
       console.log(err.message)
@@ -68,7 +68,7 @@ function Login({ mode, user, setUser }) {
       if(response && response.data){
         console.log('User details: ', response.data)
         setUser(response.data.newUser)
-        navigate('/home')
+        navigate('/profile')
       }
     } catch (err) {
       console.log(err.message)

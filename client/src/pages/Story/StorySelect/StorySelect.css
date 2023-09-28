@@ -6,17 +6,10 @@
 .story-select-dark {
     height: 100vh;
     width: 100%;
-
-}
-
-.bacgrd1{
-    height: 20vh;
 }
 
 .bacgrd2-dark {
-    padding-top: 1vh;
-    height: 50vh;
-    width: 100%;
+    padding-top: 10vh;
     text-align: center;
     color: #00df9a;
     font: bold;
@@ -26,14 +19,11 @@
 
 .bacgrd2-light {
     padding-top: 10vh;
-    height: 100%;
-    width: 100%;
     text-align: center;
     color: rgb(202, 129, 27);
     font: bold;
     font-family:'Courier New', Courier, monospace;
     font-size: xxx-large;
-    overflow: hidden;
 }
 
 .bacgrd3 {
@@ -56,15 +46,12 @@
     padding: 2vh;
 }
 
-
-
 .module-item1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-left: 5vh;
-    /* overflow: hidden; */
 }
 
 
@@ -76,7 +63,6 @@
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    /* overflow: hidden; */
     
 }
 

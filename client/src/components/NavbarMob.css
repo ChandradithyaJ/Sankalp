@@ -1,7 +1,5 @@
 #mainBar {
   height: 10vh;
-  /* display: flex; */
-  width: 100%;
   background-image: radial-gradient(#a35382, #b91271);
   overflow-x: hidden;
   overflow-y: hidden;

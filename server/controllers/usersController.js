@@ -1,4 +1,4 @@
-const { jwt_expire_time, db } = require('../config/databaseConfig.js');
+const { db } = require('../config/databaseConfig.js');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 

@@ -40,8 +40,7 @@ a:hover {
 }
 
 .bgrnd {
-  background-image: url("/public/loginPage/loginBackground1.jpg");
-  /* background-repeat: no-repeat; */
+  background-image: url('/public/loginPage/loginBackground1.jpg');
   background-size: cover;
   backdrop-filter: invert(80%);
 }

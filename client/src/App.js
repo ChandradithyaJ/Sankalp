@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import {
   BrowserView,
   MobileView,
-  isBrowser,
-  isMobile,
 } from "react-device-detect";
 
 // axios call
@@ -25,42 +23,22 @@ import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import ContactForm from "./pages/ContactForm/ContactForm";
 
 
 function App() {
   const [mode, setMode] = useState("dark");
   const [user, setUser] = useState(null);
 
-  /*
-  // Using the API created with Node and Express to fetch all users
-  const [users, setUsers] = useState([])
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try{
-        const response = await serverAPI.get('/users')
-        if(response && response.data){
-          console.log('Users fetched: ', response.data)
-          setUsers(response.data)
-        }
-      } catch (err) {
-        console.log('Error: err.message')
-      }
-    };
-
-    fetchUsers()
-  }, []) */
-
   return (
     <div className={`App-${mode}`}>
-      <div>
-        <BrowserView>
-          <Navbar mode={mode} setMode={setMode} />
-        </BrowserView>
-        <MobileView>
-          <NavbarMob mode={mode} setMode={setMode} />
-        </MobileView>
-      </div>
-      <div>
+      <BrowserView>
+        <Navbar />
+      </BrowserView>
+      <MobileView>
+        <NavbarMob mode={mode} setMode={setMode} />
+      </MobileView>
+
       <Routes>
         <Route exact path="home" element={<Home />} />
         <Route exact path="/ChatBox" element={<ChatBox />} />
@@ -93,10 +71,12 @@ function App() {
           element={<StorySituation mode={mode} />}
         />
         <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode} />} />
-        <Route exact path="contact" element={<ContactForm />} />
+        <Route 
+          exact path='contact'
+          element={<ContactForm />}
+        />
         <Route
-          exact
-          path="profile"
+          exact path="profile"
           element={<UserProfile
             mode={mode}
             setMode={setMode}

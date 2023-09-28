@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./NavbarMob.css";
 import { Link } from "react-router-dom";
 
 const NavbarMob = ({ mode, setMode }) => {
-  let changeMode = () => {
-    setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
-  };
   return (
     <>
       <div id="mainBar" className="small-screen">
@@ -18,7 +15,6 @@ const NavbarMob = ({ mode, setMode }) => {
           <label htmlFor="navi-toggle" className="navigation__button">
             <span className="navigation__icon">&nbsp;</span>
           </label>
-          {/* <button onClick={changeMode}>Mode</button> */}
           <div className="navigation__background">&nbsp;</div>
           <nav className="navigation__nav">
             <ul className="navigation__list">

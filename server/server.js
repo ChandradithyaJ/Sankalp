@@ -30,7 +30,7 @@ app.use('/updateJWT', require('./routes/updateJWT'))
 app.use(verifyJWT)
 // users route
 app.use('/users', require('./routes/api/users'))
-//stories route
+// stories route
 app.use('/stories', require('./routes/api/stories'))
 
 // run the app on PORT

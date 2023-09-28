@@ -40,7 +40,9 @@ function Home({ mode }) {
       ></div>
       <div className="highlight-text-header">Whats Happening? </div>
       <div class="highlighted-neon-text">Latest News</div>
-      <div>{/* <MySwiper /> */}</div>
+      <div>
+        <MySwiper />
+      </div>
       <div
         style={{
           marginTop: "50px",

@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import {
   BrowserView,
   MobileView,
-  isBrowser,
-  isMobile,
 } from "react-device-detect";
 
 // axios call
 import serverAPI from "./api/serverAPI";
+
+import ContactForm from "./pages/ContactForm/ContactForm";
 
 import Navbar from "./components/Navbar";
 import NavbarMob from "./components/NavbarMob";
@@ -23,36 +23,16 @@ import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
-import ContactForm from "./pages/ContactForm/ContactForm";
 
 
 function App() {
   const [mode, setMode] = useState("dark");
   const [user, setUser] = useState(null);
 
-  /*
-  // Using the API created with Node and Express to fetch all users
-  const [users, setUsers] = useState([])
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try{
-        const response = await serverAPI.get('/users')
-        if(response && response.data){
-          console.log('Users fetched: ', response.data)
-          setUsers(response.data)
-        }
-      } catch (err) {
-        console.log('Error: err.message')
-      }
-    };
-
-    fetchUsers()
-  }, []) */
-
   return (
     <div className={`App-${mode}`}>
       <BrowserView>
-        <Navbar mode={mode} setMode={setMode} />
+        <Navbar />
       </BrowserView>
       <MobileView>
         <NavbarMob mode={mode} setMode={setMode} />
@@ -90,7 +70,7 @@ function App() {
           element={<StorySituation mode={mode} />}
         />
         <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode} />} />
-        <Route 
+        <Route
           exact path='contact'
           element={<ContactForm />}
         />

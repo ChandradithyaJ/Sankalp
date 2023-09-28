@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import ModeChanger from "./ModeChanger";
 
-const Navbar = ({ mode, setMode }) => {
-  let changeMode = () => {
-    setMode(mode === "light" ? "dark" : "light"); // Toggle between light and dark mode
-  };
+const Navbar = () => {
   return (
-    <>
+    <div>
       <div className="large-screen">
         <nav>
           <div className="hamburger">
@@ -34,7 +30,7 @@ const Navbar = ({ mode, setMode }) => {
             </li>
             <li>
               <Link to="/contact" className="mainLinks">
-                Contact Us
+                Contact
               </Link>
             </li>
             <li>
@@ -50,10 +46,9 @@ const Navbar = ({ mode, setMode }) => {
               </Link>
             </li>
           </ul>
-          {/* <button onClick={changeMode}>Mode</button> */}
         </nav>
       </div>
-    </>
+    </div>
   );
 };
 

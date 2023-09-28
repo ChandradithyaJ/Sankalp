@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 import doctor from '../../../lotties/doctor.json'
 
+import { GoArrowLeft } from "react-icons/go"
+
 
 const StorySituation = ({ mode }) => {
 
@@ -15,37 +17,55 @@ const StorySituation = ({ mode }) => {
     const goToModules = () => {
         navigate('./play')
     }
+    const goback = () => {
+        navigate(-1)
+    }
 
     return (
         <div className={`Situation-${mode}`}>
-            <div className={`situation-name-${mode}`}>
-                <h3>Situation content placeholder</h3>
+            {/* <button className={`returnto-${mode}`} onClick={goback}> Back</button> */}
+            <div className={`returnprev-${mode}`}>
+                <GoArrowLeft className="returnto-${mode}" onClick={goback} style={{ color: '#00df9a', fontSize: '5vh' }} />
             </div>
-            <div className='lottieimg'>
-                {/* <SpeechBubble
+            <div className={`situation-name-${mode}`}>
+                <h1>situation name placeholder</h1>
+            </div>
+
+            <div className='situation_docninfo'>
+                <div className={`aboutsituation-${mode}`}>
+                    August 2, 2016 - Find centralized, trusted content and collaborate
+                    around the technologies you use most. Learn more about Collectives ...
+                    Connect and share knowledge within a single location that is structured and easy to search.
+                    Learn more about Teams ... I have a question about navbar-fixed-top. Well, I have a simple problem with it.
+                    My fixed navbar covers content, for example in "About us" page, it covers row with
+                </div>
+                <div className='lottieimg'>
+                    {/* <SpeechBubble
                     text={"I'm Dr Sankalp!"}
                     mode={mode}
                 /> */}
-                <div className='doctor-lottie'>
-                    <Lottie
-                        animationData={doctor}
-                        loop={true}
-                        autoPlay={true}
-                        style={{ height: { lottieDim }, width: { lottieDim } }}
-                    />
-                </div>
+                    <div className='doctor-lottie'>
+                        <Lottie
+                            animationData={doctor}
+                            loop={true}
+                            autoPlay={true}
+                            style={{ height: { lottieDim }, width: { lottieDim } }}
+                        />
+                    </div>
 
-                {/* <div
+                    {/* <div
                     className={`back-to-story-${mode}`}
                     onClick={backToStory}
                 >
                     Go Back to the Story
                 </div> */}
 
-                <div>
-                    <button className={`goto-story-${mode}`} onClick={goToModules}>Start Conversing</button>
+                    <div>
+                        <button className={`goto-story-${mode}`} onClick={goToModules}>Start Conversing</button>
+                    </div>
                 </div>
             </div>
+
         </div>
     )
 }

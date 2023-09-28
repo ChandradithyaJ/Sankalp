@@ -1,19 +1,11 @@
 .story-select-light {
     height: 100vh;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
 }
 
 .story-select-dark {
     height: 100vh;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
 
 }
 
@@ -22,15 +14,14 @@
 }
 
 .bacgrd2-dark {
-    padding-top: 10vh;
-    height: 100vh;
+    padding-top: 1vh;
+    height: 50vh;
     width: 100%;
     text-align: center;
     color: #00df9a;
     font: bold;
     font-family:'Courier New', Courier, monospace;
     font-size: xxx-large;
-    overflow: hidden;
 }
 
 .bacgrd2-light {

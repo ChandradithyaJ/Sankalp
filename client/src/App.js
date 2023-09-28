@@ -10,6 +10,8 @@ import {
 // axios call
 import serverAPI from "./api/serverAPI";
 
+import ContactForm from "./pages/ContactForm/ContactForm";
+
 import Navbar from "./components/Navbar";
 import NavbarMob from "./components/NavbarMob";
 
@@ -23,7 +25,6 @@ import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
-import Contact from "./pages/ContactUs/Contact";
 
 
 function App() {
@@ -51,13 +52,15 @@ function App() {
 
   return (
     <div className={`App-${mode}`}>
-      <BrowserView>
-        <Navbar mode={mode} setMode={setMode} />
-      </BrowserView>
-      <MobileView>
-        <NavbarMob mode={mode} setMode={setMode} />
-      </MobileView>
-
+      <div>
+        <BrowserView>
+          <Navbar mode={mode} setMode={setMode} />
+        </BrowserView>
+        <MobileView>
+          <NavbarMob mode={mode} setMode={setMode} />
+        </MobileView>
+      </div>
+      <div>
       <Routes>
         <Route exact path="home" element={<Home />} />
         <Route exact path="/ChatBox" element={<ChatBox />} />
@@ -90,7 +93,7 @@ function App() {
           element={<StorySituation mode={mode} />}
         />
         <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode} />} />
-        <Route exact path="contact" element={<Contact mode={mode} />} />
+        <Route exact path="contact" element={<ContactForm />} />
         <Route
           exact
           path="profile"
@@ -106,6 +109,7 @@ function App() {
           element={<Navigate to='/login' />}
         />
       </Routes>
+      </div>
     </div>
   );
 }

@@ -16,8 +16,6 @@ function Home({ mode }) {
     document.body.className = isDarkMode ? "dark-mode" : "light-mode";
   }, [isDarkMode]);
 
-
-
   return (
     <div className={`Home ${isDarkMode ? "Home--dark" : "Home--light"}`}>
       <div
@@ -26,9 +24,7 @@ function Home({ mode }) {
           marginRight: "20px",
           marginLeft: "20px",
         }}
-      >
-        
-      </div>
+      ></div>
       <div>
         <h1>
           <div class="highlighted-neon-text">Welcome to your MindSpace</div>
@@ -41,13 +37,10 @@ function Home({ mode }) {
           marginRight: "20px",
           marginLeft: "20px",
         }}
-      >
-      </div>
+      ></div>
       <div className="highlight-text-header">Whats Happening? </div>
       <div class="highlighted-neon-text">Latest News</div>
-      <div>
-        <MySwiper />
-      </div>
+      <div>{/* <MySwiper /> */}</div>
       <div
         style={{
           marginTop: "50px",
@@ -80,32 +73,31 @@ function Home({ mode }) {
               alt="Feature 1"
             />
             <div>
-            <h2>Story Mode </h2>
-            <p>lorem ipsum</p>
+              <h2>Story Mode </h2>
+              <p>lorem ipsum</p>
             </div>
           </div>
           <div className="icon">
-          <BsFillCaretDownFill size={100}/>
+            <BsFillCaretDownFill size={100} />
           </div>
           <div className="flowChart">
-
             <h2>Chat with BOT</h2>
             <img
               src="https://images.theconversation.com/files/454716/original/file-20220328-15-1rfv76b.jpg?ixlib=rb-1.1.0&rect=16%2C0%2C3578%2C1880&q=45&auto=format&w=926&fit=clip"
               alt="Feature 1"
             />
             <div>
-            <h3>Communicate Your Way</h3>
-            <p>
-              {" "}
-              Try Cheering Up our Friend BOT and earn credits. Tap into the
-              world of MindSpace.
-            </p>
+              <h3>Communicate Your Way</h3>
+              <p>
+                {" "}
+                Try Cheering Up our Friend BOT and earn credits. Tap into the
+                world of MindSpace.
+              </p>
             </div>
           </div>
-          
+
           <div className="icon">
-          <BsFillCaretDownFill size={100}/>
+            <BsFillCaretDownFill size={100} />
           </div>
 
           <div className="flowChart">
@@ -115,15 +107,14 @@ function Home({ mode }) {
               alt="Feature 1"
             />
             <div>
-            <h2>Latest News </h2>
-            <p>
-              Get aware about the latest researches and updates on mental
-              health.
-            </p>
+              <h2>Latest News </h2>
+              <p>
+                Get aware about the latest researches and updates on mental
+                health.
+              </p>
             </div>
           </div>
         </div>
-    
       </div>
     </div>
   );

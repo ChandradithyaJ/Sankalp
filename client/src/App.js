@@ -23,7 +23,6 @@ import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
-import ContactForm from "./pages/ContactForm/ContactForm";
 
 
 function App() {
@@ -71,7 +70,7 @@ function App() {
           element={<StorySituation mode={mode} />}
         />
         <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode} />} />
-        <Route 
+        <Route
           exact path='contact'
           element={<ContactForm />}
         />
@@ -89,7 +88,6 @@ function App() {
           element={<Navigate to='/login' />}
         />
       </Routes>
-      </div>
     </div>
   );
 }

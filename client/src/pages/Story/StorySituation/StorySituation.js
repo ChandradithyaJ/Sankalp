@@ -37,7 +37,9 @@ const StorySituation = ({ mode }) => {
                     around the technologies you use most. Learn more about Collectives ...
                     Connect and share knowledge within a single location that is structured and easy to search.
                     Learn more about Teams ... I have a question about navbar-fixed-top. Well, I have a simple problem with it.
-                    My fixed navbar covers content, for example in "About us" page, it covers row with
+                    My fixed navbar covers content, for example in "About us" page, it covers row with are knowledge within a single location that is structured and easy to search.
+                    Learn more about Teams ... I have a question about navbar-fixed-top. Well, I have a simple problem with it.
+                    My fixed navbar covers content, for 
                 </div>
                 <div className='lottieimg'>
                     {/* <SpeechBubble

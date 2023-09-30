@@ -23,6 +23,7 @@ import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import UpdateProfile  from "./pages/UserProfile/UpdateProfile";
 
 
 function App() {
@@ -83,6 +84,13 @@ function App() {
             setUser={setUser}
           />}
         />
+        <Route 
+        exact path="profile/updateProfile"
+          element={<UpdateProfile
+            mode={mode}
+            setMode={setMode}
+          />}
+            />
         <Route
           path='*'
           element={<Navigate to='/login' />}

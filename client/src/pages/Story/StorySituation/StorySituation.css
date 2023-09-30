@@ -41,9 +41,29 @@
     text-align: center;
     align-items: center;
     width: 50%;
-    overflow-wrap: break-word;
+    height: 100%;
+    overflow-wrap: wrap;
     overflow-y: scroll;
 
+}
+
+.aboutsituation-dark::-webkit-scrollbar {
+    width: 7px;
+    /* width of the entire scrollbar */
+}
+
+.aboutsituation-dark::-webkit-scrollbar-track {
+    background: orange;
+    /* color of the tracking area */
+}
+
+.aboutsituation-dark::-webkit-scrollbar-thumb {
+    background-color: blue;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid orange;
+    /* creates padding around scroll thumb */
 }
 
 /* .returnto-dark{

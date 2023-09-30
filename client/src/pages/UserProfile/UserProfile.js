@@ -1,13 +1,16 @@
 import './UserProfile.css'
 import serverAPI from '../../api/serverAPI'
 import { isExpired } from 'react-jwt'
+import { useNavigate } from 'react-router-dom'
 
 import ModeToggle from './ModeToggle'
 import './ModeToggle.css'
+import { UpdateProfile } from './UpdateProfile'
 
 const UserProfile = ({ mode, setMode, user, setUser }) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
 
+    const navigate = useNavigate()
     /* whenever the user makes a JWT-required API call, we will update
     if expired */
     const checkJWTvalidity = async () => {
@@ -81,6 +84,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         }
     }
 
+
     return(
         <div className={`profile-page-${mode}`}>
             <div className='user-details'>
@@ -100,7 +104,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                     <div className='edit-container'>
                         <div
                             className={`edit-button-profile-${mode}`}
-                            onClick={editProfile}
+                            onClick={()=>{navigate('./updateProfile')}}
                         >
                             Edit Profile
                         </div>

@@ -1,57 +1,53 @@
-const { jwt_expire_time, salt, db } = require('../config/databaseConfig.js');
+const User = require('../model/User')
+const { jwt_expire_time, salt } = require('../config/jwtConfig.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
-// Testing with JSON files
-const fsPromises = require('fs').promises
-const path = require('path')
-
-const usersData = {
-    users: db,
-    setUsers: (newUsers) => { this.users = newUsers }
-}
 
 const handleNewUser = async (req, res) => {
     // validity check
     if (!req?.body?.username || !req?.body?.email || !req?.body?.password) {
         return res.status(400).json({ 'message': 'Username, email and password are required' })
     }
+
     // check if user already exists
-    if (usersData.users.find((user) => user.username === req?.body?.username)) {
-        return res.status(400).json({ 'message': 'Username already exists' })
-    }
-    if (usersData.users.find((user) => user.email === req?.body?.email)) {
-        return res.status(400).json({ 'message': 'A user with this email already exists' })
-    }
+    const duplicateUsername = await User.findOne({ username: req?.body?.username }).exec()
+    if (duplicateUsername) return res.status(409).json({ 'message': 'Username already exists' }) // Conflict
+
+    const duplicateEmail = await User.findOne({ email: req?.body?.email }).exec()
+    if (duplicateEmail) return res.status(409).json({ 'message': 'A user with this email already exists' }) // Conflict
 
     // hashing password
     try {
         const hashedPwd = await bcrypt.hash(req?.body?.password, salt)
         const newUser = {
-            id: usersData.users[usersData.users?.length - 1].id + 1 || 1,
             username: req?.body?.username,
             password: hashedPwd,
             email: req?.body?.email,
+            bio: '',
             profilepic: null,
+            mode: 'dark',
             badges: {
                 firstStory: false,
                 firstThree: false
             }
         }
 
-        usersData.setUsers([...usersData.users, newUser])
+        // create access token to use
         const accessToken = jwt.sign(
             newUser,
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: jwt_expire_time }
         )
 
-        await fsPromises.writeFile(
-            path.join(__dirname, '..', 'model', 'users.json'),
-            JSON.stringify([...usersData.users, newUser])
-        )
+        const result = await User.create({
+            username: req?.body?.username,
+            password: hashedPwd,
+            email: req?.body?.email,
+        })
+        console.log(result)
 
         newUser['accessToken'] = accessToken
+        newUser['_id'] = result._id
 
         res.status(201).json({ newUser })
     } catch (err) {

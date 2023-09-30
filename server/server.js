@@ -1,12 +1,17 @@
 /*** Server run by Node and Express ***/
 
+require('dotenv').config()
+
 const express = require('express') // ExpressJS
 const cors = require('cors')
 
 const { corsOptions } = require('./config/corsOptions')
 const verifyJWT = require('./middleware/verifyJWT')
+const mongoose = require('mongoose')
+const connectDB = require('./config/dbConn')
 
 const app = express() // main server component
+connectDB(); // connect to MongoDB
 
 const PORT = process.env.PORT || 3500 // running on PORT
 
@@ -34,4 +39,7 @@ app.use('/users', require('./routes/api/users'))
 app.use('/stories', require('./routes/api/stories'))
 
 // run the app on PORT
-app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`))
+mongoose.connection.once('open', () => {
+    console.log('Connected to MongoDB')
+    app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`))
+})

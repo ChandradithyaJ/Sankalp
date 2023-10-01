@@ -27,48 +27,44 @@ const UpdateProfile = ({ mode, setMode }) => {
     <div className={`update-profile-main-${mode}`}>
       <h1 className={`update-profile-heading-${mode}`}> Update Profile </h1>
       <form onSubmit={handleSubmit} className="update-profile-form">
-        <div className='bac1'>
-           <img 
-              className={`profile-pic-${mode}`}
-              src={'./images/anonymousProfilePic${mode}.jpg'}
-              alt='anonymousProfilePic.jpg'
+        <div className='update-profile-container'>
+          <div className='image'>
+            <img
+              className={`updatedprofile-pic-${mode}`}
+              src={profilePic}
+              alt='profile'
             />
-          <label className={`update-profile-label-${mode}`}>
-            Update Profile Picture:
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileUpload}
-            />
-            {profilePic && (
-              <img src={profilePic} alt="Profile" style={{ maxWidth: '100px' }} />
-            )}
-
-          </label>
-          <div className='bac2'>
-            <label className={`update-profile-label-${mode}`}>
-              Username:
-              <input
-                placeholder='Username'
-                type="text"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-              />
-            </label>
-            <br />
-            <label className={`update-profile-label-${mode}`}>
-              bio:
-              <input
-                placeholder='Enter here'
-                type="Bio"
-                value={bio}
-                onChange={(event) => setBio(event.target.value)}
-              />
-            </label>
+            <br /><br /><br /><br />
           </div>
+          <div className={`upload-profilepic-${mode}`}>
+            <input type='file' id="uploadbtn" onChange={handleFileUpload}/>
+            <label for='uploadbtn'>Upload File</label>
+          </div>
+          <br />
           
 
+
         </div>
+        <label className={`update-profile-label-${mode}`}>
+            Username:
+            <input
+              placeholder='Username'
+              type="text"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </label>
+          <br />
+          
+          <label className={`update-profile-label-${mode}`}>
+            bio:
+            <input
+              placeholder='Bio'
+              type="Bio"
+              value={bio}
+              onChange={(event) => setBio(event.target.value)}
+            />
+          </label>
         <br />
         <br />
         <div className={'update-profile-allbuttons'}>
@@ -76,6 +72,7 @@ const UpdateProfile = ({ mode, setMode }) => {
             className={`update-profile-savebutton-${mode}`}
             onClick={() => navigate('/profile')}
           >Save Changes</button>
+          <br />
           <button
             onClick={() => navigate('/profile')}
             className={`update-profile-cancelbutton-${mode}`}

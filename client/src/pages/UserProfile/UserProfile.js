@@ -17,18 +17,18 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         const { tokenIsExpired } = isExpired(user.accessToken)
 
         console.log(tokenIsExpired)
-        if(tokenIsExpired){
+        if (tokenIsExpired) {
             const userID = {
                 'id': user.id
             }
 
-            try{
+            try {
                 const response = await serverAPI.put('/updateJWT', userID)
                 if (response && response.data) {
                     console.log('Edit Profile Response: ', response.data)
 
-                    const updatedUser = { 
-                        ...user, accessToken: response.data 
+                    const updatedUser = {
+                        ...user, accessToken: response.data
                     }
                     setUser(updatedUser)
                 }
@@ -52,9 +52,9 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
             }
         }
 
-        try{
+        try {
             const response = await serverAPI.put('/users', editDetails, config)
-            if(response && response.data){
+            if (response && response.data) {
                 console.log('Edit Profile Response: ', response.data)
             }
         } catch (err) {
@@ -64,7 +64,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
 
     const deleteProfile = async () => {
         checkJWTvalidity()
-        
+
         const config = {
             'headers': {
                 'authorization': `Bearer ${user.accessToken}`
@@ -79,18 +79,19 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
             if (response && response.data) {
                 console.log('Delete Profile Response: ', response.data)
             }
+            navigate('./login')
         } catch (err) {
             console.log(err.message)
         }
     }
 
 
-    return(
+    return (
         <div className={`profile-page-${mode}`}>
             <div className='user-details'>
                 <div className='user-background-image'></div>
                 <div className='profile-pic-container'>
-                    <img 
+                    <img
                         className={`profile-pic-${mode}`}
                         src={`./images/anonymousProfilePic${mode}.jpg`}
                         alt='anonymousProfilePic.jpg'
@@ -104,7 +105,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                     <div className='edit-container'>
                         <div
                             className={`edit-button-profile-${mode}`}
-                            onClick={()=>{console.log("i");navigate('./updateProfile')}}
+                            onClick={() => { console.log("i"); navigate('./updateProfile') }}
                         >
                             Edit Profile
                         </div>

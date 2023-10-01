@@ -1,55 +1,44 @@
-const { db } = require('../config/databaseConfig.js');
-const jwt = require('jsonwebtoken');
-require('dotenv').config()
+const User = require('../model/User')
 
-const usersData = {
-    users: db,
-    setUsers: (newUsers) => { this.users = newUsers },  
+const getAllUsers = async (req, res) => {
+    const users = await User.find()
+    if(!users) return res.status(204).json({ 'message': 'No users found' })
+    res.json(users)
 }
 
-const getAllUsers = (req, res) => {
-    res.status(200).json(usersData.users)
-}
-
-const updateUser = (req, res) => {
-    // validity check includes jwt verification username & password not required
-    // jwt and id required
+const updateUser = async (req, res) => {
+    // user id required in request
     if (!req?.body?.id) {
         return res.status(400).json({ 'message': 'User ID required' })
     }
     // check if user exists
-    const reqUser = usersData.users.find((user) => user.id === req?.body?.id)
+    const reqUser = await User.findOne({ _id: req.body.id }).exec()
     if(!reqUser){
-        return res.status(400).json({ 'message': 'User does not exist' })
+        return res.status(204).json({ 'message': 'User with that ID does not exist' })
     }
 
     if (req?.body?.username) reqUser.username = req?.body?.username
+    if (req?.body?.bio) reqUser.bio = req?.body?.bio
     if(req?.body?.profilepic) reqUser.profilepic = req?.body?.profilepic
     if (req.body?.badges) reqUser.badges = req?.body?.badges
 
-    const filteredUsers = usersData.users.filter((user) => user.id !== req?.body?.id)
-    const unsortedUsersArray = [...filteredUsers, reqUser]
-    usersData.setUsers(unsortedUsersArray.sort((a, b) => {
-        a.id > b.id ? 1 :
-            a.id < b.id ? -1 :
-                0
-    }))
+    const result = await reqUser.save()
+    console.log(result)
 
     return res.status(201).json(reqUser)
 }
 
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
     // check for id to delete
     if (!req?.body?.id) { return res.status(400).json({ 'message': 'User ID required' })}
 
     // check if user exists
-    const reqUser = usersData.users.find((user) => user.id === req?.body?.id)
+    const reqUser = await User.findOne({ _id: req.body.id }).exec()
     if (!reqUser) {
-        return res.status(400).json({ 'message': 'User does not exist' })
+        return res.status(204).json({ 'message': 'User with that ID does not exist' })
     }
 
-    const filteredUsers = usersData.users.filter((user) => user.id !== req?.body?.id)
-    usersData.setUsers([...filteredUsers])
+    await reqUser.deleteOne({ _id: req.body.id })
     res.status(201).json({ 'message': `Deleted ${reqUser}` })
 }
 

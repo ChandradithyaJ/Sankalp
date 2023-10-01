@@ -1,24 +1,17 @@
-const { jwt_expire_time, db } = require('../config/databaseConfig.js');
+const User = require('../model/User')
+const { jwt_expire_time } = require('../config/jwtConfig.js')
 const jwt = require('jsonwebtoken');
-require('dotenv').config()
 
-const usersData = {
-    users: db,
-    setUsers: (newUsers) => { this.users = newUsers },
-}
+const updateToken = async (req, res) => {
+    // in case of token expiry, user id is sent to update the token
 
-const updateToken = (req, res) => {
-    // in case of token expiry (before expiry), user id and prev token is sent to update token
-
-    // validity check includes jwt verification
-
-    // jwt and id required
+    // validity check includes JWT verification
     if (!req?.body?.id) { return res.status(400).json({ 'message': 'User ID required' }) }
 
     // check if user exists
-    const reqUser = usersData.users.find((user) => user.id === req?.body?.id)
+    const reqUser = await User.findOne({ _id: req?.body?.id}).exec()
 
-    if (!reqUser) res.status(400).json({ 'message': 'User not found' })
+    if (!reqUser) return res.status(400).json({ 'message': 'User not found' })
 
     try {
         const accessToken = jwt.sign(

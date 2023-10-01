@@ -37,7 +37,15 @@ function Login({ mode, user, setUser }) {
       }
     } catch (err) {
       console.log(err.message)
-      alert('Unable to login user. Please check your internet connection and try again.')
+      console.log(err.response.status)
+      console.log(err.response.data.message)
+
+      if(err.response.status == 409){
+        alert(err.response.data.message)
+      }
+      else{
+        alert('Unable to login user. Please check your internet connection and try again.')
+      }
     }
   }
 
@@ -71,8 +79,16 @@ function Login({ mode, user, setUser }) {
         navigate('/profile')
       }
     } catch (err) {
-      console.log(err.message)
-      alert('Unable to register user. Please check your internet connection and try again.')
+      console.log(err)
+      console.log(err.response.status)
+      console.log(err.response.data.message)
+
+      if (err.response.status == 409) {
+        alert(err.response.data.message)
+      }
+      else {
+        alert('Unable to login user. Please check your internet connection and try again.')
+      }
     }
   }
 

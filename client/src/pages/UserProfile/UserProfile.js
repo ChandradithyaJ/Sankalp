@@ -19,7 +19,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         console.log(tokenIsExpired)
         if (tokenIsExpired) {
             const userID = {
-                'id': user.id
+                'id': user._id
             }
 
             try {
@@ -42,8 +42,8 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         checkJWTvalidity()
 
         const editDetails = {
-            'id': user.id,
-            'username': 'Raja S'
+            'id': user._id,
+            'username': 'Chandradithya J'
         }
 
         const config = {
@@ -70,7 +70,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                 'authorization': `Bearer ${user.accessToken}`
             },
             'data': {
-                'id': user.id
+                'id': user._id
             }
         }
 
@@ -105,7 +105,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                     <div className='edit-container'>
                         <div
                             className={`edit-button-profile-${mode}`}
-                            onClick={() => { console.log("i"); navigate('./updateProfile') }}
+                            onClick={() => { navigate('./updateProfile') }}
                         >
                             Edit Profile
                         </div>

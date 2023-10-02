@@ -3,7 +3,6 @@ const path = require('path');
 const router = express.Router();
 const usersController = require('../../controllers/usersController');
 
-
 router.get('/', usersController.getAllUsers);
 router.put('/', usersController.updateUser);
 router.delete('/', usersController.deleteUser);

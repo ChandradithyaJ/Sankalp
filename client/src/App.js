@@ -27,8 +27,8 @@ import UpdateProfile  from "./pages/UserProfile/UpdateProfile";
 
 
 function App() {
-  const [mode, setMode] = useState("dark");
   const [user, setUser] = useState(null);
+  const [mode, setMode] = useState(user?.mode || "dark");
 
   return (
     <div className={`App-${mode}`}>
@@ -87,6 +87,8 @@ function App() {
         <Route 
         exact path="profile/updateProfile"
           element={<UpdateProfile
+            user={user}
+            setUser={setUser}
             mode={mode}
             setMode={setMode}
           />}

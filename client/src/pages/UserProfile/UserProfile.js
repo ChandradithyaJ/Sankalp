@@ -5,10 +5,14 @@ import { useNavigate } from 'react-router-dom'
 
 import ModeToggle from './ModeToggle'
 import './ModeToggle.css'
-import { UpdateProfile } from './UpdateProfile'
+import { useState, useEffect } from 'react'
 
 const UserProfile = ({ mode, setMode, user, setUser }) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
+
+    const [profilePic, setProfilePic] = useState(
+        user.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user.profilepic
+    )
 
     const navigate = useNavigate()
     /* whenever the user makes a JWT-required API call, we will update
@@ -40,26 +44,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
 
     const editProfile = async () => {
         checkJWTvalidity()
-
-        const editDetails = {
-            'id': user._id,
-            'username': 'Chandradithya J'
-        }
-
-        const config = {
-            'headers': {
-                'authorization': `Bearer ${user.accessToken}`
-            }
-        }
-
-        try {
-            const response = await serverAPI.put('/users', editDetails, config)
-            if (response && response.data) {
-                console.log('Edit Profile Response: ', response.data)
-            }
-        } catch (err) {
-            console.log(err.message)
-        }
+        navigate('./updateProfile')
     }
 
     const deleteProfile = async () => {
@@ -93,8 +78,8 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                 <div className='profile-pic-container'>
                     <img
                         className={`profile-pic-${mode}`}
-                        src={`./images/anonymousProfilePic${mode}.jpg`}
-                        alt='anonymousProfilePic.jpg'
+                        src={profilePic}
+                        alt={profilePic}
                     />
                     <p className='username'>
                         {user?.username ? user?.username : 'Guest'}
@@ -105,11 +90,16 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                     <div className='edit-container'>
                         <div
                             className={`edit-button-profile-${mode}`}
-                            onClick={() => { navigate('./updateProfile') }}
+                            onClick={editProfile}
                         >
                             Edit Profile
                         </div>
-                        <ModeToggle mode={mode} setMode={setMode} />
+                        <ModeToggle 
+                            mode={mode}
+                            setMode={setMode}
+                            user={user}
+                            setUser={setUser}
+                        />
                     </div>
                 </div>
                 <div className='badges-container'>

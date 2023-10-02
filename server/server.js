@@ -9,9 +9,9 @@ const { corsOptions } = require('./config/corsOptions')
 const verifyJWT = require('./middleware/verifyJWT')
 const mongoose = require('mongoose')
 const connectDB = require('./config/dbConn')
+connectDB() // connect to MongoDB
 
 const app = express() // main server component
-connectDB(); // connect to MongoDB
 
 const PORT = process.env.PORT || 3500 // running on PORT
 
@@ -19,10 +19,10 @@ const PORT = process.env.PORT || 3500 // running on PORT
 app.use(cors(corsOptions))
 
 // built-in middleware for form data (urlencoded data)
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 
 // built-in middleware for json
-app.use(express.json())
+app.use(express.json({ limit: '50mb' }))
 
 // register route
 app.use('/register', require('./routes/register'))
@@ -30,6 +30,8 @@ app.use('/register', require('./routes/register'))
 app.use('/auth', require('./routes/auth'))
 // update JWT if expired route
 app.use('/updateJWT', require('./routes/updateJWT'))
+// profile pic routes
+app.use('/cloudinary', require('./routes/api/pics'))
 
 // custom middleware for verifying JWTs
 app.use(verifyJWT)

@@ -1,32 +1,95 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import serverAPI from '../../api/serverAPI'
 
 import "./UpdateProfile.css"
 
-const UpdateProfile = ({ mode, setMode }) => {
-  const [username, setUsername] = useState('');
-  const [profilePic, setProfilePic] = useState('');
-  const [bio, setBio] = useState('');
-  const navigate = useNavigate();
+const UpdateProfile = ({ mode, user, setUser }) => {
+  const [username, setUsername] = useState(user?.username || 'Guest')
+  const [profilePic, setProfilePic] = useState(
+    user.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user.profilepic
+  )
+  const [bio, setBio] = useState(user?.bio || '')
+  const [changedProfilePic, setChangedProfilePic] = useState(false)
+  const navigate = useNavigate()
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // TODO: Handle form submission
-  };
-
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      if (reader.result.byteLength > 10485760) {
+        alert('Please upload a pic smaller than 10 MB.')
+        return
+      }
+    }
     reader.onloadend = () => {
-      setProfilePic(reader.result);
-    };
-  };
+      setChangedProfilePic(true)
+      setProfilePic(reader.result)
+    }
+  }
+
+  // upload the profile pic to cloudinary
+  const uploadProfilePic = async () => {
+    if(!changedProfilePic) return
+
+    const publicIdForPic = `${user?._id}profilepic` || null
+
+    try{
+      const response = await serverAPI.post('/cloudinary/upload-pic', {
+        data: profilePic,
+        publicID: publicIdForPic
+      })
+      if(response && response.data){
+        console.log(response.data)
+        setProfilePic(response.data)
+      }
+    } catch (err) {
+        console.log(err)
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    await uploadProfilePic()
+
+    const newProfilePic = (changedProfilePic) ? profilePic : null
+    setUser({ ...user,
+      profilepic: newProfilePic,
+      username: username,
+      bio: bio
+    })
+
+    const editDetails = {
+      id: user._id,
+      profilepic: newProfilePic,
+      username: username,
+      bio: bio
+    }
+
+    const config = {
+      'headers': {
+        'authorization': `Bearer ${user?.accessToken}`
+      }
+    }
+
+    try {
+      const response = await serverAPI.put('/users', editDetails, config)
+      if (response && response.data) {
+        console.log('Edit Profile Response: ', response.data)
+      }
+    } catch (err) {
+      console.log(err.message)
+    }
+    
+    navigate('/profile')
+  }
 
   return (
     <div className={`update-profile-main-${mode}`}>
       <h1 className={`update-profile-heading-${mode}`}> Update Profile </h1>
-      <form onSubmit={handleSubmit} className="update-profile-form">
+      <form onSubmit={(e) => handleSubmit(e)} className="update-profile-form">
         <div className='update-profile-container'>
           <div className='image'>
             <img
@@ -41,9 +104,6 @@ const UpdateProfile = ({ mode, setMode }) => {
             <label for='uploadbtn'>Upload File</label>
           </div>
           <br />
-          
-
-
         </div>
         <label className={`update-profile-label-${mode}`}>
             Username:
@@ -51,7 +111,7 @@ const UpdateProfile = ({ mode, setMode }) => {
               placeholder='Username'
               type="text"
               value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </label>
           <br />
@@ -62,7 +122,7 @@ const UpdateProfile = ({ mode, setMode }) => {
               placeholder='Bio'
               type="Bio"
               value={bio}
-              onChange={(event) => setBio(event.target.value)}
+              onChange={(e) => setBio(e.target.value)}
             />
           </label>
         <br />
@@ -70,7 +130,6 @@ const UpdateProfile = ({ mode, setMode }) => {
         <div className={'update-profile-allbuttons'}>
           <button type="submit"
             className={`update-profile-savebutton-${mode}`}
-            onClick={() => navigate('/profile')}
           >Save Changes</button>
           <br />
           <button
@@ -82,7 +141,7 @@ const UpdateProfile = ({ mode, setMode }) => {
 
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default UpdateProfile;
+export default UpdateProfile

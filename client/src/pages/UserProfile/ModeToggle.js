@@ -1,7 +1,35 @@
-const ModeToggle = ({ mode, setMode }) => {
-    const changeMode = (e) => {
+import serverAPI from "../../api/serverAPI" 
+
+const ModeToggle = ({ mode, setMode, user,  setUser }) => {
+    const changeMode = async (e) => {
         e.preventDefault()
         const newMode = mode === 'dark' ? 'light' : 'dark'
+
+        const editDetails = {
+            id: user._id,
+            mode: newMode
+        }
+
+        const config = {
+            'headers': {
+                'authorization': `Bearer ${user?.accessToken}`
+            }
+        }
+
+        try {
+            const response = await serverAPI.put('/users', editDetails, config)
+            if (response && response.data) {
+                console.log('Edit Profile Response: ', response.data)
+            }
+        } catch (err) {
+            console.log(err.message)
+        }
+
+        setUser({
+            ...user,
+            mode: newMode
+        })
+
         setMode(newMode)
         console.log('Toggled to ', mode, ' mode')
     }

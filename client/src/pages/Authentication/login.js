@@ -42,9 +42,8 @@ function Login({ mode, user, setUser }) {
 
       if(err.response.status == 409){
         alert(err.response.data.message)
-      }
-      else{
-        alert('Unable to login user. Please check your internet connection and try again.')
+      } else{
+        alert('Unable to login. Please check your internet connection and try again.')
       }
     }
   }
@@ -87,7 +86,7 @@ function Login({ mode, user, setUser }) {
         alert(err.response.data.message)
       }
       else {
-        alert('Unable to login user. Please check your internet connection and try again.')
+        alert('Unable to register. Please check your internet connection and try again.')
       }
     }
   }

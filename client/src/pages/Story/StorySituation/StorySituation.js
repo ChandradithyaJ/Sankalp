@@ -55,13 +55,6 @@ const StorySituation = ({ mode }) => {
                         />
                     </div>
 
-                    {/* <div
-                    className={`back-to-story-${mode}`}
-                    onClick={backToStory}
-                >
-                    Go Back to the Story
-                </div> */}
-
                     <div>
                         <button className={`goto-story-${mode}`} onClick={goToModules}>Start Conversing</button>
                     </div>

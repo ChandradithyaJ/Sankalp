@@ -22,7 +22,7 @@ const userSchema = new Schema({
     },
     profilepic: {
         type: String,
-        default: null
+        default: ''
     },
     mode: {
         type: String,

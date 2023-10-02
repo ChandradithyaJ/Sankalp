@@ -102,21 +102,45 @@
     box-shadow: 0 5px 15px rgb(135, 131, 131);
 }
 
+.logout-button-profile-light, .logout-button-profile-dark{
+    border: 1px solid;
+    background-color: rgb(67, 113, 241);
+    color: rgb(248, 245, 245);
+    font-weight: bold;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: 0.5s;
+    word-wrap: break-word;
+}
+
+.logout-button-profile-dark:hover{
+    box-shadow: 0 5px 15px white;
+}
+
+.logout-button-profile-light:hover{
+    box-shadow: 0 5px 15px rgb(135, 131, 131);
+}
+
 @media (max-width: 890px) and (min-width: 751px){
-    .edit-button-profile-light, .edit-button-profile-dark{
+    .edit-button-profile-light, .edit-button-profile-dark, .logout-button-profile-dark, .logout-button-profile-light{
         font-size: small;
     }
 }
 
 @media (max-width: 750px) and (min-width: 381px) {
-    .edit-button-profile-light, .edit-button-profile-dark{
+    .edit-button-profile-light, .edit-button-profile-dark, .logout-button-profile-dark, .logout-button-profile-light{
         width: 20vw;
         font-size: small;
     }
 }
 
 @media (max-width: 380px){
-    .edit-button-profile-light, .edit-button-profile-dark{
+    .edit-button-profile-light, .edit-button-profile-dark, .logout-button-profile-dark, .logout-button-profile-light{
         width: 25vw;
         font-size: small;
     }

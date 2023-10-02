@@ -47,6 +47,11 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         navigate('./updateProfile')
     }
 
+    const logout = () => { 
+        setUser(null)
+        navigate('/login')
+    }
+
     const deleteProfile = async () => {
         checkJWTvalidity()
 
@@ -100,6 +105,12 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                             user={user}
                             setUser={setUser}
                         />
+                        <div
+                            className={`logout-button-profile-${mode}`}
+                            onClick={logout}
+                        >
+                            Log Out
+                        </div>
                     </div>
                 </div>
                 <div className='badges-container'>

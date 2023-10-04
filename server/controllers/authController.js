@@ -21,7 +21,7 @@ const handleLogin = async (req, res) => {
             { expiresIn: jwt_expire_time }
         )
         foundUser['accessToken'] = accessToken
-        return res.json({ foundUser })
+        return res.status(200).json({ foundUser })
     } else {
         return res.sendStatus(401)
     }

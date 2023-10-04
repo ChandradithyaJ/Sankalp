@@ -2,10 +2,10 @@ import './UserProfile.css'
 import serverAPI from '../../api/serverAPI'
 import { isExpired } from 'react-jwt'
 import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 import ModeToggle from './ModeToggle'
 import './ModeToggle.css'
-import { useState, useEffect } from 'react'
 
 const UserProfile = ({ mode, setMode, user, setUser }) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
@@ -55,23 +55,28 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
     const deleteProfile = async () => {
         checkJWTvalidity()
 
-        const config = {
-            'headers': {
-                'authorization': `Bearer ${user.accessToken}`
-            },
-            'data': {
-                'id': user._id
+        // JS Confirm Pop-up
+        if(window.confirm("Are you sure you want to delete your profile?")){
+            const config = {
+                'headers': {
+                    'authorization': `Bearer ${user.accessToken}`
+                },
+                'data': {
+                    'id': user._id
+                }
             }
-        }
 
-        try {
-            const response = await serverAPI.delete(`/users`, config)
-            if (response && response.data) {
-                console.log('Delete Profile Response: ', response.data)
+            try {
+                const response = await serverAPI.delete(`/users`, config)
+                if (response && response.data) {
+                    console.log('Delete Profile Response: ', response.data)
+                }
+                navigate('./login')
+            } catch (err) {
+                console.log(err.message)
             }
-            navigate('./login')
-        } catch (err) {
-            console.log(err.message)
+        } else{
+            // do nothing
         }
     }
 

@@ -9,6 +9,9 @@ const UpdateProfile = ({ mode, user, setUser }) => {
   const [profilePic, setProfilePic] = useState(
     user.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user.profilepic
   )
+  const [displayProfilePic, setDisplayProfilePic] = useState(
+    user.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user.profilepic
+  )
   const [bio, setBio] = useState(user?.bio || '')
   const [changedProfilePic, setChangedProfilePic] = useState(false)
   const navigate = useNavigate()
@@ -25,7 +28,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     }
     reader.onloadend = () => {
       setChangedProfilePic(true)
-      setProfilePic(reader.result)
+      setDisplayProfilePic(reader.result)
     }
   }
 
@@ -37,7 +40,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
 
     try{
       const response = await serverAPI.post('/cloudinary/upload-pic', {
-        data: profilePic,
+        data: displayProfilePic,
         publicID: publicIdForPic
       })
       if(response && response.data){
@@ -49,41 +52,47 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     }
   }
 
+  useEffect(() => {
+    const updateUserProfile = async () => {
+      if(!changedProfilePic) return
+      const newProfilePic = (changedProfilePic) ? profilePic : null
+      setUser({
+        ...user,
+        profilepic: newProfilePic,
+        username: username,
+        bio: bio
+      })
+
+      const editDetails = {
+        id: user._id,
+        profilepic: newProfilePic,
+        username: username,
+        bio: bio
+      }
+
+      const config = {
+        'headers': {
+          'authorization': `Bearer ${user?.accessToken}`
+        }
+      }
+
+      try {
+        const response = await serverAPI.put('/users', editDetails, config)
+        if (response && response.data) {
+          console.log('Edit Profile Response: ', response.data)
+        }
+      } catch (err) {
+        console.log(err.message)
+      }
+      navigate('/profile')
+    }
+    updateUserProfile()
+  }, [profilePic])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     await uploadProfilePic()
-
-    const newProfilePic = (changedProfilePic) ? profilePic : null
-    setUser({ ...user,
-      profilepic: newProfilePic,
-      username: username,
-      bio: bio
-    })
-
-    const editDetails = {
-      id: user._id,
-      profilepic: newProfilePic,
-      username: username,
-      bio: bio
-    }
-
-    const config = {
-      'headers': {
-        'authorization': `Bearer ${user?.accessToken}`
-      }
-    }
-
-    try {
-      const response = await serverAPI.put('/users', editDetails, config)
-      if (response && response.data) {
-        console.log('Edit Profile Response: ', response.data)
-      }
-    } catch (err) {
-      console.log(err.message)
-    }
     
-    navigate('/profile')
   }
 
   return (
@@ -94,7 +103,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
           <div className='image'>
             <img
               className={`updatedprofile-pic-${mode}`}
-              src={profilePic}
+              src={displayProfilePic}
               alt='profile'
             />
             <br /><br /><br /><br />

@@ -5,6 +5,7 @@ const StorySelect = ({ mode }) => {
 
     const placeholder = ['/images/lightmode.jpg', '/images/lightmode.jpg',
         '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg',]
+    const scoreholder = ['20% done', '0% done', '70% done', '0% done', ' 100% done', '50% done']
 
     const navigate = useNavigate()
     const goToModules = () => {

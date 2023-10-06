@@ -11,7 +11,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
     const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
 
     const [profilePic, setProfilePic] = useState(
-        user.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user.profilepic
+        user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` :  user?.profilepic
     )
 
     const navigate = useNavigate()

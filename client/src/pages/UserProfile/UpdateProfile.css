@@ -1,26 +1,36 @@
 .update-profile-main-dark {
   align-items: center;
+  background-image: url("/public/images/editprofiledark.jpg");
+  background-size: cover;
 }
 
 .update-profile-main-light {
   align-items: center;
+  background-image: url("/public/images/editprofilelight.jpg");
+  background-size: cover;
 }
 
 .update-profile-label-dark {
   display: block;
   margin-bottom: 10px;
-  color: #00df9a;
   padding-left: 10vh;
   padding-right: 10vh;
+  width: 50vw;
+  /*colored text in text box*/
+  -webkit-text-fill-color: orangered;
+  -webkit-opacity: 1;
+
 
 }
 
 .update-profile-label-light {
   display: block;
   margin-bottom: 10px;
-  color: rgb(205, 142, 7);
   padding-left: 10vh;
   padding-right: 10vh;
+  width: 50vw;
+  -webkit-text-fill-color: rgb(60, 216, 55);
+  -webkit-opacity: 1;
 
 }
 
@@ -280,6 +290,7 @@ body {
   .update-profile-savebutton-dark,
   .update-profile-savebutton-dark {
     width: 30vw;
+
   }
 }
 
@@ -290,5 +301,33 @@ body {
   .update-profile-savebutton-dark,
   .update-profile-savebutton-dark {
     width: 40vw;
+
+  }
+}
+
+
+/* username and bio  */
+
+@media (max-width: 1054px) and (min-width: 871px) {
+
+  .update-profile-label-dark,
+  .update-profile-label-light {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 870px) and (min-width: 441px) {
+
+  .update-profile-label-dark,
+  .update-profile-label-light {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 440px) and (min-width: 351px) {
+
+  .update-profile-label-dark,
+  .update-profile-label-light {
+    width: 90vw;
   }
 }

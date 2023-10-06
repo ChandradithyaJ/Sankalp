@@ -4,13 +4,12 @@ import serverAPI from '../../api/serverAPI'
 
 import "./UpdateProfile.css"
 
+
 const UpdateProfile = ({ mode, user, setUser }) => {
   const [username, setUsername] = useState(user?.username || 'Guest')
-  const [profilePic, setProfilePic] = useState(
-    user.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user.profilepic
-  )
+  const [profilePic, setProfilePic] = useState(user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic)
   const [displayProfilePic, setDisplayProfilePic] = useState(
-    user.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user.profilepic
+    user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic
   )
   const [bio, setBio] = useState(user?.bio || '')
   const [changedProfilePic, setChangedProfilePic] = useState(false)
@@ -34,27 +33,27 @@ const UpdateProfile = ({ mode, user, setUser }) => {
 
   // upload the profile pic to cloudinary
   const uploadProfilePic = async () => {
-    if(!changedProfilePic) return
+    if (!changedProfilePic) return
 
     const publicIdForPic = `${user?._id}profilepic` || null
 
-    try{
+    try {
       const response = await serverAPI.post('/cloudinary/upload-pic', {
         data: displayProfilePic,
         publicID: publicIdForPic
       })
-      if(response && response.data){
+      if (response && response.data) {
         console.log(response.data)
         setProfilePic(response.data)
       }
     } catch (err) {
-        console.log(err)
+      console.log(err)
     }
   }
 
   useEffect(() => {
     const updateUserProfile = async () => {
-      if(!changedProfilePic) return
+      if (!changedProfilePic) return
       const newProfilePic = (changedProfilePic) ? profilePic : null
       setUser({
         ...user,
@@ -92,7 +91,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await uploadProfilePic()
-    
+
   }
 
   return (
@@ -109,31 +108,34 @@ const UpdateProfile = ({ mode, user, setUser }) => {
             <br /><br /><br /><br />
           </div>
           <div className={`upload-profilepic-${mode}`}>
-            <input type='file' id="uploadbtn" onChange={handleFileUpload}/>
+            <input type='file' id="uploadbtn" onChange={handleFileUpload} />
             <label for='uploadbtn'>Upload File</label>
           </div>
           <br />
         </div>
         <label className={`update-profile-label-${mode}`}>
-            Username:
-            <input
-              placeholder='Username'
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-          <br />
-          
-          <label className={`update-profile-label-${mode}`}>
-            bio:
-            <input
-              placeholder='Bio'
-              type="Bio"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-            />
-          </label>
+          {/* Username: */}
+          <input
+            placeholder='Username'
+            type="text"
+            // required colored text
+            
+
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <br />
+
+        <label className={`update-profile-label-${mode}`}>
+          {/* bio: */}
+          <input
+            placeholder='Bio'
+            type="Bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+          />
+        </label>
         <br />
         <br />
         <div className={'update-profile-allbuttons'}>

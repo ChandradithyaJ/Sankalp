@@ -1,32 +1,42 @@
 .story-select-light {
     height: 100vh;
     width: 100%;
+    background-image: url("/public/images/editprofilelight.jpg");
+    background-size: cover;
+
 }
 
 .story-select-dark {
     height: 100vh;
     width: 100%;
+    background-image: url("/public/images/editprofiledark.jpg");
+    background-size: cover;
+
 }
 
-.bacgrd2-dark {
+.story-select-heading-dark {
     padding-top: 10vh;
     text-align: center;
     color: #00df9a;
     font: bold;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-size: xxx-large;
+    background-image: url("/public/images/editprofiledark.jpg");
+    background-size: cover;
 }
 
-.bacgrd2-light {
+.story-select-heading-light {
     padding-top: 10vh;
     text-align: center;
     color: rgb(202, 129, 27);
     font: bold;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-size: xxx-large;
+    background-image: url("/public/images/editprofilelight.jpg");
+    background-size: cover;
 }
 
-.bacgrd3 {
+.story-select-modules {
     padding: 3vh;
     display: flex;
     flex-direction: row;
@@ -36,12 +46,12 @@
 
 }
 
-.bacgrd4-dark{
+.story-select-modulenames-dark {
     color: #00df9a;
     padding: 2vh;
 }
 
-.bacgrd4-light{
+.story-select-modulenames-light {
     color: rgb(205, 142, 7);
     padding: 2vh;
 }
@@ -63,7 +73,7 @@
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    
+
 }
 
 .module-image-dark:hover {
@@ -74,7 +84,7 @@
         0 0 2vh #00df9a,
         0 0 5vh #00df9a,
         0 0 2vh #00df9a;
-    
+
 }
 
 .module-image-light {
@@ -86,7 +96,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     overflow: hidden;
-    
+
 }
 
 .module-image-light:hover {

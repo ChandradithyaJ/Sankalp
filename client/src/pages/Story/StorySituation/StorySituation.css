@@ -6,6 +6,8 @@
     padding-left: 2vh;
     display: flex;
     flex-direction: column;
+    background-image: url("/public/images/editprofiledark.jpg");
+    background-size: cover;
 }
 
 .situation_docninfo {
@@ -20,6 +22,11 @@
     width: 100%;
     padding-top: 2vh;
     padding-bottom: 4vh;
+    padding-left: 2vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url("/public/images/editprofilelight.jpg");
+    background-size: cover;
 }
 
 .situation-name-dark {
@@ -36,6 +43,20 @@
     overflow-wrap: break-word;
 }
 
+.situation-name-light {
+
+    color: rgb(202, 129, 27);
+    width: 40vw;
+    text-align: center;
+    border-radius: 13px;
+    display: block;
+    margin: auto;
+    outline: 5px solid rgb(202, 129, 27);
+    font-size: small;
+    /* word-wrap:; */
+    overflow-wrap: break-word;
+}
+
 .aboutsituation-dark {
     color: #00df9a;
     text-align: center;
@@ -44,10 +65,24 @@
     height: 100%;
     overflow-wrap: wrap;
     overflow-y: scroll;
+}
 
+.aboutsituation-light {
+    color: rgb(202, 129, 27);
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    overflow-wrap: wrap;
+    overflow-y: scroll;
 }
 
 .aboutsituation-dark::-webkit-scrollbar {
+    width: 7px;
+    /* width of the entire scrollbar */
+}
+
+.aboutsituation-light::-webkit-scrollbar {
     width: 7px;
     /* width of the entire scrollbar */
 }
@@ -57,12 +92,26 @@
     /* color of the tracking area */
 }
 
+.aboutsituation-light::-webkit-scrollbar-track {
+    background: #00df9a;
+    /* color of the tracking area */
+}
+
 .aboutsituation-dark::-webkit-scrollbar-thumb {
     background-color: blue;
     /* color of the scroll thumb */
     border-radius: 20px;
     /* roundness of the scroll thumb */
     border: 3px solid orange;
+    /* creates padding around scroll thumb */
+}
+
+.aboutsituation-dark::-webkit-scrollbar-thumb {
+    background-color: blue;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid #00df9a;
     /* creates padding around scroll thumb */
 }
 
@@ -83,18 +132,6 @@
 
 }
 
-.situation-name-light {
-    border: 1px solid;
-    /* background-color: rgb(250, 172, 105); */
-    color: rgb(202, 129, 27);
-    width: 20vw;
-    text-align: center;
-    align-items: center;
-    border-radius: 13px;
-    display: block;
-    margin: auto;
-    outline: 5vh solid rgb(202, 129, 27);
-}
 
 .lottieimg {
     display: flex;

@@ -32,7 +32,6 @@ function Login({ mode, user, setUser }) {
       if (response && response.data) {
         console.log('User details: ', response.data)
         setUser(response.data.foundUser)
-        console.log(user)
         navigate('/profile')
       }
     } catch (err) {
@@ -79,7 +78,7 @@ function Login({ mode, user, setUser }) {
       }
     } catch (err) {
       console.log(err)
-      console.log(err.response.status)
+      console.log(err?.response?.status)
       console.log(err.response.data.message)
 
       if (err.response.status == 409) {

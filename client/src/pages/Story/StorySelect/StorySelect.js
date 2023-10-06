@@ -18,8 +18,8 @@ const StorySelect = ({ mode }) => {
 
     return (
         <div className={`story-select-${mode}`}>
-            <h1 className={`bacgrd2-${mode}`}>Select a story of your choice</h1>
-            <div className='bacgrd3'>
+            <h1 className={`story-select-heading-${mode}`}>Select a story of your choice</h1>
+            <div className='story-select-modules'>
                 {placeholder.map((badgeImage) => (
                     <div className='module-item1'>
                         <img
@@ -27,7 +27,7 @@ const StorySelect = ({ mode }) => {
                             src={badgeImage}
                             alt={badgeImage}
                         />
-                        <p className={`bacgrd4-${mode}`}>Headlines</p>
+                        <p className={`story-select-modulenames-${mode}`}>Headlines</p>
                     </div>
                 ))}
 

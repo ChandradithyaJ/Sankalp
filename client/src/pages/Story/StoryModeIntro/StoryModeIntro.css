@@ -27,7 +27,7 @@
 }
 
 
-.backgrd2-dark {
+.story-mode-content-dark {
     background-size: cover;
     width: 100%;
     display: flex;
@@ -37,7 +37,7 @@
     color: #00df9a;
 }
 
-.backgrd2-light {
+.story-mode-content-light {
     height: 100%;
     width: 100%;
     display: flex;
@@ -49,14 +49,14 @@
 
 
 
-.backgrd3-light {
+.story-mode-heading-light {
     text-align: center;
     font-style: bold;
     font-size: xxx-large;
     color: rgb(205, 142, 7);
 }
 
-.backgrd3-dark {
+.story-mode-heading-dark {
     text-align: center;
     font-style: bold;
     font-size: xxx-large;
@@ -73,7 +73,7 @@
     }
 }
 
-.backgrd4-dark {
+.story-mode-text-dark {
     text-align: center;
     font-style: bold;
     font-size: x-large;
@@ -86,7 +86,7 @@
 }
 
 
-.backgrd4-light {
+.story-mode-text-light {
     text-align: center;
     text-align: center;
     font-style: bold;
@@ -101,41 +101,6 @@
 
 
 
-/* .buttons-dark { 
-    background-color: #00df9a;
-    width: 20vh;
-    height: 7vh;
-    border-radius: 1.3vh;
-    max-width: auto;
-    text-align: center;
-    font-size: medium;
-    color: black;
-    font-style: italic;
-
-}
-.buttons-dark:hover {
-    
-}
-
-.buttons-light:hover{
-
-}
-
-
-.buttons-light {
-    background-color: rgb(205, 142, 7);
-    width: 20vh;
-    height: 7vh;
-    border-radius: 1.3vh;
-    max-width: auto;
-    text-align: center;
-    font-size: medium;
-    color: black;
-    font-style: italic;
-}
-
-
- @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap'); */
 
 * {
     margin: 0;

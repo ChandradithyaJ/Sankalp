@@ -11,7 +11,6 @@ const StoryModeIntro = ({ mode }) => {
 
   return (
     <div className={`storybackground-${mode}`}>
-
       <div className={`story-mode-intro-${mode}`}>
         <div className={`story-mode-content-${mode}`}>
           <h1 className={`story-mode-heading-${mode}`}>Welcome to Story Mode!!</h1>

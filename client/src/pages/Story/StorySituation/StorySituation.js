@@ -39,13 +39,10 @@ const StorySituation = ({ mode }) => {
                     Learn more about Teams ... I have a question about navbar-fixed-top. Well, I have a simple problem with it.
                     My fixed navbar covers content, for example in "About us" page, it covers row with are knowledge within a single location that is structured and easy to search.
                     Learn more about Teams ... I have a question about navbar-fixed-top. Well, I have a simple problem with it.
-                    My fixed navbar covers content, for 
+                    My fixed navbar covers content, for
                 </div>
+
                 <div className='lottieimg'>
-                    {/* <SpeechBubble
-                    text={"I'm Dr Sankalp!"}
-                    mode={mode}
-                /> */}
                     <div className='doctor-lottie'>
                         <Lottie
                             animationData={doctor}
@@ -54,10 +51,8 @@ const StorySituation = ({ mode }) => {
                             style={{ height: { lottieDim }, width: { lottieDim } }}
                         />
                     </div>
+                    <button className={`goto-story-${mode}`} onClick={goToModules}>Start Conversing</button>    
 
-                    <div>
-                        <button className={`goto-story-${mode}`} onClick={goToModules}>Start Conversing</button>
-                    </div>
                 </div>
             </div>
 

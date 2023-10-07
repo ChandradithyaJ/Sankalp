@@ -58,22 +58,47 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     }
   }
 
+  const updateUserProfile = async () => {
+    setUser({
+      ...user,
+      username: username,
+      bio: bio
+    })
+
+    const editDetails = {
+      id: user._id,
+      username: username,
+      bio: bio
+    }
+
+    const config = {
+      'headers': {
+        'authorization': `Bearer ${user?.accessToken}`
+      }
+    }
+
+    try {
+      const response = await serverAPI.put('/users', editDetails, config)
+      if (response && response.data) {
+        console.log('Edit Profile Response: ', response.data)
+      }
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   useEffect(() => {
-    const updateUserProfile = async () => {
-      if (!changedProfilePic && username === user.username && bio === user.bio) return
-      const newProfilePic = (changedProfilePic) ? profilePic : null
+    const updateUserProfilePic = async () => {
+      if (!changedProfilePic) return
+      const newProfilePic = (changedProfilePic) ? profilePic : ''
       setUser({
         ...user,
         profilepic: newProfilePic,
-        username: username,
-        bio: bio
       })
 
       const editDetails = {
         id: user._id,
         profilepic: newProfilePic,
-        username: username,
-        bio: bio
       }
 
       const config = {
@@ -90,15 +115,15 @@ const UpdateProfile = ({ mode, user, setUser }) => {
       } catch (err) {
         console.log(err.message)
       }
-      navigate('/profile')
     }
-    updateUserProfile()
+    updateUserProfilePic()
   }, [profilePic])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Submitting')
+    updateUserProfile()
     await uploadProfilePic()
+    navigate('/profile')
   }
 
   return (

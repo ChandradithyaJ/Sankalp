@@ -9,7 +9,6 @@ const handleLogin = async (req, res) => {
 
     const reqUser = await User.findOne({ email: email }).exec()
     const foundUser = reqUser.toObject()
-    console.log(foundUser)
     if (!foundUser) return res.sendStatus(401) // unauthorized
 
     const match = await bcrypt.compare(password, foundUser.password)

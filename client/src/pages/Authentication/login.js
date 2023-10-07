@@ -30,7 +30,6 @@ function Login({ mode, user, setUser }) {
     try{
       const response = await serverAPI.post('/auth', userDetails)
       if (response && response.data) {
-        console.log('User details: ', response.data)
         setUser(response.data.foundUser)
         navigate('/profile')
       }

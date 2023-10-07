@@ -95,7 +95,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                         {user?.username ? user?.username : 'Guest'}
                     </p>
                     <div className='bio'>
-                        <p>Bio</p>
+                        <p>{user?.bio ? user?.bio : ''}</p>
                     </div>
                     <div className='edit-container'>
                         <div

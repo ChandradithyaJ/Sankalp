@@ -3,6 +3,7 @@
 // packages
 import Lottie from 'lottie-react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // css
 import './StoryMode.css'
@@ -14,7 +15,10 @@ import SpeechBubble from './SpeechBubble'
 import girlTalking from '../../../lotties/girlTalking.json'
 import doctor from '../../../lotties/doctor.json'
 
+import serverAPI from '../../../api/serverAPI'
+
 const StoryMode = ({ mode, user, setUser, story, setStory }) => {
+    const navigate = useNavigate()
     // variable dimensions for the lottie animation
     const [lottieDim, setLottieDim] = useState(600)
     // current dialog
@@ -26,9 +30,8 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     // toggle between the story and Dr Sankalp
     const [evaluate, setEvaluate] = useState(false)
 
-    let evaluatedOptions = [] // keep track of indices of evaluated options
-
-    const options = ['ff', 'efrt', 'wdefrgt', 'dfer']
+    // keep track of indices of evaluated options
+    const [evaluatedOptions, setEvaluatedOptions] = useState([])
 
     // select a response option
     const clickOnOption = (option) => {
@@ -47,13 +50,71 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     const evaluateResponse = (d) => {
         if (selectedOption !== null) {
             setEvaluate(true)
-            score += d.score
+            if(d.score !== 10){
+                const updateEvaluatedOptions = [...evaluatedOptions, d]
+                setEvaluatedOptions(updateEvaluatedOptions)
+                console.log(evaluatedOptions)
+            }
+            if(evaluatedOptions.length === 0){
+                setScore(score + d.score)
+            }
         }
+        console.log(evaluatedOptions.includes(d))
     }
 
     const backToStory = () => {
+        console.log(evaluatedOptions)
         setEvaluate(false)
-        setSelectedOption('')
+        setSelectedOption(null)
+    }
+
+    const continueConversing = () => {
+        setEvaluatedOptions([])
+        setCurrentDialog(currentDialog + 1)
+        setEvaluate(false)
+        setSelectedOption(null)
+    }
+
+    const endConversation = async () => {
+        if(score >= 0.8*story.totalScore){
+            const updateFinishedStories = [...user.finishedStories,
+                {
+                    ID: story._id,
+                    score: score
+                }
+            ]
+
+            setUser({
+                ...user,
+                finishedStories: updateFinishedStories
+            })
+
+            const editDetails = {
+                id: user._id,
+                finishedStories: updateFinishedStories
+            }
+
+            const config = {
+                'headers': {
+                    'authorization': `Bearer ${user?.accessToken}`
+                }
+            }
+
+            try {
+                const response = await serverAPI.put('/users', editDetails, config)
+                if (response && response.data) {
+                    console.log('Edit Profile Response: ', response.data)
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        setEvaluate(false)
+        setSelectedOption(null)
+        setScore(0)
+        setStory(null)
+        navigate('/story/modules')
     }
 
     return (
@@ -91,7 +152,10 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                             </div>
                         </div>
                         <div className='NPC'>
-                            <SpeechBubble text={"Welcome to Story Mode!"} mode={mode} />
+                            <SpeechBubble 
+                                text={story.dialogues[currentDialog].npcDialogue} 
+                                mode={mode}
+                            />
                             <div className='npc-lottie'>
                                 <Lottie
                                     animationData={girlTalking}
@@ -102,19 +166,38 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                             </div>
                         </div>
                     </div>
-                    <div
-                        className={`evaluate-response-${mode}`}
-                        onClick={() => evaluateResponse(selectedOption)}
-                    >
-                        Evaluate Response
-                    </div>
+                    {
+                        story.dialogues[currentDialog].dialogueOptions.length === 1 &&
+                        <div
+                            className={`evaluate-response-${mode}`}
+                            onClick={
+                                (currentDialog === story.dialogues.length-1) ?
+                                endConversation : continueConversing
+                            }
+                        >
+                            {
+                            (currentDialog === story.dialogues.length-1) ?
+                                'End Story' : 
+                                'Continue Conversation'
+                            }
+                        </div>
+                    }
+                    {
+                        story.dialogues[currentDialog].dialogueOptions.length !== 1 &&
+                        <div
+                            className={`evaluate-response-${mode}`}
+                            onClick={() => evaluateResponse(selectedOption)}
+                        >
+                            Evaluate Response
+                        </div>
+                    }
                 </div>
             }
             {
                 evaluate &&
                 <div className='evaluation-container'>
                     <SpeechBubble
-                        text={"I'm Dr Sankalp!"}
+                        text={selectedOption.sankalpExplanation}
                         mode={mode}
                     />
                     <div className='sankalp-lottie'>
@@ -125,12 +208,24 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                             style={{ height: { lottieDim }, width: { lottieDim } }}
                         />
                     </div>
-                    <div
-                        className={`back-to-story-${mode}`}
-                        onClick={backToStory}
-                    >
-                        Go Back to the Story
-                    </div>
+                    {
+                        selectedOption.score === 10 &&
+                        <div
+                            className={`back-to-story-${mode}`}
+                            onClick={continueConversing}
+                        >
+                            Continue Conversing
+                        </div>
+                    }
+                    {
+                        selectedOption.score !== 10 &&
+                        <div
+                            className={`back-to-story-${mode}`}
+                            onClick={backToStory}
+                        >
+                            Back to Story
+                        </div>
+                    }
                 </div>
             }
         </div>

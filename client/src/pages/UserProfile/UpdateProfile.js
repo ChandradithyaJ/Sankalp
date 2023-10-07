@@ -121,20 +121,22 @@ const UpdateProfile = ({ mode, user, setUser }) => {
           </div>
           <br />
         </div>
+        <div className='text-holder'>
+          <label className={`update-profile-label-${mode}`}>
+            Username :
+            <input
+              placeholder='Username'
+              type="text"
+              // required colored text
+
+
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
+        </div>
         <label className={`update-profile-label-${mode}`}>
-          <input
-            placeholder='Username'
-            type="text"
-            // required colored text
-
-
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <br />
-
-        <label className={`update-profile-label-${mode}`}>
+          {/* bio: */}
           <input
             placeholder='Bio'
             type="Bio"
@@ -147,7 +149,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
         <div className={'update-profile-allbuttons'}>
           <button type="submit"
             className={`update-profile-savebutton-${mode}`}
-          >Save Changes</button>
+          >Save</button>
           <br />
           <button
             onClick={() => navigate('/profile')}

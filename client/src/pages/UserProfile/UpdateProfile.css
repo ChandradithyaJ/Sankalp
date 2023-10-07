@@ -1,12 +1,14 @@
 .update-profile-main-dark {
   align-items: center;
+  justify-content: center;
   background-image: url("/public/images/editprofiledark.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
 
 .update-profile-main-light {
-  align-items: center;
+  /* align-items: center;
+  justify-self: center; */
   background-image: url("/public/images/editprofilelight.jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -15,15 +17,27 @@
 .update-profile-label-dark {
   display: block;
   margin-bottom: 10px;
-  padding-left: 10vh;
-  padding-right: 10vh;
+  /* padding-left: 10vh;
+  padding-right: 10vh; */
   width: 50vw;
-  /*colored text in text box*/
+  align-items: center;
   -webkit-text-fill-color: orangered;
   -webkit-opacity: 1;
-
-
+  padding-bottom: 2vh;
 }
+
+.textholder {
+  align-content: flex-start
+}
+
+.update-profile-form {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 .update-profile-label-light {
   display: block;
@@ -33,6 +47,7 @@
   width: 50vw;
   -webkit-text-fill-color: rgb(60, 216, 55);
   -webkit-opacity: 1;
+  padding-bottom: 2vh;
 
 }
 
@@ -273,6 +288,7 @@ body {
   }
 }
 
+
 /* for save and cancel buttons */
 
 @media (max-width: 1054px) and (min-width: 871px) {
@@ -280,7 +296,7 @@ body {
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
-  .update-profile-savebutton-dark {
+  .update-profile-savebutton-light {
     width: 20vw;
   }
 }
@@ -290,7 +306,7 @@ body {
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
-  .update-profile-savebutton-dark {
+  .update-profile-savebutton-light {
     width: 30vw;
 
   }
@@ -301,7 +317,7 @@ body {
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
-  .update-profile-savebutton-dark {
+  .update-profile-savebutton-light {
     width: 40vw;
 
   }

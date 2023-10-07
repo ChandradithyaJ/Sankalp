@@ -32,7 +32,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
 
     // select a response option
     const clickOnOption = (option) => {
-        if(evaluatedOptions.includes(option)){
+        if (evaluatedOptions.includes(option)) {
 
         }
         else if (option !== selectedOption) {
@@ -67,7 +67,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                     <div className='conversation'>
                         <div className='player-character'>
                             <div className='player-character-ui'>
-                                <SpeechBubble text={selectedOption} mode={mode} />
+                                <SpeechBubble text={selectedOption?.dialogueOption} mode={mode} />
                                 <div className='player-lottie'>
                                     <Lottie
                                         animationData={girlTalking}
@@ -78,9 +78,9 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                                 </div>
                             </div>
                             <div className='player-character-options'>
-                                    {story.dialogues[currentDialog].dialogueOptions.map((d) => (
+                                {story.dialogues[currentDialog].dialogueOptions.map((d) => (
                                     <div
-                                        className={evaluatedOptions.includes(d) ? `evaluatedOption-${mode}`: selectedOption === d ?
+                                        className={evaluatedOptions.includes(d) ? `evaluatedOption-${mode}` : selectedOption === d ?
                                             `selectedOption-${mode}` :
                                             `option-${mode}`}
                                         onClick={() => clickOnOption(d)}

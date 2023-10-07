@@ -17,7 +17,7 @@ const StorySelect = ({ mode, listOfStories, setStory }) => {
                 {listOfStories.map((storyModule) => (
                     <div className='module-item1'>
                         <img
-                            className={`module-image-${mode}`} 
+                            className={`module-image-${mode}`}
                             onClick={() => goToModules(storyModule)}
                             src={
                                 (storyModule.storyPic === "") ?
@@ -30,6 +30,24 @@ const StorySelect = ({ mode, listOfStories, setStory }) => {
                     </div>
                 ))}
 
+            </div>
+            <div className='story-select-modules-completed'>
+                {listOfStories.map((storyModule) => (
+                    <div className='module-item1'>
+                        <img
+                            className={`module-image-complete-${mode}`}
+                            onClick={() => goToModules(storyModule)}
+                            src={
+                                (storyModule.storyPic === "") ?
+                                    '/images/lightmode.jpg' :
+                                    storyModule.storyPic
+                            }
+                            alt={'Story Pic'}
+                        />
+                        <p className={`story-select-modulenames-${mode}`}>{storyModule.title}</p>
+
+                    </div>
+                ))}
             </div>
         </div>
     )

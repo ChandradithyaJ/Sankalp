@@ -121,36 +121,34 @@ const UpdateProfile = ({ mode, user, setUser }) => {
           </div>
           <br />
         </div>
-        <div className='text-holder'>
-          <label className={`update-profile-label-${mode}`}>
-            Username :
-            <input
-              placeholder='Username'
-              type="text"
-              // required colored text
-
-
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-        </div>
         <label className={`update-profile-label-${mode}`}>
-          {/* bio: */}
           <input
+            className="udpate-profile-inputbox"
+            placeholder='Username'
+            type="text"
+            // required colored text
+
+
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+
+        <label className={`update-profile-label-${mode}`}>
+          <input //border radius for text field
+            className="udpate-profile-inputbox"
             placeholder='Bio'
+            size={40}
             type="Bio"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
           />
         </label>
-        <br />
-        <br />
         <div className={'update-profile-allbuttons'}>
           <button type="submit"
             className={`update-profile-savebutton-${mode}`}
           >Save</button>
-          <br />
+          <div className='update-profile-givwidth'></div>
           <button
             onClick={() => navigate('/profile')}
             className={`update-profile-cancelbutton-${mode}`}

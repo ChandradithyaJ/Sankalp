@@ -28,6 +28,7 @@ const userSchema = new Schema({
         type: String,
         default: 'dark'
     },
+    finishedStories: [{ type: Object }],
     badges: {
         firstStory: {
             type: Boolean,

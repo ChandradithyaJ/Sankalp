@@ -37,23 +37,30 @@ const UpdateProfile = ({ mode, user, setUser }) => {
 
     const publicIdForPic = `${user?._id}profilepic` || null
 
+    const config = {
+      headers: {
+        'authorization': `Bearer ${user.accessToken}`
+      }
+    }
+
     try {
       const response = await serverAPI.post('/cloudinary/upload-pic', {
         data: displayProfilePic,
-        publicID: publicIdForPic
-      })
+        publicID: publicIdForPic,
+      }, config)
       if (response && response.data) {
         console.log(response.data)
         setProfilePic(response.data)
       }
     } catch (err) {
       console.log(err)
+      alert('Unable to update profile pic. Please check your internet connection.')
     }
   }
 
   useEffect(() => {
     const updateUserProfile = async () => {
-      if (!changedProfilePic) return
+      if (!changedProfilePic && username === user.username && bio === user.bio) return
       const newProfilePic = (changedProfilePic) ? profilePic : null
       setUser({
         ...user,
@@ -90,8 +97,8 @@ const UpdateProfile = ({ mode, user, setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('Submitting')
     await uploadProfilePic()
-
   }
 
   return (

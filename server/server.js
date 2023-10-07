@@ -30,8 +30,6 @@ app.use('/register', require('./routes/register'))
 app.use('/auth', require('./routes/auth'))
 // update JWT if expired route
 app.use('/updateJWT', require('./routes/updateJWT'))
-// profile pic routes
-app.use('/cloudinary', require('./routes/api/pics'))
 
 // custom middleware for verifying JWTs
 app.use(verifyJWT)
@@ -39,6 +37,8 @@ app.use(verifyJWT)
 app.use('/users', require('./routes/api/users'))
 // stories route
 app.use('/stories', require('./routes/api/stories'))
+// profile pic routes
+app.use('/cloudinary', require('./routes/api/pics'))
 
 // run the app on PORT
 mongoose.connection.once('open', () => {

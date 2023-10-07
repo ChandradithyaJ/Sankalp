@@ -1,7 +1,7 @@
 import './StorySelect.css'
 import { useNavigate } from 'react-router-dom'
 
-const StorySelect = ({ mode }) => {
+const StorySelect = ({ mode, listOfStories, setStory }) => {
 
     const placeholder = ['/images/lightmode.jpg', '/images/lightmode.jpg',
         '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg',]

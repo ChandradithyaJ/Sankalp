@@ -1,11 +1,25 @@
 import React from "react"
 import { useNavigate } from 'react-router-dom'
-
 import './StoryModeIntro.css'
 
-const StoryModeIntro = ({ mode }) => {
+import serverAPI from "../../../api/serverAPI"
+
+const StoryModeIntro = ({ user, mode, setListOfStories }) => {
   const navigate = useNavigate()
-  const goToModules = () => {
+  const goToModules = async () => {
+    const config = {
+      'headers': {
+        'authorization': `Bearer ${user.accessToken}`
+      }
+    }
+    try{
+      const response = await serverAPI.get('/stories', config)
+      if(response && response.data){
+        console.log(response.data)
+      }
+    } catch(err) {
+      console.log(err)
+    }
     navigate('./modules')
   }
 

@@ -5,9 +5,6 @@ import {
   MobileView,
 } from "react-device-detect";
 
-// axios call
-import serverAPI from "./api/serverAPI";
-
 import ContactForm from "./pages/ContactForm/ContactForm";
 
 import Navbar from "./components/Navbar";
@@ -28,6 +25,8 @@ import UpdateProfile  from "./pages/UserProfile/UpdateProfile";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [listOfStories, setListOfStories] = useState([])
+  const [story, setStory] = useState(null)
   const [mode, setMode] = useState(user?.mode || "dark");
 
   return (
@@ -59,18 +58,42 @@ function App() {
           element={<ResetPassword mode={mode} />}
         />
         <Route exact path="therapy-chatbot" element={<div></div>} />
-        <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
+        <Route exact path="story" 
+          element={
+          <StoryModeIntro 
+            user={user}
+            mode={mode}
+            setListOfStories={setListOfStories} 
+          />}  
+          />
         <Route
           exact
           path="story/modules"
-          element={<StorySelect mode={mode} />}
+          element={
+            <StorySelect 
+                mode={mode} 
+                listOfStories={listOfStories}
+                setStory={setStory}
+            />}
         />
         <Route
           exact
           path="story/modules/situation"
-          element={<StorySituation mode={mode} />}
+          element={
+            <StorySituation 
+                mode={mode} 
+                story={story}
+            />
+          }
         />
-        <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode} />} />
+        <Route exact path="story/modules/situation/play" 
+              element={
+                <StoryMode 
+                    mode={mode} 
+                    story={story}
+                    setStory={setStory}
+                />}               
+        />
         <Route
           exact path='contact'
           element={<ContactForm />}

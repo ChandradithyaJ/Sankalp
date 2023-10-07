@@ -14,7 +14,7 @@ import SpeechBubble from './SpeechBubble'
 import girlTalking from '../../../lotties/girlTalking.json'
 import doctor from '../../../lotties/doctor.json'
 
-const StoryMode = ({ mode }) => {
+const StoryMode = ({ mode, story, setStory }) => {
     // variable dimensions for the lottie animation
     const [lottieDim, setLottieDim] = useState(600)
     // state to keep track of the selected response option

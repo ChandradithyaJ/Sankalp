@@ -9,13 +9,13 @@ const dialogueOptionSchema = new Schema({
         type: String,
         required: true
     },
-    SankalpExplanation: {
+    sankalpExplanation: {
         type: String,
         required: true
     },
-    favourable: {
-        type: Boolean,
-        default: true
+    score: {
+        type: Number,
+        required: true
     }
 })
 
@@ -33,7 +33,19 @@ const storySchema = new Schema({
         type: String,
         required: true
     },
-    dialogues: [dialogueSchema]
+    situation: {
+        type: String,
+        required: true
+    },
+    storyPic: {
+        type: String,
+        required: true
+    },
+    dialogues: [dialogueSchema],
+    totalScore: {
+        type: Number,
+        required: true
+    }
 })
 
 module.exports = mongoose.model('Story', storySchema)

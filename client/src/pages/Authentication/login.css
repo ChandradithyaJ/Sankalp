@@ -40,9 +40,10 @@ a:hover {
 }
 
 .bgrnd {
-  background-image: url('/public/loginPage/loginBackground1.jpg');
+  background-image: url("/public/loginPage/loginBackground1.jpg");
   background-size: cover;
-  backdrop-filter: invert(80%);
+  /* backdrop-filter: invert(80%); */
+  height: 100vh;
 }
 .section {
   position: relative;

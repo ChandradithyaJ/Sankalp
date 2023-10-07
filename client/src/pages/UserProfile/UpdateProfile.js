@@ -37,36 +37,68 @@ const UpdateProfile = ({ mode, user, setUser }) => {
 
     const publicIdForPic = `${user?._id}profilepic` || null
 
+    const config = {
+      headers: {
+        'authorization': `Bearer ${user.accessToken}`
+      }
+    }
+
     try {
       const response = await serverAPI.post('/cloudinary/upload-pic', {
         data: displayProfilePic,
-        publicID: publicIdForPic
-      })
+        publicID: publicIdForPic,
+      }, config)
       if (response && response.data) {
         console.log(response.data)
         setProfilePic(response.data)
       }
     } catch (err) {
       console.log(err)
+      alert('Unable to update profile pic. Please check your internet connection.')
+    }
+  }
+
+  const updateUserProfile = async () => {
+    setUser({
+      ...user,
+      username: username,
+      bio: bio
+    })
+
+    const editDetails = {
+      id: user._id,
+      username: username,
+      bio: bio
+    }
+
+    const config = {
+      'headers': {
+        'authorization': `Bearer ${user?.accessToken}`
+      }
+    }
+
+    try {
+      const response = await serverAPI.put('/users', editDetails, config)
+      if (response && response.data) {
+        console.log('Edit Profile Response: ', response.data)
+      }
+    } catch (err) {
+      console.log(err.message)
     }
   }
 
   useEffect(() => {
-    const updateUserProfile = async () => {
+    const updateUserProfilePic = async () => {
       if (!changedProfilePic) return
-      const newProfilePic = (changedProfilePic) ? profilePic : null
+      const newProfilePic = (changedProfilePic) ? profilePic : ''
       setUser({
         ...user,
         profilepic: newProfilePic,
-        username: username,
-        bio: bio
       })
 
       const editDetails = {
         id: user._id,
         profilepic: newProfilePic,
-        username: username,
-        bio: bio
       }
 
       const config = {
@@ -83,15 +115,15 @@ const UpdateProfile = ({ mode, user, setUser }) => {
       } catch (err) {
         console.log(err.message)
       }
-      navigate('/profile')
     }
-    updateUserProfile()
+    updateUserProfilePic()
   }, [profilePic])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    updateUserProfile()
     await uploadProfilePic()
-
+    navigate('/profile')
   }
 
   return (

@@ -30,7 +30,6 @@ function Login({ mode, user, setUser }) {
     try{
       const response = await serverAPI.post('/auth', userDetails)
       if (response && response.data) {
-        console.log('User details: ', response.data)
         setUser(response.data.foundUser)
         navigate('/profile')
       }
@@ -39,7 +38,7 @@ function Login({ mode, user, setUser }) {
       console.log(err.response.status)
       console.log(err.response.data.message)
 
-      if(err.response.status == 409){
+      if(err.response.status === 409){
         alert(err.response.data.message)
       } else{
         alert('Unable to login. Please check your internet connection and try again.')
@@ -79,9 +78,9 @@ function Login({ mode, user, setUser }) {
     } catch (err) {
       console.log(err)
       console.log(err?.response?.status)
-      console.log(err.response.data.message)
+      console.log(err?.response?.data?.message)
 
-      if (err.response.status == 409) {
+      if (err.response.status === 409) {
         alert(err.response.data.message)
       }
       else {

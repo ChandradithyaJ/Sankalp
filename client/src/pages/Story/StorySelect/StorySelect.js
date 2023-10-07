@@ -1,5 +1,6 @@
 import './StorySelect.css'
 import { useNavigate } from 'react-router-dom'
+//see if we can use this to get the story modules
 
 const StorySelect = ({ mode, listOfStories, setStory }) => {
     const navigate = useNavigate()
@@ -31,7 +32,7 @@ const StorySelect = ({ mode, listOfStories, setStory }) => {
                 ))}
 
             </div>
-            <div className='story-select-modules-completed'>
+            {/* <div className='story-select-modules-completed'>
                 {listOfStories.map((storyModule) => (
                     <div className='module-item1'>
                         <img
@@ -48,7 +49,7 @@ const StorySelect = ({ mode, listOfStories, setStory }) => {
 
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     )
 }

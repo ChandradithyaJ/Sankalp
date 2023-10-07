@@ -3,6 +3,17 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+const finishedStoriesSchema = new Schema({
+    ID: {
+        type: Object,
+        required: true
+    },
+    score: {
+        type: Number,
+        required: true
+    }
+})
+
 const userSchema = new Schema({
     username: {
         type: String,
@@ -28,7 +39,7 @@ const userSchema = new Schema({
         type: String,
         default: 'dark'
     },
-    finishedStories: [{ type: Object }],
+    finishedStories: [finishedStoriesSchema],
     badges: {
         firstStory: {
             type: Boolean,

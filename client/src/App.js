@@ -25,7 +25,6 @@ import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile  from "./pages/UserProfile/UpdateProfile";
 
-
 function App() {
   const [user, setUser] = useState(null);
   const [mode, setMode] = useState(user?.mode || "dark");
@@ -70,10 +69,10 @@ function App() {
           path="story/modules/situation"
           element={<StorySituation mode={mode} />}
         />
-        <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode} />} />
+        <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode}  />} />
         <Route
           exact path='contact'
-          element={<ContactForm />}
+          element={<ContactForm mode={mode}/>}
         />
         <Route
           exact path="profile"

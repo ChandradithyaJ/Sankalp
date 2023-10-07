@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Home_style.css";
-import MySwiper from "./CoverflowSlider/Coverflow";
 import { BsFillCaretDownFill } from "react-icons/bs";
+import Coverflow from "./CoverflowSlider/Coverflow";
 
 function Home({ mode }) {
   mode = "dark";
@@ -40,7 +40,26 @@ function Home({ mode }) {
       ></div>
       <div className="highlight-text-header">Whats Happening? </div>
       <div class="highlighted-neon-text">Latest News</div>
-      <div>{/* <MySwiper /> */}</div>
+      
+
+             <div> <Coverflow/> </div>
+
+      {/* adding spaces to verify  */}
+    
+      <div>
+        <div className="hero_bottom">
+          <div className="hero-content">
+            <h1>    lets start the new journey to , better and more.</h1>
+            <h2>calm now.</h2>
+          </div>
+        </div>
+      </div>
+      <div>
+            <div className="space">
+        </div>
+
+
+      {/* 
       <div
         style={{
           marginTop: "50px",
@@ -48,16 +67,8 @@ function Home({ mode }) {
           marginRight: "20px",
           marginLeft: "20px",
         }}
-      ></div>
-      <div>
-        <div className="hero_bottom">
-          <div className="hero-content">
-            <h1>lets start the new journey to , better and more.</h1>
-            <h2>calm now.</h2>
-          </div>
-        </div>
-      </div>
-      <div>
+      ></div>  */}
+
         {/* <button className="button">
           <span className="buttonText"> Learn More</span>{" "}
         </button> */}

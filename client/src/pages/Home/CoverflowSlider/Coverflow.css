@@ -1,34 +1,18 @@
 /* Swiper.css */
 /* hide any overflow from page */
-.swiper {
-  width: 400px;
-  height: 200px;
-  padding-bottom: 2rem;
+.swiper-container {
   overflow: hidden;
-  flex-wrap: wrap;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
 }
 
-body 
-{
-  overflow: hidden;
-
+.swiper-container-coverflow {
+  overflow: hidden; /* Add this line */
 }
+
 .swiper-slide {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  height: 20px;
-  width: 40px;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
   overflow: hidden;
 }
 
@@ -36,15 +20,13 @@ body
   /* just fit in box */
   display: block;
   overflow: hidden;
-  height: auto;
-  width: auto;
   max-height: calc(100% - 40px);
   max-width: calc(100% - 40px);
 }
 
 .swiper-scrollbar {
   overflow: hidden;
-  margin-top: 3rem;
+  margin-top: 20px;
   flex-wrap: wrap;
   display: flex;
 }

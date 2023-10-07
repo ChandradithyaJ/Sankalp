@@ -58,17 +58,30 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     }
   }
 
-  const updateUserProfile = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await uploadProfilePic()
+
+    console.log('hahahah')
+    // update user
+    let newProfilePic = ''
+    const log = (changedProfilePic) ? "lol" : "lmao"
+    console.log(log)
+    if (changedProfilePic) {
+      newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpg`
+    }
     setUser({
       ...user,
       username: username,
-      bio: bio
+      bio: bio,
+      profilepic: newProfilePic
     })
 
     const editDetails = {
       id: user._id,
       username: username,
-      bio: bio
+      bio: bio,
+      profilepic: newProfilePic
     }
 
     const config = {
@@ -85,44 +98,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     } catch (err) {
       console.log(err.message)
     }
-  }
 
-  useEffect(() => {
-    const updateUserProfilePic = async () => {
-      if (!changedProfilePic) return
-      const newProfilePic = (changedProfilePic) ? profilePic : ''
-      setUser({
-        ...user,
-        profilepic: newProfilePic,
-      })
-
-      const editDetails = {
-        id: user._id,
-        profilepic: newProfilePic,
-      }
-
-      const config = {
-        'headers': {
-          'authorization': `Bearer ${user?.accessToken}`
-        }
-      }
-
-      try {
-        const response = await serverAPI.put('/users', editDetails, config)
-        if (response && response.data) {
-          console.log('Edit Profile Response: ', response.data)
-        }
-      } catch (err) {
-        console.log(err.message)
-      }
-    }
-    updateUserProfilePic()
-  }, [profilePic])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    updateUserProfile()
-    await uploadProfilePic()
     navigate('/profile')
   }
 
@@ -141,17 +117,16 @@ const UpdateProfile = ({ mode, user, setUser }) => {
           </div>
           <div className={`upload-profilepic-${mode}`}>
             <input type='file' id="uploadbtn" onChange={handleFileUpload} />
-            <label for='uploadbtn'>Upload File</label>
+            <label htmlFor='uploadbtn'>Upload File</label>
           </div>
           <br />
         </div>
         <label className={`update-profile-label-${mode}`}>
-          {/* Username: */}
           <input
             placeholder='Username'
             type="text"
             // required colored text
-            
+
 
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -160,7 +135,6 @@ const UpdateProfile = ({ mode, user, setUser }) => {
         <br />
 
         <label className={`update-profile-label-${mode}`}>
-          {/* bio: */}
           <input
             placeholder='Bio'
             type="Bio"

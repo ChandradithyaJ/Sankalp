@@ -7,6 +7,7 @@ import serverAPI from "../../../api/serverAPI"
 const StoryModeIntro = ({ user, mode, setListOfStories }) => {
   const navigate = useNavigate()
   const goToModules = async () => {
+    console.log(user)
     const config = {
       'headers': {
         'authorization': `Bearer ${user.accessToken}`
@@ -19,6 +20,7 @@ const StoryModeIntro = ({ user, mode, setListOfStories }) => {
       }
     } catch(err) {
       console.log(err)
+      console.log(err.message)
     }
     navigate('./modules')
   }

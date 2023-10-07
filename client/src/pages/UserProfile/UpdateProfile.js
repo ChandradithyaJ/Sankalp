@@ -37,61 +37,69 @@ const UpdateProfile = ({ mode, user, setUser }) => {
 
     const publicIdForPic = `${user?._id}profilepic` || null
 
+    const config = {
+      headers: {
+        'authorization': `Bearer ${user.accessToken}`
+      }
+    }
+
     try {
       const response = await serverAPI.post('/cloudinary/upload-pic', {
         data: displayProfilePic,
-        publicID: publicIdForPic
-      })
+        publicID: publicIdForPic,
+      }, config)
       if (response && response.data) {
         console.log(response.data)
         setProfilePic(response.data)
       }
     } catch (err) {
       console.log(err)
+      alert('Unable to update profile pic. Please check your internet connection.')
     }
   }
-
-  useEffect(() => {
-    const updateUserProfile = async () => {
-      if (!changedProfilePic) return
-      const newProfilePic = (changedProfilePic) ? profilePic : null
-      setUser({
-        ...user,
-        profilepic: newProfilePic,
-        username: username,
-        bio: bio
-      })
-
-      const editDetails = {
-        id: user._id,
-        profilepic: newProfilePic,
-        username: username,
-        bio: bio
-      }
-
-      const config = {
-        'headers': {
-          'authorization': `Bearer ${user?.accessToken}`
-        }
-      }
-
-      try {
-        const response = await serverAPI.put('/users', editDetails, config)
-        if (response && response.data) {
-          console.log('Edit Profile Response: ', response.data)
-        }
-      } catch (err) {
-        console.log(err.message)
-      }
-      navigate('/profile')
-    }
-    updateUserProfile()
-  }, [profilePic])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     await uploadProfilePic()
 
+    console.log('hahahah')
+    // update user
+    let newProfilePic = ''
+    const log = (changedProfilePic) ? "lol" : "lmao"
+    console.log(log)
+    if (changedProfilePic) {
+      newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpg`
+    }
+    setUser({
+      ...user,
+      username: username,
+      bio: bio,
+      profilepic: newProfilePic
+    })
+
+    const editDetails = {
+      id: user._id,
+      username: username,
+      bio: bio,
+      profilepic: newProfilePic
+    }
+
+    const config = {
+      'headers': {
+        'authorization': `Bearer ${user?.accessToken}`
+      }
+    }
+
+    try {
+      const response = await serverAPI.put('/users', editDetails, config)
+      if (response && response.data) {
+        console.log('Edit Profile Response: ', response.data)
+      }
+    } catch (err) {
+      console.log(err.message)
+    }
+
+    navigate('/profile')
   }
 
   return (
@@ -109,40 +117,38 @@ const UpdateProfile = ({ mode, user, setUser }) => {
           </div>
           <div className={`upload-profilepic-${mode}`}>
             <input type='file' id="uploadbtn" onChange={handleFileUpload} />
-            <label for='uploadbtn'>Upload File</label>
+            <label htmlFor='uploadbtn'>Upload File</label>
           </div>
           <br />
         </div>
         <label className={`update-profile-label-${mode}`}>
-          {/* Username: */}
           <input
+            className="udpate-profile-inputbox"
             placeholder='Username'
             type="text"
             // required colored text
-            
+
 
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
-        <br />
 
         <label className={`update-profile-label-${mode}`}>
-          {/* bio: */}
-          <input
+          <input //border radius for text field
+            className="udpate-profile-inputbox"
             placeholder='Bio'
+            size={40}
             type="Bio"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
           />
         </label>
-        <br />
-        <br />
         <div className={'update-profile-allbuttons'}>
           <button type="submit"
             className={`update-profile-savebutton-${mode}`}
-          >Save Changes</button>
-          <br />
+          >Save</button>
+          <div className='update-profile-givwidth'></div>
           <button
             onClick={() => navigate('/profile')}
             className={`update-profile-cancelbutton-${mode}`}

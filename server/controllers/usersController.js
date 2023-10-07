@@ -22,6 +22,7 @@ const updateUser = async (req, res) => {
     if(req?.body?.profilepic) reqUser.profilepic = req?.body?.profilepic
     if (req.body?.mode) reqUser.mode = req?.body?.mode
     if (req.body?.badges) reqUser.badges = req?.body?.badges
+    if (req.body?.finishedStories) reqUser.finishedStories = req.body?.finishedStories
 
     const result = await reqUser.save()
     console.log(result)

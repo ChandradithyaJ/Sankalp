@@ -1,10 +1,10 @@
 .story-select-light {
     height: 100vh;
     width: 100%;
-    background-image: url("/public/images/editprofilelight.jpg") repeat-y;
+    background-image: url("/public/images/editprofilelight.jpg");
     background-size: cover;
     background-repeat: space repeat-y;
-    background-attachment:fixed;
+    background-attachment: fixed;
     align-items: center;
 
 }
@@ -15,10 +15,13 @@
     background-image: url("/public/images/editprofiledark.jpg");
     background-size: cover;
     background-repeat: space repeat-y;
-    background-attachment:fixed;
+    background-attachment: fixed;
     align-items: center;
 
 }
+
+
+
 
 .story-select-heading-dark {
     padding-top: 10vh;
@@ -47,6 +50,64 @@
     flex-wrap: wrap;
 
 }
+
+.story-select-modules-completed {
+    padding: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* background-image: url("/public/images/anonymousProfilePicdark.jpg"); */
+
+}
+
+.module-image-complete-dark {
+    height: 15vh;
+    width: 15vh;
+    background-color: turquoise;
+    filter: hue-rotate(-210deg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.module-image-complete-light {
+    height: 15vh;
+    width: 15vh;
+    background-color: turquoise;
+    filter: hue-rotate(-210deg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.module-image-complete-dark:hover {
+    transform: scale(1.05);
+    box-shadow: 0vh 2vh 4vh rgba(0, 0, 0, 0.2);
+    background: #00df9a;
+    box-shadow: 0 0 5vh #00df9a,
+        0 0 2vh #00df9a,
+        0 0 5vh #00df9a,
+        0 0 2vh #00df9a;
+}
+
+.module-image-complete-light:hover {
+    transform: scale(1.05);
+    box-shadow: 0vh 2vh 4vh rgba(0, 0, 0, 0.2);
+    background: rgb(205, 142, 7);
+    box-shadow: 0 0 5vh rgb(205, 142, 7),
+        0 0 2vh rgb(205, 142, 7),
+        0 0 5vh rgb(205, 142, 7),
+        0 0 2vh rgb(205, 142, 7);
+}
+
+
+
 
 .story-select-modulenames-dark {
     color: #00df9a;

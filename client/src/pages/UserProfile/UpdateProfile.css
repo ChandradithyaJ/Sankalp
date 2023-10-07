@@ -1,38 +1,59 @@
 .update-profile-main-dark {
+  height: 150vh;
   align-items: center;
+  justify-content: center;
   background-image: url("/public/images/editprofiledark.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
 
 .update-profile-main-light {
+  height: 150vh;
   align-items: center;
+  justify-self: center;
   background-image: url("/public/images/editprofilelight.jpg");
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
+  background-repeat: repeat;
 }
 
 .update-profile-label-dark {
-  display: block;
+  /* display: block; */
   margin-bottom: 10px;
   padding-left: 10vh;
   padding-right: 10vh;
   width: 50vw;
-  /*colored text in text box*/
-  -webkit-text-fill-color: orangered;
+  align-items: center;
+  justify-content: center;
+  -webkit-text-fill-color: rgb(72, 121, 44);
   -webkit-opacity: 1;
-
-
+  padding-bottom: 2vh;
 }
 
+
+.update-profile-inputbox {
+  border-radius: 5px;
+  padding-bottom: 2vh;
+}
+
+.update-profile-form {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .update-profile-label-light {
-  display: block;
   margin-bottom: 10px;
-  padding-left: 10vh;
-  padding-right: 10vh;
+  /* padding-left: 10vh;
+  padding-right: 10vh; */
   width: 50vw;
-  -webkit-text-fill-color: rgb(60, 216, 55);
+  -webkit-text-fill-color: rgb(55, 170, 216);
   -webkit-opacity: 1;
+  padding-bottom: 2vh;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -81,7 +102,7 @@
   display: flex;
   flex-direction: column;
   outline: none;
-  background-color: #d52222;
+  background-color: #2290d5;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -93,7 +114,7 @@
   display: flex;
   flex-direction: column;
   outline: none;
-  background-color: #d52222;
+  background-color: palegoldenrod;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -101,6 +122,10 @@
 
 input[type="file"] {
   display: none;
+}
+
+.update-profile-givwidth {
+  height: 3vh;
 }
 
 
@@ -116,13 +141,14 @@ body {
 }
 
 .update-profile-savebutton-dark {
-  padding: 4vh 2vh;
-  width: 20vw;
+  padding: 2vh 2vh;
+  width: 15vw;
   background-color: #050801;
   color: #5370e2;
   font-weight: bold;
   border: none;
   border-radius: 5px;
+
   letter-spacing: 4px;
   overflow: hidden;
   transition: 0.5s;
@@ -130,9 +156,9 @@ body {
 }
 
 .update-profile-savebutton-light {
-  padding: 4vh 2vh;
-  width: 20vw;
-  background-color: rgb(205, 142, 7);
+  padding: 2vh 2vh;
+  width: 15vw;
+  background-color: rgb(223, 133, 209);
   color: #050801;
   font-weight: bold;
   border: none;
@@ -162,8 +188,8 @@ body {
 }
 
 .update-profile-cancelbutton-dark {
-  width: 20vw;
-  padding: 4vh 2vh;
+  padding: 2vh 2vh;
+  width: 15vw;
   background-color: #050801;
   color: #d52222;
   font-weight: bold;
@@ -176,9 +202,9 @@ body {
 }
 
 .update-profile-cancelbutton-light {
-  width: 20vw;
-  padding: 4vh 2vh;
-  background-color: rgb(205, 142, 7);
+  padding: 2vh 2vh;
+  width: 15vw;
+  background-color: rgb(223, 133, 209);
   color: #050801;
   font-weight: bold;
   border: none;
@@ -216,7 +242,7 @@ body {
 
 .update-profile-heading-light {
   text-align: center;
-  color: rgb(205, 142, 7);
+  color: rgb(223, 133, 209);
   padding-top: 2vh;
 }
 
@@ -273,6 +299,7 @@ body {
   }
 }
 
+
 /* for save and cancel buttons */
 
 @media (max-width: 1054px) and (min-width: 871px) {
@@ -280,7 +307,7 @@ body {
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
-  .update-profile-savebutton-dark {
+  .update-profile-savebutton-light {
     width: 20vw;
   }
 }
@@ -290,7 +317,7 @@ body {
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
-  .update-profile-savebutton-dark {
+  .update-profile-savebutton-light {
     width: 30vw;
 
   }
@@ -301,7 +328,7 @@ body {
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
-  .update-profile-savebutton-dark {
+  .update-profile-savebutton-light {
     width: 40vw;
 
   }

@@ -1,14 +1,8 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import {
-  BrowserView,
-  MobileView,
-} from "react-device-detect";
+import { BrowserView, MobileView } from "react-device-detect";
 
-// axios call
-import serverAPI from "./api/serverAPI";
-
-import ContactForm from "./pages/ContactForm/ContactForm";
+// import ContactForm from "./pages/ContactForm/ContactForm";
 
 import Navbar from "./components/Navbar";
 import NavbarMob from "./components/NavbarMob";
@@ -23,10 +17,12 @@ import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
-import UpdateProfile  from "./pages/UserProfile/UpdateProfile";
+import UpdateProfile from "./pages/UserProfile/UpdateProfile";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [listOfStories, setListOfStories] = useState([])
+  const [story, setStory] = useState(null)
   const [mode, setMode] = useState(user?.mode || "dark");
 
   return (
@@ -58,44 +54,79 @@ function App() {
           element={<ResetPassword mode={mode} />}
         />
         <Route exact path="therapy-chatbot" element={<div></div>} />
-        <Route exact path="story" element={<StoryModeIntro mode={mode} />} />
+        <Route exact path="story" 
+          element={
+          <StoryModeIntro 
+            user={user}
+            mode={mode}
+            setListOfStories={setListOfStories} 
+          />}  
+          />
         <Route
           exact
           path="story/modules"
-          element={<StorySelect mode={mode} />}
+          element={
+            <StorySelect 
+                mode={mode} 
+                listOfStories={listOfStories}
+                setStory={setStory}
+            />}
         />
         <Route
           exact
           path="story/modules/situation"
-          element={<StorySituation mode={mode} />}
-        />
-        <Route exact path="story/modules/situation/play" element={<StoryMode mode={mode}  />} />
-        <Route
-          exact path='contact'
-          element={<ContactForm mode={mode}/>}
-        />
-        <Route
-          exact path="profile"
-          element={<UserProfile
-            mode={mode}
-            setMode={setMode}
-            user={user}
-            setUser={setUser}
-          />}
-        />
-        <Route 
-        exact path="profile/updateProfile"
-          element={<UpdateProfile
-            user={user}
-            setUser={setUser}
-            mode={mode}
-            setMode={setMode}
-          />}
+          element={
+            <StorySituation 
+                mode={mode} 
+                story={story}
+                setStory={setStory}
             />
-        <Route
-          path='*'
-          element={<Navigate to='/login' />}
+          }
         />
+        <Route exact path="story/modules/situation/play" 
+              element={
+                <StoryMode 
+                    mode={mode} 
+                    user={user}
+                    setUser={setUser}
+                    story={story}
+                    setStory={setStory}
+                />}               
+        />
+        <Route
+          exact
+          path="story/modules/situation/play"
+          element={<StoryMode mode={mode} />}
+        />
+        {/* <Route
+          exact path='contact'
+          element={<ContactForm />}
+        /> */}
+        <Route
+          exact
+          path="profile"
+          element={
+            <UserProfile
+              mode={mode}
+              setMode={setMode}
+              user={user}
+              setUser={setUser}
+            />
+          }
+        />
+        <Route
+          exact
+          path="profile/updateProfile"
+          element={
+            <UpdateProfile
+              user={user}
+              setUser={setUser}
+              mode={mode}
+              setMode={setMode}
+            />
+          }
+        />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </div>
   );

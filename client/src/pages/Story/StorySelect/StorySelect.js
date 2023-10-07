@@ -2,13 +2,10 @@ import './StorySelect.css'
 import { useNavigate } from 'react-router-dom'
 
 const StorySelect = ({ mode, listOfStories, setStory }) => {
-
-    const placeholder = ['/images/lightmode.jpg', '/images/lightmode.jpg',
-        '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg', '/images/lightmode.jpg',]
-    const scoreholder = ['20% done', '0% done', '70% done', '0% done', ' 100% done', '50% done']
-
     const navigate = useNavigate()
-    const goToModules = () => {
+    const goToModules = (storyModule) => {
+        setStory(storyModule)
+        console.log(storyModule)
         navigate('./situation')
     }
 
@@ -17,14 +14,19 @@ const StorySelect = ({ mode, listOfStories, setStory }) => {
         <div className={`story-select-${mode}`}>
             <h1 className={`story-select-heading-${mode}`}>Select a story of your choice</h1>
             <div className='story-select-modules'>
-                {placeholder.map((badgeImage) => (
+                {listOfStories.map((storyModule) => (
                     <div className='module-item1'>
                         <img
-                            className={`module-image-${mode}`} onClick={goToModules}
-                            src={badgeImage}
-                            alt={badgeImage}
+                            className={`module-image-${mode}`} 
+                            onClick={() => goToModules(storyModule)}
+                            src={
+                                (storyModule.storyPic === "") ?
+                                    '/images/lightmode.jpg' :
+                                    storyModule.storyPic
+                            }
+                            alt={'Story Pic'}
                         />
-                        <p className={`story-select-modulenames-${mode}`}>Headlines</p>
+                        <p className={`story-select-modulenames-${mode}`}>{storyModule.title}</p>
                     </div>
                 ))}
 

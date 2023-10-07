@@ -79,6 +79,7 @@ function App() {
             <StorySituation 
                 mode={mode} 
                 story={story}
+                setStory={setStory}
             />
           }
         />
@@ -86,6 +87,8 @@ function App() {
               element={
                 <StoryMode 
                     mode={mode} 
+                    user={user}
+                    setUser={setUser}
                     story={story}
                     setStory={setStory}
                 />}               

@@ -14,30 +14,40 @@ import SpeechBubble from './SpeechBubble'
 import girlTalking from '../../../lotties/girlTalking.json'
 import doctor from '../../../lotties/doctor.json'
 
-const StoryMode = ({ mode, story, setStory }) => {
+const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     // variable dimensions for the lottie animation
     const [lottieDim, setLottieDim] = useState(600)
+    // current dialog
+    const [currentDialog, setCurrentDialog] = useState(0)
+    // user score
+    const [score, setScore] = useState(0);
     // state to keep track of the selected response option
-    const [selectedOption, setSelectedOption] = useState('')
+    const [selectedOption, setSelectedOption] = useState(null)
     // toggle between the story and Dr Sankalp
     const [evaluate, setEvaluate] = useState(false)
 
-    // test response options
-    const options = ['Lorem 483881 xxx wdfenjlrbefdi', 'ipsum 82nf aafhhwelqndc evrjwiednxs jcne', 'c;dmknvjrrfejdqowjfbkew     slcjknowecsml;lfde', 'dsc co2eh32uy4893ujdxkajDLEWDELKNKPNKJkjp   LKNJ']
+    let evaluatedOptions = [] // keep track of indices of evaluated options
+
+    const options = ['ff', 'efrt', 'wdefrgt', 'dfer']
 
     // select a response option
     const clickOnOption = (option) => {
-        if (option !== selectedOption) {
+        if(evaluatedOptions.includes(option)){
+
+        }
+        else if (option !== selectedOption) {
             setSelectedOption(option)
+            console.log(selectedOption)
         } else {
             setSelectedOption('')
         }
     }
 
     // go to Dr Sankalp to evaluate the response
-    const evaluateResponse = () => {
-        if (selectedOption !== '') {
+    const evaluateResponse = (d) => {
+        if (selectedOption !== null) {
             setEvaluate(true)
+            score += d.score
         }
     }
 
@@ -49,7 +59,7 @@ const StoryMode = ({ mode, story, setStory }) => {
     return (
         <div className={`story-mode-${mode}`}>
             <div className={`story-title-${mode}`}>
-                <h3>Chance Encounter with Lisa</h3>
+                <h3>{story.title}</h3>
             </div>
             {
                 !evaluate &&
@@ -68,14 +78,14 @@ const StoryMode = ({ mode, story, setStory }) => {
                                 </div>
                             </div>
                             <div className='player-character-options'>
-                                {options.map((option) => (
+                                    {story.dialogues[currentDialog].dialogueOptions.map((d) => (
                                     <div
-                                        className={selectedOption === option ?
+                                        className={evaluatedOptions.includes(d) ? `evaluatedOption-${mode}`: selectedOption === d ?
                                             `selectedOption-${mode}` :
                                             `option-${mode}`}
-                                        onClick={() => clickOnOption(option)}
+                                        onClick={() => clickOnOption(d)}
                                     >
-                                        {option}
+                                        {d.dialogueOption}
                                     </div>
                                 ))}
                             </div>
@@ -94,7 +104,7 @@ const StoryMode = ({ mode, story, setStory }) => {
                     </div>
                     <div
                         className={`evaluate-response-${mode}`}
-                        onClick={evaluateResponse}
+                        onClick={() => evaluateResponse(selectedOption)}
                     >
                         Evaluate Response
                     </div>

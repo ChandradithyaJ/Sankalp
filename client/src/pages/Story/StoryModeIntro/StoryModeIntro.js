@@ -17,12 +17,14 @@ const StoryModeIntro = ({ user, mode, setListOfStories }) => {
       const response = await serverAPI.get('/stories', config)
       if(response && response.data){
         console.log(response.data)
+        setListOfStories(response.data)
+        navigate('./modules')
       }
     } catch(err) {
       console.log(err)
       console.log(err.message)
+      alert('Please check your internet connection and try again.')
     }
-    navigate('./modules')
   }
 
   return (

@@ -59,8 +59,8 @@
 }
 
 .profile-pic-dark, .profile-pic-light{
-    max-width: 20vh;
-    max-height: 20vh;
+    height: 20vh;
+    width: 20vh;
     border-radius: 50%;
     background-color: white;
 }

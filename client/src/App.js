@@ -27,7 +27,7 @@ function App() {
   return (
     <div className={`App-${mode}`}>
       <BrowserView>
-        <Navbar />
+        <Navbar user={user} mode={mode} />
       </BrowserView>
       <MobileView>
         <NavbarMob mode={mode} setMode={setMode} />

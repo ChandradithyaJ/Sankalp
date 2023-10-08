@@ -43,11 +43,6 @@ const NavbarMob = ({ mode, setMode }) => {
                   Profile
                 </Link>
               </li>
-              <li className="navigation__item">
-                <Link to="/login" className="navigation__link">
-                  Login
-                </Link>
-              </li>
             </ul>
           </nav>
         </div>

@@ -44,7 +44,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
 
     const editProfile = async () => {
         checkJWTvalidity()
-        navigate('./updateProfile')
+        navigate('./update-profile')
     }
 
     const logout = () => { 

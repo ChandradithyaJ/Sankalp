@@ -136,6 +136,16 @@
     }
 }
 
+.player-score{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    color: #d26beb;
+    padding-right: 4vw;
+}
+
 .conversation-container {
     display: flex;
     flex-direction: column;

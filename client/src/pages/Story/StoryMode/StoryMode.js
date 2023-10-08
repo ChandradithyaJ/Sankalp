@@ -33,6 +33,9 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     // keep track of indices of evaluated options
     const [evaluatedOptions, setEvaluatedOptions] = useState([])
 
+    // minimum score to successfully finish the story
+    const minimumScore = 0.8*story.totalScore
+
     // select a response option
     const clickOnOption = (option) => {
         if (evaluatedOptions.includes(option)) {
@@ -63,7 +66,6 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     }
 
     const backToStory = () => {
-        console.log(evaluatedOptions)
         setEvaluate(false)
         setSelectedOption(null)
     }
@@ -76,22 +78,49 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     }
 
     const endConversation = async () => {
+        // update only if score crosses a certain threshold
         if(score >= 0.8*story.totalScore){
-            const updateFinishedStories = [...user.finishedStories,
-                {
+            let newBadges = user.badges
+
+            let existing = false
+            let updateFinishedStories = user.finishedStories.map((finishedStory) => {
+                if(finishedStory.ID === story.id){
+                    existing = true
+                    let storedScore = Math.max(finishedStory.score, score)
+                    return { ...finishedStory, score: storedScore }
+                }
+                return finishedStory
+            })
+            // if it's the first time finishing the story, add to the list
+            if(!existing){
+                updateFinishedStories.push({
                     ID: story._id,
                     score: score
+                })
+
+                if(updateFinishedStories.length === 1){
+                    newBadges = {
+                        firstStory: true,
+                        firstThree: false
+                    }
+                } else if(updateFinishedStories.length === 3){
+                    newBadges = {
+                        firstStory: true,
+                        firstThree: true
+                    }
                 }
-            ]
+            }
 
             setUser({
                 ...user,
-                finishedStories: updateFinishedStories
+                finishedStories: updateFinishedStories,
+                badges: newBadges
             })
 
             const editDetails = {
                 id: user._id,
-                finishedStories: updateFinishedStories
+                finishedStories: updateFinishedStories,
+                badges: newBadges
             }
 
             const config = {
@@ -121,6 +150,10 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
         <div className={`story-mode-${mode}`}>
             <div className={`story-title-${mode}`}>
                 <h3>{story.title}</h3>
+            </div>
+            <div className='player-score'>
+                <h4>{`Score: ${score.toString()}/${story.totalScore.toString()}`}</h4>
+                <h4>{`Minimum successful score: ${minimumScore.toString()}`}</h4>
             </div>
             {
                 !evaluate &&

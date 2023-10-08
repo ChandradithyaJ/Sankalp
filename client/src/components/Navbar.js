@@ -38,13 +38,6 @@ const Navbar = () => {
                 Profile
               </Link>
             </li>
-            <li>
-              <Link to="/login">
-                <button className="login-button" href="/">
-                  Login
-                </button>
-              </Link>
-            </li>
           </ul>
         </nav>
       </div>

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const StorySelect = ({ user, mode, listOfStories, setStory }) => {
     const navigate = useNavigate()
     const [userFinishedStories, setUserFinishedStories] = useState(new Map())
+    const [reload, setReload] = useState(0)
     const goToModules = (storyModule) => {
         setStory(storyModule)
         console.log(storyModule)
@@ -13,17 +14,24 @@ const StorySelect = ({ user, mode, listOfStories, setStory }) => {
     }
 
     useEffect(() => {
-        // check if the user has finished a certain story
-        for (const module of listOfStories) {
-            const found = user.finishedStories.find((finishedStory) => finishedStory.ID === module._id)
-            if(found) {
-                let updateFinishedMap = userFinishedStories
-                updateFinishedMap.set(found.ID, found.score)
-                setUserFinishedStories(updateFinishedMap)
+        const createMapOfFinishedStories = () => {
+            // check if the user has finished a certain story
+            for (const module of listOfStories) {
+                const found = user.finishedStories.find((finishedStory) => finishedStory.ID === module._id)
+                if (found) {
+                    let updateFinishedMap = userFinishedStories
+                    updateFinishedMap.set(found.ID, found.score)
+                    setUserFinishedStories(updateFinishedMap)
+                }
             }
         }
+        if(reload < 1){
+            createMapOfFinishedStories()
+            setReload(reload+1)
+            console.log('Reloading...')
+        }
         console.log(userFinishedStories)
-    }, [])
+    }, [reload])
 
     return (
         <div className={`story-select-${mode}`}>

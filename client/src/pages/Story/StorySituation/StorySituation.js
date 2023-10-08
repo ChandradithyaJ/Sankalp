@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './StorySituation.css'
 import React from "react"
 
@@ -11,9 +11,12 @@ import { GoArrowLeft } from "react-icons/go"
 
 
 const StorySituation = ({ mode, story, setStory }) => {
-
     const [lottieDim, setLottieDim] = useState(600)
     const navigate = useNavigate()
+    useEffect(() => {
+        if(!story) navigate('/story/select')
+    }, [])
+
     const goToStory = () => {
         navigate('./play')
     }

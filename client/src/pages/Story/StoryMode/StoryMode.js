@@ -2,7 +2,7 @@
 
 // packages
 import Lottie from 'lottie-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // css
@@ -19,6 +19,10 @@ import serverAPI from '../../../api/serverAPI'
 
 const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     const navigate = useNavigate()
+    useEffect(() => {
+        if(!story) navigate('/story/select')
+    }, [])
+
     // variable dimensions for the lottie animation
     const [lottieDim, setLottieDim] = useState(600)
     // current dialog

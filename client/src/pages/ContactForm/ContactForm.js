@@ -3,9 +3,6 @@ import './ContactFormStyle.css'; // Import your CSS file for styling
 
 function ContactForm({ mode }) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
     message: '',
   });
 
@@ -24,11 +21,9 @@ function ContactForm({ mode }) {
 
     // Clear form fields after submission
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
       message: '',
     });
+    alert('Your message has been sent successfully! We will get back to you soon.')
   };
 
   return (
@@ -38,30 +33,6 @@ function ContactForm({ mode }) {
         <div className="right">
           <h2>Contact Us</h2>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className="field"
-              placeholder="Your Name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              className="field"
-              placeholder="Your Email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              className="field"
-              placeholder="Phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-            />
             <textarea
               placeholder="Message"
               className="field"

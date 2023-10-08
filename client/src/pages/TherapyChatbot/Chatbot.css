@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
+
+.chatbotcontainer-dark {
+  color: white;
+  display: block;
+}
+.chatbotcontainer-light {
+  color: black;
+  display: block;
+}
+
+.chatbotcontainer-dark p,
+.chatbotcontainer-light p {
+  font-family: "Bad Script", cursive;
+  margin: 20% 40%;
+  /* margin: auto; */
+  font-size: 5vh;
+}

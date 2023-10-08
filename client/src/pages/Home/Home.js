@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Home_style.css";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import Coverflow from "./CoverflowSlider/Coverflow";
+import Events from "./Events";
 
 function Home({ mode }) {
   mode = "dark";
@@ -18,6 +19,7 @@ function Home({ mode }) {
 
   return (
     <div className={`Home ${isDarkMode ? "Home--dark" : "Home--light"}`}>
+      {/* <div class="image"></div> */}
       <div
         style={{
           marginBottom: "50px",
@@ -38,28 +40,25 @@ function Home({ mode }) {
           marginLeft: "20px",
         }}
       ></div>
-      <div className="highlight-text-header">Whats Happening? </div>
-      <div class="highlighted-neon-text">Latest News</div>
-      
+      {/* <div className="highlight-text-header">Whats Happening? </div>
+      <div class="highlighted-neon-text">Latest News</div> */}
 
-             <div> <Coverflow/> </div>
+      {/* <div> <Coverflow/> </div> */}
 
       {/* adding spaces to verify  */}
-    
+
       <div>
         <div className="hero_bottom">
           <div className="hero-content">
-            <h1>    lets start the new journey to , better and more.</h1>
+            <h1>lets start the new journey to , better and more.</h1>
             <h2>calm now.</h2>
           </div>
         </div>
       </div>
       <div>
-            <div className="space">
-        </div>
+        <div className="space"></div>
 
-
-      {/* 
+        {/* 
       <div
         style={{
           marginTop: "50px",
@@ -75,8 +74,8 @@ function Home({ mode }) {
 
         <div className="highlight-text-header">Lets Explore, How it works</div>
         <div class="highlighted-neon-text">Sankalp</div>
-
-        <div className="flowCharts">
+        {/* <div className="line"></div> */}
+        {/* <div className="flowCharts">
           <div className="flowChart">
             <h2>Try learning by Experiiinsing</h2>
             <img
@@ -125,7 +124,8 @@ function Home({ mode }) {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Events />
       </div>
     </div>
   );

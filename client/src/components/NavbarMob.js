@@ -34,7 +34,7 @@ const NavbarMob = ({ mode, setMode }) => {
                 </Link>
               </li>
               <li className="navigation__item">
-                <Link to="/contact" className="navigation__link">
+                <Link to="/contact-us" className="navigation__link">
                   Contact Us
                 </Link>
               </li>

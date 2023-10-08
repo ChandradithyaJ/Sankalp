@@ -29,7 +29,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="mainLinks">
+              <Link to="/contact-us" className="mainLinks">
                 Contact
               </Link>
             </li>

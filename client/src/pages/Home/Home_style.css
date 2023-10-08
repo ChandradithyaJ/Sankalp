@@ -12,41 +12,6 @@ body {
   overflow: hidden;
 }
 
-/* .image {
-  background-image: url("https://image.ibb.co/guDJFp/greece.jpg");
-  background-position: center;
-  background-repeat: repeat-x;
-  background-size: cover;
-  height: 100%;
-  animation: slide 70s linear infinite;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-size: 30% auto;
-  width: 6000px;
-  transform: translate3d(0, 0, 0);
-}
-.image::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-}
-@keyframes slide {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-30%, 0, 0);
-  }
-} */
-
-/* Add carousel slider here --help me -arpit */
-/* tring  */
-/* Dark Mode */
 .dark-mode {
   background: linear-gradient(45deg, #f06, #333 50%, #f06);
   background-size: 4px 4px;
@@ -67,50 +32,18 @@ body {
   overflow: hidden;
   font-family: Arial, sans-serif;
   background-color: #333;
-  color: #e0d7d7; /* Adjust the text color for light mode */
+  color: #e0d7d7;
+  /* Adjust the text color for light mode */
 }
 
-/* Button
-  .button {
-    display: block;
-    padding: 10px 20px;
-    background-color: #0074cc;
-    color: #fff;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 auto;
-    transition: background-color 0.2s ease-in-out;
-  } */
-/*   
-  .button:hover {
-    background-color: #005baa;
-    position: relative;
-    top: -2px;
-    left: 2px;
-  } */
-
-/* .buttonText{  
-    /* top right down left */
-/* padding:10px 15px 10px 15px;
-    } */
-*/
-
-  /* .buttonText:hover{
-    /* position: relative;
-    top: -2px;
-    left: 2px; */
-    /* letter-spacing: 2px;
-  } */ */
-  
-  /* Highlighted Texts */
-  .highlight-text {
+/* Highlighted Texts */
+.highlight-text {
   padding: 10px 20px;
   font-size: 24px;
   font-weight: bold;
   color: #0074cc;
 }
+
 .highlight-text-header {
   padding: 10px 20px;
   font-size: 50px;
@@ -119,21 +52,33 @@ body {
   color: #7bbff4;
 }
 
-.highlighted-neon-text {
+.home-heading-text {
   padding: 10px 20px;
   font-size: 80px;
   font-weight: bold;
   text-align: center;
 
-  color: transparent; /* Make the text transparent */
-  -webkit-text-stroke: 2px #ff66b2; /* Add a pink stroke around the text */
-  text-shadow: 0 0 5px rgba(185, 10, 97, 0.5),
-    /* Inner shadow for readability */ 0 0 10px rgba(136, 13, 75, 0.5),
-    /* Inner shadow for readability */ 0 0 15px rgba(160, 16, 16, 0.8),
-    /* Inner shadow for increased glow */ 0 0 20px rgb(107, 102, 255),
-    /* Inner shadow for maximum glow */ 0 0 25px #f0fd3f5d; /* Outer glow for the neon effect */
-  background-color: transparent; /* Remove the background color */
-  border-radius: 10px; /* To create a rounded rectangle */
+
+
+
+  /* color: transparent; */
+  /* Make the text transparent */
+  /* -webkit-text-stroke: 2px #ff66b2; */
+  /* Add a pink stroke around the text */
+  /* text-shadow: 0 0 5px rgba(185, 10, 97, 0.5), */
+  /* Inner shadow for readability */
+  /* 0 0 10px rgba(136, 13, 75, 0.5), */
+  /* Inner shadow for readability */
+  /* 0 0 15px rgba(160, 16, 16, 0.8), */
+  /* Inner shadow for increased glow */
+  /* 0 0 20px rgb(107, 102, 255), */
+  /* Inner shadow for maximum glow */
+  /* 0 0 25px #f0fd3f5d; */
+  /* Outer glow for the neon effect */
+  /* background-color: transparent; */
+  /* Remove the background color */
+  /* border-radius: 10px; */
+  /* To create a rounded rectangle */
 }
 
 /* News Items large and small */
@@ -174,6 +119,7 @@ body {
   margin-bottom: 20px;
   overflow: hidden;
 }
+
 .pulse {
   animation: pulse 1s infinite;
 }
@@ -254,4 +200,70 @@ nav img {
 
 .icon:hover {
   transform: translateY(-10px);
+}
+
+
+
+
+:root {
+  --steps: 20;
+  --background-dark: rgb(40, 40, 40);
+  --background-light: whitesmoke;
+}
+
+.typing-dark {
+  font-family: 'Inconsolata', Consolas, monospace;
+  margin-left: 13vw;
+  margin-right: 13vw;
+  font-size: 7vw;
+  color: #4cd763;
+  position: relative;
+  overflow: hidden;
+
+
+  &::after {
+    content: " !";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    color: #4cd763;
+    background: var(--background-dark);
+    animation: typing 2s steps(var(--steps)) forwards,
+      caret 1s infinite;
+  }
+}
+
+.typing-light {
+  font-family: 'Inconsolata', Consolas, monospace;
+  margin-left: 13vw;
+  margin-right: 13vw;
+  font-size: 7vw;
+  color: #d7884c;
+  position: relative;
+  background-color: whitesmoke;
+  overflow: hidden;
+
+
+  &::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    color: #d7884c;
+    background: whitesmoke;
+    animation: typing 2s steps(var(--steps)) forwards,
+      caret 1s infinite;
+  }
+}
+
+@keyframes typing {
+  to {
+    width: 0
+  }
+}
+
+@keyframes caret {
+  50% {
+    color: transparent
+  }
 }

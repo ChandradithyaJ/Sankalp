@@ -56,7 +56,7 @@ function App() {
       )}
       {user && (
         <Routes>
-          <Route exact path="home" element={<Home />} />
+          <Route exact path="home" element={<Home mode={mode} />} />
           <Route exact path="BlogPage" element={<BlogPage />} />
           <Route exact path="contact-us" element={<ContactForm mode={mode} />} />
           <Route

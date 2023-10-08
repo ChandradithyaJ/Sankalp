@@ -27,20 +27,20 @@ function Login({ mode, user, setUser }) {
       'password': password
     }
 
-    try{
+    try {
       const response = await serverAPI.post('/auth', userDetails)
       if (response && response.data) {
         setUser(response.data.foundUser)
-        navigate('/profile')
+        navigate('/home')
       }
     } catch (err) {
       console.log(err.message)
       console.log(err.response.status)
       console.log(err.response.data.message)
 
-      if(err.response.status === 409){
+      if (err.response.status === 409) {
         alert(err.response.data.message)
-      } else{
+      } else {
         alert('Unable to login. Please check your internet connection and try again.')
       }
     }
@@ -48,7 +48,7 @@ function Login({ mode, user, setUser }) {
 
   const signUpUser = async (e) => {
     e.preventDefault()
-    
+
     // debugging
     console.log(username)
     console.log(email)
@@ -56,7 +56,7 @@ function Login({ mode, user, setUser }) {
     console.log(confirmPassword)
 
     // password checking
-    if(password !== confirmPassword){
+    if (password !== confirmPassword) {
       alert('Password and Confirm Password should be the same.')
       return
     }
@@ -68,12 +68,12 @@ function Login({ mode, user, setUser }) {
     }
 
     // store user in database through API call
-    try{
+    try {
       const response = await serverAPI.post('/register', newUser)
-      if(response && response.data){
+      if (response && response.data) {
         console.log('User details: ', response.data)
         setUser(response.data.newUser)
-        navigate('/profile')
+        navigate('/home')
       }
     } catch (err) {
       console.log(err)

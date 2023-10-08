@@ -2,6 +2,51 @@
   font-family: tahoma;
   padding: 40px 0;
 } */
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
+
+/* .image {
+  background-image: url("https://image.ibb.co/guDJFp/greece.jpg");
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: cover;
+  height: 100%;
+  animation: slide 70s linear infinite;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-size: 30% auto;
+  width: 6000px;
+  transform: translate3d(0, 0, 0);
+}
+.image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-30%, 0, 0);
+  }
+} */
+
+.homePageImage1 {
+  height: 25vh;
+  width: 25vw;
+}
+
+.ImageContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin: 2vh; */
+}
 
 .main-timeline {
   font-family: tahoma;
@@ -22,6 +67,10 @@
   left: 50%;
   top: -15px;
   z-index: 2;
+}
+
+.ImageDiv {
+  margin: auto;
 }
 
 .main-timeline::after {
@@ -89,8 +138,8 @@
 
 .main-timeline .content {
   color: #909090;
-  width: 50%;
-  padding: 20px;
+  width: 100%;
+  padding: 10vw;
   display: inline-block;
   float: right;
 }
@@ -239,6 +288,10 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .col {
+    margin-left: 6vw;
+  }
+
   .main-timeline .timeline:after {
     border-radius: 88px 0 0 88px;
   }
@@ -288,6 +341,11 @@
     top: 25%;
     left: 10%;
   }
+
+  .ImageDiv img {
+    height: 14vh;
+  }
+
   .main-timeline .timeline-year {
     font-size: 25px;
     transform: translateY(0);
@@ -297,9 +355,11 @@
   .main-timeline .content {
     width: 68%;
     padding: 10px;
+    margin-left: 3vw;
+    margin-right: 2vw;
   }
   .main-timeline .title {
-    font-size: 18px;
+    font-size: 13px;
   }
   .main-timeline .timeline:nth-child(even) .timeline-icon {
     right: 10%;

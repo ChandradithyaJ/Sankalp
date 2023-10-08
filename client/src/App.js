@@ -59,7 +59,11 @@ function App() {
           <Route exact path="home" element={<Home />} />
           <Route exact path="ChatBox" element={<ChatBox />} />
           <Route exact path="BlogPage" element={<BlogPage />} />
-          <Route exact path="therapy-chatbot" element={<Chatbot />} />
+          <Route
+            exact
+            path="therapy-chatbot"
+            element={<Chatbot mode={mode} />}
+          />
           <Route
             exact
             path="story"

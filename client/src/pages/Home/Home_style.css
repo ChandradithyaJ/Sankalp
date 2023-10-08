@@ -12,6 +12,38 @@ body {
   overflow: hidden;
 }
 
+/* .image {
+  background-image: url("https://image.ibb.co/guDJFp/greece.jpg");
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: cover;
+  height: 100%;
+  animation: slide 70s linear infinite;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-size: 30% auto;
+  width: 6000px;
+  transform: translate3d(0, 0, 0);
+}
+.image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-30%, 0, 0);
+  }
+} */
+
 /* Add carousel slider here --help me -arpit */
 /* tring  */
 /* Dark Mode */

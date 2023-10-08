@@ -1,7 +1,7 @@
 import React from "react";
 import "./Events.css";
 
-const Events = () => {
+function Events() {
   return (
     <div className="container">
       <div className="row">
@@ -9,53 +9,77 @@ const Events = () => {
           <div className="main-timeline">
             <div className="timeline">
               <a href="/" className="timeline-content">
-                <span className="timeline-year">2018</span>
+                {/* <span className="timeline-year">2018</span> */}
                 <div className="timeline-icon">
                   <i className="fa fa-rocket" aria-hidden="true"></i>
                 </div>
-                <div className="content">
-                  <h3 className="title">Web Development</h3>
-                  <p className="description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s.
-                  </p>
+                <div className="ImageContainer">
+                  <div className="content">
+                    <h3 className="title">Story Mode</h3>
+                    <p className="description">
+                      Try learning by experiencing. Gain knowledge about
+                      conversing
+                    </p>
+                  </div>
+                  <div className="ImageDiv">
+                    <img
+                      className="homePageImage1"
+                      src="https://dy7glz37jgl0b.cloudfront.net/betterhelp_two/photos/image-how-it-works-2-phone.png?v=0177f73d2461"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </a>
             </div>
             <div className="timeline">
               <a href="/" className="timeline-content">
-                <span className="timeline-year">2017</span>
+                {/* <span className="timeline-year">2017</span> */}
                 <div className="timeline-icon">
                   <i className="fa fa-users" aria-hidden="true"></i>
                 </div>
-                <div className="content">
-                  <h3 className="title">JavaScript</h3>
-                  <p className="description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s.
-                  </p>
+                <div className="ImageContainer">
+                  <div className="ImageDiv">
+                    <img
+                      className="homePageImage1"
+                      src="https://images.theconversation.com/files/454716/original/file-20220328-15-1rfv76b.jpg?ixlib=rb-1.1.0&rect=16%2C0%2C3578%2C1880&q=45&auto=format&w=926&fit=clip"
+                      alt=""
+                    />
+                  </div>
+                  <div className="content">
+                    <h3 className="title">Chat with Bot</h3>
+                    <p className="description">
+                      Communiate with the bot and get your queries solved. try
+                      cheering up our friend bot and earn credits.
+                    </p>
+                  </div>
                 </div>
               </a>
             </div>
             <div className="timeline">
               <a href="/" className="timeline-content">
-                <span className="timeline-year">2017</span>
+                {/* <span className="timeline-year">2017</span> */}
                 <div className="timeline-icon">
                   <i className="fa fa-cog" aria-hidden="true"></i>
                 </div>
-                <div className="content">
-                  <h3 className="title">Mongo DB</h3>
-                  <p className="description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s.
-                  </p>
+                <div className="ImageContainer">
+                  <div className="content">
+                    <h3 className="title">Latest news</h3>
+                    <p className="description">
+                      LLearn the updates. Get aware about the latest researches
+                      and updates on mental.
+                    </p>
+                  </div>
+                  <div className="ImageDiv">
+                    <img
+                      className="homePageImage1"
+                      src="https://i0.wp.com/calmatters.org/wp-content/uploads/2022/02/mental-health.jpg?fit=2121%2C1414&ssl=1"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </a>
             </div>
-            <div className="timeline">
+            {/* <div className="timeline">
               <a href="/" className="timeline-content">
                 <span className="timeline-year">2017</span>
                 <div className="timeline-icon">
@@ -118,12 +142,12 @@ const Events = () => {
                   </p>
                 </div>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Events;

@@ -19,6 +19,7 @@ function Home({ mode }) {
 
   return (
     <div className={`Home ${isDarkMode ? "Home--dark" : "Home--light"}`}>
+      {/* <div class="image"></div> */}
       <div
         style={{
           marginBottom: "50px",

@@ -8,10 +8,10 @@ import ModeToggle from './ModeToggle'
 import './ModeToggle.css'
 
 const UserProfile = ({ mode, setMode, user, setUser }) => {
-    const badgeImages = ['./images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png', './images/greenCheck.png']
+    const badgeImages = ['./images/firstStory.png', './images/firstThree.png']
 
     const [profilePic, setProfilePic] = useState(
-        user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` :  user?.profilepic
+        user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic
     )
 
     const navigate = useNavigate()
@@ -47,7 +47,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         navigate('./update-profile')
     }
 
-    const logout = () => { 
+    const logout = () => {
         setUser(null)
         navigate('/login')
     }
@@ -56,7 +56,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         checkJWTvalidity()
 
         // JS Confirm Pop-up
-        if(window.confirm("Are you sure you want to delete your profile?")){
+        if (window.confirm("Are you sure you want to delete your profile?")) {
             const config = {
                 'headers': {
                     'authorization': `Bearer ${user.accessToken}`
@@ -75,7 +75,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
             } catch (err) {
                 console.log(err.message)
             }
-        } else{
+        } else {
             // do nothing
         }
     }
@@ -104,7 +104,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                         >
                             Edit Profile
                         </div>
-                        <ModeToggle 
+                        <ModeToggle
                             mode={mode}
                             setMode={setMode}
                             user={user}
@@ -118,17 +118,22 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                         </div>
                     </div>
                 </div>
+                <div className='badges-heading'>Your Badges:</div>
                 <div className='badges-container'>
-                    {badgeImages.map((badgeImage) => (
-                        <div className='one-badge-container'>
-                            <img
-                                className={`badge-image`}
-                                src={badgeImage}
-                                alt={badgeImage}
-                            />
-                            <p>Finish 8 stories!</p>
-                        </div>
-                    ))}
+                    {badgeImages.map((badgeImage) => {
+                        if (user.badges[badgeImage.slice(9, badgeImage.length - 4)]) {
+                            return (
+                                <div className='one-badge-container'>
+                                    <img
+                                        className={`badge-image`}
+                                        src={badgeImage}
+                                        alt={badgeImage}
+                                    />
+                                </div>
+                            )
+                        }
+                    }
+                    )}
                 </div>
                 <div className='delete-button-profile-container'>
                     <div

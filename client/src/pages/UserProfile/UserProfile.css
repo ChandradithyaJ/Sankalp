@@ -146,6 +146,13 @@
     }
 }
 
+.badges-heading{
+    padding-left: 3vw;
+    padding-top: 2vh;
+    font-weight: 700;
+    font-size: x-large;
+}
+
 .badges-container{
     padding-top: 3vh;
     display: flex;

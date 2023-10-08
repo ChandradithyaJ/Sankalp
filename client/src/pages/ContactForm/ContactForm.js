@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ContactFormStyle.css'; // Import your CSS file for styling
 
-function ContactForm({mode}) {
+function ContactForm({ mode }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

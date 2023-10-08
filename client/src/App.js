@@ -13,6 +13,7 @@ import Login from "./pages/Authentication/login";
 import ResetPassword from "./pages/Authentication/reset-password";
 import Home from "./pages/Home/Home";
 import ChatBox from "./pages/ChatBox/ChatBox";
+import ContactForm from "./pages/ContactForm/ContactForm";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile from "./pages/UserProfile/UpdateProfile";
@@ -66,6 +67,7 @@ function App() {
           <Route exact path="ChatBox" element={<ChatBox />} />
           <Route exact path="BlogPage" element={<BlogPage />} />
           <Route exact path="therapy-chatbot" element={<Chatbot />} />
+          <Route exact path="contact-us" element={<ContactForm />} />
           <Route exact path="story"
             element={
               <StoryModeIntro

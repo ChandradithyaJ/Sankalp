@@ -75,7 +75,7 @@ function Home({ mode }) {
         <div className="highlight-text-header">Lets Explore, How it works</div>
         <div class="highlighted-neon-text">Sankalp</div>
         {/* <div className="line"></div> */}
-        {/* <div className="flowCharts">
+        <div className="flowCharts">
           <div className="flowChart">
             <h2>Try learning by Experiiinsing</h2>
             <img
@@ -124,8 +124,8 @@ function Home({ mode }) {
               </p>
             </div>
           </div>
-        </div> */}
-        <Events />
+        </div>
+        {/* <Events /> */}
       </div>
     </div>
   );

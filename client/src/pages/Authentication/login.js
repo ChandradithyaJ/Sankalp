@@ -34,8 +34,8 @@ function Login({ setUser }) {
       console.log(err.response?.status)
       console.log(err.response?.data?.message)
 
-      if (err.response?.status === 409) {
-        alert(err.response.data.message)
+      if (err.response?.status === 409 || err.response?.status === 401) {
+        alert(err.response.data)
       } else {
         alert('Unable to login. Please check your internet connection and try again.')
       }

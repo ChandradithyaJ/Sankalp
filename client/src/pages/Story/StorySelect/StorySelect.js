@@ -35,6 +35,14 @@ const StorySelect = ({ user, mode, listOfStories, setStory }) => {
 
     return (
         <div className={`story-select-${mode}`}>
+        {
+            listOfStories.length === 0 &&
+            <h2 style={{
+                color:'greenyellow'
+            }}>
+                There are no stories available at the moment
+            </h2>
+        }
             <h1 className={`story-select-heading-${mode}`}>Select a story of your choice</h1>
             <div className='story-select-modules'>
                 {listOfStories.map((storyModule) => (

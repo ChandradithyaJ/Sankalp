@@ -83,12 +83,6 @@ const UpdateProfile = ({ mode, user, setUser }) => {
         newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpg`
       }
     }
-    setUser({
-      ...user,
-      username: username,
-      bio: bio,
-      profilepic: newProfilePic
-    })
 
     const editDetails = {
       id: user._id,
@@ -107,9 +101,16 @@ const UpdateProfile = ({ mode, user, setUser }) => {
       const response = await serverAPI.put('/users', editDetails, config)
       if (response && response.data) {
         console.log('Edit Profile Response: ', response.data)
+        setUser({
+          ...user,
+          username: username,
+          bio: bio,
+          profilepic: newProfilePic
+        })
       }
     } catch (err) {
       console.log(err.message)
+      alert(err?.response?.data?.message)
     }
 
     navigate('/profile')
@@ -139,9 +140,6 @@ const UpdateProfile = ({ mode, user, setUser }) => {
             className="udpate-profile-inputbox"
             placeholder='Username'
             type="text"
-            // required colored text
-
-
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />

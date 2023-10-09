@@ -38,6 +38,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                 }
             } catch (err) {
                 console.log(err.message)
+                alert('Unable to edit user details at the moment. Please try again later.')
             }
         }
     }
@@ -74,6 +75,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                 navigate('./login')
             } catch (err) {
                 console.log(err.message)
+                alert('Unable to delete profile at the moment. Please try again later.')
             }
         } else {
             // do nothing

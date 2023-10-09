@@ -115,12 +115,6 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                 }
             }
 
-            setUser({
-                ...user,
-                finishedStories: updateFinishedStories,
-                badges: newBadges
-            })
-
             const editDetails = {
                 id: user._id,
                 finishedStories: updateFinishedStories,
@@ -137,9 +131,15 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                 const response = await serverAPI.put('/users', editDetails, config)
                 if (response && response.data) {
                     console.log('Edit Profile Response: ', response.data)
+                    setUser({
+                        ...user,
+                        finishedStories: updateFinishedStories,
+                        badges: newBadges
+                    })
                 }
             } catch (err) {
                 console.log(err)
+                alert('Unable to finish the story. Please check your internet connection')
             }
         }
 

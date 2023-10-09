@@ -61,11 +61,6 @@ body {
   text-align: center;
 }
 
-/* News Items large and small */
-/* 
-/* Updated Swiper.css */
-
-/* animate  */
 .flowCharts {
   display: flex;
   flex-direction: column;
@@ -124,7 +119,6 @@ body {
   height: 40px;
 }
 
-.news-heading {}
 
 header {
   background-color: transparent;
@@ -160,7 +154,6 @@ nav img {
 
 .hero-content {
   display: block;
-  /* text-align: center; */
   margin: auto;
   color: white;
 }

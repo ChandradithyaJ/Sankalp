@@ -30,7 +30,7 @@ function App() {
         <Navbar user={user} mode={mode} />
       </BrowserView>
       <MobileView>
-        <NavbarMob mode={mode} setMode={setMode} />
+        <NavbarMob mode={mode} />
       </MobileView>
 
       {/* access app routes only if logged in */}

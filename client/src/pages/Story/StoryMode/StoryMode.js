@@ -1,14 +1,9 @@
 /*** Story Mode UI ***/
 
-// packages
 import Lottie from 'lottie-react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-// css
 import './StoryMode.css'
-
-// components
 import SpeechBubble from './SpeechBubble'
 
 // lottie animations
@@ -23,21 +18,12 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
         if(!story) navigate('/story/select')
     }, [])
 
-    // variable dimensions for the lottie animation
     const [lottieDim, setLottieDim] = useState(600)
-    // current dialog
     const [currentDialog, setCurrentDialog] = useState(0)
-    // user score
     const [score, setScore] = useState(0);
-    // state to keep track of the selected response option
     const [selectedOption, setSelectedOption] = useState(null)
-    // toggle between the story and Dr Sankalp
     const [evaluate, setEvaluate] = useState(false)
-
-    // keep track of indices of evaluated options
     const [evaluatedOptions, setEvaluatedOptions] = useState([])
-
-    // minimum score to successfully finish the story
     const minimumScore = 0.8*story.totalScore
 
     // select a response option
@@ -82,6 +68,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     }
 
     const endConversation = async () => {
+        
         // update only if score crosses a certain threshold
         if(score >= 0.8*story.totalScore){
             let newBadges = user.badges

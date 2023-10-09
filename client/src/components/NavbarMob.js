@@ -2,7 +2,7 @@ import React from "react";
 import "./NavbarMob.css";
 import { Link } from "react-router-dom";
 
-const NavbarMob = ({ mode, setMode }) => {
+const NavbarMob = ({ mode }) => {
   return (
     <>
       <div id="mainBar" className="small-screen">

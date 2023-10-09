@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import './StorySelect.css'
 import { useNavigate } from 'react-router-dom'
-//see if we can use this to get the story modules
 
 const StorySelect = ({ user, mode, listOfStories, setStory }) => {
     const navigate = useNavigate()

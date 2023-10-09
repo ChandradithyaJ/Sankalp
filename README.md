@@ -1,6 +1,6 @@
 # Sankalp
 
-![Sankalp Logo](https://picsum.photos/200/300 "Sankalp Logo")
+![Sankalp Logo]((./readme_pics/Sankalp_logo.png)"Sankalp Logo")
 
 ## Table of Contents
 
@@ -83,7 +83,7 @@ The **Sankalp MERN Web Application** aims to raise awareness and understanding o
 
 ![Stories](./readme_pics/storyPlay_dark.png)
 
-![Stories](./readme_pics/storyEvaluation_dark.png)
+![Stories](./readme_pics/StoryEvaluation_dark.png)
 
 ![profile dark](./readme_pics/Profile_dark.png)
 

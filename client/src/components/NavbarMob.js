@@ -30,7 +30,7 @@ const NavbarMob = ({ mode, setMode }) => {
               </li>
               <li className="navigation__item">
                 <Link to="/therapy-chatbot" className="navigation__link">
-                  Therapist
+                  Mia
                 </Link>
               </li>
               <li className="navigation__item">

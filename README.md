@@ -1,6 +1,7 @@
 # Sankalp
 
-![Sankalp Logo]((./readme_pics/Sankalp_logo.png)"Sankalp Logo")
+![Sankalp](./readme_pics/Sankalp_logo.png)
+
 
 ## Table of Contents
 

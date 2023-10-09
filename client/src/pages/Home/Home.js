@@ -27,9 +27,10 @@ function Home({ mode }) {
       ></div>
       <div>
         <h1>
-          <div class="highlighted-neon-text">Welcome to your MindSpace</div>
+          <div className="highlighted-neon-text">Welcome to your MindSpace</div>
         </h1>
       </div>
+
       <div
         style={{
           marginTop: "50px",
@@ -39,10 +40,12 @@ function Home({ mode }) {
         }}
       ></div>
       <div className="highlight-text-header">Whats Happening? </div>
-      <div class="highlighted-neon-text">Latest News</div>
+      <div className="highlighted-neon-text">Latest News</div>
+
+
+      <div> <Coverflow/> </div>
       
 
-             <div> <Coverflow/> </div>
 
       {/* adding spaces to verify  */}
     
@@ -74,7 +77,7 @@ function Home({ mode }) {
         </button> */}
 
         <div className="highlight-text-header">Lets Explore, How it works</div>
-        <div class="highlighted-neon-text">Sankalp</div>
+        <div className="highlighted-neon-text">Sankalp</div>
 
         <div className="flowCharts">
           <div className="flowChart">

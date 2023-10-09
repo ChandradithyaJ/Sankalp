@@ -1,32 +1,40 @@
-/* Swiper.css */
-/* hide any overflow from page */
-.swiper-container {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
+/* Swiper Container */
 .swiper-container-coverflow {
-  overflow: hidden; /* Add this line */
+  width: 750px; /* Set the maximum width */
+  margin: 0 auto; /* Center the container horizontally */
+  padding-top: 50px;
+  padding-bottom: 50px;
+  overflow: hidden; /* Hide content that overflows on the left */
 }
 
+/* Swiper Slide */
 .swiper-slide {
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
+  width: 300px; /* Set the slide width */
+  background-color: #fff; /* Slide background color */
+  border-radius: 10px; /* Slide border radius */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); /* Slide box shadow */
+  text-align: center; /* Center slide content */
+  margin-right: 20px; /* Add space between slides */
 }
 
-.swiper-slide img {
-  /* just fit in box */
-  display: block;
-  overflow: hidden;
-  max-height: calc(100% - 40px);
-  max-width: calc(100% - 40px);
+/* Swiper Slide Image */
+.swiper-slide-image {
+  max-width: 100%; /* Limit image width */
+  height: auto; /* Automatically adjust height based on aspect ratio */
+  object-fit: cover; /* Maintain aspect ratio and cover slide */
+  border-radius: 10px; /* Image border radius */
 }
 
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #007bff; /* Button color */
+  font-size: 24px; /* Button font size */
+}
+
+/* Swiper Scrollbar (optional) */
 .swiper-scrollbar {
-  overflow: hidden;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  display: flex;
+  height: 4px; /* Scrollbar height */
+  background-color: #007bff; /* Scrollbar color */
+  border-radius: 4px; /* Scrollbar border radius */
 }

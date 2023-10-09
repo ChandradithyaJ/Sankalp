@@ -3,6 +3,7 @@ import "./Home_style.css";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
+import Cards from "./Cards";
 
 function Home({ mode }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -50,7 +51,11 @@ function Home({ mode }) {
         <div className="space"></div>
         <div className="highlight-text-header">Lets Explore, How it works</div>
         <Events />
-        <div> <Coverflow /> </div>
+        <div>
+          {" "}
+          {/* <Coverflow />{" "} */}
+          <Cards />
+        </div>
       </div>
     </div>
   );

@@ -66,6 +66,7 @@ const Coverflow = () => {
       });
     }
   }, []);
+  
 
   return (
     <div className="swiper-container swiper-container-coverflow" ref={swiperRef}>
@@ -93,7 +94,11 @@ const Coverflow = () => {
       <div className="swiper-button-next"></div>
       <div className="swiper-button-prev"></div>
     </div>
+    
   );
 };
+
+
+
 
 export default Coverflow;

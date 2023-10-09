@@ -4,6 +4,7 @@ import { BsFillCaretDownFill } from "react-icons/bs";
 import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
 import Cards from "./Cards";
+import PanoramaViewer from "./Panorma/PanormaViewer";
 
 function Home({ mode }) {
   useEffect(() => {
@@ -24,6 +25,7 @@ function Home({ mode }) {
           <div class={`typing-${mode}`}>Welcome to Sankalp!</div>
         </h1>
       </div>
+
       <div
         style={{
           marginTop: "50px",
@@ -40,6 +42,7 @@ function Home({ mode }) {
           </div>
         </div>
       </div>
+      <div> <PanoramaViewer /> </div>
       <div>
         <div className="space"></div>
         <div className="highlight-text-header"><h3>News</h3></div>

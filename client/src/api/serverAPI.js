@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'https://sankalp-api.vercel.app/'
+    baseURL: 'https://sankalp-api.onrender.com/'
 })

@@ -47,7 +47,7 @@ function Home({ mode }) {
       </div>
       <div>
         {" "}
-        <PanoramaViewer />{" "}
+        {/* <PanoramaViewer />{" "} */}
       </div>
       <div>
         <div className="space"></div>

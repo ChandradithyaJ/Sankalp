@@ -1,6 +1,6 @@
-# Sankalp MERN Web Application - README
+# Sankalp
 
-![Sankalp Logo](https://picsum.photos/200/300   "TODO Image url")
+![Sankalp Logo](https://picsum.photos/200/300 "TODO Image url")
 
 ## Table of Contents
 
@@ -23,12 +23,12 @@
 
 ## Project Overview
 
-Welcome to the **Sankalp MERN Web Application** repository! This web application is dedicated to addressing the challenges faced by individuals with mental health issues and disabilities. It aims to break stereotypes and promote understanding while providing valuable features to support users. 
+Welcome to the **Sankalp** Web Application repository! This web application is dedicated to addressing the challenges faced by individuals with mental health issues and disabilities. It aims to break stereotypes and promote understanding while providing valuable features to support users.This project uses MERN stack.
 
 ## Team Information
 
 - **Team Name:** SE_2023 Team 11
-- **Team Members and Contributions:** 
+- **Team Members and Contributions:**
   - Karthikeya -
   - Arpit -
   - Manurbhav -
@@ -50,6 +50,7 @@ The **Sankalp MERN Web Application** aims to raise awareness and understanding o
 - Provides insights into how users' words and actions can positively or negatively affect others.
 - If a disrespectful option is chosen in the story mode, the app encourages users to reconsider or provides an explanation for the inappropriateness.
 - Badges provided for completion of stories..
+
 ### User Authentication
 
 - Basic login, logout, and registration functionality.
@@ -92,6 +93,7 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
 6. Return to the project folder: `cd ..`.
 
 ### Environment Configuration
+
 1. Navigate to the Server Directory
 2. Copy the `.env.sample` file to a new file named `.env`.
 3. Modify the values in the `.env` file to match your configuration needs.
@@ -101,8 +103,6 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
 1. Start the server and client concurrently using: `npm run start`.
 2. Access the app in your web browser at `http://localhost:3000`.
 3. If required can host this website on the internet for everyone to access.
-
-
 
 ## Alignment with Goals
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from 'react-router-dom'
 import Swiper from "swiper/bundle"; // Import Swiper with required modules
 import "swiper/swiper-bundle.css";
 import axios from "axios";
@@ -11,9 +12,6 @@ const Coverflow = () => {
   const swiperRef = useRef(null);
   let swiperInstance = null;
 
-  // Test storing a value in localStorage
-
-
   useEffect(() => {
     const getArticles = async () => {
       try {
@@ -25,7 +23,7 @@ const Coverflow = () => {
         }
 
         const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=mental&pageSize=6&apiKey=${apiKey}`
+          `https://newsapi.org/v2/everything?q=Mental&pageSize=6&apiKey=${apiKey}`
         );
 
         console.log("API Response:", response.data);
@@ -49,9 +47,6 @@ const Coverflow = () => {
   }, [apiCallCount]);
 
   useEffect(() => {
-    const storedSlideIndex = parseInt(localStorage.getItem("swiperSlideIndex")) || 0;
-    console.log("Stored Slide Index:", storedSlideIndex);
-    
     if (!swiperInstance && swiperRef.current) {
       swiperInstance = new Swiper(swiperRef.current, {
         loop: true,
@@ -74,29 +69,14 @@ const Coverflow = () => {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-        on: {
-          slideChange: () => {
-            // Store the current slide index in localStorage
-            localStorage.setItem("swiperSlideIndex", swiperInstance.realIndex);
-          },
-        },
-        initialSlide: storedSlideIndex || 0, // Use the stored index or 0 if not found
       });
     }
-  
-    return () => {
-      if (swiperInstance) {
-        swiperInstance.destroy();
-      }
-    };
   }, []);
   
 
   return (
-    
     <div className="swiper-container swiper-container-coverflow" ref={swiperRef}>
       <div className="swiper-wrapper">
-        
         {articles
           .filter(
             (article) =>
@@ -112,9 +92,8 @@ const Coverflow = () => {
                 alt=""
                 className="swiper-slide-image" // Apply a CSS class for styling
               />
-              <h3>{article.title}</h3>
-              <p>{article.description}</p>
-              <a href={article.url}>Read More</a>
+              <h4>{article.title}</h4>
+              <Link to={article.url} target="_blank">Read More</Link>
             </div>
           ))}
       </div>

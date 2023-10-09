@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user, mode }) => {
   return (
     <div>
       <div className="large-screen">
@@ -29,7 +29,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="mainLinks">
+              <Link to="/contact-us" className="mainLinks">
                 Contact
               </Link>
             </li>
@@ -39,11 +39,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/login">
-                <button className="login-button" href="/">
-                  Login
-                </button>
-              </Link>
+              <img
+                className={`profile-pic-navbar-${mode}`}
+                src={!user || user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic}
+                alt={"Profile Pic"}
+              />
             </li>
           </ul>
         </nav>

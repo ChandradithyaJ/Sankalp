@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { BrowserView, MobileView } from "react-device-detect";
 
-// import ContactForm from "./pages/ContactForm/ContactForm";
-
 import Navbar from "./components/Navbar";
 import NavbarMob from "./components/NavbarMob";
 
@@ -14,120 +12,128 @@ import StorySituation from "./pages/Story/StorySituation/StorySituation";
 import Login from "./pages/Authentication/login";
 import ResetPassword from "./pages/Authentication/reset-password";
 import Home from "./pages/Home/Home";
-import ChatBox from "./pages/ChatBox/ChatBox";
+import ContactForm from "./pages/ContactForm/ContactForm";
 import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile from "./pages/UserProfile/UpdateProfile";
+import Chatbot from "./pages/TherapyChatbot/Chatbot";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [listOfStories, setListOfStories] = useState([])
-  const [story, setStory] = useState(null)
+  const [listOfStories, setListOfStories] = useState([]);
+  const [story, setStory] = useState(null);
   const [mode, setMode] = useState(user?.mode || "dark");
 
   return (
     <div className={`App-${mode}`}>
       <BrowserView>
-        <Navbar />
+        <Navbar user={user} mode={mode} />
       </BrowserView>
       <MobileView>
         <NavbarMob mode={mode} setMode={setMode} />
       </MobileView>
 
-      <Routes>
-        <Route exact path="home" element={<Home />} />
-        <Route exact path="/ChatBox" element={<ChatBox />} />
-        <Route exact path="BlogPage" element={<BlogPage />} />
-        <Route
-          exact
-          path="login"
-          element={<Login mode={mode} user={user} setUser={setUser} />}
-        />
-        <Route
-          exact
-          path="signup"
-          element={<Login mode={mode} setUser={setUser} />}
-        />
-        <Route
-          exact
-          path="reset-password"
-          element={<ResetPassword mode={mode} />}
-        />
-        <Route exact path="therapy-chatbot" element={<div></div>} />
-        <Route exact path="story" 
-          element={
-          <StoryModeIntro 
-            user={user}
-            mode={mode}
-            setListOfStories={setListOfStories} 
-          />}  
+      {/* access app routes only if logged in */}
+      {!user && (
+        <Routes>
+          <Route
+            exact
+            path="login"
+            element={<Login setUser={setUser} />}
           />
-        <Route
-          exact
-          path="story/modules"
-          element={
-            <StorySelect 
-                mode={mode} 
+          <Route
+            exact
+            path="signup"
+            element={<Login mode={mode} setUser={setUser} />}
+          />
+          {/* <Route
+            exact
+            path="reset-password"
+            element={<ResetPassword mode={mode} />}
+          /> */}
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      )}
+      {user && (
+        <Routes>
+          <Route exact path="home" element={<Home mode={mode} />} />
+          <Route exact path="BlogPage" element={<BlogPage />} />
+          <Route exact path="contact-us" element={<ContactForm mode={mode} />} />
+          <Route
+            exact
+            path="therapy-chatbot"
+            element={<Chatbot mode={mode} />}
+          />
+          <Route
+            exact
+            path="story"
+            element={
+              <StoryModeIntro
+                user={user}
+                mode={mode}
+                setListOfStories={setListOfStories}
+              />
+            }
+          />
+          <Route
+            exact
+            path="story/modules"
+            element={
+              <StorySelect
+                user={user}
+                mode={mode}
                 listOfStories={listOfStories}
                 setStory={setStory}
-            />}
-        />
-        <Route
-          exact
-          path="story/modules/situation"
-          element={
-            <StorySituation 
-                mode={mode} 
+              />
+            }
+          />
+          <Route
+            exact
+            path="story/modules/situation"
+            element={
+              <StorySituation mode={mode} story={story} setStory={setStory} />
+            }
+          />
+          <Route
+            exact
+            path="story/modules/situation/play"
+            element={
+              <StoryMode
+                mode={mode}
+                user={user}
+                setUser={setUser}
                 story={story}
                 setStory={setStory}
-            />
-          }
-        />
-        <Route exact path="story/modules/situation/play" 
-              element={
-                <StoryMode 
-                    mode={mode} 
-                    user={user}
-                    setUser={setUser}
-                    story={story}
-                    setStory={setStory}
-                />}               
-        />
-        <Route
-          exact
-          path="story/modules/situation/play"
-          element={<StoryMode mode={mode} />}
-        />
-        {/* <Route
-          exact path='contact'
-          element={<ContactForm />}
-        /> */}
-        <Route
-          exact
-          path="profile"
-          element={
-            <UserProfile
-              mode={mode}
-              setMode={setMode}
-              user={user}
-              setUser={setUser}
-            />
-          }
-        />
-        <Route
-          exact
-          path="profile/updateProfile"
-          element={
-            <UpdateProfile
-              user={user}
-              setUser={setUser}
-              mode={mode}
-              setMode={setMode}
-            />
-          }
-        />
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Routes>
+              />
+            }
+          />
+          <Route
+            exact
+            path="profile"
+            element={
+              <UserProfile
+                mode={mode}
+                setMode={setMode}
+                user={user}
+                setUser={setUser}
+              />
+            }
+          />
+          <Route
+            exact
+            path="profile/update-profile"
+            element={
+              <UpdateProfile
+                user={user}
+                setUser={setUser}
+                mode={mode}
+                setMode={setMode}
+              />
+            }
+          />
+          <Route path="*" element={<Navigate to="/home" />} />
+        </Routes>
+      )}
     </div>
   );
 }

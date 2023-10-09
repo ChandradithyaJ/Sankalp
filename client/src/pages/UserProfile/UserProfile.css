@@ -59,8 +59,8 @@
 }
 
 .profile-pic-dark, .profile-pic-light{
-    max-width: 20vh;
-    max-height: 20vh;
+    height: 20vh;
+    width: 20vh;
     border-radius: 50%;
     background-color: white;
 }
@@ -144,6 +144,13 @@
         width: 25vw;
         font-size: small;
     }
+}
+
+.badges-heading{
+    padding-left: 3vw;
+    padding-top: 2vh;
+    font-weight: 700;
+    font-size: x-large;
 }
 
 .badges-container{

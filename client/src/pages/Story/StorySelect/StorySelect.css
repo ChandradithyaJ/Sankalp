@@ -111,12 +111,12 @@
 
 .story-select-modulenames-dark {
     color: #00df9a;
-    padding: 2vh;
+    text-align: center;
 }
 
 .story-select-modulenames-light {
     color: rgb(205, 142, 7);
-    padding: 2vh;
+    text-align: center;
 }
 
 .module-item1 {
@@ -125,6 +125,7 @@
     align-items: center;
     justify-content: center;
     padding-left: 5vh;
+    padding-bottom: 3vh;
 }
 
 

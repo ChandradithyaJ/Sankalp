@@ -160,3 +160,11 @@
   top: 0;
   transform: rotate(-135deg);
 }
+
+.profile-pic-navbar-dark,
+.profile-pic-navbar-light {
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  background-color: white;
+}

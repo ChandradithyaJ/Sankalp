@@ -11,17 +11,25 @@ const UpdateProfile = ({ mode, user, setUser }) => {
   const [displayProfilePic, setDisplayProfilePic] = useState(
     user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic
   )
+  const [imageType, setImageType] = useState('') // ['image/jpeg', 'image/png', 'image/jpg']
   const [bio, setBio] = useState(user?.bio || '')
   const [changedProfilePic, setChangedProfilePic] = useState(false)
   const navigate = useNavigate()
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0]
+    const fileType = file['type'];
+    setImageType(fileType)
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = () => {
       if (reader.result.byteLength > 10485760) {
         alert('Please upload a pic smaller than 10 MB.')
+        return
+      }
+      if (!validImageTypes.includes(fileType)) {
+        alert('Please upload a valid image file.')
         return
       }
     }
@@ -62,20 +70,19 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     e.preventDefault()
     await uploadProfilePic()
 
-    console.log('hahahah')
     // update user
     let newProfilePic = ''
-    const log = (changedProfilePic) ? "lol" : "lmao"
-    console.log(log)
     if (changedProfilePic) {
-      newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpg`
+      console.log(imageType)
+      if (imageType === 'image/jpeg') {
+        newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpeg`
+      }
+      else if (imageType === 'image/png') {
+        newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.png`
+      } else if (imageType === 'image/jpg') {
+        newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpg`
+      }
     }
-    setUser({
-      ...user,
-      username: username,
-      bio: bio,
-      profilepic: newProfilePic
-    })
 
     const editDetails = {
       id: user._id,
@@ -94,9 +101,16 @@ const UpdateProfile = ({ mode, user, setUser }) => {
       const response = await serverAPI.put('/users', editDetails, config)
       if (response && response.data) {
         console.log('Edit Profile Response: ', response.data)
+        setUser({
+          ...user,
+          username: username,
+          bio: bio,
+          profilepic: newProfilePic
+        })
       }
     } catch (err) {
       console.log(err.message)
+      alert(err?.response?.data?.message)
     }
 
     navigate('/profile')
@@ -126,9 +140,6 @@ const UpdateProfile = ({ mode, user, setUser }) => {
             className="udpate-profile-inputbox"
             placeholder='Username'
             type="text"
-            // required colored text
-
-
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />

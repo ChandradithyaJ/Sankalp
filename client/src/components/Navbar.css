@@ -179,3 +179,11 @@ nav {
 .toggle .line3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
+
+.profile-pic-navbar-dark,
+.profile-pic-navbar-light {
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  background-color: white;
+}

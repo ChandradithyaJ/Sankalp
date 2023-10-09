@@ -1,23 +1,19 @@
-
-
 /* Main Container */
-.homepageContainer { 
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
+
+.homepageContainer {
   /* top down and left right */
-    display: flex;
-     max-width: 100%;
-     margin: 0 auto;
-    align-self: center;
-    justify-content: center;
-    
-  }
+  display: flex;
+  max-width: 100%;
+  margin: 0 auto;
+  align-self: center;
+  justify-content: center;
+}
 
-  body{
-    overflow: hidden;
-  }
+body {
+  overflow: hidden;
+}
 
-  /* Add carousel slider here --help me -arpit */
-/* tring  */
-/* Dark Mode */
 .dark-mode {
   background: linear-gradient(45deg, #f06, #333 50%, #f06);
   background-size: 4px 4px;
@@ -38,89 +34,55 @@
   overflow: hidden;
   font-family: Arial, sans-serif;
   background-color: #333;
-  color: #e0d7d7; /* Adjust the text color for light mode */
+  color: #e0d7d7;
+  /* Adjust the text color for light mode */
 }
 
-  
+/* Highlighted Texts */
+.highlight-text {
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0074cc;
+}
 
+.highlight-text-header {
+  padding: 10px 20px;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  color: #7bbff4;
+}
 
-  
-  /* Button
-  .button {
-    display: block;
-    padding: 10px 20px;
-    background-color: #0074cc;
-    color: #fff;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 auto;
-    transition: background-color 0.2s ease-in-out;
-  } */
-/*   
-  .button:hover {
-    background-color: #005baa;
-    position: relative;
-    top: -2px;
-    left: 2px;
-  } */
+.home-heading-text {
+  padding: 10px 20px;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
 
-  /* .buttonText{  
-    /* top right down left */
-    /* padding:10px 15px 10px 15px;
-    } */ */
+  /* color: transparent; */
+  /* Make the text transparent */
+  /* -webkit-text-stroke: 2px #ff66b2; */
+  /* Add a pink stroke around the text */
+  /* text-shadow: 0 0 5px rgba(185, 10, 97, 0.5), */
+  /* Inner shadow for readability */
+  /* 0 0 10px rgba(136, 13, 75, 0.5), */
+  /* Inner shadow for readability */
+  /* 0 0 15px rgba(160, 16, 16, 0.8), */
+  /* Inner shadow for increased glow */
+  /* 0 0 20px rgb(107, 102, 255), */
+  /* Inner shadow for maximum glow */
+  /* 0 0 25px #f0fd3f5d; */
+  /* Outer glow for the neon effect */
+  /* background-color: transparent; */
+  /* Remove the background color */
+  /* border-radius: 10px; */
+  /* To create a rounded rectangle */
+}
 
-  /* .buttonText:hover{
-    /* position: relative;
-    top: -2px;
-    left: 2px; */
-    /* letter-spacing: 2px;
-  } */ */
-  
-  /* Highlighted Texts */
-  .highlight-text {
-    padding: 10px 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #0074cc;
-  }
-  .highlight-text-header {
-    padding: 10px 20px;
-    font-size: 50px;
-    text-align: center;
-    font-weight: bold;
-    color: #7bbff4;
-  }
-  
-  .highlighted-neon-text {
-    padding: 10px 20px;
-    font-size: 80px;
-    font-weight: bold;
-    text-align: center;
-    
-    color: transparent; /* Make the text transparent */
-    -webkit-text-stroke: 2px #ff66b2; /* Add a pink stroke around the text */
-    text-shadow:
-      0 0 5px rgba(185, 10, 97, 0.5), /* Inner shadow for readability */
-      0 0 10px rgba(136, 13, 75, 0.5), /* Inner shadow for readability */
-      0 0 15px rgba(160, 16, 16, 0.8), /* Inner shadow for increased glow */
-      0 0 20px rgb(107, 102, 255), /* Inner shadow for maximum glow */
-      0 0 25px #f0fd3f5d; /* Outer glow for the neon effect */
-    background-color: transparent; /* Remove the background color */
-    border-radius: 10px; /* To create a rounded rectangle */
-  }
-  
- /* News Items large and small */
+/* News Items large and small */
 /* 
 /* Updated Swiper.css */
-
-
-
-
-
-
-
 
 /* animate  */
 .flowCharts {
@@ -130,8 +92,6 @@
   align-items: center;
   margin: 50px 0;
   text-align: center;
-
-
 }
 
 .flowChart {
@@ -142,7 +102,6 @@
   overflow: hidden;
   margin-bottom: 20px;
 }
-
 
 @media (max-width: 1000px) {
   .flowChart {
@@ -159,6 +118,7 @@
   margin-bottom: 20px;
   overflow: hidden;
 }
+
 .pulse {
   animation: pulse 1s infinite;
 }
@@ -172,8 +132,6 @@
   font-size: 1.5rem;
   margin: 10px 20px;
   text-align: center;
-
-
 }
 
 .flowChart p {
@@ -181,12 +139,13 @@
   font-size: 1rem;
 }
 
-
-.space
-{
+.space {
   height: 40px;
 }
 
+.news-heading{
+  
+}
 
 header {
   background-color: transparent;
@@ -202,13 +161,12 @@ nav img {
   height: 40px;
 }
 
-
 .hero_bottom {
   background-image: url("https://www.masala.com/cloud/2021/08/01/5iOQZ3fR-balance-blur-calm-312839.jpg-1200x800.jpg");
   background-size: cover;
   background-position: center;
-  height: 80vh;
-  padding: 0 20px;  
+  height: 90vh;
+  padding: 0 20px;
   margin-bottom: 100px;
   margin-top: auto;
   display: flex;
@@ -216,10 +174,15 @@ nav img {
   align-items: center;
 }
 
-
+.line {
+  height: 30vh;
+  color: white;
+}
 
 .hero-content {
-  text-align: center;
+  display: block;
+  /* text-align: center; */
+  margin: auto;
 }
 
 .hero h1 {
@@ -234,18 +197,71 @@ nav img {
   margin-bottom: 30px;
 }
 
-
-
-
-
- 
-
 .icon {
   transition: transform 0.3s ease-in-out;
-  
 }
 
 .icon:hover {
   transform: translateY(-10px);
-  
+}
+
+:root {
+  --steps: 20;
+  --background-dark: rgb(40, 40, 40);
+  --background-light: whitesmoke;
+}
+
+.typing-dark {
+  font-family: "Inconsolata", Consolas, monospace;
+  margin-left: 19vw;
+  margin-right: 13vw;
+  font-size: 7vw;
+  color: #4cd763;
+  position: relative;
+  overflow: hidden;
+  font-family: Bad Script, cursive;
+
+  &::after {
+    content: " !";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    color: #4cd763;
+    background: var(--background-dark);
+    animation: typing 2s steps(var(--steps)) forwards, caret 1s infinite;
+  }
+}
+
+.typing-light {
+  font-family: "Inconsolata", Consolas, monospace;
+  margin-left: 13vw;
+  margin-right: 13vw;
+  font-size: 7vw;
+  color: #d7884c;
+  position: relative;
+  background-color: whitesmoke;
+  overflow: hidden;
+  font-family: Bad Script, cursive;
+
+  &::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    color: #d7884c;
+    background: whitesmoke;
+    animation: typing 2s steps(var(--steps)) forwards, caret 1s infinite;
+  }
+}
+
+@keyframes typing {
+  to {
+    width: 0;
+  }
+}
+
+@keyframes caret {
+  50% {
+    color: transparent;
+  }
 }

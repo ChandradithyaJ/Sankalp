@@ -2,7 +2,7 @@ const allowedOrigins = [
     'http://127.0.0.1:5500',
     'http://localhost:3500',
     'http://localhost:3000',
-    'https://sankalp-one.vercel.app/',
+    'https://sankalp-one.vercel.app',
     'https://sankalp-api.onrender.com'
 ]
 const corsOptions = {

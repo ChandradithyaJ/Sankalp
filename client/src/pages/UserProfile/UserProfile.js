@@ -133,6 +133,16 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                                     />
                                 </div>
                             )
+                        } else{
+                            return (
+                                <div className='one-badge-container'>
+                                    <img
+                                        className={`badge-image-blur`}
+                                        src={badgeImage}
+                                        alt={badgeImage}
+                                    />
+                                </div>
+                            )
                         }
                     }
                     )}

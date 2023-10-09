@@ -33,8 +33,7 @@ const StoryModeIntro = ({ user, mode, setListOfStories }) => {
         <div className={`story-mode-content-${mode}`}>
           <h1 className={`story-mode-heading-${mode}`}>Welcome to Story Mode!!</h1>
           <div className={`story-mode-text-${mode}`}>
-            A random paragraph generator is an online tool that generates a random paragraph of text about any subject or topic, of varying
-            length and complexity. It can be used for educational purposes, as a writing prompt, or just for fun
+            With conversations, Sankalp's Story Mode aims to teach people to be more sensitive to people with mental health issues. The purpose is to raise awareness, reduce stigma, and promote empathy for people who struggle with mental health problems. Maybe you could learn more about yourself in the process too!
           </div>
           <button className={`get-started-button-${mode}`} onClick={goToModules}>Get Started</button>
         </div>

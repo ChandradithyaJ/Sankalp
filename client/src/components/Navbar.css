@@ -1,5 +1,4 @@
 /* Experimental Navbar(Alternate)*/
-
 .large-screen{
   display: flex;
 }
@@ -15,9 +14,9 @@ nav {
 
 .nav-links {
   display: flex;
+  width: 100%;
   margin: 0;
   list-style: none;
-  width: 88vw;
   padding: 0 0.7vw;
   justify-content: space-evenly;
   align-items: center;
@@ -185,5 +184,12 @@ nav {
   height: 10vh;
   width: 10vh;
   border-radius: 50%;
+  background-color: white;
+}
+
+.sankalp-logo{
+  height: 10vh;
+  width: 10vh;
+  border-radius: 40%;
   background-color: white;
 }

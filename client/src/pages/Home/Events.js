@@ -17,8 +17,7 @@ function Events() {
                   <div className="content">
                     <h3 className="title">Story Mode</h3>
                     <p className="description">
-                      Try learning by experiencing. Gain knowledge about
-                      conversing
+                      Learn how to talk sensitively to people suffering with different issues through curated conversations!
                     </p>
                   </div>
                   <div className="ImageDiv">
@@ -46,10 +45,9 @@ function Events() {
                     />
                   </div>
                   <div className="content">
-                    <h3 className="title">Chat with Bot</h3>
+                    <h3 className="title">Mia</h3>
                     <p className="description">
-                      Communiate with the bot and get your queries solved. try
-                      cheering up our friend bot and earn credits.
+                      Soon you will be able to converse with a therapy chatbot!
                     </p>
                   </div>
                 </div>
@@ -63,10 +61,9 @@ function Events() {
                 </div>
                 <div className="ImageContainer">
                   <div className="content">
-                    <h3 className="title">Latest news</h3>
+                    <h3 className="title">News</h3>
                     <p className="description">
-                      LLearn the updates. Get aware about the latest researches
-                      and updates on mental.
+                      Get the latest updates on mental health!
                     </p>
                   </div>
                   <div className="ImageDiv">

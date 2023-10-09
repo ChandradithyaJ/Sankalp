@@ -14,13 +14,20 @@ const Navbar = ({ user, mode }) => {
           </div>
           <ul className="nav-links">
             <li>
+              <img
+                className={`sankalp-logo`}
+                src={'./images/sankalpLogo.png'}
+                alt="Sankalp Logo"
+              />
+            </li>
+            <li>
               <Link to="/home" className="mainLinks">
                 Home
               </Link>
             </li>
             <li>
               <Link to="/therapy-chatbot" className="mainLinks">
-                Therapy Chatbot
+                Mia
               </Link>
             </li>
             <li>

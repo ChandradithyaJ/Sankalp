@@ -45,7 +45,10 @@ function Home({ mode }) {
           </div>
         </div>
       </div>
-      <div> <PanoramaViewer /> </div>
+      <div>
+        {" "}
+        <PanoramaViewer />{" "}
+      </div>
       <div>
         <div className="space"></div>
         <div className="highlight-text-header">

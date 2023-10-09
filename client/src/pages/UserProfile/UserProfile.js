@@ -78,7 +78,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                 alert('Unable to delete profile at the moment. Please try again later.')
             }
         } else {
-            // do nothing
+            // do nothing i.e user decided not to confirm .
         }
     }
 

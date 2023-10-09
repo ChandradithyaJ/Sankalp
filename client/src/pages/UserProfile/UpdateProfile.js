@@ -11,7 +11,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
   const [displayProfilePic, setDisplayProfilePic] = useState(
     user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic
   )
-  const [imageType, setImageType] = useState('') // ['image/jpeg', 'image/png', 'image/jpg']
+  const [imageType, setImageType] = useState('')
   const [bio, setBio] = useState(user?.bio || '')
   const [changedProfilePic, setChangedProfilePic] = useState(false)
   const navigate = useNavigate()

@@ -18,7 +18,6 @@
 }
 
 .update-profile-label-dark {
-  /* display: block; */
   margin-bottom: 10px;
   padding-left: 10vh;
   padding-right: 10vh;
@@ -46,8 +45,6 @@
 
 .update-profile-label-light {
   margin-bottom: 10px;
-  /* padding-left: 10vh;
-  padding-right: 10vh; */
   width: 50vw;
   -webkit-text-fill-color: rgb(55, 170, 216);
   -webkit-opacity: 1;

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Home_style.css";
-import { BsFillCaretDownFill } from "react-icons/bs";
 import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
-import Cards from "./Cards";
 import PanoramaViewer from "./Panorma/PanormaViewer";
 
 function Home({ mode }) {

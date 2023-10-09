@@ -30,12 +30,6 @@
     right: -52vw;
   }
 }
-/* @media (max-width: 37.5em) {
-  .navigation__button {
-    top: 1vh;
-    right: -55vw;
-  }
-} */
 .navigation__background {
   height: 4rem;
   width: 4rem;
@@ -43,7 +37,6 @@
   position: relative;
   top: -5.6vh;
   right: -92.5vw;
-  /* background-image: radial-gradient(#7ed56f, #28b485); */
   background-image: radial-gradient(#a35382, #b91271);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -69,8 +62,6 @@
   opacity: 0;
   width: 0;
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  /* background-image: radial-gradient(#7ed56f, #28b485);
-   */
   background-image: radial-gradient(#a35382, #b91271);
 }
 .navigation__list {

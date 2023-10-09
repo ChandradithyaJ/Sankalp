@@ -56,7 +56,8 @@ People with mental health issues and disabilities are often misunderstood and st
 - Modules provide module descriptions and track user progress.
 - Provides insights into how users' words and actions can positively or negatively affect others.
 - If a disrespectful option is chosen in the story mode, the app encourages users to reconsider or provides an explanation for the inappropriateness.
-- Badges provided for completion of stories..
+- Badges provided for completion of stories.
+- Get at least 80% of the total score the successfully finish the story
 
 ![Stories](./readme_pics/story_light.png)
 
@@ -154,7 +155,7 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
 
 ## Alignment with Goals
 
-The Sankalp app aligns with Sustainable Development Goals (SDGs)  3 (Good Health and Well-Being) and 10 (Reduced Inequalities) by promoting and supporting sustainable development through recognition, exposure, and support for mental health and disabilities to be recieved well by people who interact with them.
+The Sankalp app aligns with Sustainable Development Goals (SDGs) 3 (Good Health and Well-Being) and 10 (Reduced Inequalities) by promoting and supporting sustainable development through recognition, exposure, and support for mental health and disabilities to be recieved well by people who interact with them.
 
 ## License
 
@@ -166,4 +167,4 @@ If you have questions, feedback, or need assistance, please contact us either on
 
 ---
 
-**Sankalp MERN Web Application** - Together, we can create understanding and support for mental health issues and disabilities. Thank you for your interest and contributions!
+**Sankalp** - Together, we can create understanding and support for mental health issues and disabilities. Thank you for your interest and contributions!

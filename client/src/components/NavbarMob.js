@@ -24,7 +24,7 @@ const NavbarMob = ({ mode }) => {
                 </Link>
               </li>
               <li className="navigation__item">
-                <Link to="/story/play" className="navigation__link">
+                <Link to="/story" className="navigation__link">
                   Stories
                 </Link>
               </li>

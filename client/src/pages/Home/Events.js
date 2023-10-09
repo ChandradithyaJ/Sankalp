@@ -9,7 +9,6 @@ function Events() {
           <div className="main-timeline">
             <div className="timeline">
               <a href="/" className="timeline-content">
-                {/* <span className="timeline-year">2018</span> */}
                 <div className="timeline-icon">
                   <i className="fa fa-rocket" aria-hidden="true"></i>
                 </div>
@@ -17,7 +16,8 @@ function Events() {
                   <div className="content">
                     <h3 className="title">Story Mode</h3>
                     <p className="description">
-                      Learn how to talk sensitively to people suffering with different issues through curated conversations!
+                      Learn how to talk sensitively to people suffering with
+                      different issues through curated conversations!
                     </p>
                   </div>
                   <div className="ImageDiv">
@@ -32,7 +32,6 @@ function Events() {
             </div>
             <div className="timeline">
               <a href="/" className="timeline-content">
-                {/* <span className="timeline-year">2017</span> */}
                 <div className="timeline-icon">
                   <i className="fa fa-users" aria-hidden="true"></i>
                 </div>
@@ -55,7 +54,6 @@ function Events() {
             </div>
             <div className="timeline">
               <a href="/" className="timeline-content">
-                {/* <span className="timeline-year">2017</span> */}
                 <div className="timeline-icon">
                   <i className="fa fa-cog" aria-hidden="true"></i>
                 </div>
@@ -76,70 +74,6 @@ function Events() {
                 </div>
               </a>
             </div>
-            {/* <div className="timeline">
-              <a href="/" className="timeline-content">
-                <span className="timeline-year">2017</span>
-                <div className="timeline-icon">
-                  <i className="fa fa-heart" aria-hidden="true"></i>
-                </div>
-                <div className="content">
-                  <h3 className="title">BlackPearl</h3>
-                  <p className="description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div className="timeline">
-              <a href="/" className="timeline-content">
-                <span className="timeline-year">2017</span>
-                <div className="timeline-icon">
-                  <i className="fa fa-globe" aria-hidden="true"></i>
-                </div>
-                <div className="content">
-                  <h3 className="title">Angular</h3>
-                  <p className="description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div className="timeline">
-              <a href="/" className="timeline-content">
-                <span className="timeline-year">2017</span>
-                <div className="timeline-icon">
-                  <i className="fa fa-apple" aria-hidden="true"></i>
-                </div>
-                <div className="content">
-                  <h3 className="title">Laravel</h3>
-                  <p className="description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div className="timeline">
-              <a href="/" className="timeline-content">
-                <span className="timeline-year">2017</span>
-                <div className="timeline-icon">
-                  <i className="fa fa-edit" aria-hidden="true"></i>
-                </div>
-                <div className="content">
-                  <h3 className="title">Creapure</h3>
-                  <p className="description">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s.
-                  </p>
-                </div>
-              </a>
-            </div> */}
           </div>
         </div>
       </div>

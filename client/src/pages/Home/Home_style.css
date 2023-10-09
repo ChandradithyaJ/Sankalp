@@ -143,9 +143,7 @@ body {
   height: 40px;
 }
 
-.news-heading{
-  
-}
+.news-heading {}
 
 header {
   background-color: transparent;
@@ -212,14 +210,13 @@ nav img {
 }
 
 .typing-dark {
-  font-family: "Inconsolata", Consolas, monospace;
-  margin-left: 19vw;
+  font-family: Bad Script, cursive;
+  margin-left: 13vw;
   margin-right: 13vw;
-  font-size: 7vw;
+  font-size: 9vw;
   color: #4cd763;
   position: relative;
   overflow: hidden;
-  font-family: Bad Script, cursive;
 
   &::after {
     content: " !";
@@ -233,15 +230,14 @@ nav img {
 }
 
 .typing-light {
-  font-family: "Inconsolata", Consolas, monospace;
+  font-family: Bad Script, cursive;
   margin-left: 13vw;
   margin-right: 13vw;
-  font-size: 7vw;
+  font-size: 9vw;
   color: #d7884c;
   position: relative;
   background-color: whitesmoke;
   overflow: hidden;
-  font-family: Bad Script, cursive;
 
   &::after {
     content: "|";

@@ -1,6 +1,6 @@
 /* Swiper Container */
 .swiper-container-coverflow {
-  width: 50vw;
+  width: 40vw;
   /* Set the maximum width */
   margin: 0 auto;
   /* Center the container horizontally */
@@ -12,7 +12,9 @@
 
 /* Swiper Slide */
 .swiper-slide {
-  width: 300px;
+  width: 30vw;
+  height: 60vh;
+  text-overflow: ellipsis;
   /* Set the slide width */
   background-color: #fff;
   /* Slide background color */
@@ -21,9 +23,31 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   /* Slide box shadow */
   text-align: center;
-  /* Center slide content */
-  margin-right: 20px;
   /* Add space between slides */
+}
+
+@media (max-width: 958px) and (min-width: 471px) {
+  .swiper-slide{
+    height: 60vh;
+    width: 40vh;
+  }
+  .swiper-container-coverflow{
+    width: 60vw;
+  }
+}
+
+@media (max-width: 470px) and (min-width: 0px) {
+  .swiper-container-coverflow{
+    width: 80vw;
+  }
+  .swiper-slide {
+    height: 60vh;
+    width: 50vh;
+  }
+  .swiper-slide h4{
+    overflow-x: wrap;
+    width: 100%;
+  }
 }
 
 /* Swiper Slide Image */

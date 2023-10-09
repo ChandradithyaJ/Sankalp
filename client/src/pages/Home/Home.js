@@ -3,6 +3,7 @@ import "./Home_style.css";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
+import Cards from "./Cards";
 
 function Home({ mode }) {
   useEffect(() => {

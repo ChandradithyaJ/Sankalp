@@ -1,4 +1,6 @@
 /* Main Container */
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
+
 .homepageContainer {
   /* top down and left right */
   display: flex;
@@ -57,9 +59,6 @@ body {
   font-size: 80px;
   font-weight: bold;
   text-align: center;
-
-
-
 
   /* color: transparent; */
   /* Make the text transparent */
@@ -206,9 +205,6 @@ nav img {
   transform: translateY(-10px);
 }
 
-
-
-
 :root {
   --steps: 20;
   --background-dark: rgb(40, 40, 40);
@@ -216,14 +212,14 @@ nav img {
 }
 
 .typing-dark {
-  font-family: 'Inconsolata', Consolas, monospace;
-  margin-left: 13vw;
+  font-family: "Inconsolata", Consolas, monospace;
+  margin-left: 19vw;
   margin-right: 13vw;
   font-size: 7vw;
   color: #4cd763;
   position: relative;
   overflow: hidden;
-
+  font-family: Bad Script, cursive;
 
   &::after {
     content: " !";
@@ -232,13 +228,12 @@ nav img {
     width: 100%;
     color: #4cd763;
     background: var(--background-dark);
-    animation: typing 2s steps(var(--steps)) forwards,
-      caret 1s infinite;
+    animation: typing 2s steps(var(--steps)) forwards, caret 1s infinite;
   }
 }
 
 .typing-light {
-  font-family: 'Inconsolata', Consolas, monospace;
+  font-family: "Inconsolata", Consolas, monospace;
   margin-left: 13vw;
   margin-right: 13vw;
   font-size: 7vw;
@@ -246,7 +241,7 @@ nav img {
   position: relative;
   background-color: whitesmoke;
   overflow: hidden;
-
+  font-family: Bad Script, cursive;
 
   &::after {
     content: "|";
@@ -255,19 +250,18 @@ nav img {
     width: 100%;
     color: #d7884c;
     background: whitesmoke;
-    animation: typing 2s steps(var(--steps)) forwards,
-      caret 1s infinite;
+    animation: typing 2s steps(var(--steps)) forwards, caret 1s infinite;
   }
 }
 
 @keyframes typing {
   to {
-    width: 0
+    width: 0;
   }
 }
 
 @keyframes caret {
   50% {
-    color: transparent
+    color: transparent;
   }
 }

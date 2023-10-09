@@ -72,16 +72,16 @@
 
 .updatedprofile-pic-dark {
   align-items: center;
-  max-width: 60vh;
-  max-height: 60vh;
+  width: 60vh;
+  height: 60vh;
   border-radius: 50%;
   background-color: white;
 }
 
 .updatedprofile-pic-light {
   align-items: center;
-  max-width: 60vh;
-  max-height: 60vh;
+  width: 60vh;
+  height: 60vh;
   border-radius: 50%;
   background-color: black;
 }

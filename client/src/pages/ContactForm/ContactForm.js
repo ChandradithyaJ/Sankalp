@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './ContactFormStyle.css'; // Import your CSS file for styling
+import React, { useState } from "react";
+import "./ContactFormStyle.css"; // Import your CSS file for styling
 
 function ContactForm({ mode }) {
   const [formData, setFormData] = useState({
-    message: '',
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -21,9 +21,11 @@ function ContactForm({ mode }) {
 
     // Clear form fields after submission
     setFormData({
-      message: '',
+      message: "",
     });
-    alert('Your message has been sent successfully! We will get back to you soon.')
+    alert(
+      "Your message has been sent successfully! We will get back to you soon."
+    );
   };
 
   return (
@@ -31,7 +33,7 @@ function ContactForm({ mode }) {
       <div className={`contact-box-${mode}`}>
         <div className="left"></div>
         <div className="right">
-          <h2>Contact Us</h2>
+          <h2 style={{ color: "black" }}>Contact Us</h2>
           <form onSubmit={handleSubmit}>
             <textarea
               placeholder="Message"

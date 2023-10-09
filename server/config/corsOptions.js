@@ -2,8 +2,8 @@ const allowedOrigins = [
     'http://127.0.0.1:5500',
     'http://localhost:3500',
     'http://localhost:3000',
-    'https://sankalp.onrender.com',
-    'http://sankalp.onrender.com'
+    'https://sankalp-api.vercel.app/',
+    'https://sankalp.vercel.app/'
 ]
 const corsOptions = {
     origin: (origin, callback) => {

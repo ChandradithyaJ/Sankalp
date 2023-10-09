@@ -16,7 +16,7 @@ const app = express() // main server component
 const PORT = process.env.PORT || 3500 // running on PORT
 
 // Cross Origin Resource Sharing
-app.use(cors(corsOptions))
+app.use(cors())
 
 // built-in middleware for form data (urlencoded data)
 app.use(express.urlencoded({ extended: true }))

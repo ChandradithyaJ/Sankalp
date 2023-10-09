@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ChatBoxStyle.css";
-
+//To Integrate for Release 2
 const ChatBox = () => {
   const [isVisible, setIsVisible] = useState(true);
 

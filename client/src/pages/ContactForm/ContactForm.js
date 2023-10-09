@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ContactFormStyle.css"; // Import your CSS file for styling
+import "./ContactFormStyle.css"; 
 
 function ContactForm({ mode }) {
   const [formData, setFormData] = useState({
@@ -16,10 +16,9 @@ function ContactForm({ mode }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., sending the data to a server)
-    console.log(formData); // Replace with your actual submission code
-
-    // Clear form fields after submission
+    // Handle form submission logic TODO
+    console.log(formData); 
+    // Clear form fields after submission TODO
     setFormData({
       message: "",
     });

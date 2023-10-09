@@ -16,7 +16,6 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  /* background: url("https://www.masala.com/cloud/2021/08/01/5iOQZ3fR-balance-blur-calm-312839.jpg-1200x800.jpg") no-repeat center; */
   background: url("/public/images/contactbg.jpg") no-repeat center;
   background-size: cover;
 

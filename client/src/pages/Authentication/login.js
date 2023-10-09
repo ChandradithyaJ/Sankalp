@@ -177,7 +177,6 @@ function Login({ setUser }) {
                                 required
                                 onChange={(e) => setUsername(e.target.value)}
                               />
-                              {/* <i className="input-icon uil uil-user"></i> */}
                               <Icon
                                 icon="uil:user"
                                 className="input-icon uil uil-user"
@@ -194,7 +193,6 @@ function Login({ setUser }) {
                                 required
                                 onChange={(e) => setEmail(e.target.value)}
                               />
-                              {/* <i className="input-icon uil uil-at"></i> */}
                               <Icon
                                 icon="uil:at"
                                 className="input-icon uil uil-at"
@@ -211,7 +209,6 @@ function Login({ setUser }) {
                                 required
                                 onChange={(e) => setPassword(e.target.value)}
                               />
-                              {/* <i className="input-icon uil uil-lock-alt"></i> */}
                               <Icon
                                 icon="uil:lock-alt"
                                 className="input-icon uil uil-lock-alt"
@@ -227,7 +224,6 @@ function Login({ setUser }) {
                                 autoComplete="off"
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                               />
-                              {/* <i className="input-icon uil uil-lock-alt"></i> */}
                               <Icon
                                 icon="line-md:confirm-circle"
                                 className="input-icon uil uil-lock-alt"

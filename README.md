@@ -12,7 +12,6 @@
   - [User Authentication](#user-authentication)
   - [Report and Suggestion](#report-and-suggestion)
   - [Dark Mode](#dark-mode)
-  - [Pick a Profile Pic](#pick-a-profile-pic)
   - [Live News Feed](#live-news-feed)
 - [Upcoming Features](#upcoming-features)
 - [Setting up](#setting-up-a-server)
@@ -50,11 +49,12 @@ The **Sankalp MERN Web Application** aims to raise awareness and understanding o
 - Modules provide module descriptions and track user progress.
 - Provides insights into how users' words and actions can positively or negatively affect others.
 - If a disrespectful option is chosen in the story mode, the app encourages users to reconsider or provides an explanation for the inappropriateness.
-
+- Badges provided for completion of stories..
 ### User Authentication
 
 - Basic login, logout, and registration functionality.
 - Secure storage of user data and preferences.
+- Allows users to personalize their profiles with customizable profile pictures.
 
 ### Report and Suggestion
 
@@ -64,10 +64,6 @@ The **Sankalp MERN Web Application** aims to raise awareness and understanding o
 
 - Enables users to customize the app's theme with light or dark mode.
 
-### Pick a Profile Pic
-
-- Allows users to personalize their profiles with customizable profile pictures.
-
 ### Live News Feed
 
 - Keeps users informed with recent news on mental health and related matters.
@@ -76,7 +72,6 @@ The **Sankalp MERN Web Application** aims to raise awareness and understanding o
 
 The Sankalp team is actively working on enhancing the app's functionality. In the near future, users can expect the following features:
 
-- **Likes:** Users will be able to express their appreciation by liking content.
 - **Chatbot** Integration of a chatbot to assist users in understanding concepts related to mental health and disabilities
 - **Community** A community chat/discussion platform for users, similar to r/adhd on Reddit.
 - **User Gets Badges** Recognition for user achievements, including completion of stories, community participation, service, and positivity.
@@ -115,11 +110,11 @@ The Sankalp app aligns with Sustainable Development Goals (SDGs) by promoting an
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE.md) file for details.
 
 ## Contact
 
-If you have questions, feedback, or need assistance, please contact us at TODO...
+If you have questions, feedback, or need assistance, please contact us either on the contact us page or over this repository.
 
 ---
 

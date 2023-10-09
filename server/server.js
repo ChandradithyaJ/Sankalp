@@ -5,10 +5,10 @@ require('dotenv').config()
 const express = require('express') // ExpressJS
 const cors = require('cors')
 
-const { corsOptions } = require('../config/corsOptions')
-const verifyJWT = require('../middleware/verifyJWT')
+const { corsOptions } = require('./config/corsOptions')
+const verifyJWT = require('./middleware/verifyJWT')
 const mongoose = require('mongoose')
-const connectDB = require('../config/dbConn')
+const connectDB = require('./config/dbConn')
 connectDB() // connect to MongoDB
 
 const app = express() // main server component
@@ -25,22 +25,22 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ limit: '50mb' }))
 
 // register route
-app.use('/register', require('../routes/register'))
+app.use('/register', require('./routes/register'))
 // login route
-app.use('/auth', require('../routes/auth'))
+app.use('/auth', require('./routes/auth'))
 // update JWT if expired route
-app.use('/updateJWT', require('../routes/updateJWT'))
+app.use('/updateJWT', require('./routes/updateJWT'))
 // news api route
-app.use('/news', require('../routes/api/news'))
+app.use('/news', require('./routes/api/news'))
 
 // custom middleware for verifying JWTs
 app.use(verifyJWT)
 // users route
-app.use('/users', require('../routes/api/users'))
+app.use('/users', require('./routes/api/users'))
 // stories route
-app.use('/stories', require('../routes/api/stories'))
+app.use('/stories', require('./routes/api/stories'))
 // profile pic routes
-app.use('/cloudinary', require('../routes/api/pics'))
+app.use('/cloudinary', require('./routes/api/pics'))
 
 // run the app on PORT
 mongoose.connection.once('open', () => {

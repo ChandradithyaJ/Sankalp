@@ -150,6 +150,8 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
      - for storing the profile pics of users
 4. Bootstrap (parts of the UI)
 5. Lottie animations
+6. Vercel (for frontend deployment)
+7. Render (for backend deployment)
 
 ## Design Decisions
 1. We used the Waterfall effect of Express, with a JWT verification as a middleware, which allows only users with valid JWTs to access certain features such as editing profile, and story mode. Just login to get a valid JWT (this happens in the backend, so please don't worry about it).

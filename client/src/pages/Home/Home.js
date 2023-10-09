@@ -52,7 +52,7 @@ function Home({ mode }) {
         <div className="highlight-text-header">
           <h3>News</h3>
         </div>
-        <div> { <Coverflow /> }</div>
+        <div> <Coverflow /> </div>
         <div className="highlight-text-header">Let's Explore Sankalp</div>
         <Events />
         {/* <Cards /> */}

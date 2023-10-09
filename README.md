@@ -154,6 +154,7 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
 ## Design Decisions
 1. We used the Waterfall effect of Express, with a JWT verification as a middleware, which allows only users with valid JWTs to access certain features such as editing profile, and story mode. Just login to get a valid JWT (this happens in the backend, so please don't worry about it).
 2. MongoDB isn't a great place to store images as it has an efficient image storage system, storing them in Base64 Encoding, which slows the process of fetching user details from the database. Hence, we decide to use a third-party service, Cloudinary, to store our images, and we then store the url of that image in Mongo.
+3. We keep track of progress using [GitHub Projects](https://github.com/ChandradithyaJ/Sankalp/projects)
 
 ## Alignment with Goals
 

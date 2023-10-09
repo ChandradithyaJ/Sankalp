@@ -48,6 +48,8 @@ People with mental health issues and disabilities are often misunderstood and st
 
 **Sankalp** aims to raise awareness and understanding of mental health issues and disabilities. Its features include a story mode to help users empathize with those facing these challenges, a therapy chatbot for support, and an experimental sentiment analysis tool to track users' mental states.
 
+This is a singularly unique problem since many apps focus on people with mental health issues and not much on the people who interact with them. This app aims to bridge that gap.
+
 ## Application Features
 
 ### Story Mode

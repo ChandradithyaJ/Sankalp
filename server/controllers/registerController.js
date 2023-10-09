@@ -24,7 +24,7 @@ const handleNewUser = async (req, res) => {
             password: hashedPwd,
             email: req?.body?.email,
             bio: '',
-            profilepic: null,
+            profilepic: "",
             mode: 'dark',
             badges: {
                 firstStory: false,

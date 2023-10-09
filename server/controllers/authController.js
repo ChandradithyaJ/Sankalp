@@ -9,7 +9,7 @@ const handleLogin = async (req, res) => {
 
     const reqUser = await User.findOne({ email: email }).exec()
     const foundUser = reqUser?.toObject()
-    if (!foundUser) return res.sendStatus(401) // unauthorized
+    if (!foundUser) return res.status(409).json('No account with that email has been registered') // conflict
 
     const match = await bcrypt.compare(password, foundUser.password)
     if (match) {
@@ -22,7 +22,7 @@ const handleLogin = async (req, res) => {
         foundUser['accessToken'] = accessToken
         return res.status(200).json({ foundUser })
     } else {
-        return res.sendStatus(401)
+        return res.status(401).json('Incorrect email or password')
     }
 }
 

@@ -30,6 +30,8 @@ app.use('/register', require('./routes/register'))
 app.use('/auth', require('./routes/auth'))
 // update JWT if expired route
 app.use('/updateJWT', require('./routes/updateJWT'))
+// news api route
+app.use('/news', require('./routes/api/news'))
 
 // custom middleware for verifying JWTs
 app.use(verifyJWT)

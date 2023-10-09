@@ -40,60 +40,65 @@
 //     getArticles();
 //   }, [apiCallCount]);
 
-//   useEffect(() => {
-//     if (!swiperInstance && swiperRef.current) {
-//       swiperInstance = new Swiper(swiperRef.current, {
-//         loop: true,
-//         speed: 1000,
-//         autoplay: {
-//           delay: 3000,
-//         },
-//         effect: "coverflow",
-//         grabCursor: true,
-//         centeredSlides: true,
-//         slidesPerView: "auto",
-//         coverflowEffect: {
-//           rotate: 0,
-//           stretch: 80,
-//           depth: 200,
-//           modifier: 1,
-//           slideShadows: false,
-//         },
-//         navigation: {
-//           nextEl: ".swiper-button-next",
-//           prevEl: ".swiper-button-prev",
-//         },
-//       });
-//     }
-//   }, []);
+  useEffect(() => {
+    if (!swiperInstance && swiperRef.current) {
+      swiperInstance = new Swiper(swiperRef.current, {
+        loop: true,
+        speed: 1000,
+        autoplay: {
+          delay: 3000,
+        },
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 80,
+          depth: 200,
+          modifier: 1,
+          slideShadows: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    }
+  }, []);
+  
 
-//   return (
-//     <div className="swiper-container swiper-container-coverflow" ref={swiperRef}>
-//       <div className="swiper-wrapper">
-//         {articles
-//           .filter(
-//             (article) =>
-//               article.urlToImage != null &&
-//               article.description != null &&
-//               article.title != null &&
-//               article.url != null
-//           )
-//           .map((article, index) => (
-//             <div className="swiper-slide" key={index}>
-//               <img
-//                 src={article.urlToImage || "http://picsum/200/300"}
-//                 alt=""
-//                 className="swiper-slide-image" // Apply a CSS class for styling
-//               />
-//               <h4>{article.title}</h4>
-//               <Link to={article.url} target="_blank">Read More</Link>
-//             </div>
-//           ))}
-//       </div>
-//       <div className="swiper-button-next"></div>
-//       <div className="swiper-button-prev"></div>
-//     </div>
-//   );
-// };
+  return (
+    <div className="swiper-container swiper-container-coverflow" ref={swiperRef}>
+      <div className="swiper-wrapper">
+        {articles
+          .filter(
+            (article) =>
+              article.urlToImage != null &&
+              article.description != null &&
+              article.title != null &&
+              article.url != null
+          )
+          .map((article, index) => (
+            <div className="swiper-slide" key={index}>
+              <img
+                src={article.urlToImage || "http://picsum/200/300"}
+                alt=""
+                className="swiper-slide-image" // Apply a CSS class for styling
+              />
+              <h4>{article.title}</h4>
+              <Link to={article.url} target="_blank">Read More</Link>
+            </div>
+          ))}
+      </div>
+      <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev"></div>
+    </div>
+    
+  );
+};
+
+
+
 
 // export default Coverflow;

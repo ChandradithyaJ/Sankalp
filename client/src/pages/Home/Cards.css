@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-
+/* unused */
 a {
   text-decoration: none;
 }
@@ -8,7 +8,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 20vh; /* we can change the margin here*/
+  margin-bottom: 20vh; 
 }
 
 .title {
@@ -21,7 +21,6 @@ a {
 }
 .card {
   float: left;
-  /* padding: 0 0.1vw; */
   width: 30%;
   height: 20%;
 }

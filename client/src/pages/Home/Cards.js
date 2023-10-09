@@ -1,6 +1,6 @@
 import React from "react";
 import "./Cards.css";
-
+// Unused TO be used as a back up incase slider is unreliable
 const Cards = () => {
   return (
     <div className="CardOuterDiv">

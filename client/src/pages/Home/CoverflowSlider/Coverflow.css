@@ -1,29 +1,19 @@
-/* Swiper Container */
 .swiper-container-coverflow {
   width: 40vw;
-  /* Set the maximum width */
   margin: 0 auto;
-  /* Center the container horizontally */
   padding-top: 10vh;
   padding-bottom: 10vh;
   overflow: hidden;
-  /* Hide content that overflows on the left */
 }
 
-/* Swiper Slide */
 .swiper-slide {
   width: 30vw;
   height: 60vh;
   text-overflow: ellipsis;
-  /* Set the slide width */
   background-color: #fff;
-  /* Slide background color */
   border-radius: 10px;
-  /* Slide border radius */
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  /* Slide box shadow */
   text-align: center;
-  /* Add space between slides */
 }
 
 @media (max-width: 958px) and (min-width: 471px) {
@@ -50,39 +40,28 @@
   }
 }
 
-/* Swiper Slide Image */
+ 
 .swiper-slide-image {
   max-width: 100%;
-  /* Limit image width */
   height: auto;
-  /* Automatically adjust height based on aspect ratio */
   object-fit: cover;
-  /* Maintain aspect ratio and cover slide */
   border-radius: 10px;
-  /* Image border radius */
 }
 
-/* Swiper Navigation Buttons */
+ 
 .swiper-button-next,
 .swiper-button-prev {
   color: #007bff;
-  /* Button color */
   font-size: 24px;
-  /* Button font size */
 }
 
-/* Swiper Scrollbar (optional) */
+
 .swiper-scrollbar {
   height: 4px;
-  /* Scrollbar height */
   background-color: #007bff;
-  /* Scrollbar color */
   border-radius: 4px;
-  /* Scrollbar border radius */
 }
 
-
-/* h3_slider */
 
 .h3_slider {
   font-size: 1.5rem;

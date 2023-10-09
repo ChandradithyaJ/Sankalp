@@ -1,16 +1,6 @@
-/* Please ❤ this if you like it! */
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900");
 
-/* body {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #c4c3ca;
-  background-color: #1f2029;
-  overflow-x: hidden;
-} */
 a {
   cursor: pointer;
   transition: all 200ms linear;
@@ -42,14 +32,12 @@ a:hover {
 .bgrnd {
   background-image: url("/public/loginPage/loginBackground1.jpg");
   background-size: cover;
-  /* backdrop-filter: invert(80%); */
   height: 100vh;
 }
 .section {
   position: relative;
   width: 100%;
   display: block;
-  /* backdrop-filter: blur(2px);   */
   width: 100%;
 }
 .full-height {

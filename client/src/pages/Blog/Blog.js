@@ -5,10 +5,7 @@ import { faUser, faShare } from "@fortawesome/free-solid-svg-icons";
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-
-
-
- 
+//TO integrate for Release 2
 const BlogPage = ({ mode }) => {
   mode = "dark";
   const [isDarkMode, setIsDarkMode] = useState(false);

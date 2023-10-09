@@ -14,7 +14,7 @@ const StorySituation = ({ mode, story, setStory }) => {
     const [lottieDim, setLottieDim] = useState(600)
     const navigate = useNavigate()
     useEffect(() => {
-        if(!story) navigate('/story/select')
+        if(!story) navigate('/story/modules')
     }, [])
 
     const goToStory = () => {
@@ -22,14 +22,13 @@ const StorySituation = ({ mode, story, setStory }) => {
     }
     const goBack = () => {
         setStory(null)
-        navigate(-1)
+        navigate('/story/modules')
     }
 
     return (
         <div className={`Situation-${mode}`}>
-            {/* <button className={`returnto-${mode}`} onClick={goback}> Back</button> */}
             <div className={`returnprev-${mode}`}>
-                <GoArrowLeft className="returnto-${mode}" onClick={goBack} style={{ color: '#00df9a', fontSize: '5vh' }} />
+                <GoArrowLeft className={`returnto-${mode}`} onClick={goBack} style={{ color: '#00df9a', fontSize: '5vh' }} />
             </div>
             <div className={`situation-name-${mode}`}>
                 <h1>{story.title}</h1>

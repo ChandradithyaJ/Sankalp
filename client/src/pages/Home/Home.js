@@ -5,19 +5,12 @@ import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
 
 function Home({ mode }) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const style = {
-    height: "40dvh",
-    width: "50dvw",
-  };
-
   useEffect(() => {
-    document.body.className = isDarkMode ? "dark-mode" : "light-mode";
-  }, [isDarkMode]);
+    document.body.className = mode==="dark" ? "dark-mode" : "light-mode";
+  }, [mode]);
 
   return (
-    <div className={`Home ${isDarkMode ? "Home--dark" : "Home--light"}`}>
+    <div className={`Home ${mode==="dark" ? "Home--dark" : "Home--light"}`}>
       <div
         style={{
           marginBottom: "50px",
@@ -48,9 +41,10 @@ function Home({ mode }) {
       </div>
       <div>
         <div className="space"></div>
+        <div className="highlight-text-header"><h3>News</h3></div>
+        <div> <Coverflow /> </div>
         <div className="highlight-text-header">Lets Explore, How it works</div>
         <Events />
-        <div> <Coverflow /> </div>
       </div>
     </div>
   );

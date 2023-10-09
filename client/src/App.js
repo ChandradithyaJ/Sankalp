@@ -39,18 +39,18 @@ function App() {
           <Route
             exact
             path="login"
-            element={<Login mode={mode} user={user} setUser={setUser} />}
+            element={<Login setUser={setUser} />}
           />
           <Route
             exact
             path="signup"
             element={<Login mode={mode} setUser={setUser} />}
           />
-          <Route
+          {/* <Route
             exact
             path="reset-password"
             element={<ResetPassword mode={mode} />}
-          />
+          /> */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}
@@ -131,7 +131,7 @@ function App() {
               />
             }
           />
-          <Route path="*" element={<Navigate to="/profile" />} />
+          <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       )}
     </div>

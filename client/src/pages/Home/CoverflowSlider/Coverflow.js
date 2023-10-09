@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from 'react-router-dom'
 import Swiper from "swiper/bundle"; // Import Swiper with required modules
 import "swiper/swiper-bundle.css";
 import axios from "axios";
@@ -70,12 +71,6 @@ const Coverflow = () => {
         },
       });
     }
-
-    return () => {
-      if (swiperInstance) {
-        swiperInstance.destroy();
-      }
-    };
   }, []);
 
   return (
@@ -98,7 +93,7 @@ const Coverflow = () => {
               />
               <h3>{article.title}</h3>
               <p>{article.description}</p>
-              <a href={article.url}>Read More</a>
+              <Link to={article.url}>Read More</Link>
             </div>
           ))}
       </div>

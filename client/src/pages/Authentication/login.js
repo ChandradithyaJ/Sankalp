@@ -7,7 +7,7 @@ import "./login.css";
 // axios call
 import serverAPI from "../../api/serverAPI";
 
-function Login({ mode, user, setUser }) {
+function Login({ setUser }) {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState('')
@@ -17,10 +17,6 @@ function Login({ mode, user, setUser }) {
 
   const logInUser = async (e) => {
     e.preventDefault()
-
-    // debugging
-    console.log(email)
-    console.log(password)
 
     const userDetails = {
       'email': email,
@@ -35,10 +31,10 @@ function Login({ mode, user, setUser }) {
       }
     } catch (err) {
       console.log(err.message)
-      console.log(err.response.status)
-      console.log(err.response.data.message)
+      console.log(err.response?.status)
+      console.log(err.response?.data?.message)
 
-      if (err.response.status === 409) {
+      if (err.response?.status === 409) {
         alert(err.response.data.message)
       } else {
         alert('Unable to login. Please check your internet connection and try again.')
@@ -80,8 +76,8 @@ function Login({ mode, user, setUser }) {
       console.log(err?.response?.status)
       console.log(err?.response?.data?.message)
 
-      if (err.response.status === 409) {
-        alert(err.response.data.message)
+      if (err.response?.status === 409) {
+        alert(err.response?.data?.message)
       }
       else {
         alert('Unable to register. Please check your internet connection and try again.')

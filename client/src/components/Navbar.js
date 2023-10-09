@@ -41,7 +41,7 @@ const Navbar = ({ user, mode }) => {
             <li>
               <img
                 className={`profile-pic-navbar-${mode}`}
-                src={user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic}
+                src={!user || user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic}
                 alt={"Profile Pic"}
               />
             </li>

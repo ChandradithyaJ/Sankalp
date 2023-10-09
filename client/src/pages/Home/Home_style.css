@@ -144,6 +144,10 @@ body {
   height: 40px;
 }
 
+.news-heading{
+  
+}
+
 header {
   background-color: transparent;
   position: fixed;
@@ -162,7 +166,7 @@ nav img {
   background-image: url("https://www.masala.com/cloud/2021/08/01/5iOQZ3fR-balance-blur-calm-312839.jpg-1200x800.jpg");
   background-size: cover;
   background-position: center;
-  height: 80vh;
+  height: 90vh;
   padding: 0 20px;
   margin-bottom: 100px;
   margin-top: auto;

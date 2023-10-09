@@ -2,6 +2,8 @@
 
 Use the app [here](https://sankalp-one.vercel.app)!
 
+This GitHub repository is available at [here](https://github.com/ChandradithyaJ/Sankalp)!
+
 ![Sankalp](./readme_pics/Sankalp_logo.png)
 
 
@@ -133,9 +135,24 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
 1. Start the server and client concurrently using: `npm run start` in the root directory.
 2. Access the app in your web browser at `http://localhost:3000`.
 
+## Technologies Used
+1. MERN
+   - Mongo as the database
+   - Node (using ExpressJS) for the Backend
+   - ReactJS for the frontend
+2. [News API](https://newsapi.org)
+3. [Cloudinary API](https://cloudinary.com)
+     - for storing the profile pics of users
+4. Bootstrap (parts of the UI)
+5. Lottie animations
+
+## Design Decisions
+1. We used the Waterfall effect of Express, with a JWT verification as a middleware, which allows only users with valid JWTs to access certain features such as editing profile, and story mode. Just login to get a valid JWT (this happens in the backend, so please don't worry about it).
+2. MongoDB isn't a great place to store images as it has an efficient image storage system, storing them in Base64 Encoding, which slows the process of fetching user details from the database. Hence, we decide to use a third-party service, Cloudinary, to store our images, and we then store the url of that image in Mongo.
+
 ## Alignment with Goals
 
-The Sankalp app aligns with Sustainable Development Goals (SDGs) by promoting and supporting sustainable development through recognition, exposure, and support for mental health and disabilities to be recieved well by people who interact with them.
+The Sankalp app aligns with Sustainable Development Goals (SDGs)  3 (Good Health and Well-Being) and 10 (Reduced Inequalities) by promoting and supporting sustainable development through recognition, exposure, and support for mental health and disabilities to be recieved well by people who interact with them.
 
 ## License
 

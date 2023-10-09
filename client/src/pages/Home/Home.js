@@ -37,8 +37,8 @@ function Home({ mode }) {
       <div>
         <div className="hero_bottom">
           <div className="hero-content">
-            <h1>lets start the new journey to , better and more.</h1>
-            <h2>calm now.</h2>
+            <h1>"Empathy is the greatest virtue. From it, all virtues flow. Without it, all virtues are an act."</h1>
+            <h2>Eric Zorn</h2>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@ function Home({ mode }) {
         <div className="space"></div>
         <div className="highlight-text-header"><h3>News</h3></div>
         <div> <Coverflow /> </div>
-        <div className="highlight-text-header">Lets Explore, How it works</div>
+        <div className="highlight-text-header">Let's Explore Sankalp</div>
         <Events />
       </div>
     </div>

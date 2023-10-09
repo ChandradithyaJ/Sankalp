@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom'
 import Swiper from "swiper/bundle"; // Import Swiper with required modules
 import "swiper/swiper-bundle.css";
-import axios from "axios";
+import serverAPI from '../../../api/serverAPI'
 import "./Coverflow.css"; // Import your custom CSS for styling
 
 const Coverflow = () => {
@@ -14,19 +14,13 @@ const Coverflow = () => {
 
   useEffect(() => {
     const getArticles = async () => {
+      if (apiCallCount >= maxApiCalls) {
+        console.log("Maximum API calls reached");
+        return;
+      }
+
       try {
-        const apiKey = "70ba28e391c14e3fb138366469bb1989";
-
-        if (apiCallCount >= maxApiCalls) {
-          console.log("Maximum API calls reached");
-          return;
-        }
-
-        const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=Mental&pageSize=6&apiKey=${apiKey}`
-        );
-
-        console.log("API Response:", response.data);
+        const response = await serverAPI.get('/news')
 
         if (response.data.articles) {
           setArticles((prevArticles) => [

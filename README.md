@@ -1,6 +1,6 @@
 # Sankalp
 
-![Sankalp Logo](https://picsum.photos/200/300 "TODO Image url")
+![Sankalp Logo](https://picsum.photos/200/300 "Sankalp Logo")
 
 ## Table of Contents
 
@@ -51,12 +51,25 @@ The **Sankalp MERN Web Application** aims to raise awareness and understanding o
 - If a disrespectful option is chosen in the story mode, the app encourages users to reconsider or provides an explanation for the inappropriateness.
 - Badges provided for completion of stories..
 
+![Stories](./readme_pics/story_light.png)
+
+![Stories](./readme_pics/storySelect_light.png)
+
+![Stories](./readme_pics/startStory_light.png)
+
+![Stories](./readme_pics/storyPlay_light.png)
+
+![Stories](./readme_pics/storyEvaluation_light.png)
+
 ### User Authentication
 
 - Basic login, logout, and registration functionality.
 - Secure storage of user data and preferences.
 - Allows users to personalize their profiles with customizable profile pictures.
 
+![User Authentication](./readme_pics/loginpage.png)
+
+![Profile page](./readme_pics/Profile_light.png)
 ### Report and Suggestion
 
 - Allows users to report issues or suggest improvements directly to the development team.
@@ -64,6 +77,15 @@ The **Sankalp MERN Web Application** aims to raise awareness and understanding o
 ### Dark Mode
 
 - Enables users to customize the app's theme with light or dark mode.
+![Stories](./readme_pics/story_dark.png)
+
+![Stories](./readme_pics/startStory_dark.png)
+
+![Stories](./readme_pics/storyPlay_dark.png)
+
+![Stories](./readme_pics/storyEvaluation_dark.png)
+
+![profile dark](./readme_pics/Profile_dark.png)
 
 ### Live News Feed
 

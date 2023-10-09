@@ -46,11 +46,6 @@ function App() {
             path="signup"
             element={<Login mode={mode} setUser={setUser} />}
           />
-          {/* <Route
-            exact
-            path="reset-password"
-            element={<ResetPassword mode={mode} />}
-          /> */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}

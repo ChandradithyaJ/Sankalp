@@ -104,7 +104,7 @@ const Chatbot = ({ mode }) => {
       {/* <p>COMING SOON!!</p> */}
 
       <center>
-        <h3 className="MiaHeading">Eliza+</h3>
+        <h3 className="MiaHeading">Mia+</h3>
         <img
           id="main-image"
           src="./MiaImages/default-01.png"

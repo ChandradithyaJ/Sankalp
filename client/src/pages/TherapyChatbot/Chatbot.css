@@ -16,6 +16,12 @@
   font-size: 5vh;
 }
 
+.MiaHeading {
+  font-family: bad script, cursive;
+  margin-top: 6vh;
+  font-size: 30px;
+}
+
 /* Add this CSS to your project's stylesheet or a separate CSS file */
 
 /* Styling for the form */

@@ -15,3 +15,60 @@
   margin: 20% 40%;
   font-size: 5vh;
 }
+
+/* Add this CSS to your project's stylesheet or a separate CSS file */
+
+/* Styling for the form */
+form {
+  text-align: center;
+}
+
+/* Styling for the textarea */
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  resize: none;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Styling for the text input */
+.form-control {
+  width: 70vw;
+  margin: 2vh auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  /* margin-right: 10px; */
+}
+
+/* Styling for the buttons */
+input[type="submit"],
+input[type="reset"] {
+  padding: 10px 20px;
+  background-color: #0074cc;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 1vh;
+}
+
+input[type="reset"] {
+  background-color: #e34c52;
+}
+
+/* Adjust the button hover effects as needed */
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #0054a3;
+}
+
+/* Center align text in the middle div */
+div[style="text-align: center"] {
+  text-align: center;
+}

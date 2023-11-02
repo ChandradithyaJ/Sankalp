@@ -10,80 +10,83 @@ import serverAPI from "../../api/serverAPI";
 function Login({ setUser }) {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const logInUser = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const userDetails = {
-      'email': email,
-      'password': password
-    }
+      email: email,
+      password: password,
+    };
 
     try {
-      const response = await serverAPI.post('/auth', userDetails)
+      const response = await serverAPI.post("/auth", userDetails);
       if (response && response.data) {
-        setUser(response.data.foundUser)
-        navigate('/home')
+        setUser(response.data.foundUser);
+        navigate("/home");
       }
     } catch (err) {
-      console.log(err.message)
-      console.log(err.response?.status)
-      console.log(err.response?.data?.message)
+      console.log(err.message);
+      console.log(err.response?.status);
+      console.log(err.response?.data?.message);
 
       if (err.response?.status === 409 || err.response?.status === 401) {
-        alert(err.response.data)
+        alert(err.response.data);
       } else {
-        alert('Unable to login. Please check your internet connection and try again.')
+        alert(
+          "Unable to login. Please check your internet connection and try again."
+        );
       }
     }
-  }
+  };
 
   const signUpUser = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // debugging
-    console.log(username)
-    console.log(email)
-    console.log(password)
-    console.log(confirmPassword)
+    console.log(username);
+    console.log(email);
+    console.log(password);
+    console.log(confirmPassword);
 
     // password checking
     if (password !== confirmPassword) {
-      alert('Password and Confirm Password should be the same.')
-      return
+      alert("Password and Confirm Password should be the same.");
+      return;
     }
 
     const newUser = {
-      'username': username,
-      'email': email,
-      'password': password,
-    }
+      username: username,
+      email: email,
+      password: password,
+    };
 
     // store user in database through API call
     try {
-      const response = await serverAPI.post('/register', newUser)
+      const response = await serverAPI.post("/register", newUser);
       if (response && response.data) {
-        console.log('User details: ', response.data)
-        setUser(response.data.newUser)
-        navigate('/home')
+        console.log("User details: ", response.data);
+        setUser(response.data.newUser);
+        navigate("/home");
       }
     } catch (err) {
-      console.log(err)
-      console.log(err?.response?.status)
-      console.log(err?.response?.data?.message)
+      console.log(err);
+      console.log(err?.response?.status);
+      console.log(err?.response?.data?.message);
 
       if (err.response?.status === 409) {
-        alert(err.response?.data?.message)
-      }
-      else {
-        alert('Unable to register. Please check your internet connection and try again.')
+        alert(err.response?.data?.message);
+      } else {
+        alert(
+          "Unable to register. Please check your internet connection and try again."
+        );
       }
     }
-  }
+  };
 
   return (
     <div className="bgrnd">
@@ -109,10 +112,7 @@ function Login({ setUser }) {
                       <div className="center-wrap">
                         <div className="section text-center">
                           <h4 className="mb-4 pb-3">Log In</h4>
-                          <form
-                            onSubmit={logInUser}
-                            id="login-form"
-                          >
+                          <form onSubmit={logInUser} id="login-form">
                             <div className="form-group">
                               <input
                                 type="email"
@@ -145,10 +145,10 @@ function Login({ setUser }) {
                                 className="input-icon uil uil-lock-alt"
                               />
                             </div>
-                            <button
-                              type="submit"
-                              className="btn mt-4"
-                            > Submit</button>
+                            <button type="submit" className="btn mt-4">
+                              {" "}
+                              Submit
+                            </button>
                           </form>
                           <p className="mb-0 mt-4 text-center">
                             <Link to="/reset-password" className="reset-pass">
@@ -161,12 +161,9 @@ function Login({ setUser }) {
                     <div className="card-back">
                       <div className="center-wrap">
                         <div className="section text-center">
-                          <h4 className="mb-4 pb-3">Sign Up</h4>
-                          <form
-                            onSubmit={signUpUser}
-                            id="register-form"
-                          >
-                            <div className="form-group">
+                          <h4 className="pb-3">Sign Up</h4>
+                          <form onSubmit={signUpUser} id="register-form">
+                            <div className="form-group mt-2">
                               <input
                                 type="text"
                                 name="logname"
@@ -222,7 +219,9 @@ function Login({ setUser }) {
                                 placeholder="Confirm Password"
                                 id="logpass"
                                 autoComplete="off"
-                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                onChange={(e) =>
+                                  setConfirmPassword(e.target.value)
+                                }
                               />
                               <Icon
                                 icon="line-md:confirm-circle"

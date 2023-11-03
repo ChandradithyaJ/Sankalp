@@ -102,7 +102,12 @@ function App() {
             exact
             path="story/modules/situation"
             element={
-              <StorySituation mode={mode} story={story} setStory={setStory} />
+              <StorySituation 
+                mode={mode} 
+                lang={lang}
+                story={story} 
+                setStory={setStory}   
+              />
             }
           />
           <Route
@@ -111,6 +116,7 @@ function App() {
             element={
               <StoryMode
                 mode={mode}
+                lang={lang}
                 user={user}
                 setUser={setUser}
                 story={story}

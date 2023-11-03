@@ -1,5 +1,5 @@
-
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
 
 a {
   cursor: pointer;
@@ -21,6 +21,9 @@ a:hover {
 }
 .section h4 {
   font-weight: 600;
+  font-family: Bad Script, cursive;
+  font-size: 30px;
+  color: antiquewhite;
 }
 .section h6 span {
   padding: 0 20px;

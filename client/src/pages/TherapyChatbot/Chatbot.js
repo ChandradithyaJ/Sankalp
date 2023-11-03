@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { ElizaBot } from "./Mia/Elizabot.js";
 import { Sentimood } from "./Mia/Sentimood.js";
+import { VscDebugRestart } from "react-icons/vsc";
 import "./Chatbot.css";
+
 const Chatbot = ({ mode }) => {
   let eliza = new ElizaBot();
   let elizaLines = [];
@@ -11,6 +13,9 @@ const Chatbot = ({ mode }) => {
   let displayRows = 20;
 
   let userSentiment = 0;
+
+  //try
+
 
   <img
     className={`sankalp-logo`}
@@ -99,11 +104,48 @@ const Chatbot = ({ mode }) => {
   const [eDisplay, setEDisplay] = useState("");
   const [eInput, setEInput] = useState("");
 
+
   return (
-    <div className={`chatbotcontainer-${mode}`}>
-      <p>COMING SOON!!</p>
+    <div className={`chatbot-container-${mode}`}>
+      <div className={`chatbot-left-${mode}`}>
+        <VscDebugRestart onClick={elizaReset} style={{ color: '#00df9a', fontSize: '4vh'}} />
+        {/* <button onClick={elizaReset}>Reset</button> */}
+
+        <div className={`chatbot-image-${mode}`}>
+          <img
+            id="main-image"
+            src={"./MiaImages/default-01.png"}
+            alt="Mia"
+          />
+        </div>
+        <div className="chatbot-name">MIA</div>
+      </div>
+
+      <div className={`chatbot-body-${mode}`}>
+        <div className={`chatbot-chat-${mode}`}>
+          <form name="e_form" onSubmit={elizaStep}>
+            <textarea
+              name="e_display"
+              id="e_display"
+              value={eDisplay}
+              onChange={(e) => setEDisplay(e.target.value)}
+              readOnly
+            ></textarea>
+            <input
+              type="text"
+              name="e_input"
+              id="e_input"
+              value={eInput}
+              onChange={(e) => setEInput(e.target.value)}
+            />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
+
 };
 
 export default Chatbot;
+/* FILEPATH: /C:/Users/mvska/OneDrive/Documents/GitHub/Sankalp/client/src/pages/TherapyChatbot/Chatbot.css */

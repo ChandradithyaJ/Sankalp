@@ -24,11 +24,7 @@ function Login({ setUser }) {
     };
 
     try {
-<<<<<<< HEAD
       const response = await testingAPI.post('/auth', userDetails)
-=======
-      const response = await serverAPI.post("/auth", userDetails);
->>>>>>> 2fe7588677bda5488bf0ebd4cebda700a1990502
       if (response && response.data) {
         setUser(response.data.foundUser);
         navigate("/home");
@@ -71,11 +67,7 @@ function Login({ setUser }) {
 
     // store user in database through API call
     try {
-<<<<<<< HEAD
       const response = await testingAPI.post('/register', newUser)
-=======
-      const response = await serverAPI.post("/register", newUser);
->>>>>>> 2fe7588677bda5488bf0ebd4cebda700a1990502
       if (response && response.data) {
         console.log("User details: ", response.data);
         setUser(response.data.newUser);

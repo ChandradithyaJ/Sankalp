@@ -23,7 +23,7 @@ function App() {
   const [listOfStories, setListOfStories] = useState([]);
   const [story, setStory] = useState(null);
   const [mode, setMode] = useState(user?.mode || "dark");
-  const [lang, setLang] = useState(user?.language || 'te')
+  const [lang, setLang] = useState(user?.language || 'en')
 
   return (
     <div className={`App-${mode}`}>
@@ -52,18 +52,18 @@ function App() {
       )}
       {user && (
         <Routes>
-          <Route 
-            exact path="home" 
+          <Route
+            exact path="home"
             element={
-                <Home 
-                  mode={mode} 
-                  lang={lang}
-                />}          
+              <Home
+                mode={mode}
+                lang={lang}
+              />}
           />
           <Route exact path="BlogPage" element={<BlogPage />} />
-          <Route 
+          <Route
             exact path="contact-us"
-            element={<ContactForm 
+            element={<ContactForm
               mode={mode}
               lang={lang}
             />}

@@ -24,6 +24,8 @@ app.use(express.urlencoded({ extended: true }))
 // built-in middleware for json
 app.use(express.json({ limit: '50mb' }))
 
+// translate route
+app.use('/translate', require('./routes/translate'))
 // register route
 app.use('/register', require('./routes/register'))
 // login route

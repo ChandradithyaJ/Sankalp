@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import "./login.css";
 
 // axios call
-import serverAPI from "../../api/serverAPI";
+import testingAPI from "../../api/testingAPI";
 
 function Login({ setUser }) {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Login({ setUser }) {
     }
 
     try {
-      const response = await serverAPI.post('/auth', userDetails)
+      const response = await testingAPI.post('/auth', userDetails)
       if (response && response.data) {
         setUser(response.data.foundUser)
         navigate('/home')
@@ -65,7 +65,7 @@ function Login({ setUser }) {
 
     // store user in database through API call
     try {
-      const response = await serverAPI.post('/register', newUser)
+      const response = await testingAPI.post('/register', newUser)
       if (response && response.data) {
         console.log('User details: ', response.data)
         setUser(response.data.newUser)

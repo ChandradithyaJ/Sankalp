@@ -10,7 +10,7 @@ import SpeechBubble from './SpeechBubble'
 import girlTalking from '../../../lotties/girlTalking.json'
 import doctor from '../../../lotties/doctor.json'
 
-import serverAPI from '../../../api/serverAPI'
+import testingAPI from '../../../api/testingAPI'
 
 const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     const navigate = useNavigate()
@@ -115,7 +115,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
             }
 
             try {
-                const response = await serverAPI.put('/users', editDetails, config)
+                const response = await testingAPI.put('/users', editDetails, config)
                 if (response && response.data) {
                     console.log('Edit Profile Response: ', response.data)
                     setUser({

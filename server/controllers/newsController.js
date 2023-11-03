@@ -9,7 +9,6 @@ const getNews = async (req, res) => {
         )
 
         if(response.data){
-            console.log("API Response:", response.data);
             res.status(200).json(response.data)
         } else{
             res.status(200).json({ 'message': 'No articles' })

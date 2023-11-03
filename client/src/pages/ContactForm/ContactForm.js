@@ -1,7 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import testingAPI from "../../api/testingAPI";
 import "./ContactFormStyle.css"; 
 
-function ContactForm({ mode }) {
+function ContactForm({ mode, lang }) {
+  const [Contact, setContact] = useState("Contact Us")
+  const [Message, setMessage] = useState("Message")
+  const [Send, setSend] = useState("Send")
+
+  useEffect(() => {
+    const translate = async () => {
+
+      // store the originals to send as the body of the request
+      const translationDetails = {
+        to: lang,
+        contact: Contact,
+        message: Message,
+        send: Send
+      }
+
+      if (lang !== 'en') {
+        try {
+          const response = await testingAPI.post('/translate', translationDetails)
+          if (response && response.data) {
+            setContact(response.data.contact)
+            setMessage(response.data.message)
+            setSend(response.data.send)
+          }
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+
+    translate()
+  }, [])
+
   const [formData, setFormData] = useState({
     message: "",
   });
@@ -32,17 +65,17 @@ function ContactForm({ mode }) {
       <div className={`contact-box-${mode}`}>
         <div className="left"></div>
         <div className="right">
-          <h2 style={{ color: "black" }}>Contact Us</h2>
+          <h2 style={{ color: "black" }}>{Contact}</h2>
           <form onSubmit={handleSubmit}>
             <textarea
-              placeholder="Message"
+              placeholder={`${Message}`}
               className="field"
               name="message"
               value={formData.message}
               onChange={handleChange}
             ></textarea>
             <button type="submit" className={`btn-${mode}`}>
-              Send
+              {Send}
             </button>
           </form>
         </div>

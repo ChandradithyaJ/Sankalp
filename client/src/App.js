@@ -5,12 +5,12 @@ import { BrowserView, MobileView } from "react-device-detect";
 import Navbar from "./components/Navbar";
 import NavbarMob from "./components/NavbarMob";
 
+import Login from "./pages/Authentication/login";
+import ResetPassword from "./pages/Authentication/reset-password";
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
 import StoryModeIntro from "./pages/Story/StoryModeIntro/StoryModeIntro";
 import StorySelect from "./pages/Story/StorySelect/StorySelect";
 import StorySituation from "./pages/Story/StorySituation/StorySituation";
-import Login from "./pages/Authentication/login";
-import ResetPassword from "./pages/Authentication/reset-password";
 import Home from "./pages/Home/Home";
 import ContactForm from "./pages/ContactForm/ContactForm";
 import BlogPage from "./pages/Blog/Blog";
@@ -23,6 +23,7 @@ function App() {
   const [listOfStories, setListOfStories] = useState([]);
   const [story, setStory] = useState(null);
   const [mode, setMode] = useState(user?.mode || "dark");
+  const [lang, setLang] = useState(user?.language || 'te')
 
   return (
     <div className={`App-${mode}`}>
@@ -51,9 +52,22 @@ function App() {
       )}
       {user && (
         <Routes>
-          <Route exact path="home" element={<Home mode={mode} />} />
+          <Route 
+            exact path="home" 
+            element={
+                <Home 
+                  mode={mode} 
+                  lang={lang}
+                />}          
+          />
           <Route exact path="BlogPage" element={<BlogPage />} />
-          <Route exact path="contact-us" element={<ContactForm mode={mode} />} />
+          <Route 
+            exact path="contact-us"
+            element={<ContactForm 
+              mode={mode}
+              lang={lang}
+            />}
+          />
           <Route
             exact
             path="therapy-chatbot"
@@ -67,6 +81,7 @@ function App() {
                 user={user}
                 mode={mode}
                 setListOfStories={setListOfStories}
+                lang={lang}
               />
             }
           />
@@ -77,6 +92,7 @@ function App() {
               <StorySelect
                 user={user}
                 mode={mode}
+                lang={lang}
                 listOfStories={listOfStories}
                 setStory={setStory}
               />
@@ -111,6 +127,7 @@ function App() {
                 setMode={setMode}
                 user={user}
                 setUser={setUser}
+                lang={lang}
               />
             }
           />
@@ -123,6 +140,8 @@ function App() {
                 setUser={setUser}
                 mode={mode}
                 setMode={setMode}
+                lang={lang}
+                setLang={setLang}
               />
             }
           />

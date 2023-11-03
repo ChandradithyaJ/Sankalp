@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import serverAPI from '../../api/serverAPI'
+import testingAPI from '../../api/testingAPI'
 
 import "./UpdateProfile.css"
 
 
-const UpdateProfile = ({ mode, user, setUser }) => {
+const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
   const [username, setUsername] = useState(user?.username || 'Guest')
   const [profilePic, setProfilePic] = useState(user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic)
   const [displayProfilePic, setDisplayProfilePic] = useState(
@@ -52,7 +52,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     }
 
     try {
-      const response = await serverAPI.post('/cloudinary/upload-pic', {
+      const response = await testingAPI.post('/cloudinary/upload-pic', {
         data: displayProfilePic,
         publicID: publicIdForPic,
       }, config)
@@ -98,7 +98,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     }
 
     try {
-      const response = await serverAPI.put('/users', editDetails, config)
+      const response = await testingAPI.put('/users', editDetails, config)
       if (response && response.data) {
         console.log('Edit Profile Response: ', response.data)
         setUser({
@@ -116,9 +116,44 @@ const UpdateProfile = ({ mode, user, setUser }) => {
     navigate('/profile')
   }
 
+  const [UpdateProfileText, setUpdateProfileText] = useState('Update Profile')
+  const [UploadFileText, setUploadFileText] = useState('Upload File')
+  const [SaveText, setSaveText] = useState('Save')
+  const [CancelText, setCancelText] = useState('Cancel')
+
+  useEffect(() => {
+    const translate = async () => {
+
+      // store the originals to send as the body of the request
+      const translationDetails = {
+        to: lang,
+        UpdateProfileText: UpdateProfileText,
+        UploadFileText: UploadFileText,
+        SaveText: 'Save Profile',
+        CancelText: 'Cancel Update'
+      }
+
+      if (lang !== 'en') {
+        try {
+          const response = await testingAPI.post('/translate', translationDetails)
+          if (response && response.data) {
+            setUpdateProfileText(response.data.UpdateProfileText)
+            setUploadFileText(response.data.UploadFileText)
+            setSaveText(response.data.SaveText)
+            setCancelText(response.data.CancelText)
+          }
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+
+    translate()
+  }, [])
+
   return (
     <div className={`update-profile-main-${mode}`}>
-      <h1 className={`update-profile-heading-${mode}`}> Update Profile </h1>
+      <h1 className={`update-profile-heading-${mode}`}> {UpdateProfileText} </h1>
       <form onSubmit={(e) => handleSubmit(e)} className="update-profile-form">
         <div className='update-profile-container'>
           <div className='image'>
@@ -131,7 +166,7 @@ const UpdateProfile = ({ mode, user, setUser }) => {
           </div>
           <div className={`upload-profilepic-${mode}`}>
             <input type='file' id="uploadbtn" onChange={handleFileUpload} />
-            <label htmlFor='uploadbtn'>Upload File</label>
+            <label htmlFor='uploadbtn'>{UploadFileText}</label>
           </div>
           <br />
         </div>
@@ -158,12 +193,12 @@ const UpdateProfile = ({ mode, user, setUser }) => {
         <div className={'update-profile-allbuttons'}>
           <button type="submit"
             className={`update-profile-savebutton-${mode}`}
-          >Save</button>
+          >{SaveText}</button>
           <div className='update-profile-givwidth'></div>
           <button
             onClick={() => navigate('/profile')}
             className={`update-profile-cancelbutton-${mode}`}
-          >Cancel</button>
+          >{CancelText}</button>
 
         </div>
 

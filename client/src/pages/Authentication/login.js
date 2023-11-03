@@ -41,6 +41,7 @@ function Login({ setUser }) {
           "Unable to login. Please check your internet connection and try again."
         );
       }
+      console.log(err)
     }
   };
 

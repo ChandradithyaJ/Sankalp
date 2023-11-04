@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { ElizaBot } from "./Mia/Elizabot.js";
 import { Sentimood } from "./Mia/Sentimood.js";
+import { VscDebugRestart } from "react-icons/vsc";
+import { AiFillCaretRight } from "react-icons/ai";
 import "./Chatbot.css";
+
 const Chatbot = ({ mode }) => {
   let eliza = new ElizaBot();
   let elizaLines = [];
@@ -11,6 +14,9 @@ const Chatbot = ({ mode }) => {
   let displayRows = 20;
 
   let userSentiment = 0;
+
+  //try
+
 
   <img
     className={`sankalp-logo`}
@@ -99,62 +105,47 @@ const Chatbot = ({ mode }) => {
   const [eDisplay, setEDisplay] = useState("");
   const [eInput, setEInput] = useState("");
 
-  return (
-    <div className={`chatbotcontainer-${mode}`}>
-      {/* <p>COMING SOON!!</p> */}
 
-      <center>
-        <h3 className="MiaHeading">Mia+</h3>
-        <img
-          id="main-image"
-          src="./MiaImages/default-01.png"
-          width="300px"
-          height="300px"
-          alt=""
-        />
-        <form
-          name="e_form"
-          onSubmit={(e) => {
-            e.preventDefault(); // Prevent the default form submission behavior
-            elizaStep(e);
-          }}
-        >
-          <div>
+  return (
+    <div className={`chatbot-container-${mode}`}>
+
+      <div className={`chatbot-left-${mode}`}>
+
+        <div className="chatbot-header">
+          A better approach is to place a regular submit button outside the input, then style things to make it look like the button is inside. That will also preserve accessibility (e.g. blind users will be able to use your website), and pressing Enter will submit your form automatically across all browsers. See the below code, or check out this jsFiddle for a working proof-of-concept.
+        </div>
+        <div className={`chatbot-image-${mode}`}>
+          <img
+            id="main-image"
+            src={"./MiaImages/default-01.png"}
+            alt="Mia"
+          />
+        </div>
+      </div>
+      <div className={`chatbot-body-${mode}`}>
+        <div className={`chatbot-chat-${mode}`}>
+          <form name="e_form" onSubmit={elizaStep}>
             <textarea
-              className="form-control"
               name="e_display"
-              cols="60"
-              rows="20"
+              id="e_display"
               value={eDisplay}
+              onChange={(e) => setEDisplay(e.target.value)}
               readOnly
             ></textarea>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <input
-              className="form-control"
-              type="text"
-              name="e_input"
-              size="43"
-              value={eInput}
-              onChange={(e) => setEInput(e.target.value)}
-            />
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <input className="btn btn-default" type="submit" value="Talk" />
-            <input
-              className="btn btn-default"
-              type="reset"
-              value="Reset"
-              onClick={(e) => {
-                e.preventDefault(); // Prevent the default behavior of the reset button
-                window.setTimeout(() => elizaReset(e), 100);
-              }}
-            />
-          </div>
-        </form>
-      </center>
+            <div className="input-container">
+              <input
+                type="text"
+                name="e_input"
+                id="e_input"
+                value={eInput}
+                onChange={(e) => setEInput(e.target.value)}
+              />
+              <button type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
-};
-
+}
 export default Chatbot;

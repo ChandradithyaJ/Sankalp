@@ -29,59 +29,149 @@
   font-size: 30px;
 }
 
-/* Add this CSS to your project's stylesheet or a separate CSS file */
-
-/* Styling for the form */
-form {
+.chatbot-name {
+  padding-top: 3vh;
   text-align: center;
+  font-size: large;
+  font: bold;
 }
 
-/* Styling for the textarea */
-textarea {
+.chatbot-body-dark {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 40vw;
+}
+
+.chatbot-image-dark {
+  padding-top: 3vh;
+  display: flex;
+  height: 70vh;
+}
+
+.chatbot-image-dark img {
+  height: 100%;
   width: 100%;
-  height: 200px;
-  padding: 10px;
-  resize: none;
-  border: 1px solid #ccc;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  margin: 10px 0;
+  object-fit: contain;
 }
 
-/* Styling for the text input */
-.form-control {
-  width: 70vw;
-  margin: 2vh auto;
-  padding: 10px;
-  border: 1px solid #ccc;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  /* margin-right: 10px; */
+
+.chatbot-chat-dark {
+  height: 100vh;
+  align-items: center;
+  width: 40vw;
 }
 
-/* Styling for the buttons */
-input[type="submit"],
-input[type="reset"] {
-  padding: 10px 20px;
-  background-color: #0074cc;
-  color: #fff;
+.chatbot-chat-dark form {
+  height: 80vh;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.chatbot-chat-dark textarea {
+  height: 100vh;
+  width: 40vw;
+  flex: 1;
+  padding: 10px;
+  font-size: 1.2rem;
   border: none;
+  resize: none;
+  overflow-y: scroll;
+  background-color: rgb(21, 6, 70);
+  color: darksalmon;
+}
+
+.chatbot-chat-dark input[type="text"] {
+  padding-left: 2vh;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-top: 1px solid #ccc;
+  background-color: rgb(21, 6, 70);
+  color: darksalmon;
+  width: 37vw;
+  border: 4px solid darksalmon;
+}
+
+.chatbot-chat-dark button[type="submit"] {
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  background-color: black;
+  color: #fff;
   cursor: pointer;
-  font-size: 16px;
-  margin: 1vh;
 }
 
-input[type="reset"] {
-  background-color: #e34c52;
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-/* Adjust the button hover effects as needed */
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-  background-color: #0054a3;
+
+
+@media (max-width: 950px) {
+  .chatbot-image-dark {
+    height: 50vh;
+  }
 }
 
-/* Center align text in the middle div */
-div[style="text-align: center"] {
-  text-align: center;
+@media (max-width: 550px) and (min-width: 430px) {
+
+  .chatbot-image-dark {
+    height: 40vh;
+  }
+}
+
+@media ((max-width: 429px) and (min-width: 360px)) or (max-height: 670px) {
+
+  .chatbot-image-dark {
+    height: 30vh;
+  }
+}
+
+
+
+@media (max-width: 950px) {
+  .chatbot-left-dark {
+    padding-bottom: 10vh;
+  }
+}
+
+@media (max-width: 550px) and (min-width: 430px) {
+
+  .chatbot-left-dark {
+    padding-bottom: 20vh;
+  }
+}
+
+@media ((max-width: 429px) and (min-width: 360px)) or (max-height: 670px) {
+
+  .chatbot-left-dark {
+    padding-bottom: 10vh;
+  }
+}
+
+
+/*input text*/
+@media (max-width: 950px) {
+  .chatbot-chat-dark input[type="text"] {
+    width: 34vw;
+  }
+}
+
+@media (max-width: 550px) and (min-width: 430px) {
+
+  .chatbot-chat-dark input[type="text"] {
+    width: 29vw;
+  }
+}
+
+@media ((max-width: 429px) and (min-width: 360px)) or (max-height: 670px) {
+
+  .chatbot-chat-dark input[type="text"] {
+    width: 24vw;
+  }
 }

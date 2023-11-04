@@ -1,5 +1,5 @@
 import './UserProfile.css'
-import serverAPI from '../../api/serverAPI'
+import testingAPI from '../../api/testingAPI'
 import { isExpired } from 'react-jwt'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import ModeToggle from './ModeToggle'
 import './ModeToggle.css'
 
-const UserProfile = ({ mode, setMode, user, setUser }) => {
+const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
     const badgeImages = ['./images/firstStory.png', './images/firstThree.png']
 
     const [profilePic, setProfilePic] = useState(
@@ -27,7 +27,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
             }
 
             try {
-                const response = await serverAPI.put('/updateJWT', userID)
+                const response = await testingAPI.put('/updateJWT', userID)
                 if (response && response.data) {
                     console.log('Edit Profile Response: ', response.data)
 
@@ -68,7 +68,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
             }
 
             try {
-                const response = await serverAPI.delete(`/users`, config)
+                const response = await testingAPI.delete(`/users`, config)
                 if (response && response.data) {
                     console.log('Delete Profile Response: ', response.data)
                 }
@@ -82,6 +82,40 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
         }
     }
 
+    const [editText, setEditText] = useState('Edit Profile')
+    const [deleteText, setDeleteText] = useState('Delete Profile')
+    const [logoutText, setLogoutText] = useState('Log Out')
+    const [yourBadgesText, setYourBadgesText] = useState('Your Badges')
+
+    useEffect(() => {
+        const translate = async () => {
+
+            // store the originals to send as the body of the request
+            const translationDetails = {
+                to: lang,
+                editText: editText,
+                deleteText: deleteText,
+                logoutText: logoutText,
+                yourBadgesText: yourBadgesText
+            }
+
+            if (lang !== 'en') {
+                try {
+                    const response = await testingAPI.post('/translate', translationDetails)
+                    if (response && response.data) {
+                        setEditText(response.data.editText)
+                        setDeleteText(response.data.deleteText)
+                        setLogoutText(response.data.logoutText)
+                        setYourBadgesText(response.data.yourBadgesText)
+                    }
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+        }
+
+        translate()
+    }, [])
 
     return (
         <div className={`profile-page-${mode}`}>
@@ -104,7 +138,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                             className={`edit-button-profile-${mode}`}
                             onClick={editProfile}
                         >
-                            Edit Profile
+                            {editText}
                         </div>
                         <ModeToggle
                             mode={mode}
@@ -116,11 +150,11 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                             className={`logout-button-profile-${mode}`}
                             onClick={logout}
                         >
-                            Log Out
+                            {logoutText}
                         </div>
                     </div>
                 </div>
-                <div className='badges-heading'>Your Badges:</div>
+                <div className='badges-heading'>{`${yourBadgesText}:`}</div>
                 <div className='badges-container'>
                     {badgeImages.map((badgeImage) => {
                         if (user.badges[badgeImage.slice(9, badgeImage.length - 4)]) {
@@ -152,7 +186,7 @@ const UserProfile = ({ mode, setMode, user, setUser }) => {
                         className={`delete-button-profile-${mode}`}
                         onClick={deleteProfile}
                     >
-                        Delete Profile
+                        {deleteText}
                     </div>
                 </div>
             </div>

@@ -2,12 +2,49 @@ import React, { useState, useEffect } from "react";
 import "./Home_style.css";
 import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
-import PanoramaViewer from "./Panorma/PanormaViewer";
+import testingAPI from "../../api/testingAPI";
 
-function Home({ mode }) {
+function Home({ mode, lang }) {
   useEffect(() => {
     document.body.className = mode === "dark" ? "dark-mode" : "light-mode";
   }, [mode]);
+
+  const [welcome, setWelcome] = useState("Welcome to Sankalp!")
+  const [entryQuote, setEntryQuote] = useState("Empathy is the greatest virtue. From it, all virtues flow. Without it, all virtues are an act.")
+  const [philosopher, setPhilosopher] = useState("Eric Zorn")
+  const [newsTitle, setNewsTitle] = useState("News")
+  const [exploreTitle, setExploreTitle] = useState("Let's Explore Sankalp")
+
+  useEffect(() => {
+    const translate = async() => {
+
+      // store the originals to send as the body of the request
+      const translationDetails = {
+        to: lang,
+        welcome: welcome,
+        entryQuote: entryQuote,
+        philosopher: philosopher,
+        newsTitle: newsTitle
+      }
+
+      if(lang !== 'en'){
+        try {
+          const response = await testingAPI.post('/translate', translationDetails)
+          if (response && response.data) {
+            setWelcome(response.data.welcome)
+            setEntryQuote(response.data.entryQuote)
+            setPhilosopher(response.data.philosopher)
+            setNewsTitle(response.data.newsTitle)
+            setExploreTitle(response.data.exploreTitle)
+          }
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+
+    translate()
+  }, [])
 
   return (
     <div className={`Home ${mode === "dark" ? "Home--dark" : "Home--light"}`}>
@@ -23,7 +60,6 @@ function Home({ mode }) {
           <div className={`typing-${mode}`}>Welcome to Sankalp!</div>
         </h1>
       </div>
-
       <div
         style={{
           marginTop: "50px",
@@ -36,26 +72,20 @@ function Home({ mode }) {
         <div className="hero_bottom">
           <div className="hero-content">
             <h1>
-              "Empathy is the greatest virtue. From it, all virtues flow.
-              Without it, all virtues are an act."
+              {entryQuote}
             </h1>
-            <h2>Eric Zorn</h2>
+            <h2>{philosopher}</h2>
           </div>
         </div>
       </div>
       <div>
-        {" "}
-        {/* <PanoramaViewer />{" "} */}
-      </div>
-      <div>
         <div className="space"></div>
         <div className="highlight-text-header">
-          <h3>News</h3>
+          <h3>{newsTitle}</h3>
         </div>
         <div> <Coverflow /> </div>
-        <div className="highlight-text-header">Let's Explore Sankalp</div>
+        <div className="highlight-text-header">{exploreTitle}</div>
         <Events />
-        {/* <Cards /> */}
       </div>
     </div>
   );

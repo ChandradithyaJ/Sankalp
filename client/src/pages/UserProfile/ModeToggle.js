@@ -1,4 +1,4 @@
-import serverAPI from "../../api/serverAPI" 
+import testingAPI from "../../api/testingAPI" 
 
 const ModeToggle = ({ mode, setMode, user,  setUser }) => {
     const changeMode = async (e) => {
@@ -17,7 +17,7 @@ const ModeToggle = ({ mode, setMode, user,  setUser }) => {
         }
 
         try {
-            const response = await serverAPI.put('/users', editDetails, config)
+            const response = await testingAPI.put('/users', editDetails, config)
             if (response && response.data) {
                 console.log('Edit Profile Response: ', response.data)
             }

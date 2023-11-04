@@ -8,7 +8,11 @@ function Events() {
         <div className="col">
           <div className="main-timeline">
             <div className="timeline">
-              <a href="/" className="timeline-content">
+              <a
+                href="/"
+                className="timeline-content"
+                style={{ pointerEvents: "none", textDecoration: "none" }}
+              >
                 <div className="timeline-icon">
                   <i className="fa fa-rocket" aria-hidden="true"></i>
                 </div>
@@ -31,7 +35,11 @@ function Events() {
               </a>
             </div>
             <div className="timeline">
-              <a href="/" className="timeline-content">
+              <a
+                href="/"
+                className="timeline-content"
+                style={{ pointerEvents: "none", textDecoration: "none" }}
+              >
                 <div className="timeline-icon">
                   <i className="fa fa-users" aria-hidden="true"></i>
                 </div>
@@ -53,7 +61,11 @@ function Events() {
               </a>
             </div>
             <div className="timeline">
-              <a href="/" className="timeline-content">
+              <a
+                href="/"
+                className="timeline-content"
+                style={{ pointerEvents: "none", textDecoration: "none" }}
+              >
                 <div className="timeline-icon">
                   <i className="fa fa-cog" aria-hidden="true"></i>
                 </div>

@@ -36,11 +36,7 @@ function App() {
       {/* access app routes only if logged in */}
       {!user && (
         <Routes>
-          <Route
-            exact
-            path="login"
-            element={<Login setUser={setUser} />}
-          />
+          <Route exact path="login" element={<Login setUser={setUser} />} />
           <Route
             exact
             path="signup"
@@ -53,7 +49,11 @@ function App() {
         <Routes>
           <Route exact path="home" element={<Home mode={mode} />} />
           <Route exact path="BlogPage" element={<BlogPage />} />
-          <Route exact path="contact-us" element={<ContactForm mode={mode} />} />
+          <Route
+            exact
+            path="contact-us"
+            element={<ContactForm mode={mode} />}
+          />
           <Route
             exact
             path="therapy-chatbot"
@@ -80,6 +80,13 @@ function App() {
                 listOfStories={listOfStories}
                 setStory={setStory}
               />
+            }
+          />
+          <Route
+            exact
+            path="story/modules/situation"
+            element={
+              <StorySituation mode={mode} story={story} setStory={setStory} />
             }
           />
           <Route

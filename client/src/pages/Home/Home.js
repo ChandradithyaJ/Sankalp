@@ -20,7 +20,7 @@ function Home({ mode }) {
       ></div>
       <div className>
         <h1>
-          <div class={`typing-${mode}`}>Welcome to Sankalp!</div>
+          <div className={`typing-${mode}`}>Welcome to Sankalp!</div>
         </h1>
       </div>
 

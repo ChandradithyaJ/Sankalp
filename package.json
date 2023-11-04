@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/ChandradithyaJ/Sankalp#readme",
   "dependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.25"
   }
 }

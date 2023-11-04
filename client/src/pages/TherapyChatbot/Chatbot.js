@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ElizaBot } from "./Mia/Elizabot.js";
 import { Sentimood } from "./Mia/Sentimood.js";
 import { VscDebugRestart } from "react-icons/vsc";
+import { AiFillCaretRight } from "react-icons/ai";
 import "./Chatbot.css";
 
 const Chatbot = ({ mode }) => {
@@ -107,10 +108,12 @@ const Chatbot = ({ mode }) => {
 
   return (
     <div className={`chatbot-container-${mode}`}>
-      <div className={`chatbot-left-${mode}`}>
-        <VscDebugRestart onClick={elizaReset} style={{ color: '#00df9a', fontSize: '4vh'}} />
-        {/* <button onClick={elizaReset}>Reset</button> */}
 
+      <div className={`chatbot-left-${mode}`}>
+
+        <div className="chatbot-header">
+          A better approach is to place a regular submit button outside the input, then style things to make it look like the button is inside. That will also preserve accessibility (e.g. blind users will be able to use your website), and pressing Enter will submit your form automatically across all browsers. See the below code, or check out this jsFiddle for a working proof-of-concept.
+        </div>
         <div className={`chatbot-image-${mode}`}>
           <img
             id="main-image"
@@ -118,9 +121,7 @@ const Chatbot = ({ mode }) => {
             alt="Mia"
           />
         </div>
-        <div className="chatbot-name">MIA</div>
       </div>
-
       <div className={`chatbot-body-${mode}`}>
         <div className={`chatbot-chat-${mode}`}>
           <form name="e_form" onSubmit={elizaStep}>
@@ -131,21 +132,20 @@ const Chatbot = ({ mode }) => {
               onChange={(e) => setEDisplay(e.target.value)}
               readOnly
             ></textarea>
-            <input
-              type="text"
-              name="e_input"
-              id="e_input"
-              value={eInput}
-              onChange={(e) => setEInput(e.target.value)}
-            />
-            <button type="submit">Send</button>
+            <div className="input-container">
+              <input
+                type="text"
+                name="e_input"
+                id="e_input"
+                value={eInput}
+                onChange={(e) => setEInput(e.target.value)}
+              />
+              <button type="submit">Send</button>
+            </div>
           </form>
         </div>
       </div>
     </div>
   );
-
-};
-
+}
 export default Chatbot;
-/* FILEPATH: /C:/Users/mvska/OneDrive/Documents/GitHub/Sankalp/client/src/pages/TherapyChatbot/Chatbot.css */

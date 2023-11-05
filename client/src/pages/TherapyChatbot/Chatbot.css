@@ -2,12 +2,13 @@
 
 
 .chatbot-container-dark {
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: black;
 }
 
 .chatbot-header {
@@ -19,7 +20,7 @@
   flex-direction: column;
   padding-top: 6vh;
   height: 100vh;
-  width: 60vw;
+  width: 40vw;
   align-items: center;
   padding-left: 5vw;
 }
@@ -34,8 +35,8 @@
 .chatbot-body-dark {
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  width: 40vw;
+  height: 70vh;
+  width: 50vw;
 }
 
 .chatbot-image-dark {
@@ -52,31 +53,56 @@
 
 
 .chatbot-chat-dark {
-  height: 100vh;
+  height: 70vh;
   align-items: center;
-  width: 40vw;
+  width: 50vw;
+
 }
 
 .chatbot-chat-dark form {
-  height: 80vh;
-  width: 40vw;
+  padding: 2vh;
+  height: 90vh;
+  width: 52vw;
   display: flex;
   flex-direction: column;
+  background-color: rgb(81, 79, 79);
+  border-radius: 17px;
 
 }
 
 .chatbot-chat-dark textarea {
-  height: 100vh;
-  width: 40vw;
+  height: 70vh;
+  width: 50vw;
   flex: 1;
   padding: 10px;
   font-size: 1.2rem;
   border: none;
   resize: none;
   overflow-y: scroll;
-  background-color: rgb(21, 6, 70);
+  background-color: #131314;
   color: darksalmon;
+  border-radius: 17px;
+  padding-bottom: 20vh;
+  /* Change scrollbar color */
 }
+
+.chatbot-chat-dark textarea::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+.chatbot-chat-dark textarea::-webkit-scrollbar-track {
+  background-color: rgba(161, 155, 155, 0.899);
+}
+
+.chatbot-chat-dark textarea::-webkit-scrollbar-thumb {
+  background-color: rgb(227, 220, 217);
+  border-radius: 20px;
+  border: 10px solid #dee3de;
+  border: 4px solid rgba(194, 183, 183, 0.438);
+}
+
+
 
 .chatbot-chat-dark input[type="text"] {
   padding-left: 2vh;
@@ -84,20 +110,14 @@
   font-size: 1.2rem;
   border: none;
   border-top: 1px solid #ccc;
-  background-color: rgb(21, 6, 70);
+  background-color: #131314;
   color: darksalmon;
-  width: 37vw;
-  border: 4px solid darksalmon;
+  width: 47vw;
+  border: 4px solid rgba(255, 255, 255, 0.438);
+  border-radius: 17px;
 }
 
-.chatbot-chat-dark button[type="submit"] {
-  padding: 10px;
-  font-size: 1.2rem;
-  border: none;
-  background-color: black;
-  color: #fff;
-  cursor: pointer;
-}
+
 
 .input-container {
   display: flex;

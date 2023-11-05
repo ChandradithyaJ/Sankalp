@@ -10,9 +10,9 @@
   justify-content: center;
   background-color: black;
 }
-
-.chatbot-header {
-  padding-top: 2vh;
+.chatbotcontainer-light {
+  color: black;
+  display: block;
 }
 
 .chatbot-left-dark {

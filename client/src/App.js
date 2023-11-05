@@ -37,11 +37,7 @@ function App() {
       {/* access app routes only if logged in */}
       {!user && (
         <Routes>
-          <Route
-            exact
-            path="login"
-            element={<Login setUser={setUser} />}
-          />
+          <Route exact path="login" element={<Login setUser={setUser} />} />
           <Route
             exact
             path="signup"
@@ -95,6 +91,18 @@ function App() {
                 lang={lang}
                 listOfStories={listOfStories}
                 setStory={setStory}
+              />
+            }
+          />
+          <Route
+            exact
+            path="story/modules/situation"
+            element={
+              <StorySituation 
+                mode={mode} 
+                lang={lang}
+                story={story} 
+                setStory={setStory}   
               />
             }
           />

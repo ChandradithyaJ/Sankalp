@@ -7,7 +7,7 @@ import "./login.css";
 // axios call
 import testingAPI from "../../api/testingAPI";
 
-function Login({ setUser }) {
+function Login({ setUser, setLang }) {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -27,6 +27,7 @@ function Login({ setUser }) {
       const response = await testingAPI.post('/auth', userDetails)
       if (response && response.data) {
         setUser(response.data.foundUser);
+        setLang(response.data.foundUser.language)
         navigate("/home");
       }
     } catch (err) {

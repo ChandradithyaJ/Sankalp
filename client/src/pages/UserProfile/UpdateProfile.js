@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import testingAPI from '../../api/testingAPI'
-
 import "./UpdateProfile.css"
+import languages from '../../data/languages.json' 
 
 
 const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
@@ -11,6 +11,8 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
   const [displayProfilePic, setDisplayProfilePic] = useState(
     user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic
   )
+  const [userLang, setUserLang] = useState(lang)
+  const [langCodes, setLangCodes] = useState(Object.keys(languages))
   const [imageType, setImageType] = useState('')
   const [bio, setBio] = useState(user?.bio || '')
   const [changedProfilePic, setChangedProfilePic] = useState(false)
@@ -57,7 +59,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
         publicID: publicIdForPic,
       }, config)
       if (response && response.data) {
-        console.log(response.data)
+        console.log('Response Data: ', response.data)
         setProfilePic(response.data)
       }
     } catch (err) {
@@ -68,51 +70,79 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await uploadProfilePic()
 
-    // update user
-    let newProfilePic = ''
-    if (changedProfilePic) {
-      console.log(imageType)
-      if (imageType === 'image/jpeg') {
-        newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpeg`
-      }
-      else if (imageType === 'image/png') {
-        newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.png`
-      } else if (imageType === 'image/jpg') {
-        newProfilePic = `http://res.cloudinary.com/dmrbphf9r/image/upload/v1696681573/SankalpProfilePics/${user._id}profilepic.jpg`
-      }
-    }
-
-    const editDetails = {
-      id: user._id,
-      username: username,
-      bio: bio,
-      profilepic: newProfilePic
-    }
+    const publicIdForPic = `${user?._id}profilepic` || null
 
     const config = {
-      'headers': {
-        'authorization': `Bearer ${user?.accessToken}`
+      headers: {
+        'authorization': `Bearer ${user.accessToken}`
       }
     }
+    
+    await testingAPI.post('/cloudinary/upload-pic', {
+      data: displayProfilePic,
+      publicID: publicIdForPic,
+    }, config).then((response) => {
+      console.log('Response Data: ', response.data)
+      setProfilePic(response.data)
 
-    try {
-      const response = await testingAPI.put('/users', editDetails, config)
-      if (response && response.data) {
-        console.log('Edit Profile Response: ', response.data)
-        setUser({
-          ...user,
-          username: username,
-          bio: bio,
-          profilepic: newProfilePic
-        })
+      const editDetails = {
+        id: user._id,
+        username: username,
+        bio: bio,
+        profilepic: response.data,
+        language: userLang
       }
-    } catch (err) {
-      console.log(err.message)
-      alert(err?.response?.data?.message)
-    }
 
+      return testingAPI.put('/users', editDetails, config)
+
+    }).then((response) => {
+      console.log('Edit Profile Response: ', response.data)
+      setUser({
+        ...user,
+        username: username,
+        bio: bio,
+        profilepic: response.profilepic,
+        language: userLang
+      })
+    })
+
+    // await uploadProfilePic()
+
+    // console.log('Uploaded Profile Pic: ', profilePic)
+
+    // const editDetails = {
+    //   id: user._id,
+    //   username: username,
+    //   bio: bio,
+    //   profilepic: profilePic,
+    //   language: userLang
+    // }
+
+    // const config = {
+    //   'headers': {
+    //     'authorization': `Bearer ${user?.accessToken}`
+    //   }
+    // }
+
+    // try {
+    //   const response = await testingAPI.put('/users', editDetails, config)
+    //   if (response && response.data) {
+    //     console.log('Edit Profile Response: ', response.data)
+    //     setUser({
+    //       ...user,
+    //       username: username,
+    //       bio: bio,
+    //       profilepic: profilePic,
+    //       language: userLang
+    //     })
+    //   }
+    // } catch (err) {
+    //   console.log(err.message)
+    //   alert(err?.response?.data?.message)
+    // }
+
+    setLang(userLang)
     navigate('/profile')
   }
 
@@ -190,6 +220,16 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
             onChange={(e) => setBio(e.target.value)}
           />
         </label>
+        <div className='select-lang'>
+          <select 
+            defaultValue={userLang}
+            onChange={(e) => setUserLang(e.target.value)}
+          >
+            {langCodes.map((code) => (
+              <option value={code}>{languages[code]}</option>
+            ))}
+          </select>
+        </div>
         <div className={'update-profile-allbuttons'}>
           <button type="submit"
             className={`update-profile-savebutton-${mode}`}
@@ -199,9 +239,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
             onClick={() => navigate('/profile')}
             className={`update-profile-cancelbutton-${mode}`}
           >{CancelText}</button>
-
         </div>
-
       </form>
     </div>
   )

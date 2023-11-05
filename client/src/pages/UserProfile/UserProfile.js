@@ -89,7 +89,6 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
 
     useEffect(() => {
         const translate = async () => {
-
             // store the originals to send as the body of the request
             const translationDetails = {
                 to: lang,
@@ -125,7 +124,7 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
                     <img
                         className={`profile-pic-${mode}`}
                         src={profilePic}
-                        alt={profilePic}
+                        alt="Profile Pic"
                     />
                     <p className='username'>
                         {user?.username ? user?.username : 'Guest'}

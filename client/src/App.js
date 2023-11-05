@@ -37,11 +37,18 @@ function App() {
       {/* access app routes only if logged in */}
       {!user && (
         <Routes>
-          <Route exact path="login" element={<Login setUser={setUser} />} />
+          <Route 
+            exact path="login" 
+            element={
+              <Login 
+              setUser={setUser} 
+              setLang={setLang}
+              />}
+            />
           <Route
             exact
             path="signup"
-            element={<Login mode={mode} setUser={setUser} />}
+            element={<Login setUser={setUser}/>}
           />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>

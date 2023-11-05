@@ -11,6 +11,7 @@ const updateUser = async (req, res) => {
     if (!req?.body?.id) {
         return res.status(400).json({ 'message': 'User ID required' })
     }
+    
     // check if user exists
     const reqUser = await User.findOne({ _id: req.body.id }).exec()
     if(!reqUser){
@@ -21,6 +22,7 @@ const updateUser = async (req, res) => {
     if (req?.body?.bio) reqUser.bio = req?.body?.bio
     if(req?.body?.profilepic) reqUser.profilepic = req?.body?.profilepic
     if (req.body?.mode) reqUser.mode = req?.body?.mode
+    if (req.body?.language) reqUser.language = req?.body?.language
     if (req.body?.badges) reqUser.badges = req?.body?.badges
     if (req.body?.finishedStories) reqUser.finishedStories = req.body?.finishedStories
 

@@ -41,33 +41,6 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
     }
   }
 
-  // upload the profile pic to cloudinary
-  const uploadProfilePic = async () => {
-    if (!changedProfilePic) return
-
-    const publicIdForPic = `${user?._id}profilepic` || null
-
-    const config = {
-      headers: {
-        'authorization': `Bearer ${user.accessToken}`
-      }
-    }
-
-    try {
-      const response = await testingAPI.post('/cloudinary/upload-pic', {
-        data: displayProfilePic,
-        publicID: publicIdForPic,
-      }, config)
-      if (response && response.data) {
-        console.log('Response Data: ', response.data)
-        setProfilePic(response.data)
-      }
-    } catch (err) {
-      console.log(err)
-      alert('Unable to update profile pic. Please check your internet connection.')
-    }
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -106,41 +79,6 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
         language: userLang
       })
     })
-
-    // await uploadProfilePic()
-
-    // console.log('Uploaded Profile Pic: ', profilePic)
-
-    // const editDetails = {
-    //   id: user._id,
-    //   username: username,
-    //   bio: bio,
-    //   profilepic: profilePic,
-    //   language: userLang
-    // }
-
-    // const config = {
-    //   'headers': {
-    //     'authorization': `Bearer ${user?.accessToken}`
-    //   }
-    // }
-
-    // try {
-    //   const response = await testingAPI.put('/users', editDetails, config)
-    //   if (response && response.data) {
-    //     console.log('Edit Profile Response: ', response.data)
-    //     setUser({
-    //       ...user,
-    //       username: username,
-    //       bio: bio,
-    //       profilepic: profilePic,
-    //       language: userLang
-    //     })
-    //   }
-    // } catch (err) {
-    //   console.log(err.message)
-    //   alert(err?.response?.data?.message)
-    // }
 
     setLang(userLang)
     navigate('/profile')

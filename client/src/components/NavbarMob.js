@@ -3,6 +3,13 @@ import "./NavbarMob.css";
 import { Link } from "react-router-dom";
 
 const NavbarMob = ({ mode }) => {
+  const closeMenu = () => {
+    const checkBox = document.getElementById("navi-toggle");
+    if (checkBox) {
+      checkBox.checked = false;
+    }
+  };
+
   return (
     <>
       <div id="mainBar" className="small-screen">
@@ -19,29 +26,84 @@ const NavbarMob = ({ mode }) => {
           <nav className="navigation__nav">
             <ul className="navigation__list">
               <li className="navigation__item">
-                <Link to="/home" className="navigation__link">
+                <Link
+                  to="/home"
+                  className="navigation__link"
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
                   Home
                 </Link>
+                {/* <a href="/home" className="navigation__link">
+                  {" "}
+                  Home
+                </a> */}
               </li>
               <li className="navigation__item">
-                <Link to="/story" className="navigation__link">
+                <Link
+                  to="/story"
+                  className="navigation__link"
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
                   Stories
                 </Link>
+                {/* <a
+                  href="/story"
+                  className="navigation__link"
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
+                  Stories
+                </a> */}
               </li>
               <li className="navigation__item">
-                <Link to="/therapy-chatbot" className="navigation__link">
+                <Link
+                  to="/therapy-chatbot"
+                  className="navigation__link"
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
                   Mia
                 </Link>
+                {/* <a href="/therapy-chatbot" className="navigation__link">
+                  {" "}
+                  Mia
+                </a> */}
               </li>
               <li className="navigation__item">
-                <Link to="/contact-us" className="navigation__link">
+                <Link
+                  to="/contact-us"
+                  className="navigation__link"
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
                   Contact Us
                 </Link>
+                {/* <a href="/contact-us" className="navigation__link">
+                  {" "}
+                  Contact Us
+                </a> */}
               </li>
               <li className="navigation__item">
-                <Link to="/profile" className="navigation__link">
+                <Link
+                  to="/profile"
+                  className="navigation__link"
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
                   Profile
                 </Link>
+                {/* <a href="/profile" className="navigation__link">
+                  {" "}
+                  Profile
+                </a> */}
               </li>
             </ul>
           </nav>

@@ -57,7 +57,7 @@ function Home({ mode, lang }) {
       ></div>
       <div className>
         <h1>
-          <div class={`typing-${mode}`}>{welcome}</div>
+          <div className={`typing-${mode}`}>{welcome}</div>
         </h1>
       </div>
       <div

@@ -11,8 +11,9 @@ import girlTalking from '../../../lotties/girlTalking.json'
 import doctor from '../../../lotties/doctor.json'
 
 import testingAPI from '../../../api/testingAPI'
+import zip from '../../../library/zip'
 
-const StoryMode = ({ mode, user, setUser, story, setStory }) => {
+const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
     const navigate = useNavigate()
     useEffect(() => {
         if(!story) navigate('/story/select')
@@ -26,16 +27,94 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     const [evaluatedOptions, setEvaluatedOptions] = useState([])
     const minimumScore = 0.8*story.totalScore
 
+    // states for translations
+    const [TitleText, setTitleText] = useState(story.title)
+    const [ScoreText, setScoreText] = useState('Your Score')
+    const [MinScoreText, setMinScoreText] = useState('Minimum Successful Score')
+    const [evalConvoText, setEvalConvoText] = useState('Evaluate Response')
+    const [continueConvoText, setContinueConvoText] = useState('Continue Conversation')
+    const [goBackToStoryText, setGoBackToStoryText] = useState('Back to Story ')
+    const [EndStoryText, setEndStoryText] = useState('End Story')
+    const [dialogueSet, setDialogueSet] = useState(story.dialogues[0])
+    const [translatedSankalpExplanation, setTranslatedSankalpExplanation] = useState('')
+    const [selectedOptionText, setSelectedOptionText] = useState('')
+
+    // one-time translation
+    useEffect(() => {
+        const translate = async () => {
+
+            // store the originals to send as the body of the request
+            const translationDetails = {
+                to: lang,
+                TitleText: TitleText,
+                ScoreText: ScoreText,
+                MinScoreText: MinScoreText,
+                evalConvoText: evalConvoText,
+                continueConvoText: continueConvoText,
+                goBackToStoryText: goBackToStoryText,
+                EndStoryText: EndStoryText
+            }
+
+            if (lang !== 'en') {
+                try {
+                    const response = await testingAPI.post('/translate', translationDetails)
+                    if (response && response.data) {
+                        setTitleText(response.data.TitleText)
+                        setScoreText(response.data.ScoreText)
+                        setMinScoreText(response.data.MinScoreText)
+                        setEvalConvoText(response.data.evalConvoText)
+                        setContinueConvoText(response.data.continueConvoText)
+                        setGoBackToStoryText(response.data.goBackToStoryText)
+                        setEndStoryText(response.data.EndStoryText)
+                    }
+
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+        }
+
+        translate()
+    }, [])
+
+    // translation for each dialogue set to prevent Error 429 (too many requests)
+    useEffect(() => {
+        const translateDialogueSet = async() => {
+            const translationDetails = {
+                to: lang,
+                dialogueSet: dialogueSet
+            }
+
+            if (lang !== 'en') {
+                try {
+                    const response = await testingAPI.post('/translate/dialogues', translationDetails)
+                    if (response && response.data) {
+                        console.log(response.data)
+                        setDialogueSet(response.data)
+                    }
+
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+        }
+        translateDialogueSet()
+    }, [currentDialog])
+
     // select a response option
-    const clickOnOption = (option) => {
+    const clickOnOption = (option, translatedOption) => {
         if (evaluatedOptions.includes(option)) {
 
         }
         else if (option !== selectedOption) {
             setSelectedOption(option)
+            setTranslatedSankalpExplanation(translatedOption.sankalpExplanation)
+            setSelectedOptionText(translatedOption.dialogueOption)
             console.log(selectedOption)
         } else {
             setSelectedOption('')
+            setSelectedOptionText('')
+            setTranslatedSankalpExplanation('')
         }
     }
 
@@ -46,25 +125,28 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
             if(d.score !== 10){
                 const updateEvaluatedOptions = [...evaluatedOptions, d]
                 setEvaluatedOptions(updateEvaluatedOptions)
-                console.log(evaluatedOptions)
             }
             if(evaluatedOptions.length === 0){
                 setScore(score + d.score)
             }
         }
-        console.log(evaluatedOptions.includes(d))
     }
 
     const backToStory = () => {
         setEvaluate(false)
         setSelectedOption(null)
+        setSelectedOptionText('')
+        setTranslatedSankalpExplanation('')
     }
 
     const continueConversing = () => {
         setEvaluatedOptions([])
         setCurrentDialog(currentDialog + 1)
+        setDialogueSet(story.dialogues[currentDialog + 1])
         setEvaluate(false)
         setSelectedOption(null)
+        setSelectedOptionText('')
+        setTranslatedSankalpExplanation('')
     }
 
     const endConversation = async () => {
@@ -140,11 +222,11 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
     return (
         <div className={`story-mode-${mode}`}>
             <div className={`story-title-${mode}`}>
-                <h3>{story.title}</h3>
+                <h3>{TitleText}</h3>
             </div>
             <div className='player-score'>
-                <h4>{`Score: ${score.toString()}/${story.totalScore.toString()}`}</h4>
-                <h4>{`Minimum successful score: ${minimumScore.toString()}`}</h4>
+                <h4>{`${ScoreText}: ${score.toString()}/${story.totalScore.toString()}`}</h4>
+                <h4>{`${MinScoreText}: ${minimumScore.toString()}`}</h4>
             </div>
             {
                 !evaluate &&
@@ -152,7 +234,10 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                     <div className='conversation'>
                         <div className='player-character'>
                             <div className='player-character-ui'>
-                                <SpeechBubble text={selectedOption?.dialogueOption} mode={mode} />
+                                <SpeechBubble 
+                                    text={selectedOptionText} 
+                                    mode={mode} 
+                                />
                                 <div className='player-lottie'>
                                     <Lottie
                                         animationData={girlTalking}
@@ -163,21 +248,21 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                                 </div>
                             </div>
                             <div className='player-character-options'>
-                                {story.dialogues[currentDialog].dialogueOptions.map((d) => (
+                                {zip(story.dialogues[currentDialog].dialogueOptions, dialogueSet.dialogueOptions).map((d) => (
                                     <div
-                                        className={evaluatedOptions.includes(d) ? `evaluatedOption-${mode}` : selectedOption === d ?
+                                        className={evaluatedOptions.includes(d.one) ? `evaluatedOption-${mode}` : selectedOption === d.one ?
                                             `selectedOption-${mode}` :
                                             `option-${mode}`}
-                                        onClick={() => clickOnOption(d)}
+                                        onClick={() => clickOnOption(d.one, d.two)}
                                     >
-                                        {d.dialogueOption}
+                                        {d.two.dialogueOption}
                                     </div>
                                 ))}
                             </div>
                         </div>
                         <div className='NPC'>
                             <SpeechBubble 
-                                text={story.dialogues[currentDialog].npcDialogue} 
+                                text={dialogueSet.npcDialogue} 
                                 mode={mode}
                             />
                             <div className='npc-lottie'>
@@ -201,8 +286,8 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                         >
                             {
                             (currentDialog === story.dialogues.length-1) ?
-                                'End Story' : 
-                                'Continue Conversation'
+                                `${EndStoryText}` : 
+                                `${continueConvoText}`
                             }
                         </div>
                     }
@@ -212,7 +297,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                             className={`evaluate-response-${mode}`}
                             onClick={() => evaluateResponse(selectedOption)}
                         >
-                            Evaluate Response
+                            {evalConvoText}
                         </div>
                     }
                 </div>
@@ -221,7 +306,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                 evaluate &&
                 <div className='evaluation-container'>
                     <SpeechBubble
-                        text={selectedOption.sankalpExplanation}
+                        text={translatedSankalpExplanation}
                         mode={mode}
                     />
                     <div className='sankalp-lottie'>
@@ -238,7 +323,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                             className={`back-to-story-${mode}`}
                             onClick={continueConversing}
                         >
-                            Continue Conversing
+                            {continueConvoText}
                         </div>
                     }
                     {
@@ -247,7 +332,7 @@ const StoryMode = ({ mode, user, setUser, story, setStory }) => {
                             className={`back-to-story-${mode}`}
                             onClick={backToStory}
                         >
-                            Back to Story
+                            {goBackToStoryText}
                         </div>
                     }
                 </div>

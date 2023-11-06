@@ -7,7 +7,7 @@ import "./login.css";
 // axios call
 import testingAPI from "../../api/testingAPI";
 
-function Login({ setUser }) {
+function Login({ setUser, setLang }) {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState('')
@@ -26,8 +26,9 @@ function Login({ setUser }) {
     try {
       const response = await testingAPI.post('/auth', userDetails)
       if (response && response.data) {
-        setUser(response.data.foundUser)
-        navigate('/home')
+        setUser(response.data.foundUser);
+        setLang(response.data.foundUser.language)
+        navigate("/home");
       }
     } catch (err) {
       console.log(err.message)
@@ -39,6 +40,7 @@ function Login({ setUser }) {
       } else {
         alert('Unable to login. Please check your internet connection and try again.')
       }
+      console.log(err)
     }
   }
 

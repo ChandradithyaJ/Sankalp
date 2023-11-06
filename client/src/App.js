@@ -23,7 +23,7 @@ function App() {
   const [listOfStories, setListOfStories] = useState([]);
   const [story, setStory] = useState(null);
   const [mode, setMode] = useState(user?.mode || "dark");
-  const [lang, setLang] = useState(user?.language || 'te')
+  const [lang, setLang] = useState(user?.language || 'en')
 
   return (
     <div className={`App-${mode}`}>
@@ -37,33 +37,36 @@ function App() {
       {/* access app routes only if logged in */}
       {!user && (
         <Routes>
-          <Route
-            exact
-            path="login"
-            element={<Login setUser={setUser} />}
-          />
+          <Route 
+            exact path="login" 
+            element={
+              <Login 
+              setUser={setUser} 
+              setLang={setLang}
+              />}
+            />
           <Route
             exact
             path="signup"
-            element={<Login mode={mode} setUser={setUser} />}
+            element={<Login setUser={setUser}/>}
           />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}
       {user && (
         <Routes>
-          <Route 
-            exact path="home" 
+          <Route
+            exact path="home"
             element={
-                <Home 
-                  mode={mode} 
-                  lang={lang}
-                />}          
+              <Home
+                mode={mode}
+                lang={lang}
+              />}
           />
           <Route exact path="BlogPage" element={<BlogPage />} />
-          <Route 
+          <Route
             exact path="contact-us"
-            element={<ContactForm 
+            element={<ContactForm
               mode={mode}
               lang={lang}
             />}
@@ -102,7 +105,24 @@ function App() {
             exact
             path="story/modules/situation"
             element={
-              <StorySituation mode={mode} story={story} setStory={setStory} />
+              <StorySituation 
+                mode={mode} 
+                lang={lang}
+                story={story} 
+                setStory={setStory}   
+              />
+            }
+          />
+          <Route
+            exact
+            path="story/modules/situation"
+            element={
+              <StorySituation 
+                mode={mode} 
+                lang={lang}
+                story={story} 
+                setStory={setStory}   
+              />
             }
           />
           <Route
@@ -111,6 +131,7 @@ function App() {
             element={
               <StoryMode
                 mode={mode}
+                lang={lang}
                 user={user}
                 setUser={setUser}
                 story={story}

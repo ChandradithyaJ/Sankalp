@@ -10,6 +10,7 @@
   justify-content: center;
   background-color: black;
 }
+
 .chatbotcontainer-light {
   color: black;
   display: block;
@@ -122,6 +123,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 5px;
 }
 
 @media (max-width: 950px) {

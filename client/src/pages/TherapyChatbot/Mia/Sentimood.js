@@ -5,10 +5,10 @@ sentimood v1.0
 a CoffeeScript browser-compatible port of thinkroth's Sentimental
 open-source under the MIT license, (c) Ethan Arterberry 2015
  */
-export var Sentimood;
+export let Sentimood;
 
 Sentimood = (function () {
-  var afinn;
+  let afinn;
 
   function Sentimood() {}
 
@@ -2478,7 +2478,7 @@ Sentimood = (function () {
   };
 
   Sentimood.prototype.negativity = function (phrase) {
-    var addPush, hits, i, item, j, len, noPunctuation, tokens, words;
+    let addPush, hits, i, item, j, len, noPunctuation, tokens, words;
     addPush = function (t, score) {
       hits -= score;
       return words.push(t);
@@ -2503,7 +2503,7 @@ Sentimood = (function () {
   };
 
   Sentimood.prototype.positivity = function (phrase) {
-    var addPush, hits, i, item, j, len, noPunctuation, tokens, words;
+    let addPush, hits, i, item, j, len, noPunctuation, tokens, words;
     addPush = function (t, score) {
       hits += score;
       return words.push(t);
@@ -2528,7 +2528,7 @@ Sentimood = (function () {
   };
 
   Sentimood.prototype.analyze = function (phrase) {
-    var neg, pos;
+    let neg, pos;
     pos = Sentimood.prototype.positivity(phrase);
     neg = Sentimood.prototype.negativity(phrase);
     return {

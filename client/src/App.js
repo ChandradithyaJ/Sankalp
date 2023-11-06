@@ -17,13 +17,14 @@ import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile from "./pages/UserProfile/UpdateProfile";
 import Chatbot from "./pages/TherapyChatbot/Chatbot";
+// import Loading from "./components/Loading/Loading";
 
 function App() {
   const [user, setUser] = useState(null);
   const [listOfStories, setListOfStories] = useState([]);
   const [story, setStory] = useState(null);
   const [mode, setMode] = useState(user?.mode || "dark");
-  const [lang, setLang] = useState(user?.language || 'en')
+  const [lang, setLang] = useState(user?.language || "en");
 
   return (
     <div className={`App-${mode}`}>
@@ -48,21 +49,12 @@ function App() {
       )}
       {user && (
         <Routes>
-          <Route
-            exact path="home"
-            element={
-              <Home
-                mode={mode}
-                lang={lang}
-              />}
-          />
+          <Route exact path="home" element={<Home mode={mode} lang={lang} />} />
           <Route exact path="BlogPage" element={<BlogPage />} />
           <Route
-            exact path="contact-us"
-            element={<ContactForm
-              mode={mode}
-              lang={lang}
-            />}
+            exact
+            path="contact-us"
+            element={<ContactForm mode={mode} lang={lang} />}
           />
           <Route
             exact
@@ -98,11 +90,11 @@ function App() {
             exact
             path="story/modules/situation"
             element={
-              <StorySituation 
-                mode={mode} 
+              <StorySituation
+                mode={mode}
                 lang={lang}
-                story={story} 
-                setStory={setStory}   
+                story={story}
+                setStory={setStory}
               />
             }
           />
@@ -110,11 +102,11 @@ function App() {
             exact
             path="story/modules/situation"
             element={
-              <StorySituation 
-                mode={mode} 
+              <StorySituation
+                mode={mode}
                 lang={lang}
-                story={story} 
-                setStory={setStory}   
+                story={story}
+                setStory={setStory}
               />
             }
           />
@@ -136,6 +128,7 @@ function App() {
             exact
             path="profile"
             element={
+              // <Loading />
               <UserProfile
                 mode={mode}
                 setMode={setMode}

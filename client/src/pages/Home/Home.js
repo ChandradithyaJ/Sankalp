@@ -10,53 +10,54 @@ function Home({ mode, lang }) {
     document.body.className = mode === "dark" ? "dark-mode" : "light-mode";
   }, [mode]);
 
-  const [welcome, setWelcome] = useState("Welcome to Sankalp!")
-  const [entryQuote, setEntryQuote] = useState("Empathy is the greatest virtue. From it, all virtues flow. Without it, all virtues are an act.")
-  const [philosopher, setPhilosopher] = useState("Eric Zorn")
-  const [newsTitle, setNewsTitle] = useState("News")
-  const [exploreTitle, setExploreTitle] = useState("Let's Explore Sankalp")
-  const [isLoading, setIsLoading] = useState(true)
+  const [welcome, setWelcome] = useState("Welcome to Sankalp!");
+  const [entryQuote, setEntryQuote] = useState(
+    "Empathy is the greatest virtue. From it, all virtues flow. Without it, all virtues are an act."
+  );
+  const [philosopher, setPhilosopher] = useState("Eric Zorn");
+  const [newsTitle, setNewsTitle] = useState("News");
+  const [exploreTitle, setExploreTitle] = useState("Let's Explore Sankalp");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const translate = async () => {
-
       // store the originals to send as the body of the request
       const translationDetails = {
         to: lang,
         welcome: welcome,
         entryQuote: entryQuote,
         philosopher: philosopher,
-        newsTitle: newsTitle
-      }
+        newsTitle: newsTitle,
+      };
 
-      if (lang !== 'en') {
+      if (lang !== "en") {
         try {
-          const response = await testingAPI.post('/translate', translationDetails)
+          const response = await testingAPI.post(
+            "/translate",
+            translationDetails
+          );
           if (response && response.data) {
-            setWelcome(response.data.welcome)
-            setEntryQuote(response.data.entryQuote)
-            setPhilosopher(response.data.philosopher)
-            setNewsTitle(response.data.newsTitle)
-            setExploreTitle(response.data.exploreTitle)
+            setWelcome(response.data.welcome);
+            setEntryQuote(response.data.entryQuote);
+            setPhilosopher(response.data.philosopher);
+            setNewsTitle(response.data.newsTitle);
+            setExploreTitle(response.data.exploreTitle);
           }
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       }
 
-      setIsLoading(false)
-    }
+      setIsLoading(false);
+    };
 
-    translate()
-  }, [])
+    translate();
+  }, []);
 
   return (
     <div className={`Home ${mode === "dark" ? "Home--dark" : "Home--light"}`}>
-      {
-        isLoading && <Loading />
-      }
-      {
-        !isLoading &&
+      {isLoading && <Loading />}
+      {!isLoading && (
         <div>
           <div
             style={{
@@ -80,10 +81,8 @@ function Home({ mode, lang }) {
           ></div>
           <div>
             <div className="hero_bottom">
-              <div className="hero-content">
-                <h1>
-                  {entryQuote}
-                </h1>
+              <div className="hero-content page-hero">
+                <h1>{entryQuote}</h1>
                 <h2>{philosopher}</h2>
               </div>
             </div>
@@ -93,12 +92,15 @@ function Home({ mode, lang }) {
             <div className="highlight-text-header">
               <h3>{newsTitle}</h3>
             </div>
-            <div> <Coverflow /> </div>
+            <div>
+              {" "}
+              <Coverflow />{" "}
+            </div>
             <div className="highlight-text-header">{exploreTitle}</div>
             <Events />
           </div>
         </div>
-      }
+      )}
     </div>
   );
 }

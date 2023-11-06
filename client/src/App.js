@@ -16,6 +16,7 @@ import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile from "./pages/UserProfile/UpdateProfile";
 import Chatbot from "./pages/TherapyChatbot/Chatbot";
+import MiaLanding from "./components/MiaLanding/MiaLanding";
 // import Loading from "./components/Loading/Loading";
 
 function App() {
@@ -37,19 +38,12 @@ function App() {
       {/* access app routes only if logged in */}
       {!user && (
         <Routes>
-          <Route 
-            exact path="login" 
-            element={
-              <Login 
-              setUser={setUser} 
-              setLang={setLang}
-              />}
-            />
           <Route
             exact
-            path="signup"
-            element={<Login setUser={setUser}/>}
+            path="login"
+            element={<Login setUser={setUser} setLang={setLang} />}
           />
+          <Route exact path="signup" element={<Login setUser={setUser} />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}
@@ -65,7 +59,14 @@ function App() {
           <Route
             exact
             path="therapy-chatbot"
+            // element={<Chatbot mode={mode} />}
+            element={<MiaLanding />}
+          />
+          <Route
+            exact
+            path="therapy-chatbot-page"
             element={<Chatbot mode={mode} />}
+            // element={<MiaLanding />}
           />
           <Route
             exact

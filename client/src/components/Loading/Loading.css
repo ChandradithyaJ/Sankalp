@@ -108,7 +108,7 @@ body {
 }
 
 * {
-  transform-style: preserve-3d;
+  /* transform-style: preserve-3d; */
   box-sizing: border-box;
 }
 

@@ -14,19 +14,35 @@ const Chatbot = ({ mode }) => {
   const displayRows = 20;
   let userSentiment = 0;
 
-  <img
-    className={`sankalp-logo`}
-    src={"./images/sankalpLogo.png"}
-    alt="Sankalp Logo"
-  />;
-  let imgs = {};
-  imgs[0] = "./MiaImages/default-01.png";
-  imgs[1] = "./MiaImages/happy1-01.png";
-  imgs[2] = "./MiaImages/happy2-01.png";
-  imgs[3] = "./MiaImages/happy3-01.png";
-  imgs[-1] = "./MiaImages/sad1-01.png";
-  imgs[-2] = "./MiaImages/sad2-01.png";
-  imgs[-3] = "./MiaImages/sad3-01.png";
+  const [eDisplay, setEDisplay] = useState('');
+  const [eInput, setEInput] = useState('');
+  const [elizaLines, setElizaLines] = useState([]);
+  let savedMessages ;
+  let savedMessagesArray = [];
+
+  useEffect(() => {
+    savedMessages = localStorage.getItem(savedMessagesArray);
+    console.log("ffff  ",savedMessages);
+    if (savedMessages!=null||savedMessages!=undefined) {
+      setElizaLines(JSON.parse(savedMessages));
+    }
+  }, []);
+
+  useEffect(() => {
+    if(elizaLines.length > 0){
+      savedMessagesArray.concat(JSON.stringify(elizaLines));
+      localStorage.setItem('elizaChatMessages', JSON.stringify(elizaLines));}
+  }, [elizaLines]);
+
+  const imgs = {
+    0: "./MiaImages/default-01.png",
+    1: "./MiaImages/happy1-01.png",
+    2: "./MiaImages/happy2-01.png",
+    3: "./MiaImages/happy3-01.png",
+    "-1": "./MiaImages/sad1-01.png",
+    "-2": "./MiaImages/sad2-01.png",
+    "-3": "./MiaImages/sad3-01.png",
+  };
 
   const updateImage = (val) => {
     // If continuing on the same sentiment
@@ -62,12 +78,14 @@ const Chatbot = ({ mode }) => {
     elizaStep(e); // Pass the event object
   };
 
- const elizaStep = (e) => {
+  const elizaStep = (e) => {
     e.preventDefault();
     let f = document.forms.e_form;
     let userinput = f.e_input.value;
-
-    //console.log(sentiment.analyze(userinput));
+    let usr;
+    let rpl;
+    let updatedElizaLines;
+    setElizaLines(updatedElizaLines);
     updateImage(sentiment.analyze(userinput)["score"]);
 
     if (eliza.quit) {
@@ -75,13 +93,20 @@ const Chatbot = ({ mode }) => {
       if (window.confirm("This session is over.\nStart over?")) elizaReset(e);
       f.e_input.focus();
       return;
-    } else if (userinput !== "") {
-      let usr = "YOU:   " + userinput;
-      let rpl = "ELIZA: " + eliza.transform(userinput);
+    }
+    else if (userinput !== "") {
+      console.log(userinput);
+      usr = "YOU: " + userinput;
+      // console.log(eliza.getFinal("sad"));
+      rpl = "ELIZA: " + eliza.transform(userinput);
+      // console.log (eliza.transform("no"));
+      // eliza.random-choice-disable;
+      var originalEliza = new ElizaBot(true);
+      updatedElizaLines = [...elizaLines, usr, rpl];
+
       elizaLines.push(usr);
       elizaLines.push(rpl);
-      // display nicely
-      // (fit to textarea with last line free - reserved for extra line caused by word wrap)
+      // Display nicely
       let temp = [];
       let l = 0;
       for (let i = updatedElizaLines.length - 1; i >= 0; i--) {
@@ -100,12 +125,51 @@ const Chatbot = ({ mode }) => {
     f.e_input.value = "";
     f.e_input.focus();
   };
-  const [eDisplay, setEDisplay] = useState("");
-  const [eInput, setEInput] = useState("");
+
 
   return (
-    <div className={`chatbotcontainer-${mode}`}>
-      <p>COMING SOON!!</p>
+    <div className={`chatbot-container-${mode}`}>
+
+      <div className={`chatbot-left-${mode}`}>
+
+        <div className="chatbot-header">
+          A better approach is to place a regular submit button outside the input, then style things to make it look like the button is inside. That will also preserve accessibility (e.g. blind users will be able to use your website), and pressing Enter will submit your form automatically across all browsers. See the below code, or check out this jsFiddle for a working proof-of-concept.
+        </div>
+        <div className={`chatbot-image-${mode}`}>
+          <img
+            id="main-image"
+            src={"./MiaImages/default-01.png"}
+            alt="Mia"
+          />
+        </div>
+      </div>
+      <div className={`chatbot-body-${mode}`}>
+        <div className={`chatbot-chat-${mode}`}>
+          <form name="e_form" onSubmit={elizaStep}>
+            <textarea
+
+              name="e_display"
+              id="e_display"
+              value={elizaLines.join("\n")}
+              onChange={(e) => setEDisplay(e.target.value)}
+              readOnly
+            ></textarea>
+            <br />
+            <div className="input-container">
+              <input
+                type="text"
+                name="e_input"
+                id="e_input"
+                value={eInput}
+                placeholder="Enter your message here"
+                onChange={(e) => setEInput(e.target.value)}
+                
+              />
+              <AiOutlineSend type="submit" onClick={elizaStep} style={{ color: 'lightblue', fontSize: '4vh', justifyContent: "normal" }}></AiOutlineSend>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

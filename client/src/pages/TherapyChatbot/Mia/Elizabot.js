@@ -15,16 +15,16 @@
          ElizaBot.prototype.getFinal()
          ElizaBot.prototype.reset()
 
-  usage: let eliza = new ElizaBot();
-         let initial = eliza.getInitial();
-         let reply = eliza.transform(inputstring);
+  usage: var eliza = new ElizaBot();
+         var initial = eliza.getInitial();
+         var reply = eliza.transform(inputstring);
          if (eliza.quit) {
              // last user input was a quit phrase
          }
 
          // method `transform()' returns a final phrase in case of a quit phrase
          // but you can also get a final phrase with:
-         let final = eliza.getFinal();
+         var final = eliza.getFinal();
 
          // other methods: reset memory and internal state
          eliza.reset();
@@ -34,7 +34,7 @@
 
          // to reproduce the example conversation given by J. Weizenbaum
          // initialize with the optional random-choice-disable flag
-         let originalEliza = new ElizaBot(true);
+         var originalEliza = new ElizaBot(true);
 
   `ElizaBot' is also a general chatbot engine that can be supplied with any rule set.
   (for required data structures cf. "elizadata.js" and/or see the documentation.)
@@ -44,8 +44,8 @@
   vers 1.1: lambda functions in RegExps are currently a problem with too many browsers.
             changed code to work around.
 */
-
-//  import { Sentimood } from "./Sentimood";
+// import React from "react";
+// import { Sentimood } from "./Sentimood";
 import {
   elizaInitialsOriginal,
   elizaFinalsOriginal,
@@ -57,15 +57,19 @@ import {
   elizaPostTransformsOriginal,
 } from "./Elizadata.js";
 
-let elizaInitials = elizaInitialsOriginal;
-let elizaFinals = elizaFinalsOriginal;
-let elizaQuits = elizaQuitsOriginal;
-let elizaPres = elizaPresOriginal;
-let elizaPosts = elizaPostsOriginal;
-let elizaSynons = elizaSynonsOriginal;
-let elizaKeywords = elizaKeywordsOriginal;
-let elizaPostTransforms = elizaPostTransformsOriginal;
+var elizaInitials = elizaInitialsOriginal;
+var elizaFinals = elizaFinalsOriginal;
+var elizaQuits = elizaQuitsOriginal;
+var elizaPres = elizaPresOriginal;
+var elizaPosts = elizaPostsOriginal;
+var elizaSynons = elizaSynonsOriginal;
+var elizaKeywords = elizaKeywordsOriginal;
+var elizaPostTransforms = elizaPostTransformsOriginal;
 
+
+// var originalEliza = new ElizaBot(true);
+
+ console.log(elizaKeywords);
 export function ElizaBot(noRandomFlag) {
   this.noRandom = noRandomFlag ? true : false;
   this.capitalizeFirstLetter = true;
@@ -80,47 +84,54 @@ ElizaBot.prototype.reset = function () {
   this.quit = false;
   this.mem = [];
   this.lastchoice = [];
-  for (let k = 0; k < elizaKeywords.length; k++) {
+
+  for (var k = 0; k < elizaKeywords.length; k++) {
     this.lastchoice[k] = [];
-    let rules = elizaKeywords[k][2];
-    for (let i = 0; i < rules.length; i++) this.lastchoice[k][i] = -1;
+    var rules = elizaKeywords[k][2];
+    // console.log(rules);
+    for (var i = 0; i < rules.length; i++) this.lastchoice[k][i] = -1;
   }
 };
 
 ElizaBot.prototype._dataParsed = false;
 
+
 ElizaBot.prototype._init = function () {
   // install ref to global object
-  let global = (ElizaBot.prototype.global = window || this);
+  // var global = (ElizaBot.prototype.global = window || this);
+  var global=ElizaBot.prototype.global= window;
+  // console.log(global);
   // parse data and convert it from canonical form to internal use
   // prodoce synonym list
-  let synPatterns = {};
+  var synPatterns = {};
   if (global.elizaSynons && typeof elizaSynons == "object") {
-    for (let i in elizaSynons)
+    for (var i in elizaSynons)
       synPatterns[i] = "(" + i + "|" + elizaSynons[i].join("|") + ")";
   }
-  // check for keywords or install empty structure to prevent any errors
-  if (!global.elizaKeywords || typeof elizaKeywords.length === "undefined") {
+
+  // check for keywords or install empty structure to prevent any errorsel
+    console.log(global.elizaKeywords);
+  if ( typeof elizaKeywords.length === "undefined") {
     // console.log("its undefined dude");
     elizaKeywords = [["###", 0, [["###", []]]]];
   }
-  // 1st convert rules to regexps
+  // 1st connvert rules to regexps
   // expand synonyms and insert asterisk expressions for backtracking
-  let sre = /@(\S+)/;
-  let are = /(\S)\s*\*\s*(\S)/;
-  let are1 = /^\s*\*\s*(\S)/;
-  let are2 = /(\S)\s*\*\s*$/;
-  let are3 = /^\s*\*\s*$/;
-  let wsre = /\s+/g;
-  for (let k = 0; k < elizaKeywords.length; k++) {
-    let rules = elizaKeywords[k][2];
+  var sre = /@(\S+)/;
+  var are = /(\S)\s*\*\s*(\S)/;
+  var are1 = /^\s*\*\s*(\S)/;
+  var are2 = /(\S)\s*\*\s*$/;
+  var are3 = /^\s*\*\s*$/;
+  var wsre = /\s+/g;
+  for (var k = 0; k < elizaKeywords.length; k++) {
+    var rules = elizaKeywords[k][2];
     elizaKeywords[k][3] = k; // save original index for sorting
     // console.log("setter issues can be here, line 109");
-    for (let i = 0; i < rules.length; i++) {
-      let r = rules[i];
+    for (var i = 0; i < rules.length; i++) {
+      var r = rules[i];
       // check mem flag and store it as decomp's element 2
       if (r[0].charAt(0) === "$") {
-        let ofs = 1;
+        var ofs = 1;
         while (r[0].charAt[ofs] === " ") ofs++;
         r[0] = r[0].substring(ofs);
         r[2] = true;
@@ -128,9 +139,9 @@ ElizaBot.prototype._init = function () {
         r[2] = false;
       }
       // expand synonyms (v.1.1: work around lambda function)
-      let m = sre.exec(r[0]);
+      var m = sre.exec(r[0]);
       while (m) {
-        let sp = synPatterns[m[1]] ? synPatterns[m[1]] : m[1];
+        var sp = synPatterns[m[1]] ? synPatterns[m[1]] : m[1];
         r[0] =
           r[0].substring(0, m.index) +
           sp +
@@ -143,8 +154,8 @@ ElizaBot.prototype._init = function () {
       } else {
         m = are.exec(r[0]);
         if (m) {
-          let lp = "";
-          let rp = r[0];
+          var lp = "";
+          var rp = r[0];
           while (m) {
             lp += rp.substring(0, m.index + 1);
             if (m[1] !== ")") lp += "\\b";
@@ -158,13 +169,13 @@ ElizaBot.prototype._init = function () {
         }
         m = are1.exec(r[0]);
         if (m) {
-          let lp = "\\s*(.*)\\s*";
+          var lp = "\\s*(.*)\\s*";
           if (m[1] !== ")" && m[1] !== "\\") lp += "\\b";
           r[0] = lp + r[0].substring(m.index - 1 + m[0].length);
         }
         m = are2.exec(r[0]);
         if (m) {
-          let lp = r[0].substring(0, m.index + 1);
+          var lp = r[0].substring(0, m.index + 1);
           if (m[1] !== "(") lp += "\\b";
           r[0] = lp + "\\s*(.*)\\s*";
         }
@@ -180,8 +191,8 @@ ElizaBot.prototype._init = function () {
   ElizaBot.prototype.pres = {};
   ElizaBot.prototype.posts = {};
   if (global.elizaPres && elizaPres.length) {
-    let a = [];
-    for (let i = 0; i < elizaPres.length; i += 2) {
+    var a = [];
+    for (var i = 0; i < elizaPres.length; i += 2) {
       a.push(elizaPres[i]);
       ElizaBot.prototype.pres[elizaPres[i]] = elizaPres[i + 1];
     }
@@ -192,8 +203,8 @@ ElizaBot.prototype._init = function () {
     ElizaBot.prototype.pres["####"] = "####";
   }
   if (global.elizaPosts && elizaPosts.length) {
-    let a = [];
-    for (let i = 0; i < elizaPosts.length; i += 2) {
+    var a = [];
+    for (var i = 0; i < elizaPosts.length; i += 2) {
       a.push(elizaPosts[i]);
       ElizaBot.prototype.posts[elizaPosts[i]] = elizaPosts[i + 1];
     }
@@ -221,9 +232,10 @@ ElizaBot.prototype._sortKeywords = function (a, b) {
   else return 0;
 };
 
-ElizaBot.prototype.transform = function (text) {
-  let rpl = "";
+ElizaBot.prototype.transform = function(text) {
+  var rpl = "";
   this.quit = false;
+  // console.log("hey");
   // unify text string
   text = text.toLowerCase();
   text = text.replace(/@#\$%\^&\*\(\)_\+=~`\{\[\}\]\|:;<>\/\\\t/g, " ");
@@ -231,23 +243,25 @@ ElizaBot.prototype.transform = function (text) {
   text = text.replace(/\s*[,\.\?!;]+\s*/g, ".");
   text = text.replace(/\s*\bbut\b\s*/g, ".");
   text = text.replace(/\s{2,}/g, " ");
+
+   console.log(text);
   // split text in part sentences and loop through them
-  let parts = text.split(".");
-  for (let i = 0; i < parts.length; i++) {
-    let part = parts[i];
+  var parts = text.split(".");
+  for (var i = 0; i < parts.length; i++) {
+    var part = parts[i];
     if (part !== "") {
       // check for quit expression
-      for (let q = 0; q < elizaQuits.length; q++) {
+      for (var q = 0; q < elizaQuits.length; q++) {
         if (elizaQuits[q] === part) {
           this.quit = true;
           return this.getFinal();
         }
       }
       // preprocess (v.1.1: work around lambda function)
-      let m = this.preExp.exec(part);
+      var m = this.preExp.exec(part);
       if (m) {
-        let lp = "";
-        let rp = part;
+        var lp = "";
+        var rp = part;
         while (m) {
           lp += rp.substring(0, m.index) + this.pres[m[1]];
           rp = rp.substring(m.index + m[0].length);
@@ -256,8 +270,14 @@ ElizaBot.prototype.transform = function (text) {
         part = lp + rp;
       }
       this.sentence = part;
+      
+      console.log (part);
+      
       // loop trough keywords
-      for (let k = 0; k < elizaKeywords.length; k++) {
+      // console.log(elizaKeywords.length);
+      console.log(elizaKeywords[0]);
+
+      for (var k = 0; k < elizaKeywords.length; k++) {
         if (
           part.search(new RegExp("\\b" + elizaKeywords[k][0] + "\\b", "i")) >= 0
         ) {
@@ -266,13 +286,15 @@ ElizaBot.prototype.transform = function (text) {
         if (rpl !== "") return rpl;
       }
     }
+    // console.log("Function ended");
+    // console.log(rpl);
   }
   // nothing matched try mem
   rpl = this._memGet();
   // if nothing in mem, so try xnone
   if (rpl === "") {
     this.sentence = " ";
-    let k = this._getRuleIndexByKey("xnone");
+    var k = this._getRuleIndexByKey("xnone");
     if (k >= 0) rpl = this._execRule(k);
   }
   // return reply or default string
@@ -280,15 +302,15 @@ ElizaBot.prototype.transform = function (text) {
 };
 
 ElizaBot.prototype._execRule = function (k) {
-  let rule = elizaKeywords[k];
-  let decomps = rule[2];
-  let paramre = /\(([0-9]+)\)/;
-  for (let i = 0; i < decomps.length; i++) {
-    let m = this.sentence.match(decomps[i][0]);
+  var rule = elizaKeywords[k];
+  var decomps = rule[2];
+  var paramre = /\(([0-9]+)\)/;
+  for (var i = 0; i < decomps.length; i++) {
+    var m = this.sentence.match(decomps[i][0]);
     if (m !== null) {
-      let reasmbs = decomps[i][1];
-      let memflag = decomps[i][2];
-      let ri = this.noRandom ? 0 : Math.floor(Math.random() * reasmbs.length);
+      var reasmbs = decomps[i][1];
+      var memflag = decomps[i][2];
+      var ri = this.noRandom ? 0 : Math.floor(Math.random() * reasmbs.length);
       if (
         (this.noRandom && this.lastchoice[k][i] > ri) ||
         this.lastchoice[k][i] === ri
@@ -301,7 +323,7 @@ ElizaBot.prototype._execRule = function (k) {
       } else {
         this.lastchoice[k][i] = ri;
       }
-      let rpl = reasmbs[ri];
+      var rpl = reasmbs[ri];
       if (this.debug)
         alert(
           "match:\nkey: " +
@@ -316,21 +338,21 @@ ElizaBot.prototype._execRule = function (k) {
             memflag
         );
       if (rpl.search("^goto ", "i") === 0) {
-        let ki = this._getRuleIndexByKey(rpl.substring(5));
+        var ki = this._getRuleIndexByKey(rpl.substring(5));
         if (ki >= 0) return this._execRule(ki);
       }
       // substitute positional params (v.1.1: work around lambda function)
-      let m1 = paramre.exec(rpl);
+      var m1 = paramre.exec(rpl);
       if (m1) {
-        let lp = "";
-        let rp = rpl;
+        var lp = "";
+        var rp = rpl;
         while (m1) {
-          let param = m[parseInt(m1[1])];
+          var param = m[parseInt(m1[1])];
           // postprocess param
-          let m2 = this.postExp.exec(param);
+          var m2 = this.postExp.exec(param);
           if (m2) {
-            let lp2 = "";
-            let rp2 = param;
+            var lp2 = "";
+            var rp2 = param;
             while (m2) {
               lp2 += rp2.substring(0, m2.index) + this.posts[m2[1]];
               rp2 = rp2.substring(m2.index + m2[0].length);
@@ -357,22 +379,22 @@ ElizaBot.prototype._postTransform = function (s) {
   s = s.replace(/\s{2,}/g, " ");
   s = s.replace(/\s+\./g, ".");
   if (this.global.elizaPostTransforms && elizaPostTransforms.length) {
-    for (let i = 0; i < elizaPostTransforms.length; i += 2) {
+    for (var i = 0; i < elizaPostTransforms.length; i += 2) {
       s = s.replace(elizaPostTransforms[i], elizaPostTransforms[i + 1]);
       elizaPostTransforms[i].lastIndex = 0;
     }
   }
   // capitalize first char (v.1.1: work around lambda function)
   if (this.capitalizeFirstLetter) {
-    let re = /^([a-z])/;
-    let m = re.exec(s);
+    var re = /^([a-z])/;
+    var m = re.exec(s);
     if (m) s = m[0].toUpperCase() + s.substring(1);
   }
   return s;
 };
 
 ElizaBot.prototype._getRuleIndexByKey = function (key) {
-  for (let k = 0; k < elizaKeywords.length; k++) {
+  for (var k = 0; k < elizaKeywords.length; k++) {
     if (elizaKeywords[k][0] === key) return k;
   }
   return -1;
@@ -387,9 +409,9 @@ ElizaBot.prototype._memGet = function () {
   if (this.mem.length) {
     if (this.noRandom) return this.mem.shift();
     else {
-      let n = Math.floor(Math.random() * this.mem.length);
-      let rpl = this.mem[n];
-      for (let i = n + 1; i < this.mem.length; i++)
+      var n = Math.floor(Math.random() * this.mem.length);
+      var rpl = this.mem[n];
+      for (var i = n + 1; i < this.mem.length; i++)
         this.mem[i - 1] = this.mem[i];
       this.mem.length--;
       return rpl;
@@ -416,8 +438,8 @@ if (typeof Array.prototype.push == "undefined") {
 if (typeof Array.prototype.shift == "undefined") {
   Array.prototype.shift = function () {
     if (this.length === 0) return null;
-    let e0 = this[0];
-    for (let i = 1; i < this.length; i++) this[i - 1] = this[i];
+    var e0 = this[0];
+    for (var i = 1; i < this.length; i++) this[i - 1] = this[i];
     this.length--;
     return e0;
   };

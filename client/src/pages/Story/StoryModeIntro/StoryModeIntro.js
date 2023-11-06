@@ -2,11 +2,13 @@ import React, {useState, useEffect} from "react"
 import { useNavigate } from 'react-router-dom'
 import './StoryModeIntro.css'
 import testingAPI from "../../../api/testingAPI"
+import Loading from '../../../components/Loading/Loading'
 
 const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
+  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
+
   const goToModules = async () => {
-    console.log(user)
     const config = {
       'headers': {
         'authorization': `Bearer ${user.accessToken}`
@@ -20,8 +22,6 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
         navigate('./modules')
       }
     } catch(err) {
-      console.log(err)
-      console.log(err.message)
       alert('Please check your internet connection and try again.')
     }
   }
@@ -53,23 +53,32 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
           console.log(err)
         }
       }
+      setIsLoading(false)
     }
 
     translate()
   }, [])
 
   return (
-    <div className={`storybackground-${mode}`}>
-      <div className={`story-mode-intro-${mode}`}>
-        <div className={`story-mode-content-${mode}`}>
-          <h1 className={`story-mode-heading-${mode}`}>{WelcomeText}!!</h1>
-          <div className={`story-mode-text-${mode}`}>
-            {Description}
+    <>
+      {
+        isLoading && <Loading />
+      }
+      {
+        !isLoading &&
+        <div className={`storybackground-${mode}`}>
+          <div className={`story-mode-intro-${mode}`}>
+            <div className={`story-mode-content-${mode}`}>
+              <h1 className={`story-mode-heading-${mode}`}>{WelcomeText}!!</h1>
+              <div className={`story-mode-text-${mode}`}>
+                {Description}
+              </div>
+              <button className={`get-started-button-${mode}`} onClick={goToModules}>{GetStartedText}</button>
+            </div>
           </div>
-          <button className={`get-started-button-${mode}`} onClick={goToModules}>{GetStartedText}</button>
         </div>
-      </div>
-    </div>
+      }
+    </>
   )
 }
 

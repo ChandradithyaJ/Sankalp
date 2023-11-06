@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { BrowserView, MobileView } from "react-device-detect";
 
-import Navbar from "./components/Navbar";
-import NavbarMob from "./components/NavbarMob";
+import Navbar from "./components/Navbar/Navbar";
+import NavbarMob from "./components/NavbarMob/NavbarMob";
 
 import Login from "./pages/Authentication/login";
-import ResetPassword from "./pages/Authentication/reset-password";
 import StoryMode from "./pages/Story/StoryMode/StoryMode";
 import StoryModeIntro from "./pages/Story/StoryModeIntro/StoryModeIntro";
 import StorySelect from "./pages/Story/StorySelect/StorySelect";

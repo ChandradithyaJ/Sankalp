@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Home_style.css";
 import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
+import Loading from "../../components/Loading/Loading";
 import testingAPI from "../../api/testingAPI";
 
 function Home({ mode, lang }) {
@@ -14,9 +15,10 @@ function Home({ mode, lang }) {
   const [philosopher, setPhilosopher] = useState("Eric Zorn")
   const [newsTitle, setNewsTitle] = useState("News")
   const [exploreTitle, setExploreTitle] = useState("Let's Explore Sankalp")
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const translate = async() => {
+    const translate = async () => {
 
       // store the originals to send as the body of the request
       const translationDetails = {
@@ -27,7 +29,7 @@ function Home({ mode, lang }) {
         newsTitle: newsTitle
       }
 
-      if(lang !== 'en'){
+      if (lang !== 'en') {
         try {
           const response = await testingAPI.post('/translate', translationDetails)
           if (response && response.data) {
@@ -41,6 +43,8 @@ function Home({ mode, lang }) {
           console.log(err)
         }
       }
+
+      setIsLoading(false)
     }
 
     translate()
@@ -48,45 +52,53 @@ function Home({ mode, lang }) {
 
   return (
     <div className={`Home ${mode === "dark" ? "Home--dark" : "Home--light"}`}>
-      <div
-        style={{
-          marginBottom: "50px",
-          marginRight: "20px",
-          marginLeft: "20px",
-        }}
-      ></div>
-      <div className>
-        <h1>
-          <div className={`typing-${mode}`}>Welcome to Sankalp!</div>
-        </h1>
-      </div>
-      <div
-        style={{
-          marginTop: "50px",
-          marginBottom: "50px",
-          marginRight: "20px",
-          marginLeft: "20px",
-        }}
-      ></div>
-      <div>
-        <div className="hero_bottom">
-          <div className="hero-content">
+      {
+        isLoading && <Loading />
+      }
+      {
+        !isLoading &&
+        <div>
+          <div
+            style={{
+              marginBottom: "50px",
+              marginRight: "20px",
+              marginLeft: "20px",
+            }}
+          ></div>
+          <div className>
             <h1>
-              {entryQuote}
+              <div className={`typing-${mode}`}>{welcome}</div>
             </h1>
-            <h2>{philosopher}</h2>
+          </div>
+          <div
+            style={{
+              marginTop: "50px",
+              marginBottom: "50px",
+              marginRight: "20px",
+              marginLeft: "20px",
+            }}
+          ></div>
+          <div>
+            <div className="hero_bottom">
+              <div className="hero-content">
+                <h1>
+                  {entryQuote}
+                </h1>
+                <h2>{philosopher}</h2>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="space"></div>
+            <div className="highlight-text-header">
+              <h3>{newsTitle}</h3>
+            </div>
+            <div> <Coverflow /> </div>
+            <div className="highlight-text-header">{exploreTitle}</div>
+            <Events />
           </div>
         </div>
-      </div>
-      <div>
-        <div className="space"></div>
-        <div className="highlight-text-header">
-          <h3>{newsTitle}</h3>
-        </div>
-        <div> <Coverflow /> </div>
-        <div className="highlight-text-header">{exploreTitle}</div>
-        <Events />
-      </div>
+      }
     </div>
   );
 }

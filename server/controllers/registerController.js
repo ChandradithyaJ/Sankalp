@@ -26,6 +26,7 @@ const handleNewUser = async (req, res) => {
             bio: '',
             profilepic: "",
             mode: 'dark',
+            language: 'en',
             badges: {
                 firstStory: false,
                 firstThree: false

@@ -26,9 +26,9 @@ function Login({ setUser, setLang }) {
     setIsLoading(true)
 
     const userDetails = {
-      email: email,
-      password: password,
-    };
+      'email': email,
+      'password': password
+    }
 
     try {
       const response = await testingAPI.post('/auth', userDetails)
@@ -65,7 +65,7 @@ function Login({ setUser, setLang }) {
       }
       console.log(err)
     }
-  };
+  }
 
   const signUpUser = async (e) => {
     e.preventDefault();
@@ -87,18 +87,18 @@ function Login({ setUser, setLang }) {
     }
 
     const newUser = {
-      username: username,
-      email: email,
-      password: password,
-    };
+      'username': username,
+      'email': email,
+      'password': password,
+    }
 
     // store user in database through API call
     try {
       const response = await testingAPI.post('/register', newUser)
       if (response && response.data) {
-        console.log("User details: ", response.data);
-        setUser(response.data.newUser);
-        navigate("/home");
+        console.log('User details: ', response.data)
+        setUser(response.data.newUser)
+        navigate('/home')
       }
     } catch (err) {
       setIsLoading(false)
@@ -127,7 +127,7 @@ function Login({ setUser, setLang }) {
         });
       }
     }
-  };
+  }
 
   return (
     <>

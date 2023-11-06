@@ -12,65 +12,59 @@ const Chatbot = ({ mode }) => {
 
   const displayCols = 60;
   const displayRows = 20;
-  let userSentiment = 0;
+  const [userSentiment, setUserSentiment] = useState(0);
+
 
   const [eDisplay, setEDisplay] = useState('');
   const [eInput, setEInput] = useState('');
   const [elizaLines, setElizaLines] = useState([]);
-  let savedMessages ;
+  let savedMessages;
   let savedMessagesArray = [];
 
   useEffect(() => {
     savedMessages = localStorage.getItem(savedMessagesArray);
-    console.log("ffff  ",savedMessages);
-    if (savedMessages!=null||savedMessages!=undefined) {
+    console.log("ffff  ", savedMessages);
+    if (savedMessages != null || savedMessages != undefined) {
       setElizaLines(JSON.parse(savedMessages));
     }
   }, []);
 
   useEffect(() => {
-    if(elizaLines.length > 0){
+    if (elizaLines.length > 0) {
       savedMessagesArray.concat(JSON.stringify(elizaLines));
-      localStorage.setItem('elizaChatMessages', JSON.stringify(elizaLines));}
+      localStorage.setItem('elizaChatMessages', JSON.stringify(elizaLines));
+    }
   }, [elizaLines]);
 
   const imgs = {
-    0: "./MiaImages/default-01.png",
-    1: "./MiaImages/happy1-01.png",
-    2: "./MiaImages/happy2-01.png",
-    3: "./MiaImages/happy3-01.png",
-    "-1": "./MiaImages/sad1-01.png",
+     "0" : "./MiaImages/default-01.png",
+     "1": "./MiaImages/happy1-01.png",
+     "2": "./MiaImages/happy2-01.png",
+     "3": "./MiaImages/happy3-01.png",
+    "-1" : "./MiaImages/sad1-01.png",
     "-2": "./MiaImages/sad2-01.png",
     "-3": "./MiaImages/sad3-01.png",
   };
-
   const updateImage = (val) => {
-    // If continuing on the same sentiment
     if (val * userSentiment >= 0) {
-      if (val < 0) {
-        userSentiment -= 1;
-      }
-      if (val > 0) {
-        userSentiment += 1;
-      }
+      setUserSentiment((prevSentiment) => prevSentiment + val);
     } else {
-      // Switch moods
-      userSentiment = val;
+      setUserSentiment(val);
     }
-
-    if (userSentiment < -3) {
-      userSentiment = -3;
-    }
-    if (userSentiment > 3) {
-      userSentiment = 3;
-    }
-
+  
+    // Ensure userSentiment is within the range -3 to 3
+    setUserSentiment((prevSentiment) =>
+      Math.min(3, Math.max(-3, prevSentiment))
+    );
+    
     // Update image
+    // console.log(val);
     document.getElementById("main-image").src = imgs[userSentiment];
+    console.log(userSentiment);
   };
 
   const elizaReset = (e) => {
-    userSentiment = 0;
+    // userSentiment = 0;
     eliza.reset();
     const elizaLinesCopy = [...elizaLines];
     elizaLinesCopy.length = 0;
@@ -86,6 +80,7 @@ const Chatbot = ({ mode }) => {
     let rpl;
     let updatedElizaLines;
     setElizaLines(updatedElizaLines);
+    console.log (sentiment.analyze(userinput)["score"]);
     updateImage(sentiment.analyze(userinput)["score"]);
 
     if (eliza.quit) {
@@ -124,6 +119,7 @@ const Chatbot = ({ mode }) => {
     }
     f.e_input.value = "";
     f.e_input.focus();
+    setEInput("");
   };
 
 
@@ -162,10 +158,13 @@ const Chatbot = ({ mode }) => {
                 id="e_input"
                 value={eInput}
                 placeholder="Enter your message here"
-                onChange={(e) => setEInput(e.target.value)}
-                
+                onChange={(e) => setEInput(e.target.value)
+
+                }
+
+
               />
-              <AiOutlineSend type="submit" onClick={elizaStep} style={{ color: 'lightblue', fontSize: '4vh', justifyContent: "normal" }}></AiOutlineSend>
+              <AiOutlineSend type="submit" onClick={elizaStep} style={{ color: 'lightblue', fontSize: '4vh', justifyContent: "normal", margin: "7px" }}></AiOutlineSend>
             </div>
           </form>
         </div>

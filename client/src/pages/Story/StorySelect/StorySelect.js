@@ -5,6 +5,10 @@ import testingAPI from '../../../api/testingAPI'
 import zip from '../../../library/zip'
 import Loading from '../../../components/Loading/Loading'
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const StorySelect = ({ user, mode, lang, listOfStories, setStory }) => {
     const navigate = useNavigate()
     const [userFinishedStories, setUserFinishedStories] = useState(new Map())
@@ -58,7 +62,17 @@ const StorySelect = ({ user, mode, lang, listOfStories, setStory }) => {
                         setTitlesList(response.data.titlesList)
                     }
                 } catch (err) {
-                    console.log(err)
+                    setIsLoading(false)
+                    toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
                 }
             }
             setIsLoading(false)
@@ -75,6 +89,18 @@ const StorySelect = ({ user, mode, lang, listOfStories, setStory }) => {
             {
                 !isLoading &&
                 <div className={`story-select-${mode}`}>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                    />
                     {
                         listOfStories.length === 0 &&
                         <h2 style={{

@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../../components/Loading/Loading";
 import testingAPI from "../../api/testingAPI";
-import "./ContactFormStyle.css"; 
+import "./ContactFormStyle.css";
+
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function ContactForm({ mode, lang }) {
   const [Contact, setContact] = useState("Contact Us")
   const [Message, setMessage] = useState("Message")
   const [Send, setSend] = useState("Send")
+  const [successText, setSuccessText] = useState("Your message has been sent successfully! Thank you for contacting us! We will get back to you soon!")
+  const [warningText, setWarningText] = useState("Please write a message before clicking on send")
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -17,7 +24,9 @@ function ContactForm({ mode, lang }) {
         to: lang,
         contact: Contact,
         message: Message,
-        send: Send
+        send: Send,
+        successText: successText,
+        warningText: warningText
       }
 
       if (lang !== 'en') {
@@ -27,9 +36,21 @@ function ContactForm({ mode, lang }) {
             setContact(response.data.contact)
             setMessage(response.data.message)
             setSend(response.data.send)
+            setSuccessText(response.data.successText)
+            setWarningText(response.data.warningText)
           }
         } catch (err) {
-          console.log(err)
+          setIsLoading(false)
+          toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       }
       setIsLoading(false)
@@ -52,15 +73,36 @@ function ContactForm({ mode, lang }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic TODO
-    console.log(formData); 
-    // Clear form fields after submission TODO
+
+    if (formData.message == "") {
+      toast.warn(`${warningText} 😊`, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return
+    }
+
+    // clear form fields after submission
     setFormData({
       message: "",
     });
-    alert(
-      "Your message has been sent successfully! We will get back to you soon."
-    );
+
+    toast.success(`${successText} 😊`, {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   return (
@@ -71,6 +113,24 @@ function ContactForm({ mode, lang }) {
       {
         !isLoading &&
         <div className="containerForm">
+          <div
+            style={{
+              marginBottom: "50vh"
+            }}
+          >
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
+          </div>
           <div className={`contact-box-${mode}`}>
             <div className="left"></div>
             <div className="right">

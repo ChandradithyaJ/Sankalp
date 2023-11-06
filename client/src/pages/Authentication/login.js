@@ -5,6 +5,10 @@ import { Icon } from "@iconify/react";
 import "./login.css";
 import Loading from '../../components/Loading/Loading'
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // axios call
 import testingAPI from "../../api/testingAPI";
 
@@ -34,16 +38,30 @@ function Login({ setUser, setLang }) {
         navigate("/home");
       }
     } catch (err) {
-      console.log(err.message);
-      console.log(err.response?.status);
-      console.log(err.response?.data?.message);
+      setIsLoading(false)
 
       if (err.response?.status === 409 || err.response?.status === 401) {
-        alert(err.response.data);
+        toast.error(`${err.response.data}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       } else {
-        alert(
-          "Unable to login. Please check your internet connection and try again."
-        );
+        toast.error(`Unable to login. Please check your internet connection and try again.`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
       console.log(err)
     }
@@ -55,7 +73,16 @@ function Login({ setUser, setLang }) {
 
     // password checking
     if (password !== confirmPassword) {
-      alert("Password and Confirm Password should be the same.");
+      toast.error('Password and Confirm Password should be the same.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       return;
     }
 
@@ -74,16 +101,30 @@ function Login({ setUser, setLang }) {
         navigate("/home");
       }
     } catch (err) {
-      console.log(err);
-      console.log(err?.response?.status);
-      console.log(err?.response?.data?.message);
+      setIsLoading(false)
 
       if (err.response?.status === 409) {
-        alert(err.response?.data?.message);
+        toast.error(`${err.response.data.message}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       } else {
-        alert(
-          "Unable to register. Please check your internet connection and try again."
-        );
+        toast.error(`Unable to register. Please check your internet connection and try again.`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
     }
   };
@@ -96,6 +137,18 @@ function Login({ setUser, setLang }) {
       {
         !isLoading &&
         <div className="bgrnd">
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <div className="section">
             <div className="container">
               <div className="class1">

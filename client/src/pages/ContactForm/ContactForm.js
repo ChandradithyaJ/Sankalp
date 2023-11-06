@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Loading from "../../components/Loading/Loading";
 import testingAPI from "../../api/testingAPI";
 import "./ContactFormStyle.css"; 
 
@@ -6,6 +7,7 @@ function ContactForm({ mode, lang }) {
   const [Contact, setContact] = useState("Contact Us")
   const [Message, setMessage] = useState("Message")
   const [Send, setSend] = useState("Send")
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const translate = async () => {
@@ -30,6 +32,7 @@ function ContactForm({ mode, lang }) {
           console.log(err)
         }
       }
+      setIsLoading(false)
     }
 
     translate()
@@ -61,26 +64,34 @@ function ContactForm({ mode, lang }) {
   };
 
   return (
-    <div className="containerForm">
-      <div className={`contact-box-${mode}`}>
-        <div className="left"></div>
-        <div className="right">
-          <h2 style={{ color: "black" }}>{Contact}</h2>
-          <form onSubmit={handleSubmit}>
-            <textarea
-              placeholder={`${Message}`}
-              className="field"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
-            <button type="submit" className={`btn-${mode}`}>
-              {Send}
-            </button>
-          </form>
+    <>
+      {
+        isLoading && <Loading />
+      }
+      {
+        !isLoading &&
+        <div className="containerForm">
+          <div className={`contact-box-${mode}`}>
+            <div className="left"></div>
+            <div className="right">
+              <h2 style={{ color: "black" }}>{Contact}</h2>
+              <form onSubmit={handleSubmit}>
+                <textarea
+                  placeholder={`${Message}`}
+                  className="field"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                ></textarea>
+                <button type="submit" className={`btn-${mode}`}>
+                  {Send}
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      }
+    </>
   );
 }
 

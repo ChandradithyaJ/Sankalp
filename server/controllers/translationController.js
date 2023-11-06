@@ -61,7 +61,7 @@ const translateStoryDialogues = async(req, res) => {
 
                 if(ele.sankalpExplanation !== ""){
                     await translate(ele.sankalpExplanation, 'en', targetLanguage).then(response => {
-                        translatedDialogueOption.sankalpExplanation = response.translation
+                        translatedDialogueOption.sankalpExplanation = response?.translation
                     }).catch(err => {
                         console.log(err)
                         return res.status(400).json(err.message)

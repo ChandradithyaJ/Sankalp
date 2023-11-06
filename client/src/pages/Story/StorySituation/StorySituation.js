@@ -4,13 +4,16 @@ import './StorySituation.css'
 import React from "react"
 import { useNavigate } from 'react-router-dom'
 import { GoArrowLeft } from "react-icons/go"
+import Loading from '../../../components/Loading/Loading'
 
 import doctor from '../../../lotties/doctor.json'
 import testingAPI from '../../../api/testingAPI'
 
 const StorySituation = ({ mode, lang, story, setStory }) => {
+    const [isLoading, setIsLoading] = useState(true)
     const [lottieDim, setLottieDim] = useState(600)
     const navigate = useNavigate()
+
     useEffect(() => {
         if(!story) navigate('/story/modules')
     }, [])
@@ -50,40 +53,52 @@ const StorySituation = ({ mode, lang, story, setStory }) => {
                     console.log(err)
                 }
             }
+            setIsLoading(false)
         }
 
         translate()
     }, [])
 
     return (
-        <div className={`Situation-${mode}`}>
-            <div className={`returnprev-${mode}`}>
-                <GoArrowLeft className={`returnto-${mode}`} onClick={goBack} style={{ color: '#00df9a', fontSize: '5vh' }} />
-            </div>
-            <div className={`situation-name-${mode}`}>
-                <h1>{TitleText}</h1>
-            </div>
+        <>
+            {
+                isLoading && <Loading />
+            }
+            {
+                !isLoading &&
+                <div className={`Situation-${mode}`}>
+                    <div className={`returnprev-${mode}`}>
+                        <GoArrowLeft className={`returnto-${mode}`} onClick={goBack} style={{ color: '#00df9a', fontSize: '5vh' }} />
+                    </div>
+                    <div className={`situation-name-${mode}`}>
+                        <h1>{TitleText}</h1>
+                    </div>
 
-            <div className='situation_docninfo'>
-                <div className={`aboutsituation-${mode}`}>
-                    {Desc}
-                </div>
+                    <div className='situation_docninfo'>
+                        <div className={`aboutsituation-${mode}`}>
+                            {Desc}
+                        </div>
 
-                <div className='lottieimg'>
-                    <div className='doctor-lottie'>
-                        <Lottie
-                            animationData={doctor}
-                            loop={true}
-                            autoPlay={true}
-                            style={{ height: { lottieDim }, width: { lottieDim } }}
-                        />
-                    </div> 
-                    <button className={`goto-story-${mode}`} onClick={goToStory}>
-                        {StartConvo}
-                    </button> 
+                        <div className='lottieimg'>
+                            <div className='doctor-lottie'>
+                                <Lottie
+                                    animationData={doctor}
+                                    loop={true}
+                                    autoPlay={true}
+                                    style={{ height: { lottieDim }, width: { lottieDim } }}
+                                />
+                            </div>
+                            <button 
+                                className={`goto-story-${mode}`}
+                                onClick={goToStory}
+                            >
+                                    {StartConvo}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            }
+        </>
     )
 }
 

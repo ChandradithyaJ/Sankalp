@@ -3,7 +3,7 @@ import testingAPI from '../../api/testingAPI'
 import { isExpired } from 'react-jwt'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-
+import Loading from '../../components/Loading/Loading'
 import ModeToggle from './ModeToggle'
 import './ModeToggle.css'
 
@@ -14,7 +14,10 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
         user?.profilepic === "" ? `./images/anonymousProfilePic${mode}.jpg` : user?.profilepic
     )
 
+    const [isLoading, setIsLoading] = useState(true)
+
     const navigate = useNavigate()
+
     /* whenever the user makes a JWT-required API call, we will update
     if expired */
     const checkJWTvalidity = async () => {
@@ -111,85 +114,94 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
                     console.log(err)
                 }
             }
+            setIsLoading(false)
         }
 
         translate()
     }, [])
 
     return (
-        <div className={`profile-page-${mode}`}>
-            <div className='user-details'>
-                <div className='user-background-image'></div>
-                <div className='profile-pic-container'>
-                    <img
-                        className={`profile-pic-${mode}`}
-                        src={profilePic}
-                        alt="Profile Pic"
-                    />
-                    <p className='username'>
-                        {user?.username ? user?.username : 'Guest'}
-                    </p>
-                    <div className='bio'>
-                        <p>{user?.bio ? user?.bio : ''}</p>
-                    </div>
-                    <div className='edit-container'>
-                        <div
-                            className={`edit-button-profile-${mode}`}
-                            onClick={editProfile}
-                        >
-                            {editText}
-                        </div>
-                        <ModeToggle
-                            mode={mode}
-                            setMode={setMode}
-                            user={user}
-                            setUser={setUser}
-                        />
-                        <div
-                            className={`logout-button-profile-${mode}`}
-                            onClick={logout}
-                        >
-                            {logoutText}
-                        </div>
-                    </div>
-                </div>
-                <div className='badges-heading'>{`${yourBadgesText}:`}</div>
-                <div className='badges-container'>
-                    {badgeImages.map((badgeImage) => {
-                        if (user.badges[badgeImage.slice(9, badgeImage.length - 4)]) {
-                            return (
-                                <div className='one-badge-container'>
-                                    <img
-                                        className={`badge-image`}
-                                        src={badgeImage}
-                                        alt={badgeImage}
-                                    />
+        <>
+            {
+                isLoading && <Loading />
+            }
+            {
+                !isLoading &&
+                <div className={`profile-page-${mode}`}>
+                    <div className='user-details'>
+                        <div className='user-background-image'></div>
+                        <div className='profile-pic-container'>
+                            <img
+                                className={`profile-pic-${mode}`}
+                                src={profilePic}
+                                alt="Profile Pic"
+                            />
+                            <p className='username'>
+                                {user?.username ? user?.username : 'Guest'}
+                            </p>
+                            <div className='bio'>
+                                <p>{user?.bio ? user?.bio : ''}</p>
+                            </div>
+                            <div className='edit-container'>
+                                <div
+                                    className={`edit-button-profile-${mode}`}
+                                    onClick={editProfile}
+                                >
+                                    {editText}
                                 </div>
-                            )
-                        } else{
-                            return (
-                                <div className='one-badge-container'>
-                                    <img
-                                        className={`badge-image-blur`}
-                                        src={badgeImage}
-                                        alt={badgeImage}
-                                    />
+                                <ModeToggle
+                                    mode={mode}
+                                    setMode={setMode}
+                                    user={user}
+                                    setUser={setUser}
+                                />
+                                <div
+                                    className={`logout-button-profile-${mode}`}
+                                    onClick={logout}
+                                >
+                                    {logoutText}
                                 </div>
-                            )
-                        }
-                    }
-                    )}
-                </div>
-                <div className='delete-button-profile-container'>
-                    <div
-                        className={`delete-button-profile-${mode}`}
-                        onClick={deleteProfile}
-                    >
-                        {deleteText}
+                            </div>
+                        </div>
+                        <div className='badges-heading'>{`${yourBadgesText}:`}</div>
+                        <div className='badges-container'>
+                            {badgeImages.map((badgeImage) => {
+                                if (user.badges[badgeImage.slice(9, badgeImage.length - 4)]) {
+                                    return (
+                                        <div className='one-badge-container'>
+                                            <img
+                                                className={`badge-image`}
+                                                src={badgeImage}
+                                                alt={badgeImage}
+                                            />
+                                        </div>
+                                    )
+                                } else {
+                                    return (
+                                        <div className='one-badge-container'>
+                                            <img
+                                                className={`badge-image-blur`}
+                                                src={badgeImage}
+                                                alt={badgeImage}
+                                            />
+                                        </div>
+                                    )
+                                }
+                            }
+                            )}
+                        </div>
+                        <div className='delete-button-profile-container'>
+                            <div
+                                className={`delete-button-profile-${mode}`}
+                                onClick={deleteProfile}
+                            >
+                                {deleteText}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            }
+        </>
     )
 }
 

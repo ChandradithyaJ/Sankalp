@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import testingAPI from '../../api/testingAPI'
 import "./UpdateProfile.css"
+import Loading from '../../components/Loading/Loading'
 import languages from '../../data/languages.json' 
 
 
@@ -13,15 +14,14 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
   )
   const [userLang, setUserLang] = useState(lang)
   const [langCodes, setLangCodes] = useState(Object.keys(languages))
-  const [imageType, setImageType] = useState('')
   const [bio, setBio] = useState(user?.bio || '')
   const [changedProfilePic, setChangedProfilePic] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0]
     const fileType = file['type'];
-    setImageType(fileType)
     const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
     const reader = new FileReader()
     reader.readAsDataURL(file)
@@ -43,6 +43,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
 
     const publicIdForPic = `${user?._id}profilepic` || null
 
@@ -114,72 +115,81 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
           console.log(err)
         }
       }
+      setIsLoading(false)
     }
 
     translate()
   }, [])
 
   return (
-    <div className={`update-profile-main-${mode}`}>
-      <h1 className={`update-profile-heading-${mode}`}> {UpdateProfileText} </h1>
-      <form onSubmit={(e) => handleSubmit(e)} className="update-profile-form">
-        <div className='update-profile-container'>
-          <div className='image'>
-            <img
-              className={`updatedprofile-pic-${mode}`}
-              src={displayProfilePic}
-              alt='profile'
-            />
-            <br /><br /><br /><br />
-          </div>
-          <div className={`upload-profilepic-${mode}`}>
-            <input type='file' id="uploadbtn" onChange={handleFileUpload} />
-            <label htmlFor='uploadbtn'>{UploadFileText}</label>
-          </div>
-          <br />
-        </div>
-        <label className={`update-profile-label-${mode}`}>
-          <input
-            className="udpate-profile-inputbox"
-            placeholder='Username'
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
+    <>
+      {
+        isLoading && <Loading />
+      }
+      {
+        !isLoading && 
+        <div className={`update-profile-main-${mode}`}>
+          <h1 className={`update-profile-heading-${mode}`}> {UpdateProfileText} </h1>
+          <form onSubmit={(e) => handleSubmit(e)} className="update-profile-form">
+            <div className='update-profile-container'>
+              <div className='image'>
+                <img
+                  className={`updatedprofile-pic-${mode}`}
+                  src={displayProfilePic}
+                  alt='profile'
+                />
+                <br /><br /><br /><br />
+              </div>
+              <div className={`upload-profilepic-${mode}`}>
+                <input type='file' id="uploadbtn" onChange={handleFileUpload} />
+                <label htmlFor='uploadbtn'>{UploadFileText}</label>
+              </div>
+              <br />
+            </div>
+            <label className={`update-profile-label-${mode}`}>
+              <input
+                className="udpate-profile-inputbox"
+                placeholder='Username'
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </label>
 
-        <label className={`update-profile-label-${mode}`}>
-          <input //border radius for text field
-            className="udpate-profile-inputbox"
-            placeholder='Bio'
-            size={40}
-            type="Bio"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-          />
-        </label>
-        <div className='select-lang'>
-          <select 
-            defaultValue={userLang}
-            onChange={(e) => setUserLang(e.target.value)}
-          >
-            {langCodes.map((code) => (
-              <option value={code}>{languages[code]}</option>
-            ))}
-          </select>
+            <label className={`update-profile-label-${mode}`}>
+              <input //border radius for text field
+                className="udpate-profile-inputbox"
+                placeholder='Bio'
+                size={40}
+                type="Bio"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            </label>
+            <div className='select-lang'>
+              <select
+                defaultValue={userLang}
+                onChange={(e) => setUserLang(e.target.value)}
+              >
+                {langCodes.map((code) => (
+                  <option value={code}>{languages[code]}</option>
+                ))}
+              </select>
+            </div>
+            <div className={'update-profile-allbuttons'}>
+              <button type="submit"
+                className={`update-profile-savebutton-${mode}`}
+              >{SaveText}</button>
+              <div className='update-profile-givwidth'></div>
+              <button
+                onClick={() => navigate('/profile')}
+                className={`update-profile-cancelbutton-${mode}`}
+              >{CancelText}</button>
+            </div>
+          </form>
         </div>
-        <div className={'update-profile-allbuttons'}>
-          <button type="submit"
-            className={`update-profile-savebutton-${mode}`}
-          >{SaveText}</button>
-          <div className='update-profile-givwidth'></div>
-          <button
-            onClick={() => navigate('/profile')}
-            className={`update-profile-cancelbutton-${mode}`}
-          >{CancelText}</button>
-        </div>
-      </form>
-    </div>
+      }
+    </>
   )
 }
 

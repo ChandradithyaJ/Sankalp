@@ -39,6 +39,10 @@ const userSchema = new Schema({
         type: String,
         default: 'dark'
     },
+    language: {
+        type: String,
+        default: 'en'
+    },
     finishedStories: [finishedStoriesSchema],
     badges: {
         firstStory: {

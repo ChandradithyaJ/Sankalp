@@ -3,11 +3,14 @@ import './StorySelect.css'
 import { useNavigate } from 'react-router-dom'
 import testingAPI from '../../../api/testingAPI'
 import zip from '../../../library/zip'
+import Loading from '../../../components/Loading/Loading'
 
 const StorySelect = ({ user, mode, lang, listOfStories, setStory }) => {
     const navigate = useNavigate()
     const [userFinishedStories, setUserFinishedStories] = useState(new Map())
     const [reload, setReload] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
+
     const goToModules = (storyModule) => {
         setStory(storyModule)
         navigate('./situation')
@@ -58,50 +61,59 @@ const StorySelect = ({ user, mode, lang, listOfStories, setStory }) => {
                     console.log(err)
                 }
             }
+            setIsLoading(false)
         }
 
         translate()
     }, [])
 
     return (
-        <div className={`story-select-${mode}`}>
-        {
-            listOfStories.length === 0 &&
-            <h2 style={{
-                color:'greenyellow'
-            }}>
-                {ErrorText}
-            </h2>
-        }
-            <h1 className={`story-select-heading-${mode}`}>{SelectText}</h1>
-            <div className='story-select-modules'>
-                {
-                    zip(listOfStories, titlesList).map((ele) => (
-                        <div className='module-item1'>
-                            <img
-                                className={
-                                    !userFinishedStories.has(ele.one._id) ?
-                                        `module-image-${mode}` :
-                                        `module-image-complete-${mode}`
-                                }
-                                onClick={() => goToModules(ele.one)}
-                                src={
-                                    (ele.one.storyPic === "") ?
-                                        '/images/lightmode.jpg' :
-                                        ele.one.storyPic
-                                }
-                                alt={'Story Pic'}
-                            />
-                            {ele.two}
-                            {
-                                userFinishedStories.has(ele.one._id) &&
-                                <p className={`story-select-modulenames-${mode}`}>{userFinishedStories.get(ele.one._id)}{`/${ele.one.totalScore}`}</p>
-                            }
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
+        <>
+            {
+                isLoading && <Loading />
+            }
+            {
+                !isLoading &&
+                <div className={`story-select-${mode}`}>
+                    {
+                        listOfStories.length === 0 &&
+                        <h2 style={{
+                            color: 'greenyellow'
+                        }}>
+                            {ErrorText}
+                        </h2>
+                    }
+                    <h1 className={`story-select-heading-${mode}`}>{SelectText}</h1>
+                    <div className='story-select-modules'>
+                        {
+                            zip(listOfStories, titlesList).map((ele) => (
+                                <div className='module-item1'>
+                                    <img
+                                        className={
+                                            !userFinishedStories.has(ele.one._id) ?
+                                                `module-image-${mode}` :
+                                                `module-image-complete-${mode}`
+                                        }
+                                        onClick={() => goToModules(ele.one)}
+                                        src={
+                                            (ele.one.storyPic === "") ?
+                                                '/images/lightmode.jpg' :
+                                                ele.one.storyPic
+                                        }
+                                        alt={'Story Pic'}
+                                    />
+                                    {ele.two}
+                                    {
+                                        userFinishedStories.has(ele.one._id) &&
+                                        <p className={`story-select-modulenames-${mode}`}>{userFinishedStories.get(ele.one._id)}{`/${ele.one.totalScore}`}</p>
+                                    }
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            }
+        </>
     )
 }
 

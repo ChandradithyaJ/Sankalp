@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './StoryMode.css'
 import SpeechBubble from './SpeechBubble'
+import Loading from '../../../components/Loading/Loading'
 
 // lottie animations
 import girlTalking from '../../../lotties/girlTalking.json'
@@ -19,6 +20,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
         if(!story) navigate('/story/select')
     }, [])
 
+    const [isLoading, setIsLoading] = useState(true)
     const [lottieDim, setLottieDim] = useState(600)
     const [currentDialog, setCurrentDialog] = useState(0)
     const [score, setScore] = useState(0);
@@ -72,6 +74,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
                     console.log(err)
                 }
             }
+            setIsLoading(false)
         }
 
         translate()
@@ -80,6 +83,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
     // translation for each dialogue set to prevent Error 429 (too many requests)
     useEffect(() => {
         const translateDialogueSet = async() => {
+            setIsLoading(true)
             const translationDetails = {
                 to: lang,
                 dialogueSet: dialogueSet
@@ -97,6 +101,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
                     console.log(err)
                 }
             }
+            setIsLoading(false)
         }
         translateDialogueSet()
     }, [currentDialog])
@@ -220,124 +225,132 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
     }
 
     return (
-        <div className={`story-mode-${mode}`}>
-            <div className={`story-title-${mode}`}>
-                <h3>{TitleText}</h3>
-            </div>
-            <div className='player-score'>
-                <h4>{`${ScoreText}: ${score.toString()}/${story.totalScore.toString()}`}</h4>
-                <h4>{`${MinScoreText}: ${minimumScore.toString()}`}</h4>
-            </div>
+        <>
             {
-                !evaluate &&
-                <div className='conversation-container'>
-                    <div className='conversation'>
-                        <div className='player-character'>
-                            <div className='player-character-ui'>
-                                <SpeechBubble 
-                                    text={selectedOptionText} 
-                                    mode={mode} 
-                                />
-                                <div className='player-lottie'>
-                                    <Lottie
-                                        animationData={girlTalking}
-                                        loop={true}
-                                        autoPlay={true}
-                                        style={{ height: { lottieDim }, width: { lottieDim } }}
+                isLoading && <Loading />
+            }
+            {
+                !isLoading &&
+                <div className={`story-mode-${mode}`}>
+                    <div className={`story-title-${mode}`}>
+                        <h3>{TitleText}</h3>
+                    </div>
+                    <div className='player-score'>
+                        <h4>{`${ScoreText}: ${score.toString()}/${story.totalScore.toString()}`}</h4>
+                        <h4>{`${MinScoreText}: ${minimumScore.toString()}`}</h4>
+                    </div>
+                    {
+                        !evaluate &&
+                        <div className='conversation-container'>
+                            <div className='conversation'>
+                                <div className='player-character'>
+                                    <div className='player-character-ui'>
+                                        <SpeechBubble
+                                            text={selectedOptionText}
+                                            mode={mode}
+                                        />
+                                        <div className='player-lottie'>
+                                            <Lottie
+                                                animationData={girlTalking}
+                                                loop={true}
+                                                autoPlay={true}
+                                                style={{ height: { lottieDim }, width: { lottieDim } }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className='player-character-options'>
+                                        {zip(story.dialogues[currentDialog].dialogueOptions, dialogueSet.dialogueOptions).map((d) => (
+                                            <div
+                                                className={evaluatedOptions.includes(d.one) ? `evaluatedOption-${mode}` : selectedOption === d.one ?
+                                                    `selectedOption-${mode}` :
+                                                    `option-${mode}`}
+                                                onClick={() => clickOnOption(d.one, d.two)}
+                                            >
+                                                {d.two.dialogueOption}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className='NPC'>
+                                    <SpeechBubble
+                                        text={dialogueSet.npcDialogue}
+                                        mode={mode}
                                     />
+                                    <div className='npc-lottie'>
+                                        <Lottie
+                                            animationData={girlTalking}
+                                            loop={true}
+                                            autoPlay={true}
+                                            style={{ height: { lottieDim }, width: { lottieDim } }}
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                            <div className='player-character-options'>
-                                {zip(story.dialogues[currentDialog].dialogueOptions, dialogueSet.dialogueOptions).map((d) => (
-                                    <div
-                                        className={evaluatedOptions.includes(d.one) ? `evaluatedOption-${mode}` : selectedOption === d.one ?
-                                            `selectedOption-${mode}` :
-                                            `option-${mode}`}
-                                        onClick={() => clickOnOption(d.one, d.two)}
-                                    >
-                                        {d.two.dialogueOption}
-                                    </div>
-                                ))}
-                            </div>
+                            {
+                                story.dialogues[currentDialog].dialogueOptions.length === 1 &&
+                                <div
+                                    className={`evaluate-response-${mode}`}
+                                    onClick={
+                                        (currentDialog === story.dialogues.length - 1) ?
+                                            endConversation : continueConversing
+                                    }
+                                >
+                                    {
+                                        (currentDialog === story.dialogues.length - 1) ?
+                                            `${EndStoryText}` :
+                                            `${continueConvoText}`
+                                    }
+                                </div>
+                            }
+                            {
+                                story.dialogues[currentDialog].dialogueOptions.length !== 1 &&
+                                <div
+                                    className={`evaluate-response-${mode}`}
+                                    onClick={() => evaluateResponse(selectedOption)}
+                                >
+                                    {evalConvoText}
+                                </div>
+                            }
                         </div>
-                        <div className='NPC'>
-                            <SpeechBubble 
-                                text={dialogueSet.npcDialogue} 
+                    }
+                    {
+                        evaluate &&
+                        <div className='evaluation-container'>
+                            <SpeechBubble
+                                text={translatedSankalpExplanation}
                                 mode={mode}
                             />
-                            <div className='npc-lottie'>
+                            <div className='sankalp-lottie'>
                                 <Lottie
-                                    animationData={girlTalking}
+                                    animationData={doctor}
                                     loop={true}
                                     autoPlay={true}
                                     style={{ height: { lottieDim }, width: { lottieDim } }}
                                 />
                             </div>
-                        </div>
-                    </div>
-                    {
-                        story.dialogues[currentDialog].dialogueOptions.length === 1 &&
-                        <div
-                            className={`evaluate-response-${mode}`}
-                            onClick={
-                                (currentDialog === story.dialogues.length-1) ?
-                                endConversation : continueConversing
-                            }
-                        >
                             {
-                            (currentDialog === story.dialogues.length-1) ?
-                                `${EndStoryText}` : 
-                                `${continueConvoText}`
+                                selectedOption.score === 10 &&
+                                <div
+                                    className={`back-to-story-${mode}`}
+                                    onClick={continueConversing}
+                                >
+                                    {continueConvoText}
+                                </div>
+                            }
+                            {
+                                selectedOption.score !== 10 &&
+                                <div
+                                    className={`back-to-story-${mode}`}
+                                    onClick={backToStory}
+                                >
+                                    {goBackToStoryText}
+                                </div>
                             }
                         </div>
                     }
-                    {
-                        story.dialogues[currentDialog].dialogueOptions.length !== 1 &&
-                        <div
-                            className={`evaluate-response-${mode}`}
-                            onClick={() => evaluateResponse(selectedOption)}
-                        >
-                            {evalConvoText}
-                        </div>
-                    }
                 </div>
             }
-            {
-                evaluate &&
-                <div className='evaluation-container'>
-                    <SpeechBubble
-                        text={translatedSankalpExplanation}
-                        mode={mode}
-                    />
-                    <div className='sankalp-lottie'>
-                        <Lottie
-                            animationData={doctor}
-                            loop={true}
-                            autoPlay={true}
-                            style={{ height: { lottieDim }, width: { lottieDim } }}
-                        />
-                    </div>
-                    {
-                        selectedOption.score === 10 &&
-                        <div
-                            className={`back-to-story-${mode}`}
-                            onClick={continueConversing}
-                        >
-                            {continueConvoText}
-                        </div>
-                    }
-                    {
-                        selectedOption.score !== 10 &&
-                        <div
-                            className={`back-to-story-${mode}`}
-                            onClick={backToStory}
-                        >
-                            {goBackToStoryText}
-                        </div>
-                    }
-                </div>
-            }
-        </div>
+        </>
     )
 }
 

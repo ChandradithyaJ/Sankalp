@@ -18,21 +18,22 @@ const Chatbot = ({ mode }) => {
   const [eDisplay, setEDisplay] = useState('');
   const [eInput, setEInput] = useState('');
   const [elizaLines, setElizaLines] = useState([]);
-  let savedMessages ;
+  let savedMessages;
   let savedMessagesArray = [];
 
   useEffect(() => {
     savedMessages = localStorage.getItem(savedMessagesArray);
-    console.log("ffff  ",savedMessages);
-    if (savedMessages!=null||savedMessages!=undefined) {
+    console.log("ffff  ", savedMessages);
+    if (savedMessages != null || savedMessages != undefined) {
       setElizaLines(JSON.parse(savedMessages));
     }
   }, []);
 
   useEffect(() => {
-    if(elizaLines.length > 0){
+    if (elizaLines.length > 0) {
       savedMessagesArray.concat(JSON.stringify(elizaLines));
-      localStorage.setItem('elizaChatMessages', JSON.stringify(elizaLines));}
+      localStorage.setItem('elizaChatMessages', JSON.stringify(elizaLines));
+    }
   }, [elizaLines]);
 
   const imgs = {
@@ -118,6 +119,7 @@ const Chatbot = ({ mode }) => {
     }
     f.e_input.value = "";
     f.e_input.focus();
+    setEInput("");
   };
 
 
@@ -156,10 +158,13 @@ const Chatbot = ({ mode }) => {
                 id="e_input"
                 value={eInput}
                 placeholder="Enter your message here"
-                onChange={(e) => setEInput(e.target.value)}
-                
+                onChange={(e) => setEInput(e.target.value)
+
+                }
+
+
               />
-              <AiOutlineSend type="submit" onClick={elizaStep} style={{ color: 'lightblue', fontSize: '4vh', justifyContent: "normal" }}></AiOutlineSend>
+              <AiOutlineSend type="submit" onClick={elizaStep} style={{ color: 'lightblue', fontSize: '4vh', justifyContent: "normal", margin: "7px" }}></AiOutlineSend>
             </div>
           </form>
         </div>

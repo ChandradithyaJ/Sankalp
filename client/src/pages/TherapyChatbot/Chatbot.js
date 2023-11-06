@@ -83,6 +83,7 @@ const Chatbot = ({ mode }) => {
     e.preventDefault();
     let f = document.forms.e_form;
     let userinput = f.e_input.value;
+
     let usr;
     let rpl;
     let updatedElizaLines;
@@ -118,7 +119,7 @@ const Chatbot = ({ mode }) => {
 
       setElizaLines(temp.reverse());
       f.e_display.value = temp.join("\n");
-    } else if (elizaLines.length === 0) {
+    } else if (elizaLines.length == 0) {
       let initial = "ELIZA: " + eliza.getInitial();
       setElizaLines([initial]);
       f.e_display.value = initial + "\n";
@@ -131,7 +132,7 @@ const Chatbot = ({ mode }) => {
 
   return (
     <div className={`chatbot-container-${mode}`}>
-
+      {/* <button onClick={elizaReset}>Reset</button> */}
       <div className={`chatbot-left-${mode}`}>
 
         <div className="chatbot-header">
@@ -152,7 +153,8 @@ const Chatbot = ({ mode }) => {
 
               name="e_display"
               id="e_display"
-              value={elizaLines.join("\n")}
+              value={elizaLines?.join("\n")}
+
               onChange={(e) => setEDisplay(e.target.value)}
               readOnly
             ></textarea>
@@ -165,17 +167,17 @@ const Chatbot = ({ mode }) => {
                 value={eInput}
                 placeholder="Enter your message here"
                 onChange={(e) => setEInput(e.target.value)
-
                 }
 
 
               />
               <AiOutlineSend type="submit" onClick={elizaStep} style={{ color: 'lightblue', fontSize: '4vh', justifyContent: "normal", margin: "7px" }}></AiOutlineSend>
+
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 export default Chatbot;

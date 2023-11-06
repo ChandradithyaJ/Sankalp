@@ -50,6 +50,7 @@
 
 
 .story-mode-heading-light {
+    margin-top: 10vh;
     text-align: center;
     font-style: bold;
     font-size: xxx-large;
@@ -58,6 +59,7 @@
 
 .story-mode-heading-dark {
     text-align: center;
+    margin-top: 10vh;
     font-style: bold;
     font-size: xxx-large;
     color: #00df9a;

@@ -11,12 +11,27 @@
   background-color: black;
 }
 
-.chatbotcontainer-light {
-  color: black;
-  display: block;
+.chatbot-container-light {
+  height: 120vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 }
 
 .chatbot-left-dark {
+  display: flex;
+  flex-direction: column;
+  padding-top: 6vh;
+  height: 100vh;
+  width: 40vw;
+  align-items: center;
+  padding-left: 5vw;
+}
+
+.chatbot-left-light {
   display: flex;
   flex-direction: column;
   padding-top: 6vh;
@@ -40,10 +55,25 @@
   width: 50vw;
 }
 
+.chatbot-body-light {
+  display: flex;
+  flex-direction: row;
+  height: 70vh;
+  width: 50vw;
+}
+
 .chatbot-image-dark {
   padding-top: 3vh;
   display: flex;
   height: 70vh;
+  min-width: 600px;
+}
+
+.chatbot-image-light {
+  padding-top: 3vh;
+  display: flex;
+  height: 70vh;
+  min-width: 600px;
 }
 
 .chatbot-image-dark img {
@@ -52,12 +82,22 @@
   object-fit: contain;
 }
 
+.chatbot-image-light img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
 
 .chatbot-chat-dark {
   height: 70vh;
   align-items: center;
   width: 50vw;
+}
 
+.chatbot-chat-light {
+  height: 70vh;
+  align-items: center;
+  width: 50vw;
 }
 
 .chatbot-chat-dark form {
@@ -68,7 +108,16 @@
   flex-direction: column;
   background-color: rgb(81, 79, 79);
   border-radius: 17px;
+}
 
+.chatbot-chat-light form {
+  padding: 2vh;
+  height: 90vh;
+  width: 52vw;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 17px;
 }
 
 .chatbot-chat-dark textarea {
@@ -87,12 +136,37 @@
   /* Change scrollbar color */
 }
 
+.chatbot-chat-light textarea {
+  height: 70vh;
+  width: 50vw;
+  flex: 1;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  resize: none;
+  overflow-y: scroll;
+  background-color: white;
+  color: black;
+  border-radius: 17px;
+  padding-bottom: 20vh;
+  /* Change scrollbar color */
+}
+
 .chatbot-chat-dark textarea::-webkit-scrollbar {
   width: 10px;
   border-radius: 10px;
 }
 
+.chatbot-chat-light textarea::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
 .chatbot-chat-dark textarea::-webkit-scrollbar-track {
+  background-color: rgba(161, 155, 155, 0.899);
+}
+
+.chatbot-chat-light textarea::-webkit-scrollbar-track {
   background-color: rgba(161, 155, 155, 0.899);
 }
 
@@ -103,7 +177,12 @@
   border: 4px solid rgba(194, 183, 183, 0.438);
 }
 
-
+.chatbot-chat-light textarea::-webkit-scrollbar-thumb {
+  background-color: rgb(227, 220, 217);
+  border-radius: 20px;
+  border: 10px solid #dee3de;
+  border: 4px solid rgba(194, 183, 183, 0.438);
+}
 
 .chatbot-chat-dark input[type="text"] {
   padding-left: 2vh;
@@ -118,7 +197,18 @@
   border-radius: 17px;
 }
 
-
+.chatbot-chat-light input[type="text"] {
+  padding-left: 2vh;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  color: black;
+  width: 47vw;
+  border: 4px solid rgba(255, 255, 255, 0.438);
+  border-radius: 17px;
+}
 
 .input-container {
   display: flex;
@@ -127,68 +217,184 @@
   margin: 5px;
 }
 
-
-
 @media (max-width: 950px) {
   .chatbot-image-dark {
+    height: 50vh;
+  }
+  .chatbot-image-light {
     height: 50vh;
   }
 }
 
 @media (max-width: 550px) and (min-width: 430px) {
-
   .chatbot-image-dark {
+    height: 40vh;
+  }
+  .chatbot-image-light {
     height: 40vh;
   }
 }
 
 @media ((max-width: 429px) and (min-width: 360px)) or (max-height: 670px) {
-
   .chatbot-image-dark {
     height: 30vh;
   }
+  .chatbot-image-light {
+    height: 30vh;
+  }
 }
-
-
 
 @media (max-width: 950px) {
   .chatbot-left-dark {
     padding-bottom: 10vh;
   }
+  .chatbot-left-light {
+    padding-bottom: 10vh;
+  }
 }
 
 @media (max-width: 550px) and (min-width: 430px) {
-
   .chatbot-left-dark {
+    padding-bottom: 20vh;
+  }
+  .chatbot-left-light {
     padding-bottom: 20vh;
   }
 }
 
 @media ((max-width: 429px) and (min-width: 360px)) or (max-height: 670px) {
-
   .chatbot-left-dark {
     padding-bottom: 10vh;
   }
+  .chatbot-left-light {
+    padding-bottom: 10vh;
+  }
 }
-
 
 /*input text*/
 @media (max-width: 950px) {
   .chatbot-chat-dark input[type="text"] {
     width: 34vw;
   }
+  .chatbot-chat-light input[type="text"] {
+    width: 34vw;
+  }
 }
 
 @media (max-width: 550px) and (min-width: 430px) {
-
   .chatbot-chat-dark input[type="text"] {
+    width: 29vw;
+  }
+  .chatbot-chat-light input[type="text"] {
     width: 29vw;
   }
 }
 
-@media ((max-width: 429px) and (min-width: 360px)) or (max-height: 670px) {
-
+@media (max-width: 430px) {
+  .chatbot-container-dark {
+    flex-direction: column;
+    height: 110vh;
+    width:100vw;
+  }
+  .chatbot-container-light {
+    flex-direction: column;
+    height: 110vh;
+    width:100vw;
+  }
+  .chatbot-left-dark {
+    height: 60vh;
+    width: 100%;
+    padding-top: 0;
+    padding-left: 0;
+  }
+  .chatbot-left-light {
+    height: 60vh;
+    width: 100%;
+    padding-top: 0;
+    padding-left: 0;
+  }
+  .chatbot-body-dark {
+    height: 40vh;
+    width: 100%;
+  }
+  .chatbot-body-light {
+    height: 40vh;
+    width: 100%;
+  }
+  .chatbot-image-dark {
+    height: 30vh;
+    min-width: 100%;
+  }
+  .chatbot-image-light {
+    height: 30vh;
+    min-width: 100%;
+  }
+  .chatbot-image-dark img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  .chatbot-image-light img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  .chatbot-chat-dark {
+    height: 40vh;
+    width: 100%;
+  }
+  .chatbot-chat-light {
+    height: 40vh;
+    width: 100%;
+  }
+  .chatbot-chat-dark form {
+    width: 100%;
+    padding-left: 3vh;
+  }
+  .chatbot-chat-light form {
+    width: 100%;
+    padding-left: 3vh;
+  }
   .chatbot-chat-dark input[type="text"] {
-    width: 24vw;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-light input[type="text"] {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-dark textarea {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-light textarea {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-dark .input-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-light .input-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-dark .input-container button {
+    width: 20%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-light .input-container button {
+    width: 20%;
+    margin: 0 auto;
+  }
+  .chatbot-chat-dark .input-container button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .chatbot-chat-light .input-container button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }

@@ -5,6 +5,10 @@ import Events from "./Events";
 import Loading from "../../components/Loading/Loading";
 import testingAPI from "../../api/testingAPI";
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Home({ mode, lang }) {
   useEffect(() => {
     document.body.className = mode === "dark" ? "dark-mode" : "light-mode";
@@ -40,7 +44,17 @@ function Home({ mode, lang }) {
             setExploreTitle(response.data.exploreTitle)
           }
         } catch (err) {
-          console.log(err)
+          setIsLoading(false)
+          toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       }
 
@@ -58,6 +72,18 @@ function Home({ mode, lang }) {
       {
         !isLoading &&
         <div>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <div
             style={{
               marginBottom: "50px",

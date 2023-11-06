@@ -7,6 +7,10 @@ import Loading from '../../components/Loading/Loading'
 import ModeToggle from './ModeToggle'
 import './ModeToggle.css'
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
     const badgeImages = ['./images/firstStory.png', './images/firstThree.png']
 
@@ -41,7 +45,16 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
                 }
             } catch (err) {
                 console.log(err.message)
-                alert('Unable to edit user details at the moment. Please try again later.')
+                toast.error(`Unable to edit user details at the moment. Please try again later.`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             }
         }
     }
@@ -78,7 +91,16 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
                 navigate('./login')
             } catch (err) {
                 console.log(err.message)
-                alert('Unable to delete profile at the moment. Please try again later.')
+                toast.error(`Unable to delete profile at the moment. Please try again later.`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             }
         } else {
             // do nothing i.e user decided not to confirm .
@@ -111,7 +133,17 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
                         setYourBadgesText(response.data.yourBadgesText)
                     }
                 } catch (err) {
-                    console.log(err)
+                    setIsLoading(false)
+                    toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
                 }
             }
             setIsLoading(false)
@@ -128,6 +160,18 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
             {
                 !isLoading &&
                 <div className={`profile-page-${mode}`}>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                    />
                     <div className='user-details'>
                         <div className='user-background-image'></div>
                         <div className='profile-pic-container'>

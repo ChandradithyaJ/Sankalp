@@ -9,6 +9,10 @@ import Loading from '../../../components/Loading/Loading'
 import doctor from '../../../lotties/doctor.json'
 import testingAPI from '../../../api/testingAPI'
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const StorySituation = ({ mode, lang, story, setStory }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [lottieDim, setLottieDim] = useState(600)
@@ -50,7 +54,17 @@ const StorySituation = ({ mode, lang, story, setStory }) => {
                         setStartConvo(response.data.StartConvo)
                     }
                 } catch (err) {
-                    console.log(err)
+                    setIsLoading(false)
+                    toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
                 }
             }
             setIsLoading(false)
@@ -67,6 +81,18 @@ const StorySituation = ({ mode, lang, story, setStory }) => {
             {
                 !isLoading &&
                 <div className={`Situation-${mode}`}>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                    />
                     <div className={`returnprev-${mode}`}>
                         <GoArrowLeft className={`returnto-${mode}`} onClick={goBack} style={{ color: '#00df9a', fontSize: '5vh' }} />
                     </div>

@@ -4,6 +4,10 @@ import './StoryModeIntro.css'
 import testingAPI from "../../../api/testingAPI"
 import Loading from '../../../components/Loading/Loading'
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
@@ -22,7 +26,16 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
         navigate('./modules')
       }
     } catch(err) {
-      alert('Please check your internet connection and try again.')
+      toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   }
 
@@ -50,7 +63,17 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
             setGetStartedText(response.data.GetStartedText)
           }
         } catch (err) {
-          console.log(err)
+          setIsLoading(false)
+          toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       }
       setIsLoading(false)
@@ -67,6 +90,18 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
       {
         !isLoading &&
         <div className={`storybackground-${mode}`}>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <div className={`story-mode-intro-${mode}`}>
             <div className={`story-mode-content-${mode}`}>
               <h1 className={`story-mode-heading-${mode}`}>{WelcomeText}!!</h1>

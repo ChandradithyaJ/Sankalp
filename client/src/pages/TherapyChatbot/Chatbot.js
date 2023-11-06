@@ -12,7 +12,8 @@ const Chatbot = ({ mode }) => {
 
   const displayCols = 60;
   const displayRows = 20;
-  let userSentiment = 0;
+  const [userSentiment, setUserSentiment] = useState(0);
+
 
   const [eDisplay, setEDisplay] = useState('');
   const [eInput, setEInput] = useState('');
@@ -36,42 +37,34 @@ const Chatbot = ({ mode }) => {
   }, [elizaLines]);
 
   const imgs = {
-    0: "./MiaImages/default-01.png",
-    1: "./MiaImages/happy1-01.png",
-    2: "./MiaImages/happy2-01.png",
-    3: "./MiaImages/happy3-01.png",
-    "-1": "./MiaImages/sad1-01.png",
+     "0" : "./MiaImages/default-01.png",
+     "1": "./MiaImages/happy1-01.png",
+     "2": "./MiaImages/happy2-01.png",
+     "3": "./MiaImages/happy3-01.png",
+    "-1" : "./MiaImages/sad1-01.png",
     "-2": "./MiaImages/sad2-01.png",
     "-3": "./MiaImages/sad3-01.png",
   };
-
   const updateImage = (val) => {
-    // If continuing on the same sentiment
     if (val * userSentiment >= 0) {
-      if (val < 0) {
-        userSentiment -= 1;
-      }
-      if (val > 0) {
-        userSentiment += 1;
-      }
+      setUserSentiment((prevSentiment) => prevSentiment + val);
     } else {
-      // Switch moods
-      userSentiment = val;
+      setUserSentiment(val);
     }
-
-    if (userSentiment < -3) {
-      userSentiment = -3;
-    }
-    if (userSentiment > 3) {
-      userSentiment = 3;
-    }
-
+  
+    // Ensure userSentiment is within the range -3 to 3
+    setUserSentiment((prevSentiment) =>
+      Math.min(3, Math.max(-3, prevSentiment))
+    );
+    
     // Update image
+    // console.log(val);
     document.getElementById("main-image").src = imgs[userSentiment];
+    console.log(userSentiment);
   };
 
   const elizaReset = (e) => {
-    userSentiment = 0;
+    // userSentiment = 0;
     eliza.reset();
     const elizaLinesCopy = [...elizaLines];
     elizaLinesCopy.length = 0;
@@ -83,10 +76,12 @@ const Chatbot = ({ mode }) => {
     e.preventDefault();
     let f = document.forms.e_form;
     let userinput = f.e_input.value;
+
     let usr;
     let rpl;
     let updatedElizaLines;
     setElizaLines(updatedElizaLines);
+    console.log (sentiment.analyze(userinput)["score"]);
     updateImage(sentiment.analyze(userinput)["score"]);
 
     if (eliza.quit) {
@@ -118,7 +113,7 @@ const Chatbot = ({ mode }) => {
 
       setElizaLines(temp.reverse());
       f.e_display.value = temp.join("\n");
-    } else if (elizaLines.length === 0) {
+    } else if (elizaLines.length == 0) {
       let initial = "ELIZA: " + eliza.getInitial();
       setElizaLines([initial]);
       f.e_display.value = initial + "\n";
@@ -131,7 +126,7 @@ const Chatbot = ({ mode }) => {
 
   return (
     <div className={`chatbot-container-${mode}`}>
-
+      {/* <button onClick={elizaReset}>Reset</button> */}
       <div className={`chatbot-left-${mode}`}>
 
         <div className="chatbot-header">
@@ -152,7 +147,8 @@ const Chatbot = ({ mode }) => {
 
               name="e_display"
               id="e_display"
-              value={elizaLines.join("\n")}
+              value={elizaLines?.join("\n")}
+
               onChange={(e) => setEDisplay(e.target.value)}
               readOnly
             ></textarea>
@@ -165,17 +161,17 @@ const Chatbot = ({ mode }) => {
                 value={eInput}
                 placeholder="Enter your message here"
                 onChange={(e) => setEInput(e.target.value)
-
                 }
 
 
               />
               <AiOutlineSend type="submit" onClick={elizaStep} style={{ color: 'lightblue', fontSize: '4vh', justifyContent: "normal", margin: "7px" }}></AiOutlineSend>
+
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 export default Chatbot;

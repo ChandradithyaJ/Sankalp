@@ -14,6 +14,10 @@ import doctor from '../../../lotties/doctor.json'
 import testingAPI from '../../../api/testingAPI'
 import zip from '../../../library/zip'
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
     const navigate = useNavigate()
     useEffect(() => {
@@ -98,7 +102,17 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
                     }
 
                 } catch (err) {
-                    console.log(err)
+                    setIsLoading(false)
+                    toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
                 }
             }
             setIsLoading(false)
@@ -213,7 +227,16 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
                 }
             } catch (err) {
                 console.log(err)
-                alert('Unable to finish the story. Please check your internet connection')
+                toast.error(`Unable to finish the story. Please check your internet connection.`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             }
         }
 
@@ -232,6 +255,18 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
             {
                 !isLoading &&
                 <div className={`story-mode-${mode}`}>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                    />
                     <div className={`story-title-${mode}`}>
                         <h3>{TitleText}</h3>
                     </div>

@@ -5,6 +5,9 @@ import "./UpdateProfile.css"
 import Loading from '../../components/Loading/Loading'
 import languages from '../../data/languages.json' 
 
+// Toast Notifications
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
   const [username, setUsername] = useState(user?.username || 'Guest')
@@ -27,11 +30,29 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
     reader.readAsDataURL(file)
     reader.onload = () => {
       if (reader.result.byteLength > 10485760) {
-        alert('Please upload a pic smaller than 10 MB.')
+        toast.error(`Please upload a pic smaller than 10 MB.`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         return
       }
       if (!validImageTypes.includes(fileType)) {
-        alert('Please upload a valid image file.')
+        toast.error(`Please upload a valid image file.`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         return
       }
     }
@@ -112,7 +133,17 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
             setCancelText(response.data.CancelText)
           }
         } catch (err) {
-          console.log(err)
+          setIsLoading(false)
+          toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       }
       setIsLoading(false)
@@ -129,6 +160,18 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
       {
         !isLoading && 
         <div className={`update-profile-main-${mode}`}>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <h1 className={`update-profile-heading-${mode}`}> {UpdateProfileText} </h1>
           <form onSubmit={(e) => handleSubmit(e)} className="update-profile-form">
             <div className='update-profile-container'>

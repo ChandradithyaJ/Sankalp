@@ -102,7 +102,7 @@ import {
   ElizaBot.prototype._init = function () {
   // install ref to global object
   // var global = (ElizaBot.prototype.global = window || this);
-  var global=ElizaBot.prototype.global= window;
+    var global=ElizaBot.prototype.global= window;
   // console.log(global);
   // parse data and convert it from canonical form to internal use
   // prodoce synonym list

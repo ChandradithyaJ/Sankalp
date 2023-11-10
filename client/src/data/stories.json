@@ -1,0 +1,954 @@
+[
+    {
+        "_id": {
+            "$oid": "65200599d3c6fef1a59e2599"
+        },
+        "title": "Friend in Depression",
+        "situation": "You and your friend are hanging out. They don't seem their usual self, and haven't been showing much enthusiasm towards anything. You gently try to broach the subject, and they tell you that they've been feeling down lately.",
+        "dialogues": [
+            {
+                "npcDialogue": "...",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Hey, I noticed you’ve been feeling down lately. Is everything okay?",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "No, not really. I don’t feel like doing anything anymore. I just want to sleep all day.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "That sounds tough. I’m here for you if you want to talk about it.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This dialog acknowledges your friend's pain and lets them know that you are there for them, without offering any unsolicited advice or solutions. It also gives your friend the space to choose whether or not they want to talk about their depression in more detail. It shows empathy and support, without minimizing or judging your friend’s feelings"
+                    },
+                    {
+                        "dialogueOption": "Come on, cheer up. It’s not that bad. You have so much to be grateful for.",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - This dialog is dismissive and invalidating. It might make them feel weak or alienate them."
+                    },
+                    {
+                        "dialogueOption": "Why are you so depressed? You need to snap out of it and get your life together. ",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - This dialog is blaming and harsh."
+                    },
+                    {
+                        "dialogueOption": "I know how you feel. I’ve been depressed before too.",
+                        "score": {
+                            "$numberInt": "4"
+                        },
+                        "sankalpExplanation": "4/10 - This dialog is self-centered and unhelpful. It may seem that you’re empathizing, but to your friend it may seem like you are minimizing what they are going through."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thanks, but I don’t think talking will help. Nothing will help.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Don’t say that. There is always hope. You just need to be more positive.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is unrealistic and patronizing"
+                    },
+                    {
+                        "dialogueOption": "I understand. Sometimes it feels like there is no way out. But you are not alone in this.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This acknowledges your friend’s pain and offers reassurance and comfort, without pushing them to do something they are not ready for."
+                    },
+                    {
+                        "dialogueOption": "Maybe you should see a therapist. They can help you with your depression.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - This is presumptuous and intrusive"
+                    },
+                    {
+                        "dialogueOption": "Well, maybe you should try some hobbies or activities. They can distract you from your sadness.",
+                        "score": {
+                            "$numberInt": "5"
+                        },
+                        "sankalpExplanation": "5/10 - This is superficial and avoidant. While it may momentarily distract your friend, it isn't viable long term."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Really? Do you know what it’s like to feel hopeless and worthless every day?",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Yes, I do. I’ve been through some hard times too. But I learned to cope and overcome them.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - This is vague and unsympathetic. Instead of competing, try to make your friend the focus of your dialog choice."
+                    },
+                    {
+                        "dialogueOption": "No, I don’t. But I don’t have to experience exactly what you are going through to care about you and support you.",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - This is honest but defensive."
+                    },
+                    {
+                        "dialogueOption": "Maybe not. But I know that you are a strong and amazing person who deserves happiness and love.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This expresses admiration and affirmation, without comparing or competing with your friend’s experience."
+                    },
+                    {
+                        "dialogueOption": "Of course I do. Everyone has their own struggles and challenges. You are not special or different.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is rude and insulting."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "That’s nice of you to say, but I don’t believe it. I feel like a failure and a burden to everyone.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "You are not a failure or a burden. You are a valuable and worthy human being who has a lot to offer to the world.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This option conveys respect and appreciation, without putting pressure or expectations on your friend. "
+                    },
+                    {
+                        "dialogueOption": "Well, maybe you should work harder and achieve more. Then you wouldn’t feel like a failure or a burden.",
+                        "score": {
+                            "$numberInt": "2"
+                        },
+                        "sankalpExplanation": "2/10 - This is demanding and insensitive"
+                    },
+                    {
+                        "dialogueOption": "That’s not true. You have me as your friend, and I care about you a lot. You are not alone in this.",
+                        "score": {
+                            "$numberInt": "7"
+                        },
+                        "sankalpExplanation": "7/10 - This is supportive but incomplete."
+                    },
+                    {
+                        "dialogueOption": "How can you say that? You have so many things going for you. You should be happy and grateful.",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - This is ignorant and insensitive."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Really? Like what? I don’t have any skills or talents. I don’t have any goals or dreams. I don’t have any purpose or meaning in life.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "That’s not true. You have many skills and talents that you may not recognize or appreciate. You have goals and dreams that you may have forgotten or given up on. You have purpose and meaning in life that you may not see or feel right now.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This challenges your friend’s negative self-perception, without being judgmental or dismissive. "
+                    },
+                    {
+                        "dialogueOption": "Well, maybe you should find some skills or talents that interest you. Maybe you should set some goals or dreams that motivate you. Maybe you should discover some purpose or meaning in life that inspires you.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - This is unrealistic and overwhelming"
+                    },
+                    {
+                        "dialogueOption": "I don’t know. Maybe you don’t have any skills or talents. Maybe you don’t have any goals or dreams. Maybe you don’t have any purpose or meaning in life.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is pessimistic and hopeless"
+                    },
+                    {
+                        "dialogueOption": "How can you say that? You have so many skills and talents that I admire. You have goals and dreams that I support. You have purpose and meaning in life that I share.",
+                        "score": {
+                            "$numberInt": "7"
+                        },
+                        "sankalpExplanation": "7/10 - This is great but a bit personal and not broad."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "How do you know?",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "You are not worthless. You have skill and talent in many areas. For example, you are very good at playing guitar. You always impress me with your musical ability and creativity.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This option shows empathy and support, without exaggerating or lying. It also provides a specific and realistic example of your friend’s skill and talent, which can help boost their self-esteem and confidence."
+                    },
+                    {
+                        "dialogueOption": "How can you say that? You have skill and talent in everything you do. You are the best at everything. You are perfect and flawless and amazing.",
+                        "score": {
+                            "$numberInt": "2"
+                        },
+                        "sankalpExplanation": "2/10 - This option is unrealistic and dishonest, and it can make your friend feel worse. It can also backfire if your friend knows that you are not telling the truth, or if they encounter evidence that contradicts your statement. It can also put too much pressure and expectation on your friend, which can increase their anxiety and guilt."
+                    },
+                    {
+                        "dialogueOption": "I don’t know if you have skill and talent or not. But I don’t care about that. I care about you as a person, not as a performer. You are more than your achievements or failures.",
+                        "score": {
+                            "$numberInt": "8"
+                        },
+                        "sankalpExplanation": "8/10 - This option is honest and caring, but it can also be seen as dismissive or indifferent. It can make your friend feel like you are avoiding the issue, or that you don’t appreciate their efforts or aspirations."
+                    },
+                    {
+                        "dialogueOption": "Maybe you don’t have skill and talent right now. But you can develop them if you work hard and practice. You just need to be more motivated and disciplined.",
+                        "score": {
+                            "$numberInt": "8"
+                        },
+                        "sankalpExplanation": "8/10 - This option is optimistic and encouraging, but it can also be seen as demanding or blaming. It can make your friend feel like you are criticizing their current state, or that you are imposing your standards or goals on them."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thanks, but I don’t think that’s true. I’m not good at playing guitar. I just play the same songs over and over again. I don’t have any originality or style.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "That’s not true. You have a lot of originality and style. You always add your own twist and flair to the songs you play. You have a unique and expressive voice that makes your music stand out.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This option shows appreciation and admiration, without being unrealistic or dishonest. It also provides specific and positive feedback, which can help boost your friend’s self-esteem and confidence."
+                    },
+                    {
+                        "dialogueOption": "Well, maybe you should try some new songs or genres. Maybe you should experiment with different techniques or effects. Maybe you should join a band or perform in public. Maybe you should challenge yourself and grow as a musician.",
+                        "score": {
+                            "$numberInt": "7"
+                        },
+                        "sankalpExplanation": "7/10 - This option is optimistic and encouraging, but it can also be seen as overwhelming or imposing. It can make your friend feel like you are not satisfied with their current level, or that you are pushing them to do something they are not ready for."
+                    },
+                    {
+                        "dialogueOption": "I don’t know if that’s true or not. But I don’t care about that. I care about you as a friend, not as a musician. You are more than your music or your guitar.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This option is honest and caring, but it can also be seen as dismissive or indifferent. It can make your friend feel like you are avoiding the issue, or that you don’t appreciate their efforts or aspirations."
+                    },
+                    {
+                        "dialogueOption": "Maybe that’s true. Maybe you are not good at playing guitar. Maybe you should quit playing guitar and find something else that you are good at.",
+                        "score": {
+                            "$numberInt": "4"
+                        },
+                        "sankalpExplanation": "4/10 - This option is agreeable and discouraging, and it can make your friend feel worse. It can also backfire if your friend loves playing guitar, or if they don’t have any other interests or passions."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Really? Do you really think so? Or are you just saying that to make me feel better?",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "I really think so. I’m not just saying that to make you feel better. I’m saying that because I believe it and I mean it.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This option shows sincerity and honesty, without being defensive or offended. It also reaffirms your compliment and your conviction, which can help reassure your friend and strengthen your relationship."
+                    },
+                    {
+                        "dialogueOption": "Of course I’m just saying that to make you feel better. What else am I supposed to say? You know I’m not good at lying or sugar coating things.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This option is sarcastic and rude, and it can make your friend feel worse. It can also damage your credibility and your friendship."
+                    },
+                    {
+                        "dialogueOption": "It doesn’t matter what I think or say. What matters is what you think or say about yourself. You need to learn to love yourself and your music, regardless of what others think or say.",
+                        "score": {
+                            "$numberInt": "9"
+                        },
+                        "sankalpExplanation": "9/10 - This option is wise and empowering, but it can also be seen as evasive or irrelevant. It can make your friend feel like you are not answering their question, or that you are not supporting them or their music."
+                    },
+                    {
+                        "dialogueOption": "Why do you doubt me? Don’t you trust me? Don’t you value my opinion? Don’t you know how much I care about you?",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This option is emotional and accusatory, and it can make your friend feel guilty or defensive. It can also shift the focus from your friend’s feelings to your feelings, which can be selfish and unhelpful."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thank you. That means a lot to me. You are a very good friend. You always make me feel better.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "You’re welcome. I’m glad I can help. You are a very good friend too. You always make me smile.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Well, I guess I should go now. It’s getting late and I have some things to do. Bye!",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": " Okay, I understand. Take care of yourself, okay? And don’t hesitate to call me anytime you need to talk. Goodbye!",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            }
+        ],
+        "storyPic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ2bFBgROS94jPxz_zvogQ8QUes3VuX1Tu5A&usqp=CAU",
+        "totalScore": {
+            "$numberInt": "80"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "6522dfc05ad4e470750e2a1b"
+        },
+        "title": "ADHD Ally",
+        "dialogues": [
+            {
+                "npcDialogue": "...",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Hi Sarah, you seem a bit busy. Is this a good time to chat?",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is an excellent choice. It shows consideration for Sarah's current state and opens the door for a conversation without judgment."
+                    },
+                    {
+                        "dialogueOption": "Hey Sarah, I've noticed you've been juggling a lot lately. How are you feeling?",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is also a good choice. It acknowledges her situation and invites her to share."
+                    },
+                    {
+                        "dialogueOption": "Can't you focus for a moment?",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is judgmental and unhelpful."
+                    },
+                    {
+                        "dialogueOption": "You seem distracted. What's going on?",
+                        "score": {
+                            "$numberInt": "9"
+                        },
+                        "sankalpExplanation": "9/10 - This is a reasonable choice, showing concern, but it could be slightly improved by asking if it's a good time to talk."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "So, I'm working on this new project, and it's so exciting! I've been thinking about it for months, and I finally have the time and resources to make it happen. Oh, and I also had this idea for a new algorithm that could make the whole thing even faster and more efficient. I'm still working on the details, but I'm really excited about it...",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "You're all over the place!",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and discouraging."
+                    },
+                    {
+                        "dialogueOption": "I can see you're passionate about this. Let's explore each aspect.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is the best choice. It acknowledges Sarah's enthusiasm and encourages her to explore her ideas further without interruption."
+                    },
+                    {
+                        "dialogueOption": "Let's try to stay on topic, Sarah.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is somewhat directive, which might not be as effective."
+                    },
+                    {
+                        "dialogueOption": "That sounds interesting, tell me more about it.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a good choice. It expresses genuine interest in what she's saying."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Oh, I'm sorry. I went off on a tangent there...",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "No problem, Sarah. Take your time.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is the most supportive choice. It conveys understanding and encourages Sarah to continue without feeling rushed."
+                    },
+                    {
+                        "dialogueOption": "Can't you finish a sentence?",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and unsympathetic."
+                    },
+                    {
+                        "dialogueOption": "You're so disorganized!",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is hurtful and unproductive."
+                    },
+                    {
+                        "dialogueOption": "It's okay, we can circle back to it.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This reassures her that it's alright and offers an alternative approach."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thank you for understanding...It's just that my manager has been hard on the deadlines....",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Would you like help with organizing your tasks, Sarah?",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is the most helpful choice. It offers support without criticism, showing you're willing to assist."
+                    },
+                    {
+                        "dialogueOption": "You really need to work on your time management.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and unconstructive."
+                    },
+                    {
+                        "dialogueOption": "I can't believe you can't manage your time.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is hurtful and unproductive."
+                    },
+                    {
+                        "dialogueOption": "Let's explore some strategies together to improve your time management.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is also a good choice. It suggests a collaborative approach."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "That would be great! Thank you!",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "You should just write everything down.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is prescriptive and may not consider her unique needs."
+                    },
+                    {
+                        "dialogueOption": "Let's explore some strategies together, like using a to-do list or calendar.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is the best choice. It offers a constructive approach by suggesting strategies without judgment."
+                    },
+                    {
+                        "dialogueOption": "But I can't believe you don't know how to manage tasks.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and unhelpful."
+                    },
+                    {
+                        "dialogueOption": "Using a to-do list or calendar can help you stay organized. Whichever one you think might work better for you.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a good choice, involving Sarah in the decision-making process."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "This would be really helpful. I'm bad at remembering details.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "That happens to all of us. Let's brainstorm ways to improve your memory.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is acknowledges the issue and offers to work together on solutions."
+                    },
+                    {
+                        "dialogueOption": "You really need to pay more attention!",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and unproductive."
+                    },
+                    {
+                        "dialogueOption": "You're so forgetful!",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is hurtful and unsupportive."
+                    },
+                    {
+                        "dialogueOption": "Forgetting things can be frustrating. Maybe you could try a few strategies.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This encourages Sarah to share her experiences and strategies."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thanks for helping me with this. Whenever I forget something, I make an impulsive decision. It happens with really small things too.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Let's discuss techniques for managing impulses and making more thoughtful decisions.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This suggests addressing the issue collaboratively without criticism."
+                    },
+                    {
+                        "dialogueOption": "You need to control yourself better.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and unconstructive."
+                    },
+                    {
+                        "dialogueOption": "I can't believe how impulsive you are.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is hurtful and unsupportive."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Once again, thanks a lot for taking the time to help me. These ADHD-related challenges are very frustrating, and are interfering with my daily life.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "I understand it's frustrating. You're doing your best, Sarah.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This acknowledges Sarah's feelings without dismissing them. It shows empathy."
+                    },
+                    {
+                        "dialogueOption": "Calm down, it's not that big of a deal.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - This is dismissive and may escalate her frustration."
+                    },
+                    {
+                        "dialogueOption": "You're overreacting, Sarah.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and unsupportive."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "I'm glad you understand. It's just SO exhausting!",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Taking breaks and practicing self-care can help you recharge. Let's discuss some self-care strategies.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This promotes self-care and offers to explore strategies together. This will bring you too closer, and also make Sarah feel better and less frustrated."
+                    },
+                    {
+                        "dialogueOption": "Just push through it, Sarah.",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - This is dismissive and unhelpful."
+                    },
+                    {
+                        "dialogueOption": "You're just lazy.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is critical and unsupportive."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Can I tell you something? Somedays I'm so exhausted that I just stay in bed, and somedays I'm so anxious for no reason that I isolate myself, not wanting to interact with people.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Isolation is common when dealing with ADHD. How can I support you in staying connected with friends and loved ones?",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This offers support and companionship. It will help Sarah feel more confident when someone is with her."
+                    },
+                    {
+                        "dialogueOption": "Isolation can be tough. You should reach out to friends more.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This suggests reaching out but doesn't consider Sarah's feelings."
+                    },
+                    {
+                        "dialogueOption": "You need to toughen up, Sarah. Just get out of bed, and go out for a walk, and a coffee.",
+                        "score": {
+                            "$numberInt": "5"
+                        },
+                        "sankalpExplanation": "5/10 - This might seem like a logical solution, but it's not taking Sarah's feelings into consideration."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thanks for helping me. I still don't understand why you would want to help someone like me, though.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "You're an amazing person, Sarah. Don't forget that.\"",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This offers reassurance and positivity. She will remember this every day of her life."
+                    },
+                    {
+                        "dialogueOption": "Nah, you're just being dramatic.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - It might seem that you're being positive, but this is dismissive and hurting."
+                    },
+                    {
+                        "dialogueOption": "Stop seeking attention.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is harsh and unsupportive. Let's try being a bit more understanding of Sarah's feelings."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thank you so much! Let's start right away! Do you want to get a coffee with me?",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Sure! I'd love that!",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            }
+        ],
+        "situation": "You're talking to your coworker Sarah, who has ADHD. She seems preoccupied. How would you go about a conversation with her about this? ",
+        "storyPic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiReSeqOKPUD_51OVujnmcxa2Rh3AZ0QF-qg&usqp=CAU",
+        "totalScore": {
+            "$numberInt": "110"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "654e0f0c873cae977f3b6d79"
+        },
+        "title": "Navigating PTSD",
+        "dialogues": [
+            {
+                "npcDialogue": "...",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Hi, how are you feeling today?",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Not so good. I had another nightmare last night. It was so real, I could hear the gunshots and the screams.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "I’m so sorry to hear that. You don’t have to go through this alone. I’m here for you, and I care about you.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a sensitive and supportive response that shows empathy and compassion for your friend’s suffering. It also reassures your friend that you are a reliable source of support and care."
+                    },
+                    {
+                        "dialogueOption": "That sounds terrible. Have you tried talking to a therapist or a counselor? They might be able to help you cope with your trauma and find some relief.",
+                        "score": {
+                            "$numberInt": "8"
+                        },
+                        "sankalpExplanation": "8/10 - This is a somewhat sensitive and helpful response that acknowledges your friend’s distress and suggests a possible solution. However, it might also imply that you think your friend needs professional help, which could make them feel defensive or ashamed."
+                    },
+                    {
+                        "dialogueOption": "Wow, that’s rough. You know, you should try to focus on the positive things in your life, like your family, your hobbies, or your achievements. There’s more to life than the past.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is a less sensitive and optimistic response that tries to cheer up your friend and distract them from their pain. However, it might also come across as dismissive or invalidating of your friend’s trauma and emotions. It might make your friend feel like you don’t understand or respect their feelings."
+                    },
+                    {
+                        "dialogueOption": "Oh, come on. It’s been a long time since you left the army. You need to get over it and move on. Stop dwelling on the past and start living in the present.",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - This is an insensitive and harsh response that criticizes your friend and minimizes their trauma. It might make your friend feel angry, hurt, or betrayed by you. It might also damage your friendship and make your friend less likely to open up to you in the future."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thank you. I appreciate your kindness and support. It means a lot to me.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Of course. You’re my friend, and I want you to be happy and healthy. How often do you have these nightmares?",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Almost every night. Sometimes I wake up sweating and shaking. Sometimes I can’t fall asleep at all.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "That’s unfortunate. You know, sleep is very important for your health and mood. You should try to avoid caffeine, alcohol, and screens before bedtime. They can interfere with your sleep quality.",
+                        "score": {
+                            "$numberInt": "5"
+                        },
+                        "sankalpExplanation": "5/10 - This is a less sensitive and informative response that provides your friend with some general advice and facts. However, it might also come across as patronizing or lecturing your friend on what they should or shouldn’t do. It might make your friend feel like you are not listening or empathizing with their situation."
+                    },
+                    {
+                        "dialogueOption": "That sounds exhausting. You must be very tired and stressed. Do you have any coping strategies that help you relax and sleep better?",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a sensitive and curious response that shows interest and concern for your friend’s well-being. It also invites your friend to share their own experiences and solutions."
+                    },
+                    {
+                        "dialogueOption": "That’s not good. You need to get enough sleep to function properly. Have you tried taking any medication or supplements that might help you sleep?",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is a somewhat sensitive and pragmatic response that recognizes your friend’s problem and suggests a possible solution. However, it might also imply that you think your friend needs external help, which could make them feel dependent or weak."
+                    },
+                    {
+                        "dialogueOption": "That’s ridiculous. You can’t let your nightmares control your life. You need to face your fears and overcome them. You should try to expose yourself to the things that trigger your trauma and desensitize yourself to them.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - This is an insensitive and confrontational response that challenges your friend and minimizes their trauma. It might make your friend feel angry, scared, or offended by you. It might also worsen their symptoms and make them more reluctant to trust you."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Well, sometimes I listen to music or read a book. They help me calm down and distract myself from the bad memories.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "That’s good. Music and books can be very soothing and enjoyable. What kind of music and books do you like?",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "I like rock music and thriller novels. They keep me on the edge of my seat and make me feel alive.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "I like rock music and thriller novels too. They are very exciting and stimulating. Do you have any favorite bands or authors that you would recommend?",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a sensitive and friendly response that shows similarity and enthusiasm for your friend’s preferences. It also encourages your friend to share more about their interests and hobbies."
+                    },
+                    {
+                        "dialogueOption": "I see. Rock music and thriller novels are not really my cup of tea. They are too loud and violent for me. I prefer classical music and romance novels. They are more relaxing and soothing.",
+                        "score": {
+                            "$numberInt": "4"
+                        },
+                        "sankalpExplanation": "4/10 - This is a somewhat sensitive and honest response that shows difference and preference for your own tastes. However, it might also imply that you think your friend’s choices are inappropriate or unhealthy for them. It might make your friend feel judged or misunderstood by you."
+                    },
+                    {
+                        "dialogueOption": "Hmm. Rock music and thriller novels are not the best choices for someone with PTSD. They can trigger your trauma and make you more anxious and agitated. You should try listening to some soothing sounds or reading some uplifting stories. They can help you heal and cope better.",
+                        "score": {
+                            "$numberInt": "2"
+                        },
+                        "sankalpExplanation": "2/10 - This is a less sensitive and prescriptive response that shows concern and advice for your friend’s well-being. However, it might also come across as intrusive or controlling of your friend’s choices. It might make your friend feel resentful or rebellious towards you."
+                    },
+                    {
+                        "dialogueOption": "Wow. Rock music and thriller novels are the worst choices for someone with PTSD. They are the reason why you have nightmares and flashbacks. You need to stop listening to that garbage and reading that crap. You need to get some real help and therapy.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is an insensitive and rude response that shows criticism and disdain for your friend’s preferences. It might make your friend feel angry, hurt, or insulted by you. It might also damage your friendship and make your friend more isolated and depressed."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Yeah, I do. I really like AC/DC and Metallica. They have some awesome songs and lyrics. And I love Stephen King and James Patterson. They write some amazing stories and characters.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "I agree. AC/DC and Metallica are some of the best rock bands ever. And Stephen King and James Patterson are some of the best thriller writers ever. I have read most of their books and watched some of their movies.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a sensitive and enthusiastic response that shows agreement and appreciation for your friend’s favorites. It also creates a common ground and a rapport with your friend."
+                    },
+                    {
+                        "dialogueOption": "I see. AC/DC and Metallica are not bad, but I prefer some other rock bands, like Nirvana and Foo Fighters. And Stephen King and James Patterson are okay, but I like some other thriller writers, like Dan Brown and John Grisham.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is a somewhat sensitive and respectful response that shows difference and preference for your own favorites. However, it might also imply that you think your friend’s favorites are inferior or outdated. It might make your friend feel defensive or challenged by you."
+                    },
+                    {
+                        "dialogueOption": "Hmm. AC/DC and Metallica are too old and boring for me. I like some newer and more innovative rock bands, like Imagine Dragons and Twenty One Pilots. And Stephen King and James Patterson are too predictable and cliché for me. I like some more original and creative thriller writers, like Gillian Flynn and Harlan Coben.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - This is a less sensitive and arrogant response that shows disdain and criticism for your friend’s favorites. However, it might also come across as rude or snobbish to your friend. It might make your friend feel offended or annoyed by you"
+                    },
+                    {
+                        "dialogueOption": "Wow. AC/DC and Metallica are the worst rock bands ever. They have no talent or skill. And Stephen King and James Patterson are the worst thriller writers ever. They have no imagination or style. You have a terrible taste in music and books. You need to get some better education and culture.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is an insensitive and insulting response that shows contempt and mockery for your friend’s favorites. It might make your friend feel angry, hurt, or humiliated by you. It might also damage your friendship and make your friend more isolated and depressed."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "That’s awesome. We have so much in common. I’m glad we can share our passions and opinions. You’re a great friend.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Thank you. You’re a terrible friend, actually. I hate your company and conversation. You make me bored and annoyed.",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": "0/10 - This is an insensitive and mean response that shows hostility and sarcasm for your friend. It will make your friend feel angry, hurt, or betrayed by you. It will also damage your friendship and make your friend more isolated and depressed."
+                    },
+                    {
+                        "dialogueOption": "Thank you. You’re an okay friend, I guess. I don’t mind your presence and chat. You make me amused and entertained.",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - This is a less sensitive and casual response that shows indifference and humor for your friend. However, it might also come across as sarcastic or rude to your friend. It might make your friend feel insecure or offended by you."
+                    },
+                    {
+                        "dialogueOption": "Thank you. You’re a good friend as well. I appreciate your company and conversation. You make me interested and curious.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is a somewhat sensitive and polite response that shows appreciation and respect for your friend. However, it might also imply that you are not very close or emotional with your friend. It might make your friend feel distant or formal with you."
+                    },
+                    {
+                        "dialogueOption": "Thank you. You’re a great friend too. I enjoy talking to you and spending time with you. You make me happy and comfortable.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a sensitive and affectionate response that shows gratitude and friendship for your friend. It also strengthens your bond and trust with your friend."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "You’re welcome. I feel the same way about you. You’re one of the few people who understand me and accept me. You make me feel less alone and hopeless.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "I see. You’re not alone and hopeless. You have me and other people who can help you and support you. You have a lot of resources and options.",
+                        "score": {
+                            "$numberInt": "5"
+                        },
+                        "sankalpExplanation": "5/10 - This is a somewhat sensitive and realistic response that shows concern and pragmatism for your friend. However, it might also imply that you think your friend needs assistance or intervention. It might make your friend feel dependent or helpless."
+                    },
+                    {
+                        "dialogueOption": "I understand. You’re not alone and hopeless. You have me and other people who can distract you and cheer you up. You have a lot of hobbies and activities.",
+                        "score": {
+                            "$numberInt": "3"
+                        },
+                        "sankalpExplanation": "3/10 - This is a less sensitive and positive response that shows interest and enthusiasm for your friend. However, it might also come across as superficial or trivializing of your friend’s situation. It might make your friend feel ignored or dismissed by you."
+                    },
+                    {
+                        "dialogueOption": "I’m glad to hear that. You’re not alone and hopeless. You have me and other people who care about you and want you to be well. You have a lot of potential and value.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a sensitive and encouraging response that shows empathy and optimism for your friend. It also boosts your friend’s self-esteem and confidence."
+                    },
+                    {
+                        "dialogueOption": "I doubt that. You’re alone and hopeless. You have me and other people who pity you and tolerate you. You have a lot of problems and challenges.",
+                        "score": {
+                            "$numberInt": "1"
+                        },
+                        "sankalpExplanation": "1/10 - his is an insensitive and negative response that shows doubt and pessimism for your friend. It might make your friend feel angry, sad, or worthless by you. It might also damage your friendship and make your friend more isolated and depressed."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thank you. You're very kind and generous. You always make me feel better and more hopeful. You have a lot of wisdom and compassion.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "You’re welcome. You’re very brave and strong. You always inspire me and motivate me. You have a lot of courage and resilience.",
+                        "score": {
+                            "$numberInt": "10"
+                        },
+                        "sankalpExplanation": "10/10 - This is a sensitive and complimentary response that shows admiration and gratitude for your friend. It also reinforces your friend’s positive qualities and attributes."
+                    },
+                    {
+                        "dialogueOption": "You’re welcome. You’re very smart and talented. You always impress me and surprise me. You have a lot of skill and creativity.",
+                        "score": {
+                            "$numberInt": "6"
+                        },
+                        "sankalpExplanation": "6/10 - This is a somewhat sensitive and flattering response that shows respect and appreciation for your friend. However, it might also imply that you value your friend more for their achievements and abilities than for their personality and character."
+                    },
+                    {
+                        "dialogueOption": "You’re welcome. You’re very funny and fun. You always amuse me and entertain me. You have a lot of humor and energy",
+                        "score": {
+                            "$numberInt": "4"
+                        },
+                        "sankalpExplanation": "4/10 - This is a less sensitive and playful response that shows affection and enjoyment for your friend. However, it might also come across as superficial or trivializing of your friend’s situation and emotions."
+                    }
+                ]
+            },
+            {
+                "npcDialogue": "Thank you for helping me! Do you want to come back to my place for dinner? I'd love to have you over, and I could use the company too.",
+                "dialogueOptions": [
+                    {
+                        "dialogueOption": "Sure! I'd love to!",
+                        "score": {
+                            "$numberInt": "0"
+                        },
+                        "sankalpExplanation": ""
+                    }
+                ]
+            }
+        ],
+        "situation": "You're talking to your friend in the military who just came back from a war zone. Luckily, the war ended with a peace treaty being signed. But your friend is suffering from PTSD.",
+        "storyPic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJe2IXIhe4oUHKsogmP5EEgJQxbjui0Ob7ZWvxjsMo5lWNHjYO-Nu4Ou8ysFJ5QOHNB6I&usqp=CAU",
+        "totalScore": {
+            "$numberInt": "70"
+        }
+    }
+
+]

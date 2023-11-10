@@ -4,7 +4,9 @@
   justify-content: center;
   background-image: url("/public/images/editprofiledark.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
 }
 
 .update-profile-main-light {
@@ -13,8 +15,9 @@
   justify-self: center;
   background-image: url("/public/images/editprofilelight.jpg");
   background-size: cover;
-  background-attachment: scroll;
-  background-repeat: repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .update-profile-label-dark {

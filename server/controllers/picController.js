@@ -1,5 +1,6 @@
 const { cloudinary } = require('../config/cloudinaryConfig') 
 
+// get all the pics cloudinary has
 const getAllPics = async (req, res) => {
     try{
         const { resources } = await cloudinary.search.expression('folder:SankalpProfilePics').sort_by('public_id', 'desc').max_results(30).execute()
@@ -11,6 +12,7 @@ const getAllPics = async (req, res) => {
     }
 }
 
+// fetch a pic from cloudinary
 const getSinglePic = async (req, res) => {
     const publicID = req?.body?.publicID
     if (!publicID) return res.status(400).json('Public ID not provided')
@@ -37,7 +39,7 @@ const updateProfilePic = async (req, res) => {
 
     try{
         const uploadedResponse = await cloudinary.uploader.upload(profilePic, {
-            upload_preset: 'SankalpProfilePics',
+            upload_preset: 'SankalpProfilePics', // folder in cloudinary
             public_id: publicID
         })
         console.log(uploadedResponse)

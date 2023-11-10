@@ -1,9 +1,7 @@
 const Story = require('../model/Story')
 
 const getAllStories = async (req, res) => {
-    console.log('Requesting stories')
     const stories = await Story.find()
-    console.log(stories)
     if (!stories) return res.status(204).json({ 'message': 'No stories found' })
     res.json(stories)
 }

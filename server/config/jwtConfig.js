@@ -1,4 +1,5 @@
-// jwt configurations
+// JWT configurations
+
 const salt = 10;
 const jwt_expire_time = 3600;
 

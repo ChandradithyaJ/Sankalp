@@ -1,3 +1,5 @@
+// Custom Zip Function
+
 const zip = (list1, list2) => {
     const zipped = []
 

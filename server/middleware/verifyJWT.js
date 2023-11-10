@@ -1,3 +1,5 @@
+// Verify if a JWT exists, and if it does, its validity
+
 const jwt = require('jsonwebtoken')
 
 const verifyJWT = (req, res, next) => {

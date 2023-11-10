@@ -74,6 +74,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
       }
     }
     
+    // upload the profile pic to cloudinary and store the url in mongo
     await testingAPI.post('/cloudinary/upload-pic', {
       data: displayProfilePic,
       publicID: publicIdForPic,

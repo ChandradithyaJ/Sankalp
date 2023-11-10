@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Bad+Script");
 
-
 .chatbot-container-dark {
   height: 120vh;
   width: 100vw;
@@ -65,6 +64,7 @@
 .chatbot-image-dark {
   padding-top: 3vh;
   display: flex;
+  flex-direction: column;
   height: 70vh;
   min-width: 600px;
 }
@@ -72,6 +72,7 @@
 .chatbot-image-light {
   padding-top: 3vh;
   display: flex;
+  flex-direction: column;
   height: 70vh;
   min-width: 600px;
 }
@@ -86,6 +87,17 @@
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+.chatbot-image-dark h3 {
+  margin: auto;
+  font-size: 7vh;
+  font-family: Bad Script, cursive;
+}
+
+.chatbot-image-light h3 {
+  margin: auto;
+  font-size: 7vh;
+  font-family: Bad Script, cursive;
 }
 
 .chatbot-chat-dark {
@@ -294,12 +306,12 @@
   .chatbot-container-dark {
     flex-direction: column;
     height: 110vh;
-    width:100vw;
+    width: 100vw;
   }
   .chatbot-container-light {
     flex-direction: column;
     height: 110vh;
-    width:100vw;
+    width: 100vw;
   }
   .chatbot-left-dark {
     height: 60vh;

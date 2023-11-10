@@ -9,7 +9,7 @@ const MiaLanding = () => {
   };
 
   return (
-    <div>
+    <div className="outerChatPage">
       <section className="home common">
         <div className="home-inner">
           <div className="text">

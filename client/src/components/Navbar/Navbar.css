@@ -1,5 +1,5 @@
 /*for Navbar*/
-.large-screen{
+.large-screen {
   display: flex;
 }
 
@@ -33,11 +33,15 @@ nav {
 }
 .nav-links li {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 .nav-links li .mainLinks::before {
   content: "";
   display: block;
-  height: 3px;
+  height: 2px;
   width: 0%;
   background-color: #61dafb;
   position: absolute;
@@ -45,39 +49,7 @@ nav {
   margin: 0 0 0 10%;
 }
 .nav-links li a:hover::before {
-  width: 80%;
-}
-
-.login-button {
-  background-color: transparent;
-  border: 1.5px solid #f2f5f7;
-  border-radius: 2em;
-  padding: 0.6rem 1.3rem;
-  margin-left: 2vw;
-  font-size: 1rem;
-  cursor: pointer;
-  color: whitesmoke;
-}
-.login-button:hover {
-  color: #131418;
-  background-color: #f2f5f7;
-  border: 1.5px solid #f2f5f7;
-  transition: all ease-in-out 350ms;
-}
-.join-button {
-  color: #131418;
-  background-color: #61dafb;
-  border: 1.5px solid #61dafb;
-  border-radius: 2em;
-  padding: 0.6rem 0.8rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.join-button:hover {
-  color: #f2f5f7;
-  background-color: transparent;
-  border: 1.5px solid #f2f5f7;
-  transition: all ease-in-out 350ms;
+  width: 60%;
 }
 
 .hamburger div {
@@ -127,9 +99,15 @@ nav {
   background-color: white;
 }
 
-.sankalp-logo{
+.sankalp-logo {
   height: 10vh;
   width: 10vh;
   border-radius: 40%;
   background-color: white;
+}
+
+.nav-links li svg {
+  height: 20px;
+  width: 50px;
+  color: burlywood;
 }

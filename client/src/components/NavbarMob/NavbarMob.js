@@ -1,6 +1,11 @@
 import React from "react";
 import "./NavbarMob.css";
 import { Link } from "react-router-dom";
+import { RiPsychotherapyLine } from "react-icons/ri";
+import { FaHome } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import { TbBulbFilled } from "react-icons/tb";
 
 const NavbarMob = ({ mode }) => {
   const closeMenu = () => {
@@ -26,6 +31,7 @@ const NavbarMob = ({ mode }) => {
           <nav className="navigation__nav">
             <ul className="navigation__list">
               <li className="navigation__item">
+                <FaHome />
                 <Link
                   to="/home"
                   className="navigation__link"
@@ -35,12 +41,14 @@ const NavbarMob = ({ mode }) => {
                 >
                   Home
                 </Link>
+
                 {/* <a href="/home" className="navigation__link">
                   {" "}
                   Home
                 </a> */}
               </li>
               <li className="navigation__item">
+                <TbBulbFilled />
                 <Link
                   to="/story"
                   className="navigation__link"
@@ -61,6 +69,7 @@ const NavbarMob = ({ mode }) => {
                 </a> */}
               </li>
               <li className="navigation__item">
+                <RiPsychotherapyLine />
                 <Link
                   to="/therapy-chatbot"
                   className="navigation__link"
@@ -76,6 +85,7 @@ const NavbarMob = ({ mode }) => {
                 </a> */}
               </li>
               <li className="navigation__item">
+                <FaEnvelope />
                 <Link
                   to="/contact-us"
                   className="navigation__link"
@@ -91,6 +101,7 @@ const NavbarMob = ({ mode }) => {
                 </a> */}
               </li>
               <li className="navigation__item">
+                <FaUserAlt />
                 <Link
                   to="/profile"
                   className="navigation__link"

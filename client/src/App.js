@@ -17,7 +17,7 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile from "./pages/UserProfile/UpdateProfile";
 import Chatbot from "./pages/TherapyChatbot/Chatbot";
 import MiaLanding from "./components/MiaLanding/MiaLanding";
-// import Loading from "./components/Loading/Loading";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   const [user, setUser] = useState(null);

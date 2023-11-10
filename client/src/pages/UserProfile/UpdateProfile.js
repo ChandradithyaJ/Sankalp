@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import testingAPI from '../../api/testingAPI'
 import "./UpdateProfile.css"
 import Loading from '../../components/Loading/Loading'
-import languages from '../../data/languages.json' 
+import languages from '../../data/languages.json'
 
 // Toast Notifications
 import { ToastContainer, toast } from 'react-toastify';
@@ -73,7 +73,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
         'authorization': `Bearer ${user.accessToken}`
       }
     }
-    
+
     await testingAPI.post('/cloudinary/upload-pic', {
       data: displayProfilePic,
       publicID: publicIdForPic,
@@ -158,7 +158,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
         isLoading && <Loading />
       }
       {
-        !isLoading && 
+        !isLoading &&
         <div className={`update-profile-main-${mode}`}>
           <ToastContainer
             position="top-right"
@@ -174,62 +174,66 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
           />
           <h1 className={`update-profile-heading-${mode}`}> {UpdateProfileText} </h1>
           <form onSubmit={(e) => handleSubmit(e)} className="update-profile-form">
-            <div className='update-profile-container'>
+            <div className='update-profile-left'>
+
               <div className='image'>
                 <img
                   className={`updatedprofile-pic-${mode}`}
                   src={displayProfilePic}
                   alt='profile'
                 />
-                <br /><br /><br /><br />
               </div>
               <div className={`upload-profilepic-${mode}`}>
                 <input type='file' id="uploadbtn" onChange={handleFileUpload} />
                 <label htmlFor='uploadbtn'>{UploadFileText}</label>
               </div>
-              <br />
             </div>
-            <label className={`update-profile-label-${mode}`}>
-              <input
-                className="udpate-profile-inputbox"
-                placeholder='Username'
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </label>
+            <div className='update-profile-right'>
 
-            <label className={`update-profile-label-${mode}`}>
-              <input //border radius for text field
-                className="udpate-profile-inputbox"
-                placeholder='Bio'
-                size={40}
-                type="Bio"
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-              />
-            </label>
-            <div className='select-lang'>
-              <select
-                defaultValue={userLang}
-                onChange={(e) => setUserLang(e.target.value)}
-              >
-                {langCodes.map((code) => (
-                  <option value={code}>{languages[code]}</option>
-                ))}
-              </select>
+              <label className={`update-profile-label-${mode}`}>
+                <input
+                  className="update-profile-inputbox1"
+                  placeholder='Username'
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </label>
+
+              <label className={`update-profile-label-${mode}`}>
+                <input //border radius for text field
+                  className="update-profile-inputbox2"
+                  placeholder='Bio'
+                  size={40}
+                  type="Bio"
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                />
+              </label>
+              <div className='select-lang'>
+                <select
+                  defaultValue={userLang}
+                  onChange={(e) => setUserLang(e.target.value)}
+                >
+                  {langCodes.map((code) => (
+                    <option value={code}>{languages[code]}</option>
+                  ))}
+                </select>
+              </div>
             </div>
-            <div className={'update-profile-allbuttons'}>
-              <button type="submit"
-                className={`update-profile-savebutton-${mode}`}
-              >{SaveText}</button>
-              <div className='update-profile-givwidth'></div>
-              <button
-                onClick={() => navigate('/profile')}
-                className={`update-profile-cancelbutton-${mode}`}
-              >{CancelText}</button>
-            </div>
+
+
           </form>
+          <div className={'update-profile-allbuttons'}>
+            <button type="submit"
+              className={`update-profile-savebutton-${mode}`}
+            >{SaveText}</button>
+            <div className='update-profile-givwidth'></div>
+            <button
+              onClick={() => navigate('/profile')}
+              className={`update-profile-cancelbutton-${mode}`}
+            >{CancelText}</button>
+          </div>
         </div>
       }
     </>

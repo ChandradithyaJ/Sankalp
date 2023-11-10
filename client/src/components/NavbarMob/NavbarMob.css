@@ -24,10 +24,10 @@
   text-align: center;
   cursor: pointer;
 }
-@media (max-width: 56.25em) {
+@media (max-width: 86.25em) {
   .navigation__button {
-    top: -1vh;
-    right: -56vw;
+    top: -1%;
+    right: -45%;
   }
 }
 .navigation__background {
@@ -41,16 +41,16 @@
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 }
-@media (max-width: 56.25em) {
+@media (max-width: 86.25em) {
   .navigation__background {
-    top: -2.8rem;
-    right: -89vw;
+    top: -3.8%;
+    right: -45%;
   }
 }
 @media (max-width: 37.5em) {
   .navigation__background {
-    top: -2.8rem;
-    right: -82.9vw;
+    top: -2.8%;
+    right: -45%;
   }
 }
 .navigation__nav {

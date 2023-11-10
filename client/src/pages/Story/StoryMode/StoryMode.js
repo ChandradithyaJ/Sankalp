@@ -103,7 +103,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
 
                 } catch (err) {
                     setIsLoading(false)
-                    toast.error(`Unable to load the app. Please check your internet connection and try again.`, {
+                    toast.error(`Unable to translate. Please check your internet connection and try again.`, {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -218,7 +218,6 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
             try {
                 const response = await testingAPI.put('/users', editDetails, config)
                 if (response && response.data) {
-                    console.log('Edit Profile Response: ', response.data)
                     setUser({
                         ...user,
                         finishedStories: updateFinishedStories,

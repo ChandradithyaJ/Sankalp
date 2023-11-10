@@ -63,7 +63,6 @@ function Login({ setUser, setLang }) {
           theme: "colored",
         });
       }
-      console.log(err)
     }
   }
 
@@ -96,7 +95,6 @@ function Login({ setUser, setLang }) {
     try {
       const response = await testingAPI.post('/register', newUser)
       if (response && response.data) {
-        console.log('User details: ', response.data)
         setUser(response.data.newUser)
         navigate('/home')
       }

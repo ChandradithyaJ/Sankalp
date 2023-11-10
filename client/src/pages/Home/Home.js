@@ -123,7 +123,7 @@ function Home({ mode, lang }) {
               <Coverflow />{" "}
             </div>
             <div className="highlight-text-header">{exploreTitle}</div>
-            <Events />
+            <Events lang={lang} />
           </div>
         </div>
       )}

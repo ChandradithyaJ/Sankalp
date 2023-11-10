@@ -1,28 +1,9 @@
 /*Google fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap");
 
-* {
-  margin: 0;
-  box-sizing: border-box;
-  outline: none;
+.outerChatPage {
+  height: 100vh;
 }
-/* body {
-  font-family: "Dosis", sans-serif;
-  font-weight: 400;
-  color: #fff;
-  overflow-x: hidden;
-  overflow: hidden;
-  background-color: #071f30;
-  background-color: aqua;
-} */
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-} */
 
 .common {
   padding: 130px 0;
@@ -81,10 +62,10 @@ h6 {
 .shape {
   position: relative;
   top: -190px;
+  opacity: 0.6;
 }
 
 .shape img {
-  /* position: absolute; */
   width: 100%;
   z-index: -9;
 }
@@ -155,5 +136,31 @@ h6 {
   100% {
     opacity: 1;
     transform: translate(0, 800px) rotate(720deg);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home-inner {
+    display: flex;
+    flex-direction: row-reverse;
+    z-index: 1000;
+  }
+
+  .img img {
+    height: 40%;
+    width: 80%;
+  }
+
+  .home h5:before {
+    top: 50%;
+    left: -10%;
+    width: 40px;
+    height: 1px;
+  }
+
+  .shape {
+    z-index: 1;
+    opacity: 0.6;
+    top: 2vh;
   }
 }

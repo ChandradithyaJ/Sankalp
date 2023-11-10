@@ -12,12 +12,10 @@ import StorySelect from "./pages/Story/StorySelect/StorySelect";
 import StorySituation from "./pages/Story/StorySituation/StorySituation";
 import Home from "./pages/Home/Home";
 import ContactForm from "./pages/ContactForm/ContactForm";
-import BlogPage from "./pages/Blog/Blog";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile from "./pages/UserProfile/UpdateProfile";
 import Chatbot from "./pages/TherapyChatbot/Chatbot";
 import MiaLanding from "./components/MiaLanding/MiaLanding";
-// import Loading from "./components/Loading/Loading";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,7 +48,6 @@ function App() {
       {user && (
         <Routes>
           <Route exact path="home" element={<Home mode={mode} lang={lang} />} />
-          <Route exact path="BlogPage" element={<BlogPage />} />
           <Route
             exact
             path="contact-us"

@@ -35,6 +35,7 @@ const multilingualTranslate = async(req, res) => {
     res.status(200).json(translated)
 }
 
+// function to translate a dialog set request from story mode
 const translateStoryDialogues = async(req, res) => {
     if (!req?.body?.to) {
         return res.status(400).json({ 'message': 'No language to translate to' })

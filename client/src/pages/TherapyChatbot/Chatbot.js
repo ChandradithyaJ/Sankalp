@@ -152,12 +152,7 @@ const Chatbot = ({ mode }) => {
               <AiOutlineSend
                 type="submit"
                 onClick={elizaStep}
-                style={{
-                  color: "lightblue",
-                  fontSize: "4vh",
-                  justifyContent: "normal",
-                  margin: "7px",
-                }}
+                className={`input-container-svg-${mode}`}
               ></AiOutlineSend>
             </div>
           </form>

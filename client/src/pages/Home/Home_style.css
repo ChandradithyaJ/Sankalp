@@ -268,7 +268,7 @@ nav img {
     right: 0;
     width: 100%;
     color: #d7884c;
-    background: whitesmoke;
+    background-color: rgb(225, 225, 220);
     animation: typing 2s steps(var(--steps)) forwards, caret 1s infinite;
   }
 }

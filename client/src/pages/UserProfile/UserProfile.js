@@ -27,7 +27,6 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
     const checkJWTvalidity = async () => {
         const { tokenIsExpired } = isExpired(user.accessToken)
 
-        console.log(tokenIsExpired)
         if (tokenIsExpired) {
             const userID = {
                 'id': user._id
@@ -36,7 +35,6 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
             try {
                 const response = await testingAPI.put('/updateJWT', userID)
                 if (response && response.data) {
-                    console.log('Edit Profile Response: ', response.data)
 
                     const updatedUser = {
                         ...user, accessToken: response.data
@@ -86,7 +84,7 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
             try {
                 const response = await testingAPI.delete(`/users`, config)
                 if (response && response.data) {
-                    console.log('Delete Profile Response: ', response.data)
+                    console.log('Delete Profile Response: ', response.data) //chadraditya check diz
                 }
                 navigate('./login')
             } catch (err) {

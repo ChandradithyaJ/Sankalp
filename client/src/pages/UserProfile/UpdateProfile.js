@@ -78,7 +78,6 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
       data: displayProfilePic,
       publicID: publicIdForPic,
     }, config).then((response) => {
-      console.log('Response Data: ', response.data)
       setProfilePic(response.data)
 
       const editDetails = {
@@ -92,7 +91,6 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
       return testingAPI.put('/users', editDetails, config)
 
     }).then((response) => {
-      console.log('Edit Profile Response: ', response.data)
       setUser({
         ...user,
         username: username,
@@ -172,72 +170,72 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
             pauseOnHover
             theme="colored"
           />
-          <h1 
+          <h1
             className={`update-profile-heading-${mode}`}>
-             {UpdateProfileText} 
+            {UpdateProfileText}
           </h1>
           <form onSubmit={(e) => handleSubmit(e)} className="update-profile-form">
             <div className='update-profile-form-div'>
-                <div className='update-profile-left'>
+              <div className='update-profile-left'>
 
-                  <div className='image'>
-                    <img
-                      className={`updatedprofile-pic-${mode}`}
-                      src={displayProfilePic}
-                      alt='profile'
-                    />
-                  </div>
-                  <div className={`upload-profilepic-${mode}`}>
-                    <input type='file' id="uploadbtn" onChange={handleFileUpload} />
-                    <label htmlFor='uploadbtn'>{UploadFileText}</label>
-                  </div>
+                <div className='image'>
+                  <img
+                    className={`updatedprofile-pic-${mode}`}
+                    src={displayProfilePic}
+                    alt='profile'
+                  />
                 </div>
-
-                <div className='update-profile-right'>
-
-                  <label className={`update-profile-label-${mode}`}>
-                    <input
-                      className="update-profile-inputbox1"
-                      placeholder='Username'
-                      type="text"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                    />
-                  </label>
-
-                  <label className={`update-profile-label-${mode}`}>
-                    <textarea // border radius for text field
-                      className="update-profile-inputbox2"
-                      placeholder='Bio'
-                      size={40}
-                      type="Bio"
-                      value={bio}
-                      onChange={(e) => setBio(e.target.value)}
-                    />
-                  </label>
-
-                  <div className={`select-lang-${mode}`}>
-                    <select
-                      defaultValue={userLang}
-                      onChange={(e) => setUserLang(e.target.value)}
-                    >
-                      {langCodes.map((code) => (
-                        <option value={code}>{languages[code]}</option>
-                      ))}
-                    </select>
-                  </div>
+                <div className={`upload-profilepic-${mode}`}>
+                  <input type='file' id="uploadbtn" onChange={handleFileUpload} />
+                  <label htmlFor='uploadbtn'>{UploadFileText}</label>
                 </div>
+              </div>
+
+              <div className='update-profile-right'>
+
+                <label className={`update-profile-label-${mode}`}>
+                  <input
+                    className="update-profile-inputbox1"
+                    placeholder='Username'
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </label>
+
+                <label className={`update-profile-label-${mode}`}>
+                  <textarea // border radius for text field
+                    className="update-profile-inputbox2"
+                    placeholder='Bio'
+                    size={40}
+                    type="Bio"
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                  />
+                </label>
+
+                <div className={`select-lang-${mode}`}>
+                  <select
+                    defaultValue={userLang}
+                    onChange={(e) => setUserLang(e.target.value)}
+                  >
+                    {langCodes.map((code) => (
+                      <option value={code}>{languages[code]}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
             </div>
-          <div className={'update-profile-allbuttons'}>
-            <button type="submit"
-              className={`update-profile-savebutton-${mode}`}
-            >{SaveText}</button>
-            <div className='update-profile-givwidth'></div>
-            <button
-              onClick={() => navigate('/profile')}
-              className={`update-profile-cancelbutton-${mode}`}
-            >{CancelText}</button>
-          </div>
+            <div className={'update-profile-allbuttons'}>
+              <button type="submit"
+                className={`update-profile-savebutton-${mode}`}
+              >{SaveText}</button>
+              <div className='update-profile-givwidth'></div>
+              <button
+                onClick={() => navigate('/profile')}
+                className={`update-profile-cancelbutton-${mode}`}
+              >{CancelText}</button>
+            </div>
           </form>
         </div>
       }

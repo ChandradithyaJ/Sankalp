@@ -123,8 +123,7 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
 4. Change directory to the client folder: `cd client`.
 5. Install client dependencies: `npm install`. Or copy paste the following code `npm i @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fvilers/disable-react-devtools axios fontawesome gsap lottie-react picomatch postcss-preset-env react react-carousel3 react-device-detect react-dom react-icons react-jwt react-responsive-carousel react-router-dom react-scripts swiper web-vitals @iconify/react`
 6. Return to the project folder: `cd ..`.
-7. Change directory to the server folder: `cd server`. Or copy paste the following code `npm i axios bcrypt cloudinary cors dotenv express jsonwebtoken mongodb mongoose netlify-lambda qs serverless-http`
-8. Install server dependencies: `npm install`
+7. Change directory to the server folder: `cd server`. 8. Install server dependencies: `npm install`. Or copy paste the following code `npm i axios bcrypt cloudinary cors dotenv express jsonwebtoken mongodb mongoose netlify-lambda qs serverless-http`
 
 ### Environment Configuration
 

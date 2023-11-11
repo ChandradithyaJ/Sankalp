@@ -86,7 +86,7 @@ const Coverflow = () => {
                 className="swiper-slide-image" // Apply a CSS class for styling
               />
               <h4>{article.title}</h4>
-              <Link to={article.url} target="_blank">Read More</Link>
+              <Link to={article.url} target="_blank" style={{textDecoration:"none"}}>Read More</Link>
             </div>
           ))}
       </div>

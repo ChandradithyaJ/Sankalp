@@ -17,51 +17,54 @@
 }
 
 @media (max-width: 958px) and (min-width: 471px) {
-  .swiper-slide{
+  .swiper-slide {
     height: 60vh;
     width: 40vh;
   }
-  .swiper-container-coverflow{
+  .swiper-container-coverflow {
     width: 60vw;
   }
 }
 
 @media (max-width: 470px) and (min-width: 0px) {
-  .swiper-container-coverflow{
+  .swiper-container-coverflow {
     width: 80vw;
   }
   .swiper-slide {
     height: 60vh;
     width: 50vh;
   }
-  .swiper-slide h4{
+  .swiper-slide h4 {
     overflow-x: wrap;
     width: 100%;
   }
 }
 
- 
+.swiper-slide h4 {
+  color: black;
+  font-family: quicksand;
+}
+
 .swiper-slide-image {
   max-width: 100%;
-  height: auto;
+  height: 37vh;
+  padding: 1vh;
+  margin-bottom: 5vh;
   object-fit: cover;
   border-radius: 10px;
 }
 
- 
 .swiper-button-next,
 .swiper-button-prev {
   color: #007bff;
   font-size: 24px;
 }
 
-
 .swiper-scrollbar {
   height: 4px;
   background-color: #007bff;
   border-radius: 4px;
 }
-
 
 .h3_slider {
   font-size: 1.5rem;

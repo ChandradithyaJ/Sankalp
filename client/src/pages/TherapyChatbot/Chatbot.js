@@ -12,7 +12,7 @@ const Chatbot = ({ mode }) => {
   const displayRows = 20;
   const [userSentiment, setUserSentiment] = useState(0);
 
-  const [eDisplay, setEDisplay] = useState("");
+  const [eDisplay, setEDisplay] = useState("ELIZA: Hey!");
   const [eInput, setEInput] = useState("");
   const [elizaLines, setElizaLines] = useState([]);
   let savedMessages;
@@ -21,6 +21,8 @@ const Chatbot = ({ mode }) => {
   useEffect(() => {
     savedMessages = localStorage.getItem(savedMessagesArray);
     if (savedMessages != null || savedMessages != undefined) {
+      // dont add one more equal to sign before undefined
+      //it will give some length error
       setElizaLines(JSON.parse(savedMessages));
     }
   }, []);
@@ -68,6 +70,9 @@ const Chatbot = ({ mode }) => {
 
   const elizaStep = (e) => {
     e.preventDefault();
+
+    if (eInput.length === 0) return;
+
     let f = document.forms.e_form;
     let userinput = f.e_input.value;
 
@@ -83,7 +88,6 @@ const Chatbot = ({ mode }) => {
       f.e_input.focus();
       return;
     } else if (userinput !== "") {
-
       usr = "YOU: " + userinput;
       rpl = "ELIZA: " + eliza.transform(userinput);
       var originalEliza = new ElizaBot(true);
@@ -91,7 +95,7 @@ const Chatbot = ({ mode }) => {
 
       elizaLines.push(usr);
       elizaLines.push(rpl);
-      
+
       let temp = [];
       let l = 0;
       for (let i = updatedElizaLines.length - 1; i >= 0; i--) {
@@ -143,12 +147,7 @@ const Chatbot = ({ mode }) => {
               <AiOutlineSend
                 type="submit"
                 onClick={elizaStep}
-                style={{
-                  color: "lightblue",
-                  fontSize: "4vh",
-                  justifyContent: "normal",
-                  margin: "7px",
-                }}
+                className={`input-container-svg-${mode}`}
               ></AiOutlineSend>
             </div>
           </form>

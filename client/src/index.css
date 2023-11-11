@@ -20,7 +20,7 @@ code {
 }
 
 .App-light {
-  background-color: whitesmoke;
+  background-color: rgb(225, 225, 220);
   height: 100vh;
   background-size: cover;
   overflow: auto;

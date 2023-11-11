@@ -21,7 +21,6 @@ const Chatbot = ({ mode }) => {
 
   useEffect(() => {
     savedMessages = localStorage.getItem(savedMessagesArray);
-    console.log("ffff  ", savedMessages);
     if (savedMessages != null || savedMessages != undefined) {
       setElizaLines(JSON.parse(savedMessages));
     }
@@ -56,9 +55,7 @@ const Chatbot = ({ mode }) => {
     );
 
     // Update image
-    // console.log(val);
     document.getElementById("main-image").src = imgs[userSentiment];
-    console.log(userSentiment);
   };
 
   const elizaReset = (e) => {
@@ -79,7 +76,6 @@ const Chatbot = ({ mode }) => {
     let rpl;
     let updatedElizaLines;
     setElizaLines(updatedElizaLines);
-    console.log(sentiment.analyze(userinput)["score"]);
     updateImage(sentiment.analyze(userinput)["score"]);
 
     if (eliza.quit) {
@@ -88,18 +84,15 @@ const Chatbot = ({ mode }) => {
       f.e_input.focus();
       return;
     } else if (userinput !== "") {
-      console.log(userinput);
+
       usr = "YOU: " + userinput;
-      // console.log(eliza.getFinal("sad"));
       rpl = "ELIZA: " + eliza.transform(userinput);
-      // console.log (eliza.transform("no"));
-      // eliza.random-choice-disable;
       var originalEliza = new ElizaBot(true);
       updatedElizaLines = [...elizaLines, usr, rpl];
 
       elizaLines.push(usr);
       elizaLines.push(rpl);
-      // Display nicely
+      
       let temp = [];
       let l = 0;
       for (let i = updatedElizaLines.length - 1; i >= 0; i--) {
@@ -122,7 +115,6 @@ const Chatbot = ({ mode }) => {
 
   return (
     <div className={`chatbot-container-${mode}`}>
-      {/* <button onClick={elizaReset}>Reset</button> */}
       <div className={`chatbot-left-${mode}`}>
         <div className={`chatbot-image-${mode}`}>
           <img id="main-image" src={"./MiaImages/default-01.png"} alt="Mia" />

@@ -26,6 +26,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   width: 60vw;
   height: 30vh;
 }
@@ -76,6 +77,9 @@
 .update-profile-form {
   height: 150vh;
   width: 100vw;
+}
+
+.update-profile-form-div{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -90,9 +94,7 @@
   padding-bottom: 2vh;
   align-items: center;
   justify-content: center;
-
 }
-
 
 .image {
   display: flex;
@@ -292,7 +294,7 @@ body {
   }
 }
 
-@media (max-width: 870px) and (min-width: 441px) {
+@media (max-width: 870px) and (min-width: 450px) {
 
   .updatedprofile-pic-dark,
   .updatedprofile-pic-light {
@@ -301,7 +303,7 @@ body {
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 449px) {
 
   .updatedprofile-pic-dark,
   .updatedprofile-pic-light {
@@ -322,7 +324,7 @@ body {
   }
 }
 
-@media (max-width: 870px) and (min-width: 441px) {
+@media (max-width: 870px) and (min-width: 450px) {
 
   .upload-profilepic-dark,
   .upload-profilepic-light {
@@ -332,7 +334,7 @@ body {
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 449px) {
 
   .upload-profilepic-dark,
   .upload-profilepic-light {
@@ -355,7 +357,7 @@ body {
   }
 }
 
-@media (max-width: 870px) and (min-width: 441px) {
+@media (max-width: 870px) and (min-width: 450px) {
 
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
@@ -366,7 +368,7 @@ body {
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 449px) {
 
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
@@ -388,7 +390,7 @@ body {
   }
 }
 
-@media (max-width: 870px) and (min-width: 441px) {
+@media (max-width: 870px) and (min-width: 450px) {
 
   .update-profile-label-dark,
   .update-profile-label-light {
@@ -396,26 +398,13 @@ body {
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 449px) {
 
   .update-profile-label-dark,
   .update-profile-label-light {
     width: 90vw;
   }
 }
-
-
-
-/* phone mode*/
-
-/* @media (max-width: 1054px) and (min-width: 871px) {
-
-  .update-profile-main-dark {
-    width: 10vw;
-    height: 4vh;
-    border-radius: 7px;
-  }
-} */
 
 @media (max-width: 870px) and (min-width: 451px) {
 
@@ -462,4 +451,8 @@ body {
     font-size: large;
   }
 
+}
+
+.select-lang-light{
+  background-color: rgb(223, 133, 209);
 }

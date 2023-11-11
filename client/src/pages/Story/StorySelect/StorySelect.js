@@ -128,7 +128,9 @@ const StorySelect = ({ user, mode, lang, listOfStories, setStory }) => {
                                         }
                                         alt={'Story Pic'}
                                     />
-                                    {ele.two}
+                                    <div className={`story-select-modulenames-${mode}`}>
+                                        {ele.two}
+                                    </div>
                                     {
                                         userFinishedStories.has(ele.one._id) &&
                                         <p className={`story-select-modulenames-${mode}`}>{userFinishedStories.get(ele.one._id)}{`/${ele.one.totalScore}`}</p>

@@ -46,96 +46,6 @@
     }
 }
 
-@media (max-width: 550px) and (min-width: 430px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 20vh;
-    }
-}
-
-@media ((max-width: 429px) and (min-width: 360px)) or (max-height: 670px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 10vh;
-    }
-}
-
-@media (max-height: 550px) and (min-height: 460px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 20vh;
-    }
-}
-
-@media (max-height: 459px) and (min-height: 0px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 30vh;
-    }
-}
-
-@media (max-width: 359px) and (min-width: 0px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 5vh;
-    }
-}
-
-@media (max-width: 550px) and (min-width: 360px) and (max-height:540px) and (min-height: 470px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 30vh;
-    }
-}
-
-@media (max-width: 550px) and (min-width: 360px) and (max-height:469px) and (min-height: 390px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 45vh;
-    }
-}
-
-@media (max-width: 550px) and (min-width: 360px) and (max-height:390px) and (min-height: 370px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 50vh;
-    }
-}
-
-@media (max-width: 550px) and (min-width: 360px) and (max-height:370px) and (min-height: 310px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 70vh;
-    }
-}
-
-@media (max-width: 550px) and (min-width: 360px) and (max-height:310px) and (min-height: 0px) {
-
-    .story-mode-dark,
-    .story-mode-light {
-        padding-top: 90vh;
-    }
-}
-
-@media (max-width: 450px) {
-    .story-title-dark h3 {
-        font-size: 15px;
-    }
-
-    .story-title-light h3 {
-        font-size: 15px;
-    }
-}
-
 .player-score{
     width: 100%;
     display: flex;
@@ -207,7 +117,7 @@
     position: relative;
     max-width: 30vw;
     word-wrap: break-word;
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(78, 77, 77);
     color: whitesmoke;
     padding: 1.125em 1.5em;
     font-size: 1.25em;
@@ -223,14 +133,14 @@
     top: 100%;
     right: 1.5em;
     border-style: solid;
-    border-color: rgb(40, 40, 40) transparent;
+    border-color: rgb(78, 77, 77) transparent;
     border-width: 30px 30px 0 0;
     filter: drop-shadow(0, -0.0625rem, 0.0625rem rgba(0, 0, 0, .1));
 }
 
 @media (max-width: 550px) {
     .conversation {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .player-character {
@@ -242,7 +152,7 @@
     }
 
     .speech-bubble-dark p {
-        max-width: 20vw;
+        max-width: 35vw;
         font-size: 1rem;
     }
 
@@ -300,7 +210,7 @@
     border: 1px solid;
     background-color: #fff;
     color: black;
-    width: 20vw;
+    width: 25vw;
     margin-left: 3vh;
     text-align: center;
     border-radius: 13px;
@@ -308,6 +218,7 @@
     cursor: pointer;
     transition: 0.5s;
     word-wrap: break-word;
+    padding: 7px;
 }
 
 .option-dark:hover {
@@ -316,9 +227,9 @@
 
 .option-light {
     border: 1px solid;
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(78, 77, 77);
     color: whitesmoke;
-    width: 20vw;
+    width: 25vw;
     margin-left: 3vh;
     text-align: center;
     border-radius: 13px;
@@ -326,6 +237,7 @@
     cursor: pointer;
     transition: 0.5s;
     word-wrap: break-word;
+    padding: 7px;
 }
 
 .option-light:hover {
@@ -336,7 +248,7 @@
     border: 1px solid;
     background-color: #d1ed44;
     color: black;
-    width: 20vw;
+    width: 25vw;
     margin-left: 3vh;
     text-align: center;
     border-radius: 13px;
@@ -344,6 +256,7 @@
     cursor: pointer;
     transition: 0.5s;
     word-wrap: break-word;
+    padding: 7px;
 }
 
 .selectedOption-dark:hover {
@@ -354,7 +267,7 @@
     border: 1px solid;
     background-color: #d1ed44;
     color: black;
-    width: 20vw;
+    width: 25vw;
     margin-left: 3vh;
     text-align: center;
     border-radius: 13px;
@@ -362,6 +275,7 @@
     cursor: pointer;
     transition: 0.5s;
     word-wrap: break-word;
+    padding: 7px;
 }
 
 .selectedOption-light:hover {
@@ -372,26 +286,28 @@
     border: 1px solid;
     background-color: #9f9f9f;
     color: black;
-    width: 20vw;
+    width: 25vw;
     margin-left: 3vh;
     text-align: center;
     border-radius: 13px;
     margin-top: 2vh;
     cursor: not-allowed;
     word-wrap: break-word;
+    padding: 7px;
 }
 
 .evaluatedOption-light {
     border: 1px solid;
     background-color: #c3c3c3;
     color: black;
-    width: 20vw;
+    width: 25vw;
     margin-left: 3vh;
     text-align: center;
     border-radius: 13px;
     margin-top: 2vh;
     cursor: not-allowed;
     word-wrap: break-word;
+    padding: 7px;
 }
 
 .evaluate-response-dark,
@@ -401,6 +317,7 @@
     color: black;
     font-weight: bold;
     width: 20vw;
+    height: 4vh;
     text-align: center;
     border-radius: 13px;
     cursor: pointer;
@@ -446,11 +363,13 @@
 
     .evaluate-response-dark,
     .back-to-story-dark {
-        width: 40vw;
+        width: 26vw;
+        height: 4vh;
     }
 
     .evaluate-response-light,
     .back-to-story-light {
-        width: 40vw;
+        width: 26vw;
+        height: 4vh;
     }
 }

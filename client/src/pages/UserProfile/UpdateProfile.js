@@ -78,7 +78,6 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
       data: displayProfilePic,
       publicID: publicIdForPic,
     }, config).then((response) => {
-      console.log('Response Data: ', response.data)
       setProfilePic(response.data)
 
       const editDetails = {
@@ -92,7 +91,6 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
       return testingAPI.put('/users', editDetails, config)
 
     }).then((response) => {
-      console.log('Edit Profile Response: ', response.data)
       setUser({
         ...user,
         username: username,
@@ -201,7 +199,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
               </label>
 
               <label className={`update-profile-label-${mode}`}>
-                <input //border radius for text field
+                <input 
                   className="update-profile-inputbox2"
                   placeholder='Bio'
                   size={40}

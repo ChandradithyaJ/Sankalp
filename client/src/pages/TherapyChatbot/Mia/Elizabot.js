@@ -72,7 +72,6 @@ import {
   
   // var originalEliza = new ElizaBot(true);
   
-  console.log(elizaKeywords);
   export function ElizaBot(noRandomFlag) {
   this.noRandom = noRandomFlag ? true : false;
   this.capitalizeFirstLetter = true;
@@ -91,7 +90,6 @@ import {
   for (var k = 0; k < elizaKeywords.length; k++) {
   this.lastchoice[k] = [];
   var rules = elizaKeywords[k][2];
-  // console.log(rules);
   for (var i = 0; i < rules.length; i++) this.lastchoice[k][i] = -1;
   }
   };
@@ -100,10 +98,7 @@ import {
   
   
   ElizaBot.prototype._init = function () {
-  // install ref to global object
-  // var global = (ElizaBot.prototype.global = window || this);
     var global=ElizaBot.prototype.global= window;
-  // console.log(global);
   // parse data and convert it from canonical form to internal use
   // prodoce synonym list
   var synPatterns = {};
@@ -113,9 +108,7 @@ import {
   }
   
   // check for keywords or install empty structure to prevent any errorsel
-  console.log(global.elizaKeywords);
   if ( typeof elizaKeywords.length === "undefined") {
-  // console.log("its undefined dude");
   elizaKeywords = [["###", 0, [["###", []]]]];
   }
   // 1st connvert rules to regexps
@@ -129,7 +122,6 @@ import {
   for (var k = 0; k < elizaKeywords.length; k++) {
   var rules = elizaKeywords[k][2];
   elizaKeywords[k][3] = k; // save original index for sorting
-  // console.log("setter issues can be here, line 109");
   for (var i = 0; i < rules.length; i++) {
   var r = rules[i];
   // check mem flag and store it as decomp's element 2
@@ -238,7 +230,6 @@ import {
   ElizaBot.prototype.transform = function(text) {
   var rpl = "";
   this.quit = false;
-  // console.log("hey");
   // unify text string
   text = text.toLowerCase();
   text = text.replace(/@#\$%\^&\*\(\)_\+=~`\{\[\}\]\|:;<>\/\\\t/g, " ");
@@ -247,7 +238,6 @@ import {
   text = text.replace(/\s*\bbut\b\s*/g, ".");
   text = text.replace(/\s{2,}/g, " ");
   
-  console.log(text);
   // split text in part sentences and loop through them
   var parts = text.split(".");
   for (var i = 0; i < parts.length; i++) {
@@ -273,10 +263,7 @@ import {
   part = lp + rp;
   }
   this.sentence = part;
-  console.log (part);
-  // loop trough keywords
-  // console.log(elizaKeywords.length);
-  console.log(elizaKeywords[0]);
+
   
   for (var k = 0; k < elizaKeywords.length; k++) {
   if (
@@ -287,8 +274,6 @@ import {
   if (rpl !== "") return rpl;
   }
   }
-  // console.log("Function ended");
-  // console.log(rpl);
   }
   // nothing matched try mem
   rpl = this._memGet();

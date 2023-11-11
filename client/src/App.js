@@ -15,7 +15,7 @@ import ContactForm from "./pages/ContactForm/ContactForm";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UpdateProfile from "./pages/UserProfile/UpdateProfile";
 import Chatbot from "./pages/TherapyChatbot/Chatbot";
-import MiaLanding from "./components/MiaLanding/MiaLanding";
+import MiaLanding from "./pages/TherapyChatbot/MiaLanding/MiaLanding"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -56,14 +56,12 @@ function App() {
           <Route
             exact
             path="therapy-chatbot"
-            // element={<Chatbot mode={mode} />}
             element={<MiaLanding />}
           />
           <Route
             exact
             path="therapy-chatbot-page"
             element={<Chatbot mode={mode} />}
-            // element={<MiaLanding />}
           />
           <Route
             exact

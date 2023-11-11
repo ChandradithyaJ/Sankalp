@@ -33,13 +33,13 @@ const Chatbot = ({ mode }) => {
   }, [elizaLines]);
 
   const imgs = {
-    0: "./MiaImages/default-01.png",
-    1: "./MiaImages/happy1-01.png",
-    2: "./MiaImages/happy2-01.png",
-    3: "./MiaImages/happy3-01.png",
-    "-1": "./MiaImages/sad1-01.png",
-    "-2": "./MiaImages/sad2-01.png",
-    "-3": "./MiaImages/sad3-01.png",
+    0: "./MiaImages/MiaDefault.png",
+    1: "./MiaImages/MiaHappy1.png",
+    2: "./MiaImages/MiaHappy2.png",
+    3: "./MiaImages/MiaHappy3.png",
+    "-1": "./MiaImages/MiaSad1.png",
+    "-2": "./MiaImages/MiaSad2.png",
+    "-3": "./MiaImages/MiaSad3.png",
   };
   const updateImage = (val) => {
     if (val * userSentiment >= 0) {
@@ -116,7 +116,7 @@ const Chatbot = ({ mode }) => {
     <div className={`chatbot-container-${mode}`}>
       <div className={`chatbot-left-${mode}`}>
         <div className={`chatbot-image-${mode}`}>
-          <img id="main-image" src={"./MiaImages/default-01.png"} alt="Mia" />
+          <img id="main-image" src={"./MiaImages/MiaDefault.png"} alt="Mia" />
           <h3>Mia</h3>
         </div>
       </div>

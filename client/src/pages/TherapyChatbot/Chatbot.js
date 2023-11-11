@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ElizaBot } from "./Mia/Elizabot.js";
 import { Sentimood } from "./Mia/Sentimood.js";
-import { VscDebugRestart } from "react-icons/vsc";
-import { AiOutlineFontSize, AiOutlineSend } from "react-icons/ai";
+import { AiOutlineSend } from "react-icons/ai";
 import "./Chatbot.css";
 
 const Chatbot = ({ mode }) => {

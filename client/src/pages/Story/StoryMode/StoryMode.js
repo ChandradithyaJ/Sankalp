@@ -159,6 +159,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
     }
 
     const continueConversing = () => {
+        if(!evaluate && selectedOption === null) return
         setEvaluatedOptions([])
         setCurrentDialog(currentDialog + 1)
         setDialogueSet(story.dialogues[currentDialog + 1])

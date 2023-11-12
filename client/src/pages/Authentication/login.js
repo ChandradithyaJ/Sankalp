@@ -150,7 +150,7 @@ function Login({ setUser, setLang }) {
           <div className="section">
             <div className="container">
               <div className="class1">
-                <div className="col-12 text-center align-self-center py-5">
+                <div className="col-12 text-center align-self-center">
                   <div className="section pb-5 pt-5 pt-sm-2 text-center">
                     <h6 className="mb-0 pb-3">
                       <span>Log In </span>

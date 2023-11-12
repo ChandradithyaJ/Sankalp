@@ -1,41 +1,6 @@
-.update-profile-main-dark {
-  height: 140vh;
-  width: 100vw;
-  align-items: center;
-  justify-content: center;
-  background-image: url("/public/images/editprofiledark.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-}
-
-.update-profile-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40vw;
-  height: 100vh;
-
-}
-
-.update-profile-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 60vw;
-  height: 30vh;
-}
-
 .update-profile-main-light {
   height: 140vh;
   width: 100vw;
-  align-items: center;
-  justify-self: center;
   background-image: url("/public/images/editprofilelight.jpg");
   background-size: cover;
   background-attachment: scroll;
@@ -43,29 +8,47 @@
   display: flex;
   flex-direction: column;
 }
-
-.update-profile-label-dark {
-  padding-left: 10vh;
-  padding-right: 10vh;
-  align-items: center;
-  justify-content: center;
-  -webkit-text-fill-color: rgb(72, 121, 44);
-  -webkit-opacity: 1;
+.update-profile-main-dark {
+  height: 150vh;
+  width: 100vw;
+  background-image: url("/public/images/editprofiledark.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* display: flex;
+  flex-direction: column; */
 }
 
+.update-profile-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  height: 100vh;
+}
+
+.update-profile-right {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 60vw;
+  height: 30vh;
+  margin: auto;
+}
 
 .update-profile-inputbox1 {
   border-radius: 5px;
-  padding-bottom: 2vh;
   height: 4vh;
   text-align: center;
   width: 15vw;
   color: black;
+  border: 2px solid black;
 }
 
 .update-profile-inputbox2 {
   border-radius: 5px;
   padding-bottom: 2vh;
+  margin: 2vh 0;
   height: 16vh;
   text-align: center;
   font-size: x-large;
@@ -74,16 +57,9 @@
   color: black;
 }
 
-.update-profile-form {
-  height: 150vh;
-  width: 100vw;
-}
-
-.update-profile-form-div{
+.update-profile-form-div {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 
 .update-profile-label-light {
@@ -92,19 +68,19 @@
   -webkit-text-fill-color: rgb(149, 205, 228);
   -webkit-opacity: 1;
   padding-bottom: 2vh;
-  align-items: center;
-  justify-content: center;
+}
+.update-profile-label-dark {
+  padding-left: 10vh;
+  padding-right: 10vh;
+  -webkit-text-fill-color: rgb(72, 121, 44);
+  -webkit-opacity: 1;
 }
 
 .image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 8vh;
 }
 
 .updatedprofile-pic-dark {
-  align-items: center;
   width: 60vh;
   height: 60vh;
   border-radius: 50%;
@@ -112,13 +88,11 @@
 }
 
 .updatedprofile-pic-light {
-  align-items: center;
   width: 50vh;
   height: 50vh;
   border-radius: 50%;
   background-color: black;
 }
-
 
 .update-profile-allbuttons {
   display: flex;
@@ -126,8 +100,8 @@
   padding-left: 12vh;
   padding-right: 12vh;
   align-items: center;
-  justify-content: center;
   padding-bottom: 10vh;
+  margin: 8vh;
 }
 
 .upload-profilepic-dark {
@@ -138,11 +112,7 @@
   outline: none;
   background-color: #42a3d4;
   color: #050801;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
   border-radius: 7px;
-  padding: 2vh;
 }
 
 .upload-profilepic-light {
@@ -152,9 +122,6 @@
   flex-direction: column;
   outline: none;
   background-color: rgb(9, 23, 6);
-  text-align: center;
-  align-items: center;
-  justify-content: center;
   border-radius: 7px;
   padding: 2vh;
 }
@@ -167,17 +134,7 @@ input[type="file"] {
   height: 3vh;
 }
 
-
 /* button */
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #050801;
-  font-family: 'Raleway', sans-serif;
-}
 
 .update-profile-savebutton-dark {
   padding: 2vh 2vh;
@@ -211,18 +168,14 @@ body {
 .update-profile-savebutton-dark:hover {
   background: #5370e2;
   color: #050801;
-  box-shadow: 0 0 5px #5370e2,
-    0 0 25px #5370e2,
-    0 0 50px #5370e2,
+  box-shadow: 0 0 5px #5370e2, 0 0 25px #5370e2, 0 0 50px #5370e2,
     0 0 200px #5370e2;
 }
 
 .update-profile-savebutton-light:hover {
   background: #5370e2;
   color: #050801;
-  box-shadow: 0 0 5px #5370e2,
-    0 0 25px #5370e2,
-    0 0 50px #5370e2,
+  box-shadow: 0 0 5px #5370e2, 0 0 25px #5370e2, 0 0 50px #5370e2,
     0 0 200px #5370e2;
 }
 
@@ -257,21 +210,16 @@ body {
 .update-profile-cancelbutton-dark:hover {
   background: #d52222;
   color: #050801;
-  box-shadow: 0 0 5px #d52222,
-    0 0 25px #d52222,
-    0 0 50px #d52222,
+  box-shadow: 0 0 5px #d52222, 0 0 25px #d52222, 0 0 50px #d52222,
     0 0 200px #d52222;
 }
 
 .update-profile-cancelbutton-light:hover {
   background: #d52222;
   color: #050801;
-  box-shadow: 0 0 5px #d52222,
-    0 0 25px #d52222,
-    0 0 50px #d52222,
+  box-shadow: 0 0 5px #d52222, 0 0 25px #d52222, 0 0 50px #d52222,
     0 0 200px #d52222;
 }
-
 
 .update-profile-heading-dark {
   text-align: center;
@@ -286,7 +234,6 @@ body {
 }
 
 @media (max-width: 1054px) and (min-width: 871px) {
-
   .updatedprofile-pic-dark,
   .updatedprofile-pic-light {
     max-width: 60vh;
@@ -295,7 +242,6 @@ body {
 }
 
 @media (max-width: 870px) and (min-width: 450px) {
-
   .updatedprofile-pic-dark,
   .updatedprofile-pic-light {
     max-width: 40vh;
@@ -304,7 +250,6 @@ body {
 }
 
 @media (max-width: 449px) {
-
   .updatedprofile-pic-dark,
   .updatedprofile-pic-light {
     max-width: 20vh;
@@ -312,10 +257,8 @@ body {
   }
 }
 
-
 /* upload button */
 @media (max-width: 1054px) and (min-width: 871px) {
-
   .upload-profilepic-dark,
   .upload-profilepic-light {
     width: 10vw;
@@ -325,7 +268,6 @@ body {
 }
 
 @media (max-width: 870px) and (min-width: 450px) {
-
   .upload-profilepic-dark,
   .upload-profilepic-light {
     width: 20vw;
@@ -335,7 +277,6 @@ body {
 }
 
 @media (max-width: 449px) {
-
   .upload-profilepic-dark,
   .upload-profilepic-light {
     width: 30vw;
@@ -344,11 +285,9 @@ body {
   }
 }
 
-
 /* for save and cancel buttons */
 
 @media (max-width: 1054px) and (min-width: 871px) {
-
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
@@ -358,32 +297,26 @@ body {
 }
 
 @media (max-width: 870px) and (min-width: 450px) {
-
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
   .update-profile-savebutton-light {
     width: 30vw;
-
   }
 }
 
 @media (max-width: 449px) {
-
   .update-profile-cancelbutton-dark,
   .update-profile-cancelbutton-light,
   .update-profile-savebutton-dark,
   .update-profile-savebutton-light {
     width: 40vw;
-
   }
 }
-
 
 /* username and bio  */
 
 @media (max-width: 1054px) and (min-width: 871px) {
-
   .update-profile-label-dark,
   .update-profile-label-light {
     width: 50vw;
@@ -391,7 +324,6 @@ body {
 }
 
 @media (max-width: 870px) and (min-width: 450px) {
-
   .update-profile-label-dark,
   .update-profile-label-light {
     width: 70vw;
@@ -399,7 +331,6 @@ body {
 }
 
 @media (max-width: 449px) {
-
   .update-profile-label-dark,
   .update-profile-label-light {
     width: 90vw;
@@ -407,7 +338,6 @@ body {
 }
 
 @media (max-width: 870px) and (min-width: 451px) {
-
   .upload-profilepic-dark,
   .upload-profilepic-light {
     width: 20vw;
@@ -425,9 +355,8 @@ body {
 }
 
 @media (max-width: 450px) {
-
   .update-profile-form,
-  .update-profile-form {
+  .update-profile-form-div {
     flex-direction: column;
     height: 90vh;
   }
@@ -450,9 +379,8 @@ body {
     width: 70vw;
     font-size: large;
   }
-
 }
 
-.select-lang-light{
+.select-lang-light {
   background-color: rgb(223, 133, 209);
 }

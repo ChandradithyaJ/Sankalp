@@ -20,7 +20,7 @@ const MiaLanding = () => {
             </button>
           </div>
           <div className="img">
-            <img decoding="async" src={"./MiaImages/default-01.png"} alt="" />
+            <img decoding="async" src={"./MiaImages/MiaDefault.png"} alt="" />
           </div>
         </div>
         <div className="shape">

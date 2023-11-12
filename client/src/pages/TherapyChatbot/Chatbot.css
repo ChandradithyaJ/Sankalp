@@ -70,12 +70,20 @@
   min-width: 600px;
 }
 
+.chatbot-image-dark h3{
+  padding-top: 4vh;
+}
+
 .chatbot-image-light {
   padding-top: 3vh;
   display: flex;
   flex-direction: column;
   height: 70vh;
   min-width: 600px;
+}
+
+.chatbot-image-light h3 {
+  padding-top: 4vh;
 }
 
 .chatbot-image-dark img {

@@ -83,9 +83,7 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
 
             try {
                 const response = await testingAPI.delete(`/users`, config)
-                if (response && response.data) {
-                    console.log('Delete Profile Response: ', response.data) //chadraditya check diz
-                }
+                
                 navigate('./login')
             } catch (err) {
                 console.log(err.message)

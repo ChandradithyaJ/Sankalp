@@ -21,7 +21,6 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
     try{
       const response = await testingAPI.get('/stories', config)
       if(response && response.data){
-        console.log(response.data)
         setListOfStories(response.data)
         navigate('./modules')
       }

@@ -45,7 +45,6 @@ const handleNewUser = async (req, res) => {
             password: hashedPwd,
             email: req?.body?.email,
         })
-        console.log(result)
 
         newUser['accessToken'] = accessToken
         newUser['_id'] = result._id

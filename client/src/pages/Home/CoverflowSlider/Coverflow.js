@@ -15,7 +15,6 @@ const Coverflow = () => {
   useEffect(() => {
     const getArticles = async () => {
       if (apiCallCount >= maxApiCalls) {
-        console.log("Maximum API calls reached");
         return;
       }
 

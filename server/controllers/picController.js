@@ -21,7 +21,6 @@ const getSinglePic = async (req, res) => {
         const { resources } = await cloudinary.search.expression(`public_id:SankalpProfilePics/${publicID}`).execute()
         
         const URLs = resources.map(file => file.url)
-        console.log(URLs)
         let reqURL = (URLs.length > 0) ? URLs[0] : "No Custom Profile Pic"
         res.status(200).json(reqURL)
     } catch (err) {
@@ -42,7 +41,6 @@ const updateProfilePic = async (req, res) => {
             upload_preset: 'SankalpProfilePics', // folder in cloudinary
             public_id: publicID
         })
-        console.log(uploadedResponse)
         res.status(200).json(uploadedResponse.url)
     } catch (err) {
         console.log(err)

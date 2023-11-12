@@ -18,9 +18,7 @@ const ModeToggle = ({ mode, setMode, user,  setUser }) => {
 
         try {
             const response = await testingAPI.put('/users', editDetails, config)
-            if (response && response.data) {
-                console.log('Edit Profile Response: ', response.data)
-            }
+            
         } catch (err) {
             console.log(err.message)
         }
@@ -31,7 +29,6 @@ const ModeToggle = ({ mode, setMode, user,  setUser }) => {
         })
 
         setMode(newMode)
-        console.log('Toggled to ', mode, ' mode')
     }
 
     return(

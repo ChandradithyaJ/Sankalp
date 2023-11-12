@@ -27,7 +27,6 @@ const updateUser = async (req, res) => {
     if (req.body?.finishedStories) reqUser.finishedStories = req.body?.finishedStories
 
     const result = await reqUser.save()
-    console.log(result)
 
     return res.status(201).json(reqUser)
 }

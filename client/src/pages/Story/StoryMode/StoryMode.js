@@ -97,7 +97,6 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
                 try {
                     const response = await testingAPI.post('/translate/dialogues', translationDetails)
                     if (response && response.data) {
-                        console.log(response.data)
                         setDialogueSet(response.data)
                     }
 
@@ -129,7 +128,6 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
             setSelectedOption(option)
             setTranslatedSankalpExplanation(translatedOption.sankalpExplanation)
             setSelectedOptionText(translatedOption.dialogueOption)
-            console.log(selectedOption)
         } else {
             setSelectedOption('')
             setSelectedOptionText('')

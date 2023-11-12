@@ -1,5 +1,5 @@
 import './UserProfile.css'
-import testingAPI from '../../api/testingAPI'
+import serverAPI from '../../api/serverAPI'
 import { isExpired } from 'react-jwt'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -33,7 +33,7 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
             }
 
             try {
-                const response = await testingAPI.put('/updateJWT', userID)
+                const response = await serverAPI.put('/updateJWT', userID)
                 if (response && response.data) {
 
                     const updatedUser = {
@@ -82,7 +82,7 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
             }
 
             try {
-                const response = await testingAPI.delete(`/users`, config)
+                const response = await serverAPI.delete(`/users`, config)
                 
                 navigate('./login')
             } catch (err) {
@@ -121,7 +121,7 @@ const UserProfile = ({ mode, setMode, user, setUser, lang }) => {
 
             if (lang !== 'en') {
                 try {
-                    const response = await testingAPI.post('/translate', translationDetails)
+                    const response = await serverAPI.post('/translate', translationDetails)
                     if (response && response.data) {
                         setEditText(response.data.editText)
                         setDeleteText(response.data.deleteText)

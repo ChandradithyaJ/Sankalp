@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './StorySelect.css'
 import { useNavigate } from 'react-router-dom'
-import testingAPI from '../../../api/testingAPI'
+import serverAPI from '../../../api/serverAPI'
 import zip from '../../../library/zip'
 import Loading from '../../../components/Loading/Loading'
 
@@ -55,7 +55,7 @@ const StorySelect = ({ user, mode, lang, listOfStories, setStory }) => {
 
             if (lang !== 'en') {
                 try {
-                    const response = await testingAPI.post('/translate', translationDetails)
+                    const response = await serverAPI.post('/translate', translationDetails)
                     if (response && response.data) {
                         setErrorText(response.data.ErrorText)
                         setSelectText(response.data.SelectText)

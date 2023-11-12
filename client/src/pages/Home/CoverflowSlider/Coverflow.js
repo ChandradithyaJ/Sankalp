@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom'
 import Swiper from "swiper/bundle"; // Import Swiper with required modules
 import "swiper/swiper-bundle.css";
-import testingAPI from '../../../api/testingAPI'
+import serverAPI from '../../../api/serverAPI'
 import "./Coverflow.css"; // Import your custom CSS for styling
 
 const Coverflow = () => {
@@ -19,7 +19,7 @@ const Coverflow = () => {
       }
 
       try {
-        const response = await testingAPI.get('/news')
+        const response = await serverAPI.get('/news')
 
         if (response.data.articles) {
           setArticles((prevArticles) => [

@@ -11,7 +11,7 @@ import Loading from '../../../components/Loading/Loading'
 import girlTalking from '../../../lotties/girlTalking.json'
 import doctor from '../../../lotties/doctor.json'
 
-import testingAPI from '../../../api/testingAPI'
+import serverAPI from '../../../api/serverAPI'
 import zip from '../../../library/zip'
 
 // Toast Notifications
@@ -63,7 +63,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
 
             if (lang !== 'en') {
                 try {
-                    const response = await testingAPI.post('/translate', translationDetails)
+                    const response = await serverAPI.post('/translate', translationDetails)
                     if (response && response.data) {
                         setTitleText(response.data.TitleText)
                         setScoreText(response.data.ScoreText)
@@ -95,7 +95,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
 
             if (lang !== 'en') {
                 try {
-                    const response = await testingAPI.post('/translate/dialogues', translationDetails)
+                    const response = await serverAPI.post('/translate/dialogues', translationDetails)
                     if (response && response.data) {
                         setDialogueSet(response.data)
                     }
@@ -215,7 +215,7 @@ const StoryMode = ({ mode, lang, user, setUser, story, setStory }) => {
             }
 
             try {
-                const response = await testingAPI.put('/users', editDetails, config)
+                const response = await serverAPI.put('/users', editDetails, config)
                 if (response && response.data) {
                     setUser({
                         ...user,

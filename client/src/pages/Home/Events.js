@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Events.css";
-import testingAPI from "../../api/testingAPI";
+import serverAPI from "../../api/serverAPI";
 import Loading from "../../components/Loading/Loading";
 
 // Toast Notifications
@@ -34,7 +34,7 @@ function Events({ lang }) {
 
       if (lang !== "en") {
         try {
-          const response = await testingAPI.post(
+          const response = await serverAPI.post(
             "/translate",
             translationDetails
           );

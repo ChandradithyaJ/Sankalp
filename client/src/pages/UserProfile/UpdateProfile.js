@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import testingAPI from '../../api/testingAPI'
+import serverAPI from '../../api/serverAPI'
 import "./UpdateProfile.css"
 import Loading from '../../components/Loading/Loading'
 import languages from '../../data/languages.json'
@@ -74,7 +74,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
       }
     }
 
-    await testingAPI.post('/cloudinary/upload-pic', {
+    await serverAPI.post('/cloudinary/upload-pic', {
       data: displayProfilePic,
       publicID: publicIdForPic,
     }, config).then((response) => {
@@ -88,7 +88,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
         language: userLang
       }
 
-      return testingAPI.put('/users', editDetails, config)
+      return serverAPI.put('/users', editDetails, config)
 
     }).then((response) => {
       setUser({
@@ -123,7 +123,7 @@ const UpdateProfile = ({ mode, user, setUser, lang, setLang }) => {
 
       if (lang !== 'en') {
         try {
-          const response = await testingAPI.post('/translate', translationDetails)
+          const response = await serverAPI.post('/translate', translationDetails)
           if (response && response.data) {
             setUpdateProfileText(response.data.UpdateProfileText)
             setUploadFileText(response.data.UploadFileText)

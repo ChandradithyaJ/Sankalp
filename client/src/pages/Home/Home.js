@@ -3,7 +3,7 @@ import "./Home_style.css";
 import Coverflow from "./CoverflowSlider/Coverflow";
 import Events from "./Events";
 import Loading from "../../components/Loading/Loading";
-import testingAPI from "../../api/testingAPI";
+import serverAPI from "../../api/serverAPI";
 
 // Toast Notifications
 import { ToastContainer, toast } from 'react-toastify';
@@ -36,7 +36,7 @@ function Home({ mode, lang }) {
 
       if (lang !== "en") {
         try {
-          const response = await testingAPI.post(
+          const response = await serverAPI.post(
             "/translate",
             translationDetails
           );
@@ -122,7 +122,11 @@ function Home({ mode, lang }) {
               {" "}
               <Coverflow />{" "}
             </div>
-            <div className="highlight-text-header">{exploreTitle}</div>
+            <div className="highlight-text-header">
+              <h3>
+                {exploreTitle}
+              </h3>
+            </div>
             <Events lang={lang} />
           </div>
         </div>

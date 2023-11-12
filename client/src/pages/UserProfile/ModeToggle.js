@@ -1,4 +1,4 @@
-import testingAPI from "../../api/testingAPI" 
+import serverAPI from "../../api/serverAPI" 
 
 const ModeToggle = ({ mode, setMode, user,  setUser }) => {
     const changeMode = async (e) => {
@@ -17,7 +17,7 @@ const ModeToggle = ({ mode, setMode, user,  setUser }) => {
         }
 
         try {
-            const response = await testingAPI.put('/users', editDetails, config)
+            const response = await serverAPI.put('/users', editDetails, config)
             
         } catch (err) {
             console.log(err.message)

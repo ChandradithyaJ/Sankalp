@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../../components/Loading/Loading";
-import testingAPI from "../../api/testingAPI";
+import serverAPI from "../../api/serverAPI";
 import "./ContactFormStyle.css";
 
 // Toast Notifications
@@ -31,7 +31,7 @@ function ContactForm({ mode, lang }) {
 
       if (lang !== 'en') {
         try {
-          const response = await testingAPI.post('/translate', translationDetails)
+          const response = await serverAPI.post('/translate', translationDetails)
           if (response && response.data) {
             setContact(response.data.contact)
             setMessage(response.data.message)

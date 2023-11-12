@@ -7,7 +7,7 @@ import { GoArrowLeft } from "react-icons/go"
 import Loading from '../../../components/Loading/Loading'
 
 import doctor from '../../../lotties/doctor.json'
-import testingAPI from '../../../api/testingAPI'
+import serverAPI from '../../../api/serverAPI'
 
 // Toast Notifications
 import { ToastContainer, toast } from 'react-toastify';
@@ -47,7 +47,7 @@ const StorySituation = ({ mode, lang, story, setStory }) => {
 
             if (lang !== 'en') {
                 try {
-                    const response = await testingAPI.post('/translate', translationDetails)
+                    const response = await serverAPI.post('/translate', translationDetails)
                     if (response && response.data) {
                         setTitleText(response.data.TitleText)
                         setDesc(response.data.Desc)

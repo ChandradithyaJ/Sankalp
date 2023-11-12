@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // axios call
-import testingAPI from "../../api/testingAPI";
+import serverAPI from "../../api/serverAPI";
 
 function Login({ setUser, setLang }) {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ function Login({ setUser, setLang }) {
     }
 
     try {
-      const response = await testingAPI.post('/auth', userDetails)
+      const response = await serverAPI.post('/auth', userDetails)
       if (response && response.data) {
         setUser(response.data.foundUser);
         setLang(response.data.foundUser.language)
@@ -93,7 +93,7 @@ function Login({ setUser, setLang }) {
 
     // store user in database through API call
     try {
-      const response = await testingAPI.post('/register', newUser)
+      const response = await serverAPI.post('/register', newUser)
       if (response && response.data) {
         setUser(response.data.newUser)
         navigate('/home')

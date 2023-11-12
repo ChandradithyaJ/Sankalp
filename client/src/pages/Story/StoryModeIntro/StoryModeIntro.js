@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { useNavigate } from 'react-router-dom'
 import './StoryModeIntro.css'
-import testingAPI from "../../../api/testingAPI"
+import serverAPI from "../../../api/serverAPI"
 import Loading from '../../../components/Loading/Loading'
 
 // Toast Notifications
@@ -19,7 +19,7 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
       }
     }
     try{
-      const response = await testingAPI.get('/stories', config)
+      const response = await serverAPI.get('/stories', config)
       if(response && response.data){
         setListOfStories(response.data)
         navigate('./modules')
@@ -55,7 +55,7 @@ const StoryModeIntro = ({ user, mode, setListOfStories, lang }) => {
 
       if (lang !== 'en') {
         try {
-          const response = await testingAPI.post('/translate', translationDetails)
+          const response = await serverAPI.post('/translate', translationDetails)
           if (response && response.data) {
             setWelcomeText(response.data.WelcomeText)
             setDescription(response.data.Description)

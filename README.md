@@ -5,6 +5,7 @@ Use the app [here](https://sankalp-one.vercel.app)!
 
 Check out demo [here](https://youtu.be/ZZddluzInkI?si=R0ijkjIWCf1E_gb_)!
 
+
 This GitHub repository is available [here](https://github.com/ChandradithyaJ/Sankalp)!
 
 
@@ -18,10 +19,13 @@ This GitHub repository is available [here](https://github.com/ChandradithyaJ/San
 - [Problem Statement](#problem-statement)
 - [Application Features](#application-features)
   - [Story Mode](#story-mode)
+  - [Badges](#badges)
   - [User Authentication](#user-authentication)
   - [Report and Suggestion](#report-and-suggestion)
   - [Dark Mode](#dark-mode)
   - [Live News Feed](#live-news-feed)
+  - [Therapy Chatbot](#therapy-chatbot)
+  - [Multilingual Support](#multilingual-support)
 - [Upcoming Features](#upcoming-features)
 - [Setting up](#setting-up-a-server)
   - [Environment Configuration](#environment-configuration)
@@ -34,17 +38,19 @@ This GitHub repository is available [here](https://github.com/ChandradithyaJ/San
 
 ## Project Overview
 
-Welcome to the **Sankalp** Web Application repository! This web application is dedicated to addressing the challenges faced by individuals with mental health issues and disabilities. It aims to break stereotypes and promote understanding while providing valuable features to support users. This project is built with the MERN stack.
+Welcome to the **Sankalp** Web Application repository! This web application is dedicated to addressing the challenges faced by individuals with mental health issues and disabilities. It aims to break stereotypes and promote understanding while providing valuable features to support users. This project is built with MERN stack.
 
 ## Team Information
 
 - **Team Name:** SE_2023 Team 11
 - **Team Members and Contributions:**
-  - Karthikeya - Story Mode UI, Home Page timeline and text animation, Update Profile UI, README, Logo
-  - Arpit - Home Page UI, News API integration, Slider animation, Use case diagram, Contact Us Page, Logo
-  - Manurbhav - Navbar, Story Collection, Home Page timeline, Authentication Pages UI, UI animations
-  - Chandradithya - Complete Backend (MVC pattern), Cloudinary API, MongoDB integration, Story Collection, Profile Page (UI + functionality), Hosting/Deployment
-  - Nandhavardhan - Backend (MVC Pattern), Story Collection, README, JWTs integrations for authentication and authorization, Update Profile UI, WSR doc
+  - Karthikeya - Story Mode UI, Update Profile UI, Chatbot Integration, Home Page Timeline, Text animation, App Logo, README
+  - Arpit - Home Page UI, News API Integration + UI, Contact Us Page, Chatbot Integration, UML diagrams, App Logo
+  - Manurbhav - Navbar (web and mobile), Home Page Timeline, Authentication, Pages UI, Animations
+Chatbot Integration
+  - Chandradithya - Node + Express Backend (MVC Pattern), MongoDB Integration, Story Mode, Profile Page, Cloudinary API Integration, Multilingual Translation, Hosting/Deployment
+Story Collection
+  - Nandhavardhan - Node + Express Backend (MVC Pattern), Chatbot Integration, JWTs Integration for Authentication and Authorization, Update Profile UI, README, Story Collection
 
 ## Problem Statement
 
@@ -77,6 +83,11 @@ This is a singularly unique problem since many apps focus on people with mental 
 
 ![Stories](./readme_pics/storywrong_light.png)
 
+### Badges
+  - Recognition for user achievements, like completion of stories.
+  ![Badges](./client/public/images/firstStory.png)
+  ![Badges](./client/public/images/firstThree.png)
+
 ### User Authentication
 
 - Basic login, logout, and registration functionality.
@@ -107,36 +118,26 @@ This is a singularly unique problem since many apps focus on people with mental 
 
 
 ### Live News Feed
-
-![News feed](newsfeed.png)
-
 - Keeps users informed with recent news on mental health and related matters.
+![News feed](./readme_pics/newsfeed.png)
+
 
 
 ### Therapy Chatbot
+-  Integration of a chatbot to assist users in understanding concepts related to mental health and disabilities
+![Mia landing page](./readme_pics/mialandingpg.png)
 
-![Mia landing page](mialandingpg.png)
+![Mia Chatbot(dark mode)](./readme_pics/miadarkmode.png)
 
-![Mia Chatbot(dark mode)](miadarkmode.png)
-
-![Mia Chatbot(light mdoe)](mialightmode.png)
+![Mia Chatbot(light mode)](./readme_pics/mialightmode.png)
 
 ### Multilingual Support
-![Story mode in hindi](sankalphindi.png)
+![Story mode in hindi](./readme_pics/sankalphindi.png)
 
 
 
 ## Upcoming Features
-
-The Sankalp team is actively working on enhancing the app's functionality. In the near future, users can expect the following features:
-
-- **Chatbot** Integration of a chatbot to assist users in understanding concepts related to mental health and disabilities
-- **Community** A community chat/discussion platform for users, similar to r/adhd on Reddit.
-- **User Gets Badges** Recognition for user achievements, including completion of stories, community participation, service, and positivity.
-- **Community Moderation and Roles** The communities within the app are moderated, with roles such as user and moderator to ensure a healthy environment.
-- **Multilingual Support** Language support for basic app features to cater to a diverse user base.
-- **Mentality Test** A mental health assessment tool that gauges a person's mental health through social media interactions and a questionnaire.
-- **Anonymous Listener and Speaker Chatrooms** Anonymous chatrooms for users to listen and speak about their experiences.
+Please suggest recomended features in the issues section of this repository or you could also contact us at Contact us page in the website.
 
 ## Setting up a server
 
@@ -148,7 +149,7 @@ To set up and run the Sankalp MERN Web Application locally, follow these steps:
 4. Change directory to the client folder: `cd client`.
 5. Install client dependencies: `npm install`. Or copy paste the following code `npm i @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fvilers/disable-react-devtools axios fontawesome gsap lottie-react picomatch postcss-preset-env react react-carousel3 react-device-detect react-dom react-icons react-jwt react-responsive-carousel react-router-dom react-scripts swiper web-vitals @iconify/react`
 6. Return to the project folder: `cd ..`.
-7. Change directory to the server folder: `cd server`. 8. Install server dependencies: `npm install`. Or copy paste the following code `npm i axios bcrypt cloudinary cors dotenv express jsonwebtoken mongodb mongoose netlify-lambda qs serverless-http`
+7. Change directory to the server folder: `cd server`. 8. Install server dependencies: `npm install`. Or copy paste the following code `npm i axios bcrypt bing-translate-api cloudinary cors dotenv express jsonwebtoken mongodb mongoose netlify-lambda qs serverless-http`
 
 ### Environment Configuration
 

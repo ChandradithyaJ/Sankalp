@@ -2,7 +2,10 @@
 
 Use the app [here](https://sankalp-one.vercel.app)!
 
-Check out demo [here](https://youtu.be/ZZddluzInkI?si=R0ijkjIWCf1E_gb_)!
+[![Sankalp](./readme_pics/Sankalp_logo.png)](https://youtu.be/ZZddluzInkI?si=R0ijkjIWCf1E_gb_)
+
+<!-- 
+Check out demo [here](https://youtu.be/ZZddluzInkI?si=R0ijkjIWCf1E_gb_)! -->
 
 This GitHub repository is available at [here](https://github.com/ChandradithyaJ/Sankalp)!
 

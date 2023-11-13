@@ -4,6 +4,8 @@ Use the app [here](https://sankalp-one.vercel.app)!
 
 This GitHub repository is available at [here](https://github.com/ChandradithyaJ/Sankalp)!
 
+
+
 ![Sankalp](./readme_pics/Sankalp_logo.png)
 
 
@@ -71,6 +73,8 @@ This is a singularly unique problem since many apps focus on people with mental 
 
 ![Stories](./readme_pics/storyEvaluation_light.png)
 
+![Stories](./readme_pics/storywrong_light.png)
+
 ### User Authentication
 
 - Basic login, logout, and registration functionality.
@@ -95,11 +99,30 @@ This is a singularly unique problem since many apps focus on people with mental 
 
 ![Stories](./readme_pics/StoryEvaluation_dark.png)
 
+![Stories](./readme_pics/storywrong_dark.png)
+
 ![profile dark](./readme_pics/Profile_dark.png)
+
 
 ### Live News Feed
 
+![News feed](newsfeed.png)
+
 - Keeps users informed with recent news on mental health and related matters.
+
+
+### Therapy Chatbot
+
+![Mia landing page](mialandingpg.png)
+
+![Mia Chatbot(dark mode)](miadarkmode.png)
+
+![Mia Chatbot(light mdoe)](mialightmode.png)
+
+### Multilingual Support
+![Story mode in hindi](sankalphindi.png)
+
+
 
 ## Upcoming Features
 
@@ -166,6 +189,9 @@ The Sankalp app aligns with Sustainable Development Goals (SDGs) 3 (Good Health 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE.md) file for details.
 
 ## Contact
+
+![Contact form](./readme_pics/contactus.png)
+
 
 If you have questions, feedback, or need assistance, please contact us either on the contact us page or over this repository.
 

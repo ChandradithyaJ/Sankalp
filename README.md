@@ -31,7 +31,7 @@ This GitHub repository is available [here](https://github.com/ChandradithyaJ/San
   - [Environment Configuration](#environment-configuration)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Design Decisions](#design-decisions)
+- [Design and Development Decisions](#design-and-development-decisions)
 - [Alignment with SDG Goals](#alignment-with-goals)
 - [License](#license)
 - [Contact](#contact)
